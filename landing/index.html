@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // HUGO-596 — redirect the .cz brand domain to the canonical .eu.
+    // This single static landing app is served for BOTH hugopos.eu and hugopos.cz
+    // (their DNS points here); the .eu host is left untouched. Runs in <head>
+    // before render; location.replace keeps history clean and preserves path/query.
+    (function () {
+      var h = location.hostname;
+      if (h === "hugopos.cz" || h.slice(-11) === ".hugopos.cz") {
+        location.replace("https://hugopos.eu" + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
   <title>Hugo — Voice-first point of sale</title>
   <meta name="description" content="Hugo is a voice-first point-of-sale platform for hospitality. Take orders, payments and reservations by talking." />
   <meta name="theme-color" content="#282724" />
