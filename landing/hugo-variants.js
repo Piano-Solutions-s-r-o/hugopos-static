@@ -206,7 +206,7 @@
       var s = localStorage.getItem('hugo-variant');
       if (s && ORDER.indexOf(s) >= 0) return s;
     } catch (e) {}
-    return 'small';
+    return 'micro';
   })();
 
   /* Apply current variant's overrides on top of the i18n base */
