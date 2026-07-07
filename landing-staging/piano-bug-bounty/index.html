@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Served as a static sub-page dir (/piano-bug-bounty/). If reached without the
+     trailing slash, relative asset paths (assets/hugo-page.enc.js, images in the
+     decrypted content) would resolve against the site root and 404 into the
+     catchall HTML. Normalise to the trailing-slash form BEFORE any relative
+     resource is parsed, without a reload, so document.baseURI is correct. -->
+<script>(function(){var p=location.pathname;if(!p.endsWith("/")&&!/\.[a-z0-9]+$/i.test(p.split("/").pop())){history.replaceState(null,"",p+"/"+location.search+location.hash);}})();</script>
 <title>Hugo — Poznej Huga · Bug Bounty</title>
 <link rel="icon" href="assets/hugo-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
