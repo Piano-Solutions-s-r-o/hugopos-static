@@ -2,10 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+<!-- HUGO_STAGING_GATE (staging only) -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Hugo staging password gate (HUGO-671). Injected ONLY into the staging static
+     bundle by .github/workflows/static-publish.yml via inject.mjs. NEVER edit the
+     app source HTML with this; the production job never injects it. Plain shared
+     password, no content encryption. The password is not stored here — only a
+     salted one-way SHA-256 fingerprint (rotate with make-hash.mjs). -->
+<style id="hugo-gate-style">
+html.hugo-gated body{visibility:hidden!important}
+#hugo-gate{position:fixed;inset:0;z-index:2147483647;background:#F3EFE6;display:flex;align-items:center;justify-content:center;padding:24px;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14110D;visibility:visible!important}
+#hugo-gate *{box-sizing:border-box}
+#hugo-gate .card{width:100%;max-width:420px;background:#fff;border:1px solid rgba(20,17,16,.09);border-radius:22px;padding:40px 34px;box-shadow:0 30px 60px -30px rgba(20,17,13,.35);text-align:center}
+#hugo-gate .lock{width:56px;height:56px;border-radius:16px;background:#FFDF2C;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:26px}
+#hugo-gate h1{font-size:22px;margin:0 0 8px;font-weight:800;letter-spacing:-.02em}
+#hugo-gate p{font-size:14px;color:#6B6357;margin:0 0 22px;line-height:1.5}
+#hugo-gate input{width:100%;font-size:16px;padding:13px 15px;border:1.5px solid #14110D;border-radius:11px;background:#F3EFE6;text-align:center;color:#14110D}
+#hugo-gate input:focus{outline:none;border-color:#F2C800;box-shadow:0 0 0 4px rgba(255,223,44,.35)}
+#hugo-gate button{width:100%;margin-top:11px;font-size:16px;font-weight:700;background:#14110D;color:#FFDF2C;border:0;border-radius:11px;padding:14px;cursor:pointer}
+#hugo-gate button:hover{background:#000}
+#hugo-gate .err{display:none;color:#B32D1C;font-size:13px;font-weight:600;margin-top:12px}
+</style>
+<script id="hugo-gate-script">
+(function(){
+  // salt + salted-SHA-256(password) — regenerate with deploy/staging-gate/make-hash.mjs
+  var S="CpvINmUoYVynXU3t", H="6/G/RF2T9GzPPBMB13xzit5wdbVkfK0kE7dSCenkSx8=";
+  var doc=document, root=doc.documentElement;
+  try{ if(sessionStorage.getItem("hugo-staging-unlocked")==="1") return; }catch(e){}
+  root.className += " hugo-gated";
+  function b64(buf){var u=new Uint8Array(buf),s="";for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s);}
+  // crypto.subtle requires a secure context (https) — staging is always https.
+  async function digest(str){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(str));return b64(b);}
+  function reveal(){ var g=doc.getElementById("hugo-gate"); if(g)g.parentNode.removeChild(g); root.className=root.className.replace(/\bhugo-gated\b/g,"").trim(); }
+  function build(){
+    if(doc.getElementById("hugo-gate")) return;
+    var g=doc.createElement("div"); g.id="hugo-gate"; g.setAttribute("role","dialog"); g.setAttribute("aria-modal","true");
+    g.innerHTML='<div class="card"><div class="lock">🔒</div><h1>Hugo · staging</h1><p>Interní testovací prostředí. Zadejte přístupové heslo.</p><form><input id="hugo-gate-pw" type="password" placeholder="Heslo" autocomplete="off" autofocus /><button type="submit">Odemknout</button><div class="err" id="hugo-gate-err">Špatné heslo, zkuste to znovu.</div></form></div>';
+    root.appendChild(g);
+    var f=g.querySelector("form"), pw=g.querySelector("#hugo-gate-pw"), err=g.querySelector("#hugo-gate-err");
+    f.addEventListener("submit", async function(e){
+      e.preventDefault();
+      try{
+        if((await digest(S+pw.value))===H){ try{ sessionStorage.setItem("hugo-staging-unlocked","1"); }catch(_){ } reveal(); }
+        else { err.style.display="block"; pw.value=""; pw.focus(); }
+      }catch(_){ err.style.display="block"; }
+    });
+    try{ pw.focus(); }catch(_){ }
+  }
+  // documentElement always exists while this runs in <head>; append the overlay to it
+  // (NOT to <body>, which is visibility:hidden while gated) so the gate paints first
+  // with no content flash and remains visible.
+  build();
+})();
+</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Hugo admin</title>
-    <script type="module" crossorigin src="/assets/index-VA560_wt.js"></script>
+    <script type="module" crossorigin src="/assets/index-Cs7t0agZ.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CZF7ElRo.css">
   </head>
   <body>

@@ -1,0 +1,5 @@
+# Staging environment — keep search engines out entirely (HUGO-671).
+# This file is served ONLY on staging.*.hugopos.eu (copied into the staging
+# static bundle by static-publish.yml). Production ships its own/no robots.txt.
+User-agent: *
+Disallow: /
