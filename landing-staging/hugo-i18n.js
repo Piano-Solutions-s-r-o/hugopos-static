@@ -67,11 +67,11 @@
     { sel: '.floor .section-head .eyebrow', cs: 'Na place' },
     { sel: '.floor .section-head h2', cs: 'Dost rychlé i na <em>páteční nával.</em>' },
     { sel: '.floor .section-head p.lead', cs: 'Tvoji lidi nečtou manuály — a s Hugem nemusí. Od první objednávky po zaplacený účet je to pár ťuknutí, takže fronta plyne a stoly se točí rychleji.' },
-    { sel: '.floor-card .step', all: true, cs: ['01 · OBJEDNÁVKA', '02 · KUCHYNĚ', '03 · PLATBA'] },
-    { sel: '.floor-card h4', all: true, cs: ['Objednávka u stolu', 'Rovnou do kuchyně', 'Rozděl, spropitné, zaplať'] },
+    { sel: '.floor-card .step', all: true, cs: ['01 · OBJEDNÁVKA', '02 · ÚČET', '03 · PLATBA'] },
+    { sel: '.floor-card h4', all: true, cs: ['Objednávka u stolu', 'Účet přehledně', 'Rozděl, spropitné, zaplať'] },
     { sel: '.floor-card p', all: true, cs: [
       'Ťukni položky, přidej poznámku a pošli do kuchyně — bez odcházení od hosta a čmárání na blok.',
-      'Objednávka je na výdeji ve chvíli, kdy ji potvrdíš. Žádné křičení přes linku, žádné ztracené bonky.',
+      'Všechny položky, DPH i součet na jednom místě — přidej slevu nebo přiřaď stůl, než objednávku odešleš.',
       'Rozděl podle položek nebo hostů a pak přijmi kartu, bezkontakt nebo QR jedním ťuknutím — výzva na spropitné je v ceně.'
     ] },
 
