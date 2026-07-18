@@ -288,6 +288,10 @@
   #hugo-gate form{ display:flex; flex-direction:column; gap:12px; }
   #hugo-gate input{ font-family:var(--body); font-size:16px; padding:14px 16px; border:1.5px solid var(--ink); border-radius:12px; background:var(--cream); text-align:center; color:var(--ink); }
   #hugo-gate input:focus{ outline:none; border-color:var(--yellow-deep); box-shadow:0 0 0 4px color-mix(in srgb,var(--yellow) 30%,transparent); }
+  #hugo-gate .pw-wrap{ position:relative; }
+  #hugo-gate .pw-wrap input{ width:100%; padding-right:48px; }
+  #hugo-gate .pw-toggle{ position:absolute; top:50%; right:8px; transform:translateY(-50%); width:34px; height:34px; padding:0; background:transparent; border:0; border-radius:8px; cursor:pointer; font-size:17px; line-height:1; display:flex; align-items:center; justify-content:center; }
+  #hugo-gate .pw-toggle:hover{ background:color-mix(in srgb,var(--ink) 8%,transparent); }
   #hugo-gate button{ font-family:var(--body); font-weight:700; font-size:16px; background:var(--ink); color:var(--yellow); border:0; border-radius:12px; padding:15px; cursor:pointer; transition:background .15s; }
   #hugo-gate button:hover{ background:#000; }
   #hugo-gate .err{ display:none; color:#B32D1C; font-size:13.5px; font-weight:600; margin-top:2px; }
@@ -308,9 +312,17 @@
   function build(){
     if(doc.getElementById("hugo-gate")) return;
     var g=doc.createElement("div"); g.id="hugo-gate"; g.setAttribute("role","dialog"); g.setAttribute("aria-modal","true");
-    g.innerHTML='<div class="card"><div class="lock">🐞</div><div class="eyebrow">Bug Bounty · Poznej Huga</div><h2>Zadej heslo a pojď dovnitř</h2><p>Tahle stránka je interní. Heslo jsi dostal/a spolu s pozvánkou — kdyby ne, napiš si o ně.</p><form><input id="hugo-gate-pw" type="password" placeholder="Heslo" autocomplete="off" autofocus /><button type="submit">Odemknout</button><div class="err" id="hugo-gate-err">Špatné heslo, zkus to znovu.</div></form></div>';
+    g.innerHTML='<div class="card"><div class="lock">🐞</div><div class="eyebrow">Bug Bounty · Poznej Huga</div><h2>Zadej heslo a pojď dovnitř</h2><p>Tahle stránka je interní. Heslo jsi dostal/a spolu s pozvánkou — kdyby ne, napiš si o ně.</p><form><div class="pw-wrap"><input id="hugo-gate-pw" type="password" placeholder="Heslo" autocomplete="off" autofocus /><button type="button" class="pw-toggle" id="hugo-gate-eye" aria-label="Zobrazit heslo" aria-pressed="false">👁</button></div><button type="submit">Odemknout</button><div class="err" id="hugo-gate-err">Špatné heslo, zkus to znovu.</div></form></div>';
     root.appendChild(g);
-    var f=g.querySelector("form"), pw=g.querySelector("#hugo-gate-pw"), err=g.querySelector("#hugo-gate-err");
+    var f=g.querySelector("form"), pw=g.querySelector("#hugo-gate-pw"), err=g.querySelector("#hugo-gate-err"), eye=g.querySelector("#hugo-gate-eye");
+    eye.addEventListener("click", function(){
+      var show = pw.type==="password";
+      pw.type = show ? "text" : "password";
+      eye.textContent = show ? "🙈" : "👁";
+      eye.setAttribute("aria-pressed", show ? "true" : "false");
+      eye.setAttribute("aria-label", show ? "Skrýt heslo" : "Zobrazit heslo");
+      try{ pw.focus(); }catch(_){ }
+    });
     f.addEventListener("submit", async function(e){
       e.preventDefault();
       try{
