@@ -192,9 +192,6 @@ html.hugo-gated body{visibility:hidden!important}
   }
   .nav-links a:hover{ color: var(--ink); }
   .nav-cta{ margin-left: auto; display: flex; gap: 10px; align-items: center; }
-  .nav-cta .signin{
-    font-weight: 500; font-size: 15px; padding: 10px 14px; color: var(--ink-2);
-  }
   .lang{
     display: inline-flex; background: #fff; border: 1px solid var(--line);
     border-radius: var(--radius-pill); padding: 3px; gap: 2px;
@@ -1678,7 +1675,6 @@ html.hugo-gated body{visibility:hidden!important}
   }
   @media (max-width: 560px){
     .container{ padding: 0 18px; }
-    .nav-cta .signin{ display: none; }
     .strip-inner{ justify-content: center; }
     .hero-stage{ height: 460px; }
     .phone{ width: 220px; }
@@ -1859,7 +1855,6 @@ html.hugo-gated body{visibility:hidden!important}
         <button type="button" data-lang="cs">CZ</button>
         <button type="button" data-lang="en">EN</button>
       </div>
-      <a href="#" class="signin">Sign in</a>
       <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary">Start free
         <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -2356,7 +2351,7 @@ html.hugo-gated body{visibility:hidden!important}
               <div class="checks">
                 <label class="chk">
                   <input type="checkbox" id="iosToggle" />
-                  <div><span>I need iPhone Tap to Pay</span><small>Tap to Pay on iPhone &middot; 0,99 % + 0,99 Kč&nbsp;per&nbsp;transaction</small></div>
+                  <div><span>I need iPhone Tap to Pay</span><small>Tap to Pay on iPhone &middot; 0,99 % + 2,75 Kč&nbsp;per&nbsp;transaction</small></div>
                 </label>
               </div>
               <p class="pay-note">Card payments run through Hugo &mdash; that&rsquo;s what keeps the price at 190 Kč.</p>
@@ -2390,7 +2385,7 @@ html.hugo-gated body{visibility:hidden!important}
               <span class="sum-v" id="sumTotal">0</span>
               <span class="sum-u">Kč / month</span>
             </div>
-            <div class="sum-plus" id="sumPlus">+ 0,99 &rarr; 0,39 % per transaction (Android)</div>
+            <div class="sum-plus" id="sumPlus">+ 0,99 % + 1 Kč per card transaction (Android)</div>
 
             <ul class="sum-feat" id="sumFeat">
               <!-- populated by JS -->
@@ -2730,22 +2725,25 @@ html.hugo-gated body{visibility:hidden!important}
   window.applyPreset = applyPreset;
 
   // Card fee schedule (Piano Payments): % of turnover + a fixed fee per transaction.
-  // Glides from 0,99 % + 0,99 Kč at the low end down to 0,59 % + 0,59 Kč once
-  // monthly card revenue reaches the top of the range (1 000 000 Kč).
+  // Android terminal: glides from 0,99 % + 1 Kč at the low end down to 0,59 % + 0,59 Kč
+  // once monthly card revenue reaches the top of the range (1 000 000 Kč).
   const FEE_TIERS = [
-    { min: 0,      pct: 0.0099, fixed: 0.99 },
+    { min: 0,      pct: 0.0099, fixed: 1 },
     { min: 200000, pct: 0.0089, fixed: 0.89 },
     { min: 400000, pct: 0.0079, fixed: 0.79 },
     { min: 600000, pct: 0.0069, fixed: 0.69 },
     { min: 800000, pct: 0.0059, fixed: 0.59 },
   ];
-  function feeRate(revenue){
+  // Tap to Pay on iPhone is a single flat rate — no tiering.
+  const IOS_FEE = { pct: 0.0099, fixed: 2.75 };
+  function feeRate(revenue, device){
+    if (device === 'ios') return IOS_FEE;
     let r = FEE_TIERS[0];
     for (const t of FEE_TIERS){ if (revenue >= t.min) r = t; }
     return r;
   }
-  function cardFee(revenue, avgBasketKc = 220){
-    const r = feeRate(revenue);
+  function cardFee(revenue, avgBasketKc = 220, device = 'android'){
+    const r = feeRate(revenue, device);
     const txns = Math.max(1, revenue / avgBasketKc);
     return revenue * r.pct + txns * r.fixed;
   }
@@ -2781,9 +2779,9 @@ html.hugo-gated body{visibility:hidden!important}
     const tierName = cfg.tier === 'full' ? 'Hugo Full AI'
                    : cfg.tier === 'exec' ? 'Hugo Executive' : 'Hugo Style';
 
-    // Card processing for the current revenue (same schedule on both devices)
-    const proc = cardFee(cfg.rev, cfg.avgBasket);
-    const r = feeRate(cfg.rev);
+    // Card processing for the current revenue (iPhone Tap to Pay has its own flat rate)
+    const proc = cardFee(cfg.rev, cfg.avgBasket, cfg.dev);
+    const r = feeRate(cfg.rev, cfg.dev);
     const pctStr = (r.pct * 100).toFixed(2).replace('.', ',') + ' %';
     const fixedStr = (r.fixed === Math.round(r.fixed) ? String(r.fixed) : r.fixed.toFixed(2).replace('.', ',')) + '\u00A0K\u010d';
     const rateStr = pctStr + ' + ' + fixedStr;

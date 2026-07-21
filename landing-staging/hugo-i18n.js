@@ -27,7 +27,6 @@
   var ENTRIES = [
     /* NAV */
     { sel: '.nav-links a', all: true, cs: ['Produkt', 'AI &amp; Brain', 'Spuštění', 'Ceník', 'Reference'] },
-    { sel: '.nav-cta .signin', cs: 'Přihlásit' },
     { sel: '.nav-cta .btn.btn-primary', cs: 'Začít zdarma ' + ARR },
 
     /* HERO */
@@ -213,7 +212,7 @@
     { sel: '.abbar-label', cs: 'Verze pro:' },
     { sel: '.ab-opt', all: true, cs: ['Mikro provoz', 'Kavárna & bar', 'Restaurace & síť'] },
     { sel: '.chk span', cs: 'Potřebuju iPhone Tap to Pay' },
-    { sel: '.chk small', cs: 'Tap to Pay na iPhonu · 0,99 % + 0,99 Kč za transakci' },
+    { sel: '.chk small', cs: 'Tap to Pay na iPhonu · 0,99 % + 2,75 Kč za transakci' },
     { sel: '.pay-note', cs: 'Platby kartou jdou přes Hugo — díky tomu je cena 190 Kč.' },
     { sel: '.config-or', cs: '— nebo si slož vlastní —' },
     { sel: '.price-points li span', all: true, cs: [
@@ -283,7 +282,7 @@
       payIos: 'with card payments · iPhone Tap to Pay',
       noPay: 'without card payments',
       free: 'FREE', disc: 'DISCOUNTED', paid: 'PAID',
-      plusAndroid: '+ 0,99 &rarr; 0,39 % per transaction (Android, tiered)',
+      plusAndroid: '+ 0,99 % + 1 Kč per transaction (Android, drops as you grow)',
       plusIos: '+ 0,99 % + 2,75 Kč per transaction (iPhone)',
       styleInc: ['Unlimited devices &amp; staff', 'Run on any device, scale to any team', 'Unlimited menu &amp; categories', 'Piano Brain summaries'],
       styleEx: ['Daily menus built by AI in seconds', 'Voice ordering &amp; phone agent'],
@@ -304,7 +303,7 @@
       payIos: 'platby kartou · iPhone Tap to Pay',
       noPay: 'bez plateb kartou',
       free: 'ZDARMA', disc: 'SE SLEVOU', paid: 'PLACENO',
-      plusAndroid: '+ 0,99 &rarr; 0,39 % z transakce (Android, klesá)',
+      plusAndroid: '+ 0,99 % + 1 Kč z transakce (Android, klesá s obratem)',
       plusIos: '+ 0,99 % + 2,75 Kč z transakce (iPhone)',
       styleInc: ['Neomezeně zařízení a lidí', 'Běží na čemkoli, škáluje na jakýkoli tým', 'Neomezené menu a kategorie', 'Souhrny Piano Brain'],
       styleEx: ['Denní menu složí AI během vteřin', 'Hlasové objednávky a telefonní agent'],
