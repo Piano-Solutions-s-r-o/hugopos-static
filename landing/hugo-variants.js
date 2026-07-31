@@ -13,7 +13,6 @@
 
   var ARR = '<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
   var ORDER = ['micro', 'small', 'mid'];
-  var PRESET = { micro: 'truck', small: 'cafe', mid: 'chain' };
 
   /* Per-variant content overrides (small = base, no overrides) */
   var VARIANTS = {
@@ -259,7 +258,6 @@
     } else {
       window.__applyVariant(window.HUGO_LANG);
     }
-    if (typeof window.applyPreset === 'function') window.applyPreset(PRESET[v]);
   }
   window.selectHugoVariant = selectVariant;
 
@@ -298,7 +296,6 @@
     syncSeg();
     ensureBrainObserver();
     window.__applyVariant(window.HUGO_LANG || 'cs');
-    if (typeof window.applyPreset === 'function') window.applyPreset(PRESET[window.HUGO_VARIANT]);
     wire();
   }
 

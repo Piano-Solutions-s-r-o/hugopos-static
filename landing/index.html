@@ -337,17 +337,26 @@
   }
 
   /* ============ TRUST BAND ============ */
-  .trust{ padding: 48px 0 8px; }
+  .trust{ padding: 56px 0 8px; }
   .trust-row{
-    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
   }
   .trust-chip{
-    display: inline-flex; align-items: center; gap: 9px;
-    background: #fff; border: 1px solid var(--line);
-    border-radius: 999px; padding: 11px 17px;
-    font-size: 14px; font-weight: 500; color: var(--ink-2);
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fff; border: 1px solid rgba(20,17,13,0.10);
+    border-radius: 999px; padding: 13px 20px;
+    font-size: 16px; font-weight: 700; letter-spacing: -0.012em; color: var(--ink);
+    box-shadow: 0 14px 30px -22px rgba(20,17,13,0.75);
   }
-  .trust-chip svg{ width: 17px; height: 17px; color: var(--green); flex: 0 0 17px; }
+  .trust-chip svg{
+    width: 21px; height: 21px; flex: 0 0 21px;
+    color: var(--green);
+    background: rgba(27,168,91,0.12);
+    border-radius: 999px; padding: 3px;
+  }
+  @media (max-width: 700px){
+    .trust-chip{ font-size: 15px; padding: 13px 18px; gap: 10px; }
+  }
   .quote{
     max-width: 800px; margin: 40px auto 0; text-align: center;
   }
@@ -826,35 +835,6 @@
   }
   .price-card li svg{ flex: 0 0 16px; margin-top: 4px; color: var(--yellow); }
 
-  .slider-wrap{
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 18px; padding: 18px; margin-top: 8px;
-  }
-  .slider-row{
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 14px; margin-bottom: 12px;
-    font-size: 13px; color: rgba(255,255,255,0.7);
-  }
-  .slider-row b{ color: #fff; font-weight: 700; font-variant-numeric: tabular-nums; }
-  input[type="range"].rev{
-    -webkit-appearance: none; appearance: none;
-    width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 999px;
-    outline: none;
-  }
-  input[type="range"].rev::-webkit-slider-thumb{
-    -webkit-appearance: none; appearance: none;
-    width: 22px; height: 22px; border-radius: 999px;
-    background: var(--yellow); cursor: pointer;
-    border: 3px solid var(--ink);
-    box-shadow: 0 0 0 1px var(--yellow);
-  }
-  input[type="range"].rev::-moz-range-thumb{
-    width: 22px; height: 22px; border-radius: 999px;
-    background: var(--yellow); cursor: pointer;
-    border: 3px solid var(--ink);
-    box-shadow: 0 0 0 1px var(--yellow);
-  }
   .scale-amount{
     display: flex; align-items: baseline; gap: 8px;
     margin: 14px 0 0;
@@ -866,196 +846,53 @@
   }
   .scale-amount .u{ color: rgba(255,255,255,0.7); font-size: 14px; }
 
-  /* ---- Pricing configurator (compact) ---- */
+  /* ---- Pricing (one plan) ---- */
   .config{
     display: grid; gap: 26px;
     margin-top: 8px;
   }
 
-  /* Presets — distinct quick-start panel */
-  .presets{
-    display: grid; gap: 14px;
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(255,255,255,0.09);
-    border-radius: var(--radius-lg);
-    padding: 22px 22px 24px;
-  }
-  .config-or{
-    text-align: center; font-size: 12.5px; letter-spacing: .04em;
-    color: rgba(255,255,255,0.4); margin: -10px 0;
-  }
-  .config-or b{ color: rgba(255,255,255,0.7); font-weight: 600; }
-  .presets-label{
-    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    font-weight: 600;
-  }
-  .presets-row{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-  .preset-btn{
-    appearance: none; cursor: pointer;
-    background: #1F1B16;
-    border: 1px solid rgba(255,255,255,0.08);
-    color: #fff;
-    border-radius: 18px;
-    padding: 18px 18px 16px;
-    display: grid; gap: 4px;
-    text-align: left;
-    transition: background .15s ease, border-color .15s ease, transform .12s ease;
-    font-family: var(--body);
-    position: relative;
-    min-height: 140px;
-    align-content: end;
-  }
-  .preset-btn:hover{
-    background: #2A2620;
-    border-color: rgba(255,223,44,0.4);
-    transform: translateY(-1px);
-  }
-  .preset-btn:active{ transform: translateY(0); }
-  .preset-btn.is-on{
-    background: var(--yellow); color: var(--ink);
-    border-color: var(--yellow);
-    box-shadow: 0 12px 28px -10px rgba(242, 200, 0, 0.5);
-  }
-  .preset-ico{
-    position: absolute; top: 16px; left: 16px;
-    width: 40px; height: 40px;
-    background: rgba(255,255,255,0.06);
+  /* Card-fee rows (left column) */
+  .fee-rows{ display: grid; gap: 8px; }
+  .fee-row{
+    display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: 12px;
-    display: inline-flex; align-items: center; justify-content: center;
-    color: var(--yellow);
-    transition: background .15s, color .15s;
   }
-  .preset-ico svg{ width: 22px; height: 22px; }
-  .preset-btn.is-on .preset-ico{
-    background: rgba(20,17,13,0.1);
-    color: var(--ink);
+  .fee-row .fr-k{ color: rgba(255,255,255,0.72); font-size: 13.5px; line-height: 1.35; }
+  .fee-row .fr-v{
+    color: #fff; font-weight: 700; font-size: 14px;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
   }
-  .preset-name{
-    font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
-    font-family: var(--display); font-variation-settings: "wdth" 92;
-  }
-  .preset-meta{
-    font-size: 12.5px; color: rgba(255,255,255,0.55);
-    font-variant-numeric: tabular-nums;
-  }
-  .preset-btn.is-on .preset-meta{ color: var(--ink-2); }
-  .preset-tag{
-    position: absolute; top: 16px; right: 16px;
-    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.06);
-    padding: 4px 8px; border-radius: 999px;
-    line-height: 1;
-  }
-  .preset-btn.is-on .preset-tag{
-    background: rgba(20,17,13,0.12); color: var(--ink);
-  }
-
-  /* iOS toggle (inline under slider) */
-  .ios-toggle{
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px dashed rgba(255,255,255,0.1);
-  }
-  .ios-toggle label{
-    display: flex; align-items: flex-start; gap: 10px;
-    cursor: pointer;
-    color: rgba(255,255,255,0.75);
-    font-size: 13px;
-  }
-  .ios-toggle input[type="checkbox"]{
-    appearance: none; -webkit-appearance: none;
-    width: 18px; height: 18px; flex: 0 0 18px;
-    margin-top: 1px;
-    border: 1.5px solid rgba(255,255,255,0.3);
-    border-radius: 5px;
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    transition: background .15s, border-color .15s;
-  }
-  .ios-toggle input[type="checkbox"]:checked{
-    background: var(--yellow); border-color: var(--yellow);
-  }
-  .ios-toggle input[type="checkbox"]:checked::after{
-    content: ""; position: absolute; left: 4px; top: 0px;
-    width: 5px; height: 10px;
-    border: solid var(--ink); border-width: 0 2.5px 2.5px 0;
-    transform: rotate(45deg);
-  }
-  .ios-toggle label > span{
-    font-weight: 600; color: #fff;
-    margin-right: 6px;
-  }
-  .ios-toggle small{
-    color: rgba(255,255,255,0.5); font-size: 12px;
-    display: block; margin-top: 2px;
-  }
-  .ios-toggle label > div{
-    display: flex; flex-direction: column;
-  }
-
-  /* Checkbox options (payments / device) */
-  .checks{ display: grid; gap: 10px; }
   .pay-note{ color: var(--muted); font-size: 12px; line-height: 1.45; margin: 12px 0 0; }
-  .chk{
-    display: flex; align-items: flex-start; gap: 11px; cursor: pointer;
-    padding: 13px 15px;
-    background: rgba(255,255,255,0.03);
+
+  /* Device options (left column) */
+  .devopts{ display: grid; gap: 10px; }
+  .devopt{
+    background: #1F1B16;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 14px;
-    transition: border-color .15s, background .15s;
+    padding: 14px 15px;
+    display: grid; gap: 5px;
   }
-  .chk:hover{ border-color: rgba(255,255,255,0.22); }
-  .chk input[type="checkbox"]{
-    appearance: none; -webkit-appearance: none;
-    width: 20px; height: 20px; flex: 0 0 20px; margin-top: 1px;
-    border: 1.5px solid rgba(255,255,255,0.3); border-radius: 6px;
-    background: transparent; cursor: pointer; position: relative;
-    transition: background .15s, border-color .15s;
+  .devopt .do-h{
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
   }
-  .chk input[type="checkbox"]:checked{ background: var(--yellow); border-color: var(--yellow); }
-  .chk input[type="checkbox"]:checked::after{
-    content: ""; position: absolute; left: 5px; top: 1px;
-    width: 6px; height: 11px; border: solid var(--ink); border-width: 0 2.5px 2.5px 0;
-    transform: rotate(45deg);
+  .devopt .do-t{ color: #fff; font-weight: 700; font-size: 14px; letter-spacing: -0.01em; }
+  .devopt .do-p{
+    color: var(--yellow); font-weight: 700; font-size: 14px;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
   }
-  .chk > div{ display: flex; flex-direction: column; }
-  .chk span{ font-weight: 600; color: #fff; }
-  .chk small{ color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px; }
-
-  /* Revenue bar */
-  .rev-bar{
-    background: #1F1B16;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: var(--radius-lg);
-    padding: 22px 28px 18px;
+  .devopt .do-s{ margin: 0; color: rgba(255,255,255,0.55); font-size: 12.5px; line-height: 1.45; }
+  .devopt .do-tag{
+    justify-self: start;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    color: var(--yellow); background: rgba(255,223,44,0.12);
+    border: 1px solid rgba(255,223,44,0.28);
+    padding: 4px 9px; border-radius: 999px; line-height: 1.2;
   }
-  .rev-bar-head{
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 24px; margin-bottom: 14px; flex-wrap: wrap;
-  }
-  .rev-bar-label{ display: flex; flex-direction: column; gap: 6px; }
-  .rev-amount{
-    font-family: var(--display); font-weight: 800;
-    font-variation-settings: "wdth" 88;
-    font-size: 40px; line-height: 1; letter-spacing: -0.03em; color: var(--yellow);
-    font-variant-numeric: tabular-nums;
-  }
-  .rev-bar-meta{ color: rgba(255,255,255,0.5); font-size: 13px; }
-
-  .slider-ticks{
-    display: flex; justify-content: space-between;
-    margin-top: 10px; color: rgba(255,255,255,0.4); font-size: 11px;
-    font-variant-numeric: tabular-nums;
-  }
-
   /* Two-column config card */
   .config-card{
     display: grid; grid-template-columns: 1fr 1.05fr; gap: 16px;
@@ -1080,53 +917,6 @@
     display: inline-flex; align-items: center; justify-content: center;
     font-family: var(--display); font-weight: 800; font-size: 12px;
   }
-  .rev-amount-inline{
-    margin-left: auto;
-    font-family: var(--display); font-weight: 800;
-    font-variation-settings: "wdth" 88;
-    color: var(--yellow);
-    font-size: 18px; letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-  }
-  .seg{
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 14px;
-    padding: 5px;
-    gap: 4px;
-  }
-  .seg-btn{
-    appearance: none; border: 0; background: transparent;
-    color: rgba(255,255,255,0.7);
-    text-align: left; padding: 10px 11px;
-    border-radius: 10px; cursor: pointer;
-    font-family: var(--body);
-    transition: background .15s ease, color .15s ease, box-shadow .15s ease;
-    min-width: 0;
-  }
-  .seg-btn:hover{ color: #fff; }
-  .seg-btn.is-on{
-    background: var(--cream);
-    color: var(--ink);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 6px 18px -10px rgba(0,0,0,0.4);
-  }
-  .seg-title{
-    font-weight: 700; font-size: 13px; letter-spacing: -0.01em;
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    line-height: 1.2;
-  }
-  .seg-sub{ font-size: 12px; opacity: .65; margin-top: 3px; line-height: 1.3; }
-  .rec{
-    display: inline-block;
-    font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    background: var(--yellow); color: var(--ink);
-    padding: 2px 6px; border-radius: 999px;
-    line-height: 1;
-  }
-  .seg-btn:not(.is-on) .rec{ background: rgba(255,223,44,0.18); color: var(--yellow); }
-  @media (max-width: 600px){ .seg{ grid-template-columns: 1fr; } }
-
   /* Summary (right column) */
   .summary{
     background: var(--cream);
@@ -1152,7 +942,6 @@
     padding: 6px 10px; border-radius: 999px;
     line-height: 1; white-space: nowrap;
   }
-  .sum-badge.muted{ background: rgba(20,17,13,0.08); color: var(--ink-2); }
 
   .sum-price{
     display: flex; align-items: baseline; gap: 10px;
@@ -1187,61 +976,8 @@
   }
   .sum-feat li svg{ flex: 0 0 14px; margin-top: 4px; }
   .sum-feat li.inc svg{ color: var(--green); }
-  .sum-feat li.ex { color: var(--muted); }
-  .sum-feat li.ex svg{ color: var(--muted); opacity: .7; }
-
-  .sum-sentence{
-    background: var(--ink); color: #fff;
-    border-radius: 14px;
-    padding: 18px 18px 16px;
-  }
-  .sum-sent-head{
-    font-size: 12px; letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 12px;
-  }
-  .sum-sent-head b{ color: #fff; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .sum-sent-rows{ display: grid; gap: 6px; }
-  .sum-sent-row{
-    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
-    color: rgba(255,255,255,0.75);
-    font-size: 14px;
-  }
-  .sum-sent-row .val{
-    font-weight: 700; color: #fff; font-variant-numeric: tabular-nums;
-  }
-  .sum-sent-row.hero{
-    margin: 4px 0 8px;
-    padding: 10px 12px;
-    background: rgba(255,223,44,0.08);
-    border: 1px solid rgba(255,223,44,0.2);
-    border-radius: 10px;
-    align-items: center;
-  }
-  .sum-sent-row.hero .lbl{
-    color: #fff; font-weight: 600;
-  }
-  .sum-sent-row.hero .big{
-    font-family: var(--display); font-weight: 800;
-    font-variation-settings: "wdth" 86;
-    font-size: 30px; letter-spacing: -0.025em; line-height: 1;
-    color: var(--yellow);
-  }
-  .sum-sent-row.total{
-    border-top: 1px dashed rgba(255,255,255,0.18);
-    padding-top: 8px; margin-top: 4px;
-    color: #fff; font-weight: 600;
-  }
-  .sum-sent-row.total .val{
-    color: var(--yellow); font-size: 16px;
-  }
 
   .sum-fine{ font-size: 11.5px; color: var(--muted); text-align: center; }
-
-  /* Hide steps when not relevant */
-  .config[data-pay="no"] #revStep,
-  .config[data-pay="no"] .sum-sentence,
-  .config[data-pay="no"] .sum-plus { display: none; }
 
   /* Pricing benefits checklist */
   .price-points{
@@ -1575,7 +1311,7 @@
     border-top: 1px solid var(--line);
   }
   .foot-grid{
-    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap: 32px;
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 32px;
     margin-bottom: 50px;
   }
   .foot-col h5{
@@ -1594,6 +1330,10 @@
     font-size: 13px; color: var(--muted);
   }
   .foot-bottom .legal{ display: flex; gap: 18px; flex-wrap: wrap; }
+  .foot-bottom a{ color: var(--ink-2); }
+  .foot-bottom a:hover{ color: var(--ink); }
+  .foot-mail{ display: block; margin-top: 18px; font-weight: 700; color: var(--ink); font-size: 15px; }
+  .foot-mail:hover{ color: var(--ink-2); }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 980px){
@@ -1611,7 +1351,6 @@
     .setup-grid{ grid-template-columns: 1fr; }
     .price-cards{ grid-template-columns: 1fr; }
     .config-card{ grid-template-columns: 1fr; }
-    .presets-row{ grid-template-columns: 1fr 1fr; }
     .waitlist-grid{ grid-template-columns: 1fr; gap: 48px; }
     .power h2{ font-size: clamp(48px, 11vw, 80px); }
     .power-sub{ font-size: clamp(20px, 4vw, 28px); }
@@ -1640,8 +1379,6 @@
   .stat .v .u{ font-size:.42em; color:var(--muted); font-weight:700; margin-left:3px; letter-spacing:0; }
   .stat .l{ margin-top:10px; color:var(--muted); font-size:14px; line-height:1.4; max-width:26ch; }
   @media (max-width:780px){ .stats-grid{ grid-template-columns:1fr 1fr; gap:30px 20px; } }
-  .sum-sent-row.save{ border-top:1px dashed rgba(255,255,255,0.18); padding-top:8px; margin-top:4px; color:#fff; font-weight:600; }
-  .sum-sent-row.save .val{ color:#5BD08A; font-weight:800; }
   .tmonials{ background:var(--cream); }
   .tm-top{ display:flex; align-items:center; gap:14px 28px; flex-wrap:wrap; margin-bottom:10px; }
   .tm-rating{ display:inline-flex; align-items:baseline; gap:10px; font-size:14px; color:var(--muted); }
@@ -1666,7 +1403,7 @@
   .faq-item summary .pm svg{ width:15px; height:15px; color:var(--ink); }
   .faq-item[open] summary .pm{ transform:rotate(45deg); background:var(--yellow); }
   .faq-item .a{ padding:0 24px 22px; color:var(--muted); font-size:15px; line-height:1.6; max-width:72ch; }
-  .foot-phone{ display:inline-block; margin-top:14px; font-weight:700; color:var(--ink); font-size:15px; }
+  .foot-phone{ display:block; margin-top:6px; font-weight:700; color:var(--ink); font-size:15px; }
   .foot-phone:hover{ color:var(--ink-2); }
   .form-call{ text-align:center; margin:10px 0 0; font-size:13px; color:rgba(255,255,255,0.6); }
   .form-call a{ color:#fff; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35); }
@@ -1776,7 +1513,7 @@
 <!-- =============== ANNOUNCEMENT BAR =============== -->
 <div class="annbar" id="annbar">
   <div class="container annbar-in">
-    <span class="annbar-txt">EET se vrací 1. 1. 2027. Přejdi na Hugo teď a buď připravený — se zaváděcí cenou zamčenou na 12 měsíců.</span>
+    <span class="annbar-txt"><b>EET returns on 1 January 2027.</b> Move to Hugo now and relax &mdash; with the launch price locked in only until 1 December 2026.</span>
     <a href="#pricing" class="annbar-cta">See how &rarr;</a>
   </div>
   <button class="annbar-close" type="button" aria-label="Close">&times;</button>
@@ -1814,7 +1551,7 @@
     <div class="hero-copy">
       <div class="hero-eyebrow-row">
         <button class="eb-arrow" type="button" data-dir="-1" aria-label="Předchozí verze">&lsaquo;</button>
-        <span class="hero-eyebrow"><span class="pip">★</span> Made for Czech cafés, bars &amp; restaurants &nbsp;·&nbsp; ready for EET 2027</span>
+        <span class="hero-eyebrow"><span class="pip">★</span> Made for Czech cafés, bars &amp; restaurants &nbsp;·&nbsp; ready for EET 2.0</span>
         <button class="eb-arrow" type="button" data-dir="1" aria-label="Další verze">&rsaquo;</button>
       </div>
       <h1 class="display">
@@ -1842,7 +1579,7 @@
       </div>
       <div class="guarantee">
         <span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/><polyline points="9 12 11 14 15 10"/></svg></span>
-        <p class="guarantee-txt"><b>30-day money-back guarantee.</b> If Hugo doesn&rsquo;t pay for itself, we refund every crown &mdash; no forms, no questions.</p>
+        <p class="guarantee-txt"><b>14 days free, then 190 Kč a month.</b> If you&rsquo;re not happy, we give you your money back &mdash; no forms, no questions.</p>
       </div>
     </div>
 
@@ -1957,8 +1694,8 @@
   <div class="container">
     <div class="trust-row">
       <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No contract &mdash; cancel any time</span>
-      <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Your money, next business day</span>
-      <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ready for EET 2027</span>
+      <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Card money in your account within 2 days</span>
+      <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ready for EET 2.0</span>
       <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Czech support, 7 days a week</span>
     </div>
   </div>
@@ -2040,7 +1777,7 @@
         <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Start free
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="tel:+420800331122" class="btn btn-ghost btn-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 800 331 122</a>
+        <a href="tel:+420770320248" class="btn btn-ghost btn-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +420 770 320 248</a>
       </div>
     </div>
   </div>
@@ -2214,104 +1951,52 @@
   <div class="pricing-wrap">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Pricing &mdash; build your Hugo</span>
-        <h2>Just 190 Kč a month <em>when you take payments with us.</em></h2>
-        <p class="lead">Slide your revenue, pick a plan, and we&rsquo;ll show the all-in monthly cost &mdash; no fixed contracts, no hidden lines.</p>
+        <span class="eyebrow">Pricing &mdash; one plan, that&rsquo;s it</span>
+        <h2>190 Kč a month. <em>One plan, when you take payments with us.</em></h2>
+        <p class="lead">No tiers to compare, no revenue bands, no sales call &mdash; the same price and the same card rate for a food truck and for a full restaurant.</p>
         <div class="guarantee on-dark">
           <span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/><polyline points="9 12 11 14 15 10"/></svg></span>
-          <p class="guarantee-txt"><b>30-day money-back guarantee.</b> If Hugo doesn&rsquo;t pay for itself, we refund every crown &mdash; no forms, no questions.</p>
+          <p class="guarantee-txt"><b>14 days free.</b> And if you&rsquo;re not happy, we give you your money back &mdash; no forms, no questions.</p>
         </div>
       </div>
 
       <ul class="price-points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>190 Kč a month</b> &mdash; the whole POS (orders, menu, VAT, reports) with card payments built in. One price, nothing hidden.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>Plus a small card fee</b> &mdash; the kind you already pay today, and it drops automatically as your turnover grows.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>Want a terminal?</b> &mdash; pair a genuinely modern one from us, or just use the phone you own. Either way you&rsquo;re live in 5 minutes.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>190 Kč a month instead of 490 Kč</b> &mdash; the whole POS (orders, menu, VAT, reports) when you take card payments with us. One price, nothing hidden.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>0,9 % + 1 Kč per card payment &mdash; always</b>, whatever your revenue. Transparent MIF++ pricing, no rate that quietly changes on you.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>Card money in your account within 2 days</b> &mdash; payments sorted end to end, and you keep the bank you already have.</span></li>
       </ul>
 
-      <div class="config" data-pay="yes">
-        <!-- PRESETS -->
-        <div class="presets">
-          <span class="presets-label">Start from a typical setup:</span>
-          <div class="presets-row">
-            <button class="preset-btn" data-preset="truck">
-              <div class="preset-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 16V6a1 1 0 0 1 1-1h11v11H1z"/><path d="M13 8h5l3 4v4h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-              </div>
-              <span class="preset-name">Food truck</span>
-              <span class="preset-meta">~30k Kč&nbsp;/&nbsp;mo</span>
-              <span class="preset-tag">Style</span>
-            </button>
-            <button class="preset-btn" data-preset="cafe">
-              <div class="preset-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h13v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M16 9h2a3 3 0 0 1 0 6h-2"/><path d="M7 3v2M10 3v2M13 3v2"/></svg>
-              </div>
-              <span class="preset-name">Small café</span>
-              <span class="preset-meta">~80k Kč&nbsp;/&nbsp;mo</span>
-              <span class="preset-tag">Style</span>
-            </button>
-            <button class="preset-btn" data-preset="bistro">
-              <div class="preset-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v9a2 2 0 0 0 2 2h0v9"/><path d="M5 2v6a2 2 0 0 0 2 2"/><path d="M11 2v6a2 2 0 0 1-2 2"/><path d="M17 2c-1.5 0-3 1-3 4v5c0 1 .5 2 2 2v9"/></svg>
-              </div>
-              <span class="preset-name">Busy bistro</span>
-              <span class="preset-meta">~350k Kč&nbsp;/&nbsp;mo</span>
-              <span class="preset-tag">Style</span>
-            </button>
-            <button class="preset-btn" data-preset="chain">
-              <div class="preset-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="7" height="12" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/><path d="M6 13h1M6 16h1M16 7h1M16 11h1M16 15h1"/></svg>
-              </div>
-              <span class="preset-name">Established restaurant</span>
-              <span class="preset-meta">~1M Kč&nbsp;/&nbsp;mo</span>
-              <span class="preset-tag">Style</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="config-or">&mdash; or build your own &mdash;</div>
-
-        <!-- MAIN CARD: two columns, controls left, price+features right -->
+      <div class="config">
+        <!-- MAIN CARD: two columns, what you get left, price right -->
         <div class="config-card">
           <div class="config-controls">
             <div class="ctrl">
-              <div class="ctrl-label"><span class="ctrl-num">1</span>Choose your plan</div>
-              <div class="seg" role="tablist" id="tierSeg">
-                <button class="seg-btn is-on" data-val="style" role="tab">
-                  <div class="seg-title">Hugo Style</div>
-                  <div class="seg-sub">For lean venues</div>
-                </button>
-                <button class="seg-btn" data-val="exec" role="tab">
-                  <div class="seg-title">Hugo Executive</div>
-                  <div class="seg-sub">AI menus &amp; multi-venue</div>
-                </button>
-                <button class="seg-btn" data-val="full" role="tab">
-                  <div class="seg-title">Hugo Full AI</div>
-                  <div class="seg-sub">Voice ordering &amp; agent</div>
-                </button>
+              <div class="ctrl-label"><span class="ctrl-num">1</span>Card fees &mdash; one rate, forever</div>
+              <div class="fee-rows">
+                <div class="fee-row">
+                  <span class="fr-k">Hugo terminal or your Android phone</span>
+                  <span class="fr-v">0,9 % + 1 Kč</span>
+                </div>
+                <div class="fee-row">
+                  <span class="fr-k">Tap to Pay on iPhone</span>
+                  <span class="fr-v">0,9 % + 2,75 Kč</span>
+                </div>
               </div>
+              <p class="pay-note">Transparent MIF++ pricing. The same rate at 30 000 Kč a month and at 1 000 000 Kč a month &mdash; and the money lands in your account within 2 days, without changing your bank.</p>
             </div>
 
             <div class="ctrl">
-              <div class="ctrl-label"><span class="ctrl-num">2</span>Payment device</div>
-              <div class="checks">
-                <label class="chk">
-                  <input type="checkbox" id="iosToggle" />
-                  <div><span>I need iPhone Tap to Pay</span><small>Tap to Pay on iPhone &middot; 0,99 % + 2,75 Kč&nbsp;per&nbsp;transaction</small></div>
-                </label>
-              </div>
-              <p class="pay-note">Card payments run through Hugo &mdash; that&rsquo;s what keeps the price at 190 Kč.</p>
-            </div>
-
-            <div class="ctrl" id="revStep">
-              <div class="ctrl-label">
-                <span class="ctrl-num">3</span>
-                <span>Your monthly card revenue</span>
-                <span class="rev-amount-inline" id="revLabel">120 000 Kč</span>
-              </div>
-              <input type="range" class="rev" id="rev" min="20" max="1000" step="5" value="120" />
-              <div class="slider-ticks">
-                <span>20k</span><span>200k</span><span>400k</span><span>600k</span><span>800k</span><span>1M</span>
+              <div class="ctrl-label"><span class="ctrl-num">2</span>Pick your device</div>
+              <div class="devopts">
+                <div class="devopt">
+                  <div class="do-h"><span class="do-t">The phone you already own</span><span class="do-p">0 Kč</span></div>
+                  <p class="do-s">iOS or Android. Tap to Pay on iPhone, NFC on Android &mdash; no reader, no dongle, no cables.</p>
+                </div>
+                <div class="devopt">
+                  <div class="do-h"><span class="do-t">Hugo all-in-one terminal</span><span class="do-p">4 900 Kč</span></div>
+                  <p class="do-s">One-off. Terminal, receipt printer and Hugo in a single box &mdash; nothing else to buy.</p>
+                  <span class="do-tag">&minus;5 000 Kč state subsidy</span>
+                </div>
               </div>
             </div>
           </div>
@@ -2320,47 +2005,32 @@
           <aside class="summary">
             <div class="sum-head">
               <div>
-                <div class="sum-tier-label" id="sumTier">Hugo Style</div>
-                <div class="sum-tier-meta" id="sumTierMeta">with card payments &middot; Android</div>
+                <div class="sum-tier-label">Hugo</div>
+                <div class="sum-tier-meta">one plan &middot; everything included</div>
               </div>
-              <div class="sum-badge" id="sumBadge">FREE</div>
+              <div class="sum-badge">14 DAYS FREE</div>
             </div>
 
             <div class="sum-price">
-              <span class="sum-strike" id="sumStrike" hidden>1 990 Kč</span>
-              <span class="sum-v" id="sumTotal">0</span>
+              <span class="sum-strike">490 Kč</span>
+              <span class="sum-v">190</span>
               <span class="sum-u">Kč / month</span>
             </div>
-            <div class="sum-plus" id="sumPlus">+ 0,99 % + 1 Kč per card transaction (Android)</div>
+            <div class="sum-plus">+ 0,9 % + 1 Kč per card payment &mdash; at any revenue</div>
 
-            <ul class="sum-feat" id="sumFeat">
-              <!-- populated by JS -->
+            <ul class="sum-feat">
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Card payments &amp; Tap to Pay <b style="color:var(--green); font-weight:700;">included</b></li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Piano Pilot &mdash; helps you actually run the place</li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Export for your accountant</li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Up and running in 5 minutes</li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Menu from a photo &mdash; or pulled off your website</li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ready for EET 2.0</li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Unlimited devices, staff and menu items</li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Czech company, Czech product, Czech support</li>
             </ul>
 
-            <div class="sum-sentence" id="sumSentence">
-              <div class="sum-sent-head">On <b id="sumSentRev">120 000 Kč</b> revenue this month</div>
-              <div class="sum-sent-rows">
-                <div class="sum-sent-row hero" id="sumRowHugo">
-                  <span class="lbl">Hugo costs you</span>
-                  <span class="val"><span class="big" id="sumHugoBig">FREE</span></span>
-                </div>
-                <div class="sum-sent-row">
-                  <span class="lbl">Card processing</span>
-                  <span class="val" id="sumProcVal">3 165 Kč</span>
-                </div>
-                <div class="sum-sent-row total">
-                  <span class="lbl">All-in this month</span>
-                  <span class="val" id="sumTotalAllIn">~3 165 Kč</span>
-                </div>
-                <div class="sum-sent-row save" id="sumSaveRow" style="display:none">
-                  <span class="lbl" id="sumSaveLbl">Saved vs a 1.9% terminal</span>
-                  <span class="val" id="sumSaveVal"></span>
-                </div>
-              </div>
-            </div>
-
-            <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;">Start with this setup</a>
-            <div class="sum-fine">No contract. Cancel any time. Keep your data.</div>
+            <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;">Start 14 days free</a>
+            <div class="sum-fine">14 days free. No contract. Cancel any time. Keep your data.</div>
           </aside>
         </div>
       </div>
@@ -2413,7 +2083,7 @@
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Free to start &mdash; you only pay when you take payments
+            14 days free &mdash; then 190 Kč a month, cancel any time
           </li>
         </ul>
       </div>
@@ -2441,7 +2111,7 @@
           <span class="spots-label" style="margin:0 auto;">Already on another POS? <b>We migrate your menu for free.</b></span>
         </div>
         <p class="waitlist-fineprint">No spam. Your data is safe.</p>
-        <p class="form-call">Prefer to talk? <a href="tel:+420800331122">800 331 122</a> &middot; free, 7 days a week</p>
+        <p class="form-call">Prefer to talk? <a href="tel:+420770320248">+420 770 320 248</a> &middot; or write to <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></p>
       </form>
     </div>
   </div>
@@ -2457,7 +2127,7 @@
     <div class="faq-list">
       <details class="faq-item" open>
         <summary><span class="q">How much does Hugo cost? What&rsquo;s the catch?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">190 Kč a month when you take card payments through us &mdash; plus a small % per payment that drops as you grow. You start free and only pay once you&rsquo;re actually selling. No catch, no contract.</div>
+        <div class="a">One plan: 190 Kč a month (instead of 490 Kč) when you take card payments through us &mdash; plus 0,9 % + 1 Kč per card payment, always, whatever your revenue (Tap to Pay on iPhone is 0,9 % + 2,75 Kč). First 14 days are free, and if you&rsquo;re not happy we give you your money back. No tiers, no catch, no contract.</div>
       </details>
       <details class="faq-item">
         <summary><span class="q">Do I have to sign a contract?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
@@ -2469,15 +2139,15 @@
       </details>
       <details class="faq-item">
         <summary><span class="q">Do I need to buy hardware?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">No. Hugo runs on the iPhone or Android you already own. Plug in your own receipt printer and cash drawer if you like.</div>
+        <div class="a">No. Hugo runs on the iPhone or Android you already own. If you&rsquo;d rather have a proper counter device, our all-in-one terminal with Hugo is 4 900 Kč one-off &mdash; and the state subsidy takes 5 000 Kč off. You can also plug in your own receipt printer and cash drawer.</div>
       </details>
       <details class="faq-item">
         <summary><span class="q">When do I get my card money?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">The next business day &mdash; straight to your account.</div>
+        <div class="a">Within 2 days &mdash; straight to the account you already have. No changing banks.</div>
       </details>
       <details class="faq-item">
         <summary><span class="q">What about VAT and EET?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">Hugo handles VAT and receipts automatically, and we&rsquo;re ready for the return of EET in 2027 &mdash; nothing for you to set up.</div>
+        <div class="a">Hugo handles VAT and receipts automatically, and we&rsquo;re ready for EET 2.0 &mdash; nothing for you to set up.</div>
       </details>
     </div>
   </div>
@@ -2503,7 +2173,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
           Download for Android
         </a>
-        <a href="tel:+420800331122" class="btn btn-ghost btn-lg" style="border-color: rgba(20,17,13,0.3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call us &middot; 800 331 122</a>
+        <a href="tel:+420770320248" class="btn btn-ghost btn-lg" style="border-color: rgba(20,17,13,0.3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call us &middot; +420 770 320 248</a>
       </div>
       <div class="final-fine">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No card to start</span>
@@ -2523,44 +2193,31 @@
           <span>Hugo</span>
         </a>
         <p>The point-of-sale built around your phone, your menu, and your customers &mdash; not the other way around.</p>
-        <a href="tel:+420800331122" class="foot-phone">Call us free &middot; 800 331 122 &middot; Mon&ndash;Sun 8&ndash;22</a>
+        <a href="mailto:hugo@piano.cz" class="foot-mail">hugo@piano.cz</a>
+        <a href="tel:+420770320248" class="foot-phone">Call us &middot; +420 770 320 248 &middot; Mon&ndash;Sun 8&ndash;22</a>
       </div>
       <div class="foot-col">
         <h5>Product</h5>
-        <a href="#">Hugo POS</a>
-        <a href="#">Tap to Pay</a>
-        <a href="#">Piano Brain</a>
-        <a href="#">Hardware</a>
-      </div>
-      <div class="foot-col">
-        <h5>Solutions</h5>
-        <a href="#">Restaurants</a>
-        <a href="#">Cafés &amp; bars</a>
-        <a href="#">Hotels</a>
-        <a href="#">Food trucks</a>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <a href="#">About</a>
-        <a href="#">Customers</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
+        <a href="#product">Devices</a>
+        <a href="#brain">AI &amp; Brain</a>
+        <a href="#setup">Getting started</a>
+        <a href="#pricing">Pricing</a>
       </div>
       <div class="foot-col">
         <h5>Support</h5>
-        <a href="#">Help center</a>
-        <a href="#">Contact</a>
-        <a href="#">Status</a>
-        <a href="#">Developers</a>
+        <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>
+        <a href="tel:+420770320248">+420 770 320 248</a>
+        <a href="https://status.hugopos.eu" target="_blank" rel="noopener">Service status</a>
+        <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener">Sign in</a>
       </div>
     </div>
 
     <div class="foot-bottom">
-      <div>&copy; 2026 Hugo. Powered by Piano.</div>
+      <div>&copy; 2026 Hugo &middot; a Czech product by Piano &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
       <div class="legal">
-        <a href="#">Terms</a>
-        <a href="#">Privacy</a>
-        <a href="#">Imprint</a>
+        <a href="#">Terms &amp; conditions</a>
+        <a href="mailto:hugo@piano.cz">Contact</a>
+        <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
         <a href="#">Česky</a>
       </div>
     </div>
@@ -2569,7 +2226,7 @@
 
 <!-- =============== STICKY MOBILE CTA =============== -->
 <div class="mobilebar" id="mobilebar">
-  <a href="tel:+420800331122" class="mb-call" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="tel:+420770320248" class="mb-call" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
   <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary mb-cta">Start free
     <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
   </a>
@@ -2601,195 +2258,6 @@
     });
   }
 
-  // ============ Pricing configurator ============
-  const fmt = (n) => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0');
-
-  const cfg = { tier: 'style', pay: 'yes', dev: 'android', rev: 120000, avgBasket: 220 };
-  const PRICES = { style: 190, exec: 990, full: 4900 };
-  const STRIKE = { style: 990, exec: 1990 };
-
-  function wireSeg(id, key, onChange){
-    const root = document.getElementById(id);
-    if (!root) return;
-    root.addEventListener('click', (e) => {
-      const btn = e.target.closest('.seg-btn');
-      if (!btn) return;
-      root.querySelectorAll('.seg-btn').forEach(b => b.classList.toggle('is-on', b === btn));
-      cfg[key] = btn.dataset.val;
-      clearPreset();
-      onChange && onChange();
-      render();
-    });
-  }
-  wireSeg('tierSeg', 'tier');
-
-  // Revenue slider
-  const rev = document.getElementById('rev');
-  rev.addEventListener('input', () => {
-    cfg.rev = (+rev.value) * 1000;
-    clearPreset();
-    render();
-  });
-
-  // iOS toggle
-  const iosToggle = document.getElementById('iosToggle');
-  iosToggle.addEventListener('change', () => {
-    cfg.dev = iosToggle.checked ? 'ios' : 'android';
-    render();
-  });
-
-  // Presets
-  const PRESETS = {
-    truck:  { tier: 'style', pay: 'yes', rev: 30,   dev: 'android', avgBasket: 90  },
-    cafe:   { tier: 'style', pay: 'yes', rev: 80,   dev: 'android', avgBasket: 180 },
-    bistro: { tier: 'style', pay: 'yes', rev: 350,  dev: 'android', avgBasket: 350 },
-    chain:  { tier: 'style', pay: 'yes', rev: 1000, dev: 'android', avgBasket: 500 },
-  };
-  function clearPreset(){
-    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('is-on'));
-  }
-  function applyPreset(name){
-    const p = PRESETS[name];
-    if (!p) return;
-    cfg.tier = p.tier;
-    cfg.pay = p.pay;
-    cfg.dev = p.dev;
-    cfg.rev = p.rev * 1000;
-    cfg.avgBasket = p.avgBasket;
-
-    // Update controls visually
-    document.querySelectorAll('#tierSeg .seg-btn').forEach(b => b.classList.toggle('is-on', b.dataset.val === cfg.tier));
-    rev.value = p.rev;
-    iosToggle.checked = (cfg.dev === 'ios');
-    clearPreset();
-    document.querySelector(`.preset-btn[data-preset="${name}"]`).classList.add('is-on');
-    render();
-  }
-  document.querySelectorAll('.preset-btn').forEach(b => {
-    b.addEventListener('click', () => applyPreset(b.dataset.preset));
-  });
-  window.applyPreset = applyPreset;
-
-  // Card fee schedule (Piano Payments): % of turnover + a fixed fee per transaction.
-  // Android terminal: glides from 0,99 % + 1 Kč at the low end down to 0,59 % + 0,59 Kč
-  // once monthly card revenue reaches the top of the range (1 000 000 Kč).
-  const FEE_TIERS = [
-    { min: 0,      pct: 0.0099, fixed: 1 },
-    { min: 200000, pct: 0.0089, fixed: 0.89 },
-    { min: 400000, pct: 0.0079, fixed: 0.79 },
-    { min: 600000, pct: 0.0069, fixed: 0.69 },
-    { min: 800000, pct: 0.0059, fixed: 0.59 },
-  ];
-  // Tap to Pay on iPhone is a single flat rate — no tiering.
-  const IOS_FEE = { pct: 0.0099, fixed: 2.75 };
-  function feeRate(revenue, device){
-    if (device === 'ios') return IOS_FEE;
-    let r = FEE_TIERS[0];
-    for (const t of FEE_TIERS){ if (revenue >= t.min) r = t; }
-    return r;
-  }
-  function cardFee(revenue, avgBasketKc = 220, device = 'android'){
-    const r = feeRate(revenue, device);
-    const txns = Math.max(1, revenue / avgBasketKc);
-    return revenue * r.pct + txns * r.fixed;
-  }
-
-  // Localized pricing strings (provided by hugo-i18n.js)
-  const P = () => (window.HUGO_PRICING && window.HUGO_PRICING[window.HUGO_LANG || 'cs'])
-    || (window.HUGO_PRICING && window.HUGO_PRICING.en) || {};
-
-  // Refs
-  const sumTier = document.getElementById('sumTier');
-  const sumTierMeta = document.getElementById('sumTierMeta');
-  const sumTotal = document.getElementById('sumTotal');
-  const sumStrike = document.getElementById('sumStrike');
-  const sumBadge = document.getElementById('sumBadge');
-  const sumPlus = document.getElementById('sumPlus');
-  const sumFeat = document.getElementById('sumFeat');
-  const sumSentence = document.getElementById('sumSentence');
-  const revLabel = document.getElementById('revLabel');
-  const configEl = document.querySelector('.config');
-  const sumSentHead = document.querySelector('#sumSentence .sum-sent-head');
-  const sumRowLbls = document.querySelectorAll('#sumSentence .sum-sent-row .lbl');
-
-  const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-  const X_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
-
-  function render(){
-    const L = P();
-    configEl.dataset.pay = cfg.pay;
-
-    // Plan monthly fee (card payments are always included)
-    const monthlyFixed = PRICES[cfg.tier] || PRICES.style;
-    const strikeBase = STRIKE[cfg.tier] || 0;
-    const tierName = cfg.tier === 'full' ? 'Hugo Full AI'
-                   : cfg.tier === 'exec' ? 'Hugo Executive' : 'Hugo Style';
-
-    // Card processing for the current revenue (iPhone Tap to Pay has its own flat rate)
-    const proc = cardFee(cfg.rev, cfg.avgBasket, cfg.dev);
-    const r = feeRate(cfg.rev, cfg.dev);
-    const pctStr = (r.pct * 100).toFixed(2).replace('.', ',') + ' %';
-    const fixedStr = (r.fixed === Math.round(r.fixed) ? String(r.fixed) : r.fixed.toFixed(2).replace('.', ',')) + '\u00A0K\u010d';
-    const rateStr = pctStr + ' + ' + fixedStr;
-
-    sumTier.textContent = tierName;
-    sumTierMeta.textContent = (cfg.dev === 'android') ? L.payAndroid : L.payIos;
-
-    // Price + strike + badge
-    sumTotal.textContent = fmt(monthlyFixed);
-    if (strikeBase){
-      sumStrike.hidden = false;
-      sumStrike.textContent = fmt(strikeBase) + '\u00A0K\u010d';
-      sumBadge.hidden = false;
-      sumBadge.textContent = L.disc;
-      sumBadge.classList.remove('muted');
-    } else {
-      sumStrike.hidden = true;
-      sumBadge.hidden = true;
-    }
-
-    // Dynamic card-fee sub-line (effective rate at this revenue)
-    sumPlus.innerHTML = L.feeLine(rateStr);
-
-    // Feature list (card payments always included)
-    const items = [];
-    const incMap = { style: L.styleInc, exec: L.execInc, full: L.fullInc };
-    const exMap  = { style: L.styleEx,  exec: L.execEx,  full: [] };
-    items.push(`<li class="inc">${CHECK_SVG} ${L.cardIncluded}</li>`);
-    (incMap[cfg.tier] || []).forEach(t => items.push(`<li class="inc">${CHECK_SVG} ${t}</li>`));
-    (exMap[cfg.tier] || []).forEach(t => items.push(`<li class="ex">${X_SVG} ${t}</li>`));
-    sumFeat.innerHTML = items.join('');
-
-    // Sentence summary + slider label
-    {
-      revLabel.textContent = fmt(cfg.rev) + ' K\u010d';
-      const total = monthlyFixed + proc;
-
-      if (sumSentHead) sumSentHead.innerHTML = L.sentHead(fmt(cfg.rev) + ' K\u010d');
-      if (sumRowLbls && sumRowLbls.length >= 3){
-        sumRowLbls[0].textContent = L.rowHugo;
-        sumRowLbls[1].textContent = L.rowProc;
-        sumRowLbls[2].textContent = L.rowAll;
-      }
-      const hugoBig = document.getElementById('sumHugoBig');
-      hugoBig.textContent = fmt(monthlyFixed) + ' K\u010d';
-      document.getElementById('sumProcVal').textContent = fmt(proc) + ' K\u010d';
-      document.getElementById('sumTotalAllIn').textContent = '~' + fmt(total) + ' K\u010d';
-
-      // Savings vs a typical 1.9% terminal
-      const sumSaveRow = document.getElementById('sumSaveRow');
-      const sumSaveLbl = document.getElementById('sumSaveLbl');
-      const sumSaveVal = document.getElementById('sumSaveVal');
-      const saveYr = Math.max(0, (cfg.rev * 0.0159) - proc) * 12;
-      if (sumSaveRow){
-        sumSaveRow.style.display = '';
-        if (sumSaveLbl) sumSaveLbl.textContent = L.saveRow;
-        if (sumSaveVal) sumSaveVal.textContent = '~' + fmt(saveYr) + ' ' + L.saveUnit;
-      }
-    }
-  }
-  window.renderPricing = render;
-  render();
 </script>
 
 <script>
