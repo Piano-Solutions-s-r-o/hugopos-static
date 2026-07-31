@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<!-- HUGO_STAGING_GATE (staging only) -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- HUGO-596 — the .cz brand domain redirects to the canonical .eu (same static app
+     is served for both hostnames). Mirrors the snippet in the landing index.html. -->
+<script>
+  (function () {
+    var h = location.hostname;
+    if (h === "hugopos.cz" || h.slice(-11) === ".hugopos.cz") {
+      location.replace("https://hugopos.eu" + location.pathname + location.search + location.hash);
+    }
+  })();
+</script>
+
+<title>Všeobecné obchodní podmínky a zásady ochrany osobních údajů — Hugo POS</title>
+<meta name="description" content="Všeobecné obchodní podmínky a zásady ochrany osobních údajů (GDPR) pro POS & AI asistent Hugo POS. Účinné od 1. 8. 2026." />
+<link rel="canonical" href="https://hugopos.eu/vseobecne-obchodni-podminky" />
+<meta name="theme-color" content="#14110D" />
+<link rel="icon" href="../assets/hugo-icon.svg" type="image/svg+xml" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Hugo" />
+<meta property="og:title" content="Všeobecné obchodní podmínky — Hugo POS" />
+<meta property="og:description" content="Všeobecné obchodní podmínky a zásady ochrany osobních údajů (GDPR) pro POS & AI asistent Hugo POS. Účinné od 1. 8. 2026." />
+<meta property="og:url" content="https://hugopos.eu/vseobecne-obchodni-podminky" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream: #F3EFE6;
+    --cream-2: #ECE6D7;
+    --cream-3: #E4DDC8;
+    --ink: #14110D;
+    --ink-2: #2A2620;
+    --muted: #6B6357;
+    --line: #1411101A;
+    --yellow: #FFDF2C;
+    --yellow-deep: #F2C800;
+
+    --radius-sm: 14px;
+    --radius-md: 22px;
+    --radius-pill: 999px;
+
+    --display: "Spline Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+    --container: 1120px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.55;
+    font-size: 17px;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--yellow); color: var(--ink); }
+  a { color: inherit; }
+
+  .container{
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ============ NAV ============ */
+  .nav{
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{ display: flex; align-items: center; gap: 20px; height: 72px; }
+  .brand{
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--display); font-weight: 800;
+    font-variation-settings: "wdth" 92;
+    font-size: 22px; letter-spacing: -0.02em; text-decoration: none;
+  }
+  .brand img{ width: 28px; height: 28px; border-radius: 7px; display: block; }
+  .nav-back{
+    margin-left: auto;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600; font-size: 15px; color: var(--ink-2); text-decoration: none;
+    padding: 10px 18px; border-radius: var(--radius-pill);
+    border: 1px solid rgba(20,17,13,0.16);
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .nav-back:hover{ border-color: rgba(20,17,13,0.32); background: rgba(20,17,13,0.04); }
+  .nav-back svg{ width: 14px; height: 14px; }
+
+  /* ============ HEADER ============ */
+  .head{ padding: 64px 0 40px; }
+  .eyebrow{
+    font-weight: 600; font-size: 13px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 18px;
+  }
+  h1{
+    font-family: var(--display); font-weight: 800;
+    font-variation-settings: "wdth" 95;
+    letter-spacing: -0.025em; line-height: 1.02;
+    font-size: clamp(34px, 5.4vw, 56px);
+    margin: 0 0 16px; text-wrap: balance;
+  }
+  .head .sub{
+    font-family: var(--display); font-weight: 500; font-style: italic;
+    font-size: clamp(19px, 2.6vw, 26px); color: var(--ink-2); margin: 0 0 26px;
+  }
+  .badges{ display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+  .badge{
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--radius-pill); padding: 9px 16px;
+    font-size: 13.5px; font-weight: 600; color: var(--ink-2);
+  }
+  .badge svg{ width: 15px; height: 15px; color: var(--ink); }
+  .badge.is-live{ background: var(--yellow); border-color: transparent; color: var(--ink); }
+
+  .intro{
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--radius-md); padding: 26px 28px;
+    font-size: 17.5px; color: var(--ink-2); max-width: 820px;
+  }
+  .intro p{ margin: 0; text-wrap: pretty; }
+
+  /* ============ LAYOUT ============ */
+  .layout{
+    display: grid; grid-template-columns: 268px 1fr; gap: 56px;
+    align-items: start; padding-bottom: 90px;
+  }
+
+  /* ============ TOC ============ */
+  .toc{ position: sticky; top: 96px; }
+  .toc h2{
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 14px;
+  }
+  .toc ol{ list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  .toc li{ margin: 0; }
+  .toc a{
+    display: block; padding: 7px 12px; margin-left: -12px;
+    border-radius: 10px; text-decoration: none;
+    font-size: 14px; line-height: 1.35; color: var(--ink-2);
+    transition: background .15s ease, color .15s ease;
+  }
+  .toc a:hover{ background: rgba(20,17,13,0.05); color: var(--ink); }
+  .toc a.is-active{ background: var(--ink); color: #fff; font-weight: 600; }
+  .toc .toc-split{
+    margin: 16px 0 10px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .toc-num{ color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 8px; }
+  .toc a.is-active .toc-num{ color: rgba(255,255,255,0.66); }
+
+  /* ============ ARTICLE ============ */
+  article{ max-width: 780px; min-width: 0; }
+  section{
+    border-top: 1px solid var(--line);
+    padding: 44px 0 8px;
+    scroll-margin-top: 92px;
+  }
+  section:first-of-type{ border-top: 0; padding-top: 8px; }
+  section h2{
+    font-family: var(--display); font-weight: 800;
+    font-variation-settings: "wdth" 95;
+    letter-spacing: -0.02em; line-height: 1.1;
+    font-size: clamp(23px, 3vw, 30px);
+    margin: 0 0 22px; text-wrap: balance;
+    display: flex; gap: 14px; align-items: baseline;
+  }
+  section h2 .num{
+    font-size: 14px; font-weight: 700; letter-spacing: 0;
+    color: var(--ink); background: var(--yellow);
+    border-radius: var(--radius-pill); padding: 4px 11px;
+    font-family: var(--body); flex: none;
+    position: relative; top: -3px;
+  }
+  section h2 .num.pril{ background: var(--cream-3); }
+  article p{ margin: 0 0 18px; color: var(--ink-2); text-wrap: pretty; }
+  article p:last-child{ margin-bottom: 0; }
+  article strong{ color: var(--ink); font-weight: 600; }
+  article a{ color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: rgba(20,17,13,0.35); }
+  article a:hover{ text-decoration-color: var(--ink); }
+
+  /* lead-in term at the start of a paragraph / list item */
+  .term{ color: var(--ink); font-weight: 700; }
+
+  article ul{ margin: 0 0 18px; padding: 0; list-style: none; }
+  article ul li{
+    position: relative; padding-left: 26px; margin-bottom: 12px;
+    color: var(--ink-2);
+  }
+  article ul li::before{
+    content: ""; position: absolute; left: 6px; top: 11px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--yellow-deep);
+  }
+  article ul li:last-child{ margin-bottom: 0; }
+
+  .card{
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--radius-md); padding: 24px 26px;
+    margin: 0 0 18px;
+  }
+  .card > :last-child{ margin-bottom: 0; }
+  .card h3{
+    font-family: var(--body); font-size: 16px; font-weight: 700;
+    margin: 0 0 12px; color: var(--ink);
+  }
+  .note{
+    background: var(--cream-2); border: 1px solid var(--line);
+    border-left: 4px solid var(--yellow-deep);
+    border-radius: var(--radius-sm); padding: 18px 22px; margin: 0 0 18px;
+    font-size: 16px;
+  }
+  .note > :last-child{ margin-bottom: 0; }
+
+  .effective{
+    margin-top: 40px; padding: 22px 26px;
+    background: var(--ink); color: #fff; border-radius: var(--radius-md);
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    font-weight: 600;
+  }
+  .effective svg{ width: 20px; height: 20px; flex: none; }
+
+  /* ============ FOOTER ============ */
+  footer{ border-top: 1px solid var(--line); padding: 40px 0 60px; }
+  .foot-inner{
+    display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    font-size: 13.5px; color: var(--muted);
+  }
+  .foot-inner a{ color: var(--ink-2); text-decoration: none; }
+  .foot-inner a:hover{ color: var(--ink); }
+  .foot-links{ display: flex; gap: 18px; flex-wrap: wrap; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px){
+    .layout{ grid-template-columns: 1fr; gap: 0; }
+    .toc{
+      position: static; margin-bottom: 40px;
+      background: #fff; border: 1px solid var(--line);
+      border-radius: var(--radius-md); padding: 20px 22px;
+    }
+    .toc a{ margin-left: 0; padding: 7px 10px; }
+    .head{ padding: 44px 0 32px; }
+  }
+  @media (max-width: 560px){
+    .container{ padding: 0 18px; }
+    body{ font-size: 16.5px; }
+    .intro{ padding: 22px; }
+    section h2{ flex-direction: column; gap: 10px; }
+    section h2 .num{ align-self: flex-start; top: 0; }
+  }
+
+  @media print{
+    .nav, .toc, footer, .nav-back{ display: none !important; }
+    body{ background: #fff; font-size: 11pt; }
+    .layout{ display: block; padding-bottom: 0; }
+    article{ max-width: none; }
+    section{ page-break-inside: auto; }
+    .card, .note, .intro{ border: 1px solid #ccc; background: #fff; }
+    .effective{ background: #fff; color: #000; border: 1px solid #000; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =============== NAV =============== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="brand">
+      <img src="../assets/hugo-icon.svg" alt="" />
+      <span>Hugo</span>
+    </a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+      Zpět na hugopos.eu
+    </a>
+  </div>
+</nav>
+
+<!-- =============== HEADER =============== -->
+<header class="head">
+  <div class="container">
+    <p class="eyebrow">Právní dokumenty</p>
+    <h1>Všeobecné obchodní podmínky a zásady ochrany osobních údajů (GDPR)</h1>
+    <p class="sub">„POS &amp; AI asistent Hugo POS“</p>
+
+    <div class="badges">
+      <span class="badge is-live">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Účinné od 1. 8. 2026
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h12"/></svg>
+        6 článků a 6 příloh
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg>
+        Piano Solutions s.r.o., IČ 19780974
+      </span>
+    </div>
+
+    <div class="intro">
+      <p>Vítejte u Piano Solutions! Jsme moc rádi, že jste si pro své podnikání vybrali naši chytrou pokladnu s integrovaným umělým asistentem Hugo POS. Tyto Všeobecné obchodní podmínky (dále jen „<strong>VOP</strong>“) jsme sepsali s cílem vytvořit mezi společností Piano Solutions s.r.o. (dále jen „<strong>my</strong>“ nebo „<strong>Poskytovatel</strong>“) a vámi (dále jen „<strong>vy</strong>“ nebo „<strong>Uživatel</strong>“) férové a partnerské prostředí.</p>
+    </div>
+  </div>
+</header>
+
+<div class="container layout">
+
+  <!-- =============== TOC =============== -->
+  <aside class="toc">
+    <h2>Obsah</h2>
+    <ol id="toc-list">
+      <li><a href="#cast-1"><span class="toc-num">1</span>Začátek spolupráce a self-onboarding</a></li>
+      <li><a href="#cast-2"><span class="toc-num">2</span>Jak vám Hugo POS poskytneme a hardwarová nezávislost</a></li>
+      <li><a href="#cast-3"><span class="toc-num">3</span>Váš asistent Hugo a propojení s dalšími systémy</a></li>
+      <li><a href="#cast-4"><span class="toc-num">4</span>Ceny a cenové podmínky</a></li>
+      <li><a href="#cast-5"><span class="toc-num">5</span>Zásady ochrany osobních údajů a sdílení dat</a></li>
+      <li><a href="#cast-6"><span class="toc-num">6</span>Společná a závěrečná ustanovení</a></li>
+    </ol>
+    <p class="toc-split">Přílohy</p>
+    <ol>
+      <li><a href="#priloha-1"><span class="toc-num">1</span>Poskytnutí služby a licenční ujednání</a></li>
+      <li><a href="#priloha-2"><span class="toc-num">2</span>Odpovědnost</a></li>
+      <li><a href="#priloha-3"><span class="toc-num">3</span>Dostupnost služby, zálohy dat</a></li>
+      <li><a href="#priloha-4"><span class="toc-num">4</span>Dodatečné služby a funkcionality, bezpečnostní pojistky, hardware</a></li>
+      <li><a href="#priloha-5"><span class="toc-num">5</span>Zásady ochrany osobních údajů (privacy notice)</a></li>
+      <li><a href="#priloha-6"><span class="toc-num">6</span>Ukončení spolupráce, zrušení účtu</a></li>
+    </ol>
+  </aside>
+
+  <!-- =============== ARTICLE =============== -->
+  <article>
+
+    <section id="cast-1">
+      <h2><span class="num">1</span>Začátek spolupráce a self-onboarding</h2>
+      <p>Zprovoznění naší pokladny je navrženo tak, abyste jej zvládli kompletně sami (tzv. 100% self-onboarding) bez nutnosti asistence našeho pracovníka. Celý onboarding tak bude prvním úkolem pro vašeho nového asistenta Huga, který vás bude provádět celým procesem onboardingu.</p>
+      <div class="note">
+        <p><span class="term">Zkušební období:</span> K lepšímu seznámení s Hugem ještě před uhrazením prvního předplatného, jsme pro vás připravili zkušební období (trial period) v délce 14 dní od dokončení registrace, za které se předplatné neplatí. Abychom však na konci trial period nemuseli jakkoli omezovat provoz aplikace a přechod do plného provozu byl hladký, budeme od vás chtít zadat údaje o platební kartě určené k placení předplatného, již v rámci registrace. První platba za předplatné však odejde až po uplynutí trial period a jen v případě, že vaše registrace nebude v rámci tohoto zkušebního období řádně zrušena.</p>
+      </div>
+      <p><span class="term">Odpovědnost za registraci:</span> Registrací v aplikaci osoba jednající za Uživatele přijímá tyto VOP a zaručuje, že má plné oprávnění za Uživatele jednat. Pokud osoba toto oprávnění nemá a Uživatel platnost VOP zpochybní, je tato osoba vázána VOP sama a zavazuje se nás odškodnit za veškerou s tím související újmu.</p>
+    </section>
+
+    <section id="cast-2">
+      <h2><span class="num">2</span>Jak vám Hugo POS poskytneme a hardwarová nezávislost</h2>
+      <p>Náš systém je flexibilní a nenutí vás do nákupu proprietárního hardwaru. Aplikaci můžete provozovat na vlastním zařízení, na zařízení zakoupeném od nás, nebo na jakémkoli jiném zařízení odjinud. Získáváte přístup ke cloudové službě ovládané přes webové nebo mobilní rozhraní (viz též <a href="#priloha-1">příloha č. 1</a>).</p>
+      <p>Jelikož budou po celou dobu naší spolupráce všechna data ukládána v cloudu, nemusíte složitě řešit jejich zabezpečení a zálohování. Ze stejného důvodu je garantována vysoká míra dostupnosti služby a rychlá obnova dat pro případ, že dojde k výpadku (viz též <a href="#priloha-3">příloha č. 3</a>).</p>
+    </section>
+
+    <section id="cast-3">
+      <h2><span class="num">3</span>Váš asistent Hugo a propojení s dalšími systémy</h2>
+      <p><span class="term">Asistent Hugo – rozsah jeho působnosti a omezení:</span> Srdcem systému je AI asistent Hugo, který vám umožňuje ovládat pokladnu přirozeným jazykem – textově či hlasem. Hugo funguje nejen jako rádce, ale zároveň jako zkušený operátor, který za vás provádí konkrétní úkony v administraci. Obávat se rozsahu oprávnění však nemusíte, Hugo vše koná výhradně jménem přihlášeného uživatele a pouze v rozsahu jeho práv. Zároveň Hugo neovládá nic mimo administraci pokladny (tedy neovládá žádné externí systémy, banky, e-maily třetích stran) a není ani autonomním agentem (tedy koná pouze v reakci na konkrétní zadání uživatele, nikoli sám od sebe). Dodatečné služby a funkcionality naleznete v <a href="#priloha-4">příloze č. 4</a>.</p>
+      <p><span class="term">Bezpečnost a odpovědnost:</span> Jste plně odpovědní za zabezpečení svých zařízení a přihlašovacích údajů. Neneseme odpovědnost za neoprávněnou instalaci aplikace na vašich zařízeních ani její neoprávněné používání osobami, jimž jste poskytli nebo zpřístupnili přihlašovací údaje. Nesete též plnou odpovědnost za všechny pokyny (včetně textových a hlasových zadání pro Huga) a aktivity na vašem účtu, a to bez ohledu na to, zda je provedla oprávněná osoba, vy sami, nebo neoprávněná třetí strana. Vzhledem k tomu, že vaše „instrukce a zadání“ pro Huga jsou předmětem sdílení s používanými jazykovými modely (zejména Google Gemini / Open AI), zvažte prosím předem, jak konkrétní a detailní (např. uvádění jmen konkrétních hostů nebo jiných citlivých údajů) je třeba v instrukci být. Bližší vymezení rozsahu naší odpovědnosti a její omezení lze nalézt v <a href="#priloha-2">příloze č. 2</a>.</p>
+      <p><span class="term">Propojení s dalšími systémy:</span> Nedílnou součástí Hugo POS jsou platební služby Piano (platební terminál nebo tap-to-pay), které poběží na stejném zařízení jako Hugo POS. Jelikož platební služby představují regulovanou službu, je podmínkou jejich aktivace úspěšné dokončení zákonem vyžadovaného AML/KYC ověření a uzavření smlouvy se společností Piano Payments s.r.o. (licencovaný poskytovatel platebních služeb). I když věříme, že vše společně stihneme mnohem dříve, připravili jsme pro vás bezplatné 14 denní zkušební období, v němž bude možné tyto záležitosti dokončit. Hugo POS je dále připraven na propojení s manažerským dashboardem Piano Pilot (s analytickou vrstvou Piano Brain) pro vyhodnocování vašich provozních dat, případně s dalšími řešeními ze Skupiny Piano, tedy např. řešení pro přijímání plateb (Qerko), nástroj pro automatizované naskladňování (Autset), nástroj pro automatizaci směn (Grason Plan). Jejich případné spuštění bude předmětem samostatného smluvního ujednání.</p>
+      <p><span class="term">Provozní data:</span> Provozní data vznikající v pokladně nebo při jejím používání mohou být (bezúplatně a bez časového omezení) na základě oprávněného zájmu využívána pro zlepšování služeb a též pro tvorbu tržních přehledů a statistik. Data, která budou využívána pro obchodní účely, tvorbu tržních statistik, analýz a reportů, budou předem v maximální možné míře anonymizována a agregována. Bez vaší instrukce nebo zadání nejsou a nebudou provozní data s AI asistentem ani s Google Gemini sdílena.</p>
+    </section>
+
+    <section id="cast-4">
+      <h2><span class="num">4</span>Ceny a cenové podmínky</h2>
+      <p><span class="term">Předplatné (výše a splatnost):</span> Produkt Hugo POS &amp; AI asistent vám poskytujeme za měsíční nebo roční předplatné. Výše předplatného a případných dalších poplatků za doplňkové služby vychází z našeho platného ceníku, dostupného na <a href="https://hugopos.eu">https://hugopos.eu</a>. Předplatné je splatné předem na začátku období, kterého se týká. Při nezaplacení předplatného bude přístup ke službě omezen; přístup bude obnoven bezodkladně po uhrazení dlužné částky.</p>
+      <p><span class="term">Změny ceníku:</span> Poskytovatel si vyhrazuje právo jednostranně měnit ceny uvedené v ceníku, přičemž žádná taková změna cen se netýká již uhrazených částek. O každé změně ceníku vás informujeme e-mailem nebo v oznamovacím centru přímo v aplikaci, a to nejméně 30 dní před jeho účinností. Nesouhlasíte-li se změnou ceníku, máte právo smlouvu v plném rozsahu vypovědět, a to do 30 dní po oznámení o změně ceníku. Smlouva v takovém případě skončí uplynutím období, na které je uhrazeno předplatné bez toho, aby došlo k automatickému prodloužení smlouvy. Marným uplynutím lhůty pro podání výpovědi vstupuje nový ceník v účinnost a v plném rozsahu se vztahuje na vztahy založené smlouvou (vč. automaticky prodlužovaných smluv).</p>
+    </section>
+
+    <section id="cast-5">
+      <h2><span class="num">5</span>Zásady ochrany osobních údajů (privacy notice) a sdílení dat</h2>
+      <p>Ochrana a bezpečnost vašich údajů jsou pro nás nesmírně důležité. Protože chceme, aby naše komunikace byla maximálně transparentní, uvádíme, jak se o data staráme:</p>
+      <div class="card">
+        <ul>
+          <li><span class="term">Co a proč zpracováváme:</span> Abychom vás mohli zaregistrovat a spustit vám náš produkt, potřebujeme znát vaše firemní a kontaktní údaje.</li>
+          <li><span class="term">Zabezpečení:</span> K vašim datům přistupujeme s maximálním respektem a chráníme je bezpečnostními opatřeními tak, aby se k nim nedostal nikdo nepovolaný. Přístup k nim mají jen ti zaměstnanci a partneři, kteří je nutně potřebují pro svou práci.</li>
+          <li><span class="term">Kdo data vidí:</span> Vaše data občas musíme sdílet s našimi partnery, s nimiž chceme nebo dokonce musíme spolupracovat. Vždy tak činíme s ohledem na vaši bezpečnost a platnou legislativu.</li>
+          <li><span class="term">Vaše práva:</span> Jako náš partner máte plné právo nás kdykoliv požádat o přístup ke svým údajům, jejich opravu, smazání nebo se nás zeptat na cokoli ohledně jejich zpracování. Jsme vám plně k dispozici.</li>
+        </ul>
+      </div>
+      <p>Úplné znění zásad ochrany osobních údajů (privacy notice) tvoří <a href="#priloha-5">přílohu č. 5</a>.</p>
+      <p><span class="term">Sdílení s AI nástroji od Google/OpenAi/Anthropic:</span> Tento produkt je založen na pokročilém zapojení AI modelů od Googlu. Jelikož ve všech ohledech dbáme na maximální transparentnost, informujeme vás tímto o tom, že Googlu odesíláme vaše textové/hlasové pokyny a strukturu rozhraní. Nikdy naopak nepředáváme přístup k databázi vašeho podniku nebo osobních údajů vašich zákazníků / hostů. Data jsou zpracovávána na našich serverech Hetzner, Digital Ocean, GCP a využíváme také cloudovou infrastrukturu třetích stran (Google Cloud Platform, Gemini API / Live), přičemž případný přenos dat mimo EU (např. do USA) probíhá vždy v souladu s platnými právními předpisy a na základě samostatných dohod o zpracování dat (DPA).</p>
+      <p><span class="term">Sdílení ve skupině PIANO a anonymizace:</span> Na základě oprávněného zájmu jsou provozní data využívána pro zlepšování služeb a při respektování bezpečnosti a integrity takových dat též pro tvorbu tržních přehledů a statistik, a to nejen námi, ale též dalšími subjekty ze skupiny PIANO (propojenými osobami). Data, která budou využívána pro obchodní účely, tvorbu tržních statistik, analýz a reportů, budou předem v maximální možné míře anonymizována a agregována.</p>
+    </section>
+
+    <section id="cast-6">
+      <h2><span class="num">6</span>Společná a závěrečná ustanovení</h2>
+      <p><span class="term">Použití VOP:</span> Tyto VOP se vztahují na Zákazníky, kteří jsou podnikateli ve smyslu příslušných právních předpisů.</p>
+      <p><span class="term">Rozhodné právo:</span> Tyto VOP a veškeré smluvní vztahy z nich vzniklé se řídí právním řádem České republiky, zejména zákonem č. 89/2012 Sb., občanský zákoník, v platném znění. Použití Úmluvy OSN o smlouvách o mezinárodní koupi zboží (CISG) je vyloučeno.</p>
+      <p><span class="term">Smírné řešení sporů:</span> V případě vzniku sporu se obě strany zavazují nejprve vyvinout přiměřené úsilí k jeho smírnému vyřešení.</p>
+      <p><span class="term">Příslušnost soudu:</span> Nepodaří-li se spor vyřešit smírně, jsou k jeho rozhodování příslušné obecné soudy České republiky. Místně příslušným soudem prvního stupně je soud příslušný podle sídla Poskytovatele v době podání žaloby.</p>
+      <p><span class="term">Změna VOP:</span> Poskytovatel si vyhrazuje právo tyto VOP kdykoliv změnit nebo doplnit. O každé změně vás budeme informovat ve smyslu těchto VOP, a to nejméně 30 dní před nabytím její účinnosti. Bude-li mít oznámená změna VOP podstatný vliv na vaše práva nebo povinnosti, máte právo smlouvu písemně vypovědět, a to nejpozději do 30 dní ode dne, kdy vám změnu oznámíme. Smlouva v takovém případě skončí uplynutím období, na které máte předplatné uhrazeno; po tuto dobu se na náš smluvní vztah nadále uplatní dosavadní VOP a smlouva se po skončení tohoto období automaticky neprodlouží. Nepodáte-li výpověď ve lhůtě uvedené výše, vaše právo na ukončení smlouvy z důvodu dané změny VOP zaniká a nové VOP se ode dne nabytí jejich účinnosti uplatní na náš smluvní vztah v plném rozsahu, včetně případného automatického prodlužování smluv.</p>
+      <p><span class="term">Oznámení:</span> Veškerá oznámení dle těchto VOP určená zákazníkovi budou zasílána na vaši e-mailovou adresu, kterou jste nám sdělil při registraci, a jsou účinná dnem doručení. Část komunikace bude probíhat i přímo v pokladně / aplikaci, a to prostřednictvím notifikačního centra.</p>
+      <p><span class="term">Ukončení smlouvy:</span> Smlouvu lze kdykoliv ukončit za podmínek definovaných v <a href="#priloha-6">příloze č. 6</a>. Máte-li od nás zapůjčen nějaký hardware, bude třeba jej vrátit, ale i tak předpokládáme, že proces odchodu bude stejně snadný jako váš příchod.</p>
+      <div class="effective">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span>Účinnost VOP: Tyto VOP jsou účinné od 1. 8. 2026.</span>
+      </div>
+    </section>
+
+    <section id="priloha-1">
+      <h2><span class="num pril">Příloha 1</span>Poskytnutí služby a licenční ujednání</h2>
+      <p><span class="term">A. Užívání a licence:</span> Poskytujeme vám nevýhradní, nepřevoditelnou a časově omezenou licenci (SaaS) k užívání aplikace Hugo POS výhradně pro vaše interní potřeby po dobu existence vašeho účtu. Software není předmětem koupě. Aplikaci nesmíte kopírovat, upravovat, dekompilovat ani k ní poskytovat podlicence.</p>
+    </section>
+
+    <section id="priloha-2">
+      <h2><span class="num pril">Příloha 2</span>Odpovědnost</h2>
+      <p><span class="term">A. Omezení odpovědnosti za škodu:</span> Poskytovatel v žádném případě neodpovídá za jakoukoliv nepřímou či následnou škodu, ušlý zisk, ztrátu dat nebo jiné nehmotné ztráty vzniklé v důsledku používání či nemožnosti používání aplikace. Neodpovídáme rovněž za újmu vzniklou neoprávněným přístupem k vašemu účtu nebo zneužitím vašich přihlašovacích údajů.</p>
+      <p><span class="term">B. Limitace náhrady:</span> Naše celková odpovědnost za veškeré nároky vzniklé v souvislosti s těmito VOP je omezena maximální částkou, kterou jste nám uhradili za užívání aplikace v průběhu uplynulých dvanácti (12) měsíců předcházejících vzniku nároku.</p>
+    </section>
+
+    <section id="priloha-3">
+      <h2><span class="num pril">Příloha 3</span>Dostupnost služby, zálohy dat</h2>
+      <p><span class="term">A. Dostupnost služby (SLA):</span> Po celou dobu naší spolupráce budeme vynakládat přiměřené úsilí k zajištění dostupnosti služby Hugo POS na úrovni odpovídající zárukám poskytovaným provozovateli cloudové infrastruktury, kterou budeme využívat (tedy Google Cloud Platform, Hetzner, Digital Ocean aj). Status page bude dostupná na adrese „<a href="http://status.piano.cz" target="_blank" rel="noopener">status.piano.cz</a>“.</p>
+      <p><span class="term">B. Záloha dat:</span> Zálohování dat probíhá na denní bázi. Zálohy jsou ukládány odděleně od primárního úložiště, na infrastruktuře Hetzner, GCP, Digital Ocean v datových centrech na území EU. Přestože je zálohovací proces plně automatizovaný, budeme po celou dobu spolupráce pravidelně ověřovat jeho správné nastavení a funkčnost.</p>
+      <p><span class="term">C. Náhrada vědomě odstraněných dat:</span> Pro úplnost dodáváme, že zálohy slouží výhradně k obnově dat po havárii nebo závažném výpadku na naší straně. Nejsou náhradou za archivaci dat, k níž jste povinni na základě vašich interních procedur nebo právních předpisů a není možné je využít k obnově konkrétních záznamů, k jejichž odstranění (smazání) došlo na základě jednání uživatele (včetně pokynů, které zadáte prostřednictvím asistenta Hugo). Na obnovu takto „vědomě odstraněných dat“, včetně dat smazaných omylem nebo v důsledku nesprávného pokynu AI asistentovi, není právní nárok, ale může být poskytnuta jako placená doplňková služba nebo na základě individuální dohody.</p>
+      <p><span class="term">D. Obnova dat po výpadku:</span> Pokud by – přes veškerá popsaná bezpečnostní opatření – došlo k výpadku nebo havárii, jejíž součástí nebo důsledkem bude ztráta dat, zavazujeme se, že (i) zahájíme obnovu dat bezodkladně po zjištění incidentu, (ii) provedeme obnovu z nejbližší dostupné zálohy předcházející vzniku incidentu, (iii) budeme vás bez zbytečného odkladu informovat o průběhu obnovy a odhadovaném čase zprovoznění. Cílový bod obnovy, tedy maximální přípustná ztráta dat, odpovídá době od poslední zálohy před vznikem incidentu.</p>
+    </section>
+
+    <section id="priloha-4">
+      <h2><span class="num pril">Příloha 4</span>Dodatečné služby a funkcionality, bezpečnostní pojistky, hardware</h2>
+      <p><span class="term">A. Přechod od konkurence (Import):</span> Nabízíme automatický import vámi vybraných položek a dalších dat z vaší současné pokladny s využitím AI modelu. Odpadá tím nutnost ručního přepisování těchto dat do Hugo POS a všeho negativního, co takový postup nevyhnutelně přináší – riziko zvýšené chybovosti, delší čas a zvýšené personální náklady potřebné na instalaci.</p>
+      <p><span class="term">B. Obnova vědomě odstraněných dat:</span> Obnova dat, jejichž smazání / odstranění došlo v důsledku vašeho jednání, je poskytována jako placená doplňková služba dle platného ceníku, pokud je technicky proveditelná. Poskytovatel nezaručuje úspěšnost takové obnovy.</p>
+      <p><span class="term">C. Export dat při ukončení spolupráce:</span> Kdykoliv v průběhu trvání smlouvy si můžete exportovat svá data ve strojově čitelném formátu CSV/XML. Export dat po zrušení účtu je možný do 7 dnů od zrušení a může být zpoplatněn dle platného ceníku.</p>
+      <p><span class="term">D. Bezpečnostní pojistky:</span> U nevratných akcí (tedy úkony typu „smazat provozovnu“, „smazat celé menu“, „smazat účet“ apod.) si Hugo před realizací vyžádá vaše potvrzení. V každém případě lze systém plně ovládat i manuálně.</p>
+      <p><span class="term">E. Hardware:</span> Pokud si od nás zakoupíte hardware, vztahují se na vás též Pravidla pro recyklaci a zpětný odběr elektrozařízení a baterií a Reklamační řád (vše dostupné na <a href="http://www.piano.cz/legal" target="_blank" rel="noopener">www.piano.cz/legal</a>).</p>
+    </section>
+
+    <section id="priloha-5">
+      <h2><span class="num pril">Příloha 5</span>Zásady ochrany osobních údajů (privacy notice)</h2>
+
+      <p><span class="term">A. Kdo jsme a kdo je správcem vašich údajů</span></p>
+      <p>Společnost <strong>Piano Solutions s.r.o.</strong>, IČ: 19780974, se sídlem Křižíkova 148/34, Karlín, 186 00 Praha 8, je ve vztahu k vašim osobním údajům v pozici správce. Ochrana vašich osobních údajů je pro nás prioritou a dbáme na to, aby veškeré zpracování probíhalo transparentně a v souladu s platnými právními předpisy (především s nařízením EU GDPR).</p>
+
+      <p><span class="term">B. Jaké osobní údaje shromažďujeme</span></p>
+      <p>Rozsah zpracovávaných údajů se odvíjí od služeb, které u nás využíváte. Shromažďujeme zejména tyto kategorie:</p>
+      <div class="card">
+        <ul>
+          <li><span class="term">Identifikační a kontaktní údaje:</span> jméno, příjmení, poštovní adresa, telefonní číslo, e-mailová adresa.</li>
+          <li><span class="term">Firemní a obchodní údaje:</span> název společnosti, IČ, DIČ, adresa sídla, typ podnikání.</li>
+          <li><span class="term">Finanční a transakční údaje:</span> údaje o bankovním účtu, informace o transakcích (objem, měna, datum) a fakturační údaje, údaje o platební kartě použité pro úhradu předplatného.</li>
+          <li><span class="term">Technické údaje:</span> IP adresa, informace o zařízení (názvy, identifikátory), typy prohlížečů a údaje o tom, jak komunikujete s našimi službami.</li>
+        </ul>
+      </div>
+
+      <p><span class="term">C. Proč údaje zpracováváme a na jakém právním základě</span></p>
+      <p>Vaše údaje využíváme pouze tehdy, když nám to zákon umožňuje. Osobní údaje zpracováváme z následujících důvodů:</p>
+      <div class="card">
+        <ul>
+          <li><span class="term">Plnění smlouvy:</span> údaje potřebujeme k vedení vašeho účtu, zasílání faktur či výzev k platbě.</li>
+          <li><span class="term">Oprávněný zájem:</span> pro ochranu našeho podnikání, odhalování podvodů, provádění analýz k vylepšení služeb a pro přímý marketing (zasílání informací o podobných produktech a službách).</li>
+          <li><span class="term">Souhlas:</span> pokud vám zasíláme marketingová sdělení nad rámec oprávněného zájmu nebo využíváme určité soubory cookies, je to kryto vaším souhlasem uděleným v rámci onboardingu. Svůj souhlas můžete kdykoliv odvolat.</li>
+        </ul>
+      </div>
+
+      <p><span class="term">D. S kým vaše údaje sdílíme</span></p>
+      <p>Přístup k vašim datům poskytujeme pouze v nezbytném rozsahu a za přísných bezpečnostních podmínek následujícím třetím stranám:</p>
+      <div class="card">
+        <ul>
+          <li>Poskytovatelům IT a cloudových služeb.</li>
+          <li>Pro fungování AI asistenta Hugo využíváme jazykové AI modely a též cloudové služby Google (Gemini API, Google Gemini Live, Google Cloud Platform). Googlu odesíláme (i) zadání uživatele, strukturu rozhraní (názvy tlačítek), jazyky, (ii) v případě hlasu navíc streamujeme zvuk v reálném čase, (iii) při importu data sortimentu zpracovávaná za účelem převodu. V souladu s aktuálními podmínkami poskytovatele pro Gemini API nejsou zvuk ani přepisy ukládány u nás ani v Googlu. Googlu nikdy neodesíláme obsah vaší provozní databáze, finanční údaje ani osobní údaje zákazníků. V této souvislosti <strong>silně doporučujeme, abyste Hugovi nediktovali citlivé údaje třetích osob, není-li to nezbytné</strong>.</li>
+          <li>Společnostem ze Skupiny Piano, a to primárně za účelem dalšího zkvalitnění našich produktů, včetně technického supportu.</li>
+          <li>Regulačním orgánům a orgánům veřejné moci (např. Policii ČR), pokud to vyžadují právní předpisy. Pokud vaše údaje přenášíme mimo Evropský hospodářský prostor (EHP), vždy zavádíme odpovídající záruky bezpečnosti, například využitím standardních smluvních doložek schválených Evropskou komisí.</li>
+        </ul>
+      </div>
+
+      <p><span class="term">E. Zabezpečení dat</span></p>
+      <p>Implementovali jsme pokročilá technická a organizační opatření, abychom chránili vaše osobní údaje před náhodnou ztrátou, neoprávněným přístupem či úpravami. K údajům mají přístup pouze zaměstnanci na základě pravidla „need-to-know“ (jen tehdy, pokud je potřebují ke své práci). Využíváme šifrování hesel, systémy pro detekci narušení bezpečnosti a antivirovou ochranu.</p>
+
+      <p><span class="term">F. Jak dlouho údaje uchováváme</span></p>
+      <p>Osobní údaje uchováváme výhradně po dobu nezbytnou ke splnění účelů, pro které byly získány. Ze zákona jsme povinni uchovávat finanční a transakční dokumentaci zpravidla po dobu 10 let od ukončení smluvního vztahu. Data pro účely marketingu si ponecháváme do chvíle, než nám sdělíte, že o taková sdělení již nemáte zájem (např. odvoláním souhlasu). Po uplynutí stanovené doby údaje nevratně zničíme nebo anonymizujeme.</p>
+
+      <p><span class="term">G. Vaše zákonná práva</span></p>
+      <p>V souvislosti se zpracováním vašich osobních údajů vám náleží následující práva:</p>
+      <div class="card">
+        <ul>
+          <li><span class="term">Právo na přístup:</span> můžete nás požádat o kopii osobních údajů, které o vás zpracováváme.</li>
+          <li><span class="term">Právo na opravu:</span> můžete požadovat doplnění nebo opravu nesprávných a neúplných údajů.</li>
+          <li><span class="term">Právo na výmaz („právo být zapomenut“):</span> máte právo požádat o smazání osobních údajů, pokud neexistuje dobrý důvod pro jejich další uchovávání (např. zákonná povinnost).</li>
+          <li><span class="term">Právo na omezení zpracování:</span> můžete požádat o pozastavení zpracování, například pokud ověřujeme přesnost dat.</li>
+          <li><span class="term">Právo na přenositelnost údajů:</span> máte nárok získat od nás údaje, které jste nám poskytli, ve strukturovaném formátu a předat je jinému poskytovateli.</li>
+          <li><span class="term">Právo vznést námitku:</span> můžete vznést námitku proti zpracování založenému na našem oprávněném zájmu (např. proti automatizovanému rozhodování nebo zasílání reklamních nabídek).</li>
+        </ul>
+      </div>
+      <p>Pokud se domníváte, že vaše osobní údaje nezpracováváme zákonně, máte rovněž právo obrátit se s vaší stížností na Úřad pro ochranu osobních údajů.</p>
+
+      <p><span class="term">H. Kontaktujte nás</span></p>
+      <div class="note">
+        <p>V případě jakýchkoli dotazů nebo pokud si přejete uplatnit svá práva, nás můžete kontaktovat písemně na adrese sídla správce nebo na korespondenční adrese: <strong>PIANO, Thámova 18, 18600, Praha 8 – Karlín</strong> nebo e-mailem na <a href="mailto:support@piano.cz">support@piano.cz</a>.</p>
+      </div>
+    </section>
+
+    <section id="priloha-6">
+      <h2><span class="num pril">Příloha 6</span>Ukončení spolupráce, zrušení účtu</h2>
+      <p><span class="term">A. Trvání spolupráce (automatické prodlužování):</span> Smlouva trvá po celou dobu, kdy budete mít uhrazeno předplatné. Tím není dotčeno ujednání o bezplatném trial období v délce trvání 14 dní. Vztah založený smlouvou bude (i opakovaně) automaticky prodlužován vždy o stejné období (měsíc nebo rok), nebude-li v souladu s touto přílohou č. 6 smlouva řádně ukončena.</p>
+      <p><span class="term">B. Ukončení smlouvy:</span> Smlouvu o užívání cloudového softwaru Hugo POS lze ukončit jednostrannou výpovědí nebo písemnou dohodou. Pokud byste opakovaně a závažným způsobem porušovali dohodnuté podmínky, můžeme smlouvu ukončit jednostrannou výpovědí s účinností doručením. Obě strany mají právo smlouvu ukončit bez udání důvodu s výpovědní dobou, která odpovídá délce období, na níž bylo uhrazeno předplatné. Uživatel k tomu může využít tlačítko „zrušit předplatné“ přímo v aplikaci.</p>
+      <p><span class="term">C. Důsledky ukončení smlouvy:</span> Pokud ukončíte spolupráci jinak než z důvodů na naší straně nebo bez udání důvodu nebo pokud spolupráci sice ukončíme my, ale z důvodů na vaší straně, nebudou žádná uhrazená předplatná ani jiné poplatky předmětem vrácení, a to ani poměrně. V ostatních případech jednostranného ukončení smlouvy nebo v případě ukončení smlouvy dohodou může být součástí ukončení též poměrné vypořádání uhrazených předplatných či poplatků. Po uplynutí 7 dnů od ukončení smlouvy váš účet (nebo účty) zrušíme bez možnosti obnovy. Ve stejné lhůtě mohou být v našem systému nenávratně smazána i veškerá další vaše data, pokud právní předpisy nevyžadují jejich další uchování. Tím není dotčeno právo poskytovatele, ponechat si vaše anonymizovaná provozní data bez časového omezení.</p>
+      <p><span class="term">D. Export dat při ukončení spolupráce:</span> V souvislosti s ukončením spolupráce si můžete exportovat vaše historická data v defaultně nastaveném formátu a struktuře. Pokud požadujete specifický formát či strukturu exportovaných dat, jedná se o dodatečnou službu zpoplatněnou dle platného ceníku. V žádném případě není možné provést export historických dat poté, co váš účet (účty) zrušíme ve smyslu písm. C výše nebo poté, co jsou data smazána v důsledku vašeho jednání, vč. instrukce pro Huga.</p>
+      <p><span class="term">E. Zrušení účtu uživatelem:</span> Zrušení (smazání) účtu uživatelem představuje zvláštní typ jednostranného ukončení spolupráce na základě smlouvy. Jedná se o nevratnou akci provedenou v důsledku vědomého jednání uživatele, na níž se vztahuje bezpečnostní pojistka ve smyslu <a href="#priloha-4">přílohy č. 4</a>. Obnovení takto smazaného účtu je zpoplatněno dle platného ceníku a je možné pouze v případě, že je o něj písemně požádáno oprávněnou osobou nejpozději do 7 dnů od zrušení účtu. Při zrušení účtu uživatelem nebudou žádná uhrazená předplatná ani jiné poplatky předmětem vrácení, a to ani poměrně.</p>
+    </section>
+
+  </article>
+</div>
+
+<!-- =============== FOOTER =============== -->
+<footer>
+  <div class="container foot-inner">
+    <div>© 2026 Hugo · český produkt od Piana · <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
+    <div class="foot-links">
+      <a href="/">Zpět na hugopos.eu</a>
+      <a href="mailto:support@piano.cz">support@piano.cz</a>
+      <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight the section currently being read in the table of contents.
+  // Rule: the active section is the LAST one whose heading has passed the
+  // reading line (just under the sticky nav) — a section's tail scrolling out
+  // must not keep it highlighted while the next heading is already on screen.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var sections = Array.prototype.slice.call(document.querySelectorAll('article section'));
+    if (!sections.length) return;
+
+    var READ_LINE = 140; // px from the viewport top
+    var ticking = false;
+    var activeId = null;
+
+    function update() {
+      ticking = false;
+      var current = sections[0].id;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= READ_LINE) current = sections[i].id;
+        else break;
+      }
+      if (current === activeId) return;
+      activeId = current;
+      links.forEach(function (a) { a.classList.remove('is-active'); });
+      if (byId[current]) byId[current].classList.add('is-active');
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  })();
+</script>
+
+</body>
+</html>
