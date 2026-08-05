@@ -209,7 +209,7 @@
     { sel: '.ab-opt', all: true, cs: ['Mikro provoz', 'Kavárna & bar', 'Restaurace & síť'] },
     { sel: '.pay-note', cs: 'Transparentní ceny v režimu MIF++. Stejná sazba při 30 000 Kč i při 1 000 000 Kč měsíčně — a peníze máš na účtu do 2 dnů, bez měnění banky.' },
     { sel: '.price-points li span', all: true, cs: [
-      '<b>190 Kč měsíčně místo 490 Kč</b> — celá pokladna (objednávky, menu, DPH, reporty), když platby kartou bereš s námi. Jedna cena, nic skrytého.',
+      '<b>190 Kč měsíčně místo 990 Kč</b> — celá pokladna (objednávky, menu, DPH, reporty), když platby kartou bereš s námi. Jedna cena, nic skrytého.',
       '<b>0,9 % + 1 Kč z platby kartou — vždycky</b>, ať máš jakýkoli obrat. Transparentní režim MIF++, žádná sazba, která se ti potichu změní.',
       '<b>Peníze z karet na účtu do 2 dnů</b> — platby kompletně vyřešené a banku si necháš tu svou.'
     ] },
@@ -232,7 +232,7 @@
       'Co DPH a EET?'
     ] },
     { sel: '.faq-item .a', all: true, cs: [
-      'Jeden tarif: 190 Kč měsíčně místo 490 Kč, když platby kartou bereš přes nás — k tomu 0,9 % + 1 Kč z platby kartou, vždycky a při jakémkoli obratu (Tap to Pay na iPhonu 0,9 % + 2,75 Kč). Prvních 14 dní je zdarma, a když nebudeš spokojený nebo spokojená, vrátíme ti peníze. Žádné tarify k porovnávání, žádný háček, žádná smlouva.',
+      'Jeden tarif: 190 Kč měsíčně místo 990 Kč, když platby kartou bereš přes nás — k tomu 0,9 % + 1 Kč z platby kartou, vždycky a při jakémkoli obratu (Tap to Pay na iPhonu 0,9 % + 2,75 Kč). Prvních 14 dní je zdarma, a když nebudeš spokojený nebo spokojená, vrátíme ti peníze. Žádné tarify k porovnávání, žádný háček, žádná smlouva.',
       'Žádná smlouva ani výpovědní lhůta. Zrušíš kdykoli a data si odneseš.',
       'Menu naimportujeme, Hugo běží vedle stávající pokladny a přepneš, až budeš chtít. Migrace je zdarma.',
       'Ne. Hugo běží na iPhonu nebo Androidu, který už máš. Když chceš pořádné zařízení na pult, náš all-in-one terminál s Hugem stojí 4 900 Kč jednorázově — a příspěvek od státu z toho ubere 5 000 Kč. Připojit můžeš i vlastní tiskárnu účtenek a pokladní zásuvku.',
