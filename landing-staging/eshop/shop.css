@@ -84,3 +84,5 @@ footer .foot-bottom a{color:#2a2620}
 .delivery-choice input{accent-color:var(--green)}
 .delivery-choice strong{font-size:13px}
 .delivery-choice label:has(input:disabled){opacity:.5;cursor:not-allowed}
+.cart-head-title{display:flex;align-items:center;gap:12px}
+.cart-head .cart-back{font-size:24px}

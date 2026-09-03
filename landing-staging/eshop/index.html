@@ -172,9 +172,16 @@
   </main>
 
   <aside class="cart" id="cart" aria-hidden="true" aria-label="Košík">
-    <div class="cart-head"><h2>Váš košík</h2><button id="cart-close" type="button" aria-label="Zavřít košík">×</button></div>
+    <div class="cart-head">
+      <div class="cart-head-title"><button class="cart-back" id="cart-back" type="button" hidden aria-label="Zpět do košíku">←</button><h2>Váš košík</h2></div>
+      <button id="cart-close" type="button" aria-label="Zavřít košík">×</button>
+    </div>
     <div id="cart-lines" class="cart-lines"><p class="empty">Zatím je tu vzdušno.</p></div>
-    <div class="cart-footer">
+    <div class="cart-footer" id="cart-items-step">
+      <button class="checkout" id="review-button" type="button" disabled>Pokračovat k objednávce</button>
+      <a class="account-shortcut" data-account-link href="https://admin.hugopos.eu/login?start=1&amp;next=%2Fshop">Už máte účet? Přihlaste se. Košík zůstane a adresu doplníme za vás.</a>
+    </div>
+    <div class="cart-footer" id="cart-review-step" hidden>
       <fieldset class="delivery-choice">
         <legend>Doprava</legend>
         <label><input name="delivery-method" type="radio" value="dpd" checked><span>Doprava DPD</span><strong data-delivery-price></strong></label>
@@ -183,7 +190,6 @@
       <label class="terms"><input id="terms" type="checkbox"> <span>Souhlasím s <a href="/obchodni-podminky-eshop/" target="_blank" rel="noopener">obchodními podmínkami nákupu hardwaru</a>.</span></label>
       <p class="draft-note" id="checkout-note" hidden>E-shopové VOP jsou zatím pracovní návrh. Platbu zapneme až po jejich schválení.</p>
       <button class="checkout" id="checkout-button" type="button" disabled>Pokračovat k bezpečné platbě</button>
-      <a class="account-shortcut" data-account-link href="https://admin.hugopos.eu/login?start=1&amp;next=%2Fshop">Už máte účet? Přihlaste se — košík zůstane a adresu doplníme za vás.</a>
     </div>
   </aside>
   <div class="scrim" id="scrim" hidden></div>
