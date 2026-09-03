@@ -172,6 +172,11 @@
     <div class="cart-head"><h2>Váš košík</h2><button id="cart-close" type="button" aria-label="Zavřít košík">×</button></div>
     <div id="cart-lines" class="cart-lines"><p class="empty">Zatím je tu vzdušno.</p></div>
     <div class="cart-footer">
+      <fieldset class="delivery-choice">
+        <legend>Doprava</legend>
+        <label><input name="delivery-method" type="radio" value="dpd" checked><span>Doprava DPD</span><strong data-delivery-price></strong></label>
+        <label><input name="delivery-method" type="radio" value="pickup"><span>Osobní odběr</span><strong data-delivery-price></strong></label>
+      </fieldset>
       <label class="terms"><input id="terms" type="checkbox"> <span>Souhlasím s <a href="/obchodni-podminky-eshop/" target="_blank" rel="noopener">obchodními podmínkami nákupu hardwaru</a>.</span></label>
       <p class="draft-note" id="checkout-note" hidden>E-shopové VOP jsou zatím pracovní návrh. Platbu zapneme až po jejich schválení.</p>
       <button class="checkout" id="checkout-button" type="button" disabled>Pokračovat k bezpečné platbě</button>
@@ -226,6 +231,7 @@
     </div>
   </footer>
   <script src="shop-i18n.js" defer></script>
+  <script src="shop-handoff.js" defer></script>
   <script src="shop.js" defer></script>
 </body>
 </html>
