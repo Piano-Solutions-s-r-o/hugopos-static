@@ -77,3 +77,10 @@ footer .foot-bottom a{color:#2a2620}
 .hero-photo img{object-position:center bottom}
 .hero-photo figcaption{right:24px;left:auto}
 @media(max-width:650px){.hero-photo img{height:min(520px,calc(100vw - 36px))}}
+
+.delivery-choice{display:grid;gap:8px;margin:0 0 20px;padding:0 0 20px;border:0;border-bottom:1px solid var(--line)}
+.delivery-choice legend{margin-bottom:10px;font-weight:800}
+.delivery-choice label{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:14px;cursor:pointer}
+.delivery-choice input{accent-color:var(--green)}
+.delivery-choice strong{font-size:13px}
+.delivery-choice label:has(input:disabled){opacity:.5;cursor:not-allowed}

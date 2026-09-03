@@ -42,8 +42,13 @@
   var cart = [];
   var selectedTerminalCaseVariant = 'sun_spark';
   var selectedExtraCaseVariant = 'sun_spark';
+  var selectedDeliveryMethod = 'dpd';
+  var delivery = {};
   var checkoutEnabled = false;
   var legal = { version: '2026-09-15', status: 'published' };
+  var handoff = typeof module !== 'undefined' && module.exports
+    ? require('./shop-handoff')
+    : window.HugoEshopHandoff;
 
   function cartIsOrderable(lines, catalogue) {
     return lines.length > 0 && lines.every(function (line) {
@@ -52,51 +57,8 @@
     });
   }
 
-  function serializeCartHandoff(lines, caseVariant, extraCaseVariant) {
-    var allowedVariant = caseVariants.some(function (item) { return item.id === caseVariant; })
-      ? caseVariant
-      : 'sun_spark';
-    var allowedExtraVariant = caseVariants.some(function (item) { return item.id === extraCaseVariant; })
-      ? extraCaseVariant
-      : allowedVariant;
-    var seen = {};
-    var safeCart = (Array.isArray(lines) ? lines : []).filter(function (line) {
-      if (!line || !['pax_a920', 'belt_holster', 'terminal_case_extra'].includes(line.id) || seen[line.id]) return false;
-      seen[line.id] = true;
-      return true;
-    }).map(function (line) {
-      var qty = Number.isInteger(line.qty) && line.qty >= 1 && line.qty <= 99 ? line.qty : 1;
-      return { id: line.id, qty: qty };
-    });
-    return JSON.stringify({ version: 1, caseVariant: allowedVariant, extraCaseVariant: allowedExtraVariant, cart: safeCart });
-  }
-
-  function parseCartHandoff(value) {
-    if (typeof value !== 'string' || value.length === 0 || value.length > 1000) return null;
-    try {
-      var parsed = JSON.parse(value);
-      if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.cart) || parsed.cart.length > 3) return null;
-      var seen = {};
-      var safeCart = [];
-      for (var i = 0; i < parsed.cart.length; i += 1) {
-        var line = parsed.cart[i];
-        if (!line || !['pax_a920', 'belt_holster', 'terminal_case_extra'].includes(line.id) || seen[line.id]) return null;
-        var qty = line.qty === undefined ? 1 : line.qty;
-        if (!Number.isInteger(qty) || qty < 1 || qty > 99) return null;
-        seen[line.id] = true;
-        safeCart.push({ id: line.id, qty: qty });
-      }
-      var caseVariant = caseVariants.some(function (item) { return item.id === parsed.caseVariant; })
-        ? parsed.caseVariant
-        : 'sun_spark';
-      var extraCaseVariant = caseVariants.some(function (item) { return item.id === parsed.extraCaseVariant; })
-        ? parsed.extraCaseVariant
-        : caseVariant;
-      return { caseVariant: caseVariant, extraCaseVariant: extraCaseVariant, cart: safeCart };
-    } catch (_error) {
-      return null;
-    }
-  }
+  var serializeCartHandoff = handoff.serializeCartHandoff;
+  var parseCartHandoff = handoff.parseCartHandoff;
 
   // Keep the availability rule independently testable without booting a DOM.
   if (typeof module !== 'undefined' && module.exports) {
@@ -122,10 +84,10 @@
   function restoreCart() {
     try {
       var params = new URLSearchParams(location.search);
-      var handoff = parseCartHandoff(params.get('cart'));
-      var stored = handoff || JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || 'null');
+      var incomingHandoff = parseCartHandoff(params.get('cart'));
+      var stored = incomingHandoff || JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || 'null');
       if (!stored || !Array.isArray(stored.cart)) return;
-      if (handoff) {
+      if (incomingHandoff) {
         params.delete('cart');
         history.replaceState({}, '', location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash);
       }
@@ -136,6 +98,7 @@
       selectedExtraCaseVariant = caseVariants.some(function (item) { return item.id === stored.extraCaseVariant; })
         ? stored.extraCaseVariant
         : restoredVariant;
+      selectedDeliveryMethod = handoff.deliveryMethod(stored.deliveryMethod);
       cart = stored.cart.filter(function (line) { return line && ['pax_a920', 'belt_holster', 'terminal_case_extra'].includes(line.id); })
         .map(function (line) { return { id: line.id, key: line.id, qty: line.qty || 1, variant: null, variantName: null }; });
       syncCaseLine();
@@ -147,6 +110,7 @@
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify({
         caseVariant: selectedTerminalCaseVariant,
         extraCaseVariant: selectedExtraCaseVariant,
+        deliveryMethod: selectedDeliveryMethod,
         cart: cart.filter(function (line) { return line.id !== 'terminal_case'; }).map(function (line) { return { id: line.id, qty: line.qty || 1 }; }),
       }));
     } catch (_error) {}
@@ -194,6 +158,8 @@
           products[item.id].price = item.amountMinor;
           products[item.id].currency = item.currency;
         });
+        delivery = Object.fromEntries((data.delivery || []).map(function (item) { return [item.id, item]; }));
+        renderDelivery();
         document.querySelectorAll('[data-add]').forEach(function (add) {
           add.disabled = !canAddProduct(add.dataset.add);
         });
@@ -272,10 +238,20 @@
     updateCheckoutState();
   }
 
+  function renderDelivery() {
+    document.querySelectorAll('[name="delivery-method"]').forEach(function (input) {
+      var option = delivery[input.value];
+      input.checked = input.value === selectedDeliveryMethod;
+      input.disabled = option?.available !== true;
+      var price = input.closest('label').querySelector('[data-delivery-price]');
+      price.textContent = option?.available === true ? money(option.amountMinor, option.currency) : t('unavailable');
+    });
+  }
+
   function updateAccountLinks() {
     var cartPath = '/shop';
     if (cart.length) {
-      cartPath += '?eshop_cart=' + encodeURIComponent(serializeCartHandoff(cart, selectedTerminalCaseVariant, selectedExtraCaseVariant));
+      cartPath += '?eshop_cart=' + encodeURIComponent(serializeCartHandoff(cart, selectedTerminalCaseVariant, selectedExtraCaseVariant, selectedDeliveryMethod));
     }
     document.querySelectorAll('[data-account-link]').forEach(function (link) {
       link.href = adminBase() + '/login?start=1&next=' + encodeURIComponent(cartPath);
@@ -284,7 +260,7 @@
   }
 
   function updateCheckoutState() {
-    checkoutButton.disabled = !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products);
+    checkoutButton.disabled = !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products) || delivery[selectedDeliveryMethod]?.available !== true;
   }
 
   function canAddProduct(id) {
@@ -397,7 +373,7 @@
     if (checkoutButton.disabled) return;
     checkoutButton.disabled = true;
     checkoutButton.textContent = t('opening');
-    var checkoutPayload = { items: cart.map(function (line) { return { id: line.id, qty: line.qty || 1, variant: line.variant || undefined }; }), termsAccepted: true, termsVersion: legal.version, locale: window.HUGO_LANG };
+    var checkoutPayload = { items: cart.map(function (line) { return { id: line.id, qty: line.qty || 1, variant: line.variant || undefined }; }), deliveryMethod: selectedDeliveryMethod, termsAccepted: true, termsVersion: legal.version, locale: window.HUGO_LANG };
     var idempotencyKey = crypto.randomUUID();
     if (window.self !== window.top && new URLSearchParams(location.search).get('embedded') === '1') {
       window.parent.postMessage({ type: 'hugo:eshop-checkout', payload: checkoutPayload, idempotencyKey: idempotencyKey }, adminBase());
@@ -464,6 +440,13 @@
   document.getElementById('cart-close').addEventListener('click', closeCart);
   scrim.addEventListener('click', closeCart);
   terms.addEventListener('change', updateCheckoutState);
+  document.querySelectorAll('[name="delivery-method"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      selectedDeliveryMethod = handoff.deliveryMethod(input.value);
+      renderDelivery();
+      renderCart();
+    });
+  });
   checkoutButton.addEventListener('click', startCheckout);
   document.querySelector('.dialog-close').addEventListener('click', function () { dialog.close(); });
   dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
@@ -485,6 +468,7 @@
     });
     syncCaseLine();
     renderCataloguePrices();
+    renderDelivery();
     renderCart();
     if (dialog.open) dialog.close();
     document.querySelectorAll('[data-case-scope] .swatch.is-active').forEach(previewSwatch);
