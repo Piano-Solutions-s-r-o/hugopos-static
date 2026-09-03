@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-shop — terminály a příslušenství Hugo</title>
+  <meta name="description" content="Vyberte si terminál a příslušenství Hugo. Nejdřív nákup, potom už jen pár kliknutí k hotovému účtu.">
+  <meta name="theme-color" content="#f3efe6">
+  <link rel="canonical" href="https://hugopos.eu/eshop/">
+  <link rel="icon" href="../assets/hugo-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="Hugo — domů"><img src="../assets/hugo-icon.svg" alt="Hugo"><span>Hugo</span></a>
+      <nav class="nav-links" aria-label="Hlavní navigace">
+        <a href="/#product">Produkt</a>
+        <a href="/#brain">AI &amp; Brain</a>
+        <a href="/#setup">Spuštění</a>
+        <a href="/#pricing">Ceník</a>
+        <a href="/eshop/" aria-current="page">E-shop</a>
+        <a href="/">Reference</a>
+      </nav>
+      <div class="nav-cta">
+        <div class="lang-switch lang" aria-label="Jazyk / Language"><button type="button" data-shop-lang="cs">CZ</button><button type="button" data-shop-lang="en">EN</button></div>
+        <a class="btn btn-primary account-button" href="https://admin.hugopos.eu/login?start=1&amp;next=%2Fshop" target="_blank" rel="noopener" data-account-link id="account-link">Začít zdarma
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+        </a>
+        <button class="bag" id="bag-button" type="button" aria-controls="cart" aria-expanded="false">
+          Košík <span id="bag-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Hugo hardware</p>
+        <h1>Nejdřív si <span class="hl">vyberte.</span><br><em>Účet doladíme potom.</em></h1>
+        <p class="hero-lead">Terminál objednáte jako v každém dobrém e-shopu. Po zaplacení už zbývá jen krůček — přihlásit se a doklikat pár údajů.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#produkty">Vybrat hardware</a>
+          <a class="button secondary" href="#pruvodce">Potřebuji poradit</a>
+        </div>
+        <ul class="trust" aria-label="Výhody nákupu">
+          <li>
+            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+            <span>Bezpečná platba</span>
+          </li>
+          <li>
+            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path></svg>
+            <span>Jednoduchost</span>
+          </li>
+          <li>
+            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"></path><path d="M7 6H4v2a4 4 0 0 0 4 4M17 6h3v2a4 4 0 0 1-4 4"></path></svg>
+            <span>Kvalita</span>
+          </li>
+        </ul>
+      </div>
+      <figure class="hero-photo">
+        <img src="../assets/eshop/terminal-counter-yellow.jpg" alt="Obsluha přijímá platbu kartou na žlutém terminálu Hugo">
+        <figcaption>Terminál, který na place nepřekáží.</figcaption>
+      </figure>
+    </section>
+
+    <section class="products" id="produkty">
+      <header class="section-head">
+        <p class="eyebrow">Vyberte si svoje tempo</p>
+        <h2>Tři věci. <em>Žádný katalog na sto stran.</em></h2>
+      </header>
+      <div class="product-grid">
+        <article class="product-card" data-product="pax_a920" data-case-scope data-case-kind="included">
+          <button class="product-open image-button case-preview" type="button" aria-label="Zobrazit detail terminálu Hugo">
+            <img src="../assets/eshop/case-sun-spark.jpg" alt="Terminál Hugo s obalem Luční med" data-case-image>
+          </button>
+          <div class="product-copy">
+            <p class="kicker">All-in-one</p>
+            <h3>Terminál Hugo</h3>
+            <p class="product-desc">Platby, účtenka a pokladna v jedné lehké krabičce.</p>
+            <p class="price" data-price="pax_a920">Cena se načítá…</p>
+            <div class="swatches" role="radiogroup" aria-label="Barva obalu v ceně terminálu">
+              <button class="swatch" style="--swatch:#d93645" data-variant="red_impulse" data-image="case-red-impulse.jpg" data-name="Rudý impuls" type="button" aria-label="Rudý impuls" aria-checked="false" role="radio"></button>
+              <button class="swatch" style="--swatch:#16b89d" data-variant="mint_current" data-image="case-mint-current.jpg" data-name="Mátový proud" type="button" aria-label="Mátový proud" aria-checked="false" role="radio"></button>
+              <button class="swatch" style="--swatch:#58ad63" data-variant="sage_calm" data-image="case-sage-calm.jpg" data-name="Šalvějový klid" type="button" aria-label="Šalvějový klid" aria-checked="false" role="radio"></button>
+              <button class="swatch is-active" style="--swatch:#f2ca28" data-variant="sun_spark" data-image="case-sun-spark.jpg" data-name="Luční med" type="button" aria-label="Luční med" aria-checked="true" role="radio"></button>
+              <button class="swatch" style="--swatch:#22a9cf" data-variant="lagoon_breeze" data-image="case-lagoon-breeze.jpg" data-name="Laguna" type="button" aria-label="Laguna" aria-checked="false" role="radio"></button>
+              <button class="swatch" style="--swatch:#315f91" data-variant="electric_blue" data-image="case-electric-blue.jpg" data-name="Hluboký oceán" type="button" aria-label="Hluboký oceán" aria-checked="false" role="radio"></button>
+              <span class="swatch-name" aria-live="polite">Luční med</span>
+            </div>
+            <p class="included-note">Jeden obal v ceně terminálu</p>
+            <div class="card-actions">
+              <button class="product-open text-link" type="button">Prohlédnout detail</button>
+              <button class="add-button" type="button" data-add="pax_a920" disabled>Přidat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-product="belt_holster">
+          <button class="product-open image-button" type="button" aria-label="Zobrazit detail koženého držáku">
+            <img src="../assets/eshop/belt-holster-temp.jpg" alt="Kožené pouzdro na pásek s platebním terminálem">
+          </button>
+          <div class="product-copy">
+            <p class="kicker">Accessories</p>
+            <h3>Kožené pouzdro na pásek</h3>
+            <p class="product-desc">Terminál po ruce, ruce připravené na tác a plný plac.</p>
+            <p class="price" data-price="belt_holster">990 Kč<small>bez DPH</small></p>
+            <div class="card-actions">
+              <button class="product-open text-link" type="button">Prohlédnout detail</button>
+              <button class="add-button" type="button" data-add="belt_holster" disabled>Přidat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card case-card" data-product="terminal_case" data-case-scope data-case-kind="extra">
+          <button class="product-open image-button case-preview" type="button" aria-label="Zobrazit detail ochranného obalu">
+            <img src="../assets/eshop/case-sun-spark.jpg" alt="Další obal na terminál v barvě Luční med" data-case-image>
+          </button>
+          <div class="product-copy">
+            <p class="kicker">Accessories</p>
+            <h3>Další obal na terminál</h3>
+            <p class="product-desc">Měkčí dopad, jistější úchop a barva, která patří k vám.</p>
+            <div class="swatches" role="radiogroup" aria-label="Barva obalu">
+              <button class="swatch" style="--swatch:#d93645" data-variant="red_impulse" data-image="case-red-impulse.jpg" data-name="Rudý impuls" type="button" aria-label="Rudý impuls" aria-checked="false" role="radio"></button>
+              <button class="swatch" style="--swatch:#16b89d" data-variant="mint_current" data-image="case-mint-current.jpg" data-name="Mátový proud" type="button" aria-label="Mátový proud" aria-checked="false" role="radio"></button>
+              <button class="swatch" style="--swatch:#58ad63" data-variant="sage_calm" data-image="case-sage-calm.jpg" data-name="Šalvějový klid" type="button" aria-label="Šalvějový klid" aria-checked="false" role="radio"></button>
+              <button class="swatch is-active" style="--swatch:#f2ca28" data-variant="sun_spark" data-image="case-sun-spark.jpg" data-name="Luční med" type="button" aria-label="Luční med" aria-checked="true" role="radio"></button>
+              <button class="swatch" style="--swatch:#22a9cf" data-variant="lagoon_breeze" data-image="case-lagoon-breeze.jpg" data-name="Laguna" type="button" aria-label="Laguna" aria-checked="false" role="radio"></button>
+              <button class="swatch" style="--swatch:#315f91" data-variant="electric_blue" data-image="case-electric-blue.jpg" data-name="Hluboký oceán" type="button" aria-label="Hluboký oceán" aria-checked="false" role="radio"></button>
+              <span class="swatch-name" aria-live="polite">Luční med</span>
+            </div>
+            <p class="price" data-price="terminal_case">99 Kč<small>bez DPH</small></p>
+            <div class="card-actions">
+              <button class="product-open text-link" type="button">Prohlédnout detail</button>
+              <button class="add-button" type="button" data-open-product="terminal_case">Přidat další obal</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guide" id="pruvodce">
+      <header class="guide-title">
+        <p class="eyebrow">Těžký výběr?</p>
+        <h2>Nevíte, co vzít? <em>Začněte tady.</em></h2>
+      </header>
+      <div class="guide-grid">
+        <a class="guide-card dark" href="#produkty">
+          <span>01 · Základ</span><h3>Chci rovnou prodávat</h3><p>Vezměte terminál. Obal i držák můžete doplnit později.</p><strong>Ukázat terminál →</strong>
+        </a>
+        <button class="guide-card" type="button" data-open-product="terminal_case">
+          <span>02 · Ochrana</span><h3>Terminál mám pořád v ruce</h3><p>Obal jistí úchop a tlumí každodenní malé pády.</p><strong>Vybrat barvu →</strong>
+        </button>
+        <button class="guide-card photo-guide" type="button" data-open-product="belt_holster">
+          <span>03 · Volné ruce</span><h3>Běhám mezi stoly</h3><p>Kožené pouzdro drží terminál na pásku a nepřekáží.</p><strong>Prohlédnout držák →</strong>
+        </button>
+      </div>
+    </section>
+
+    <section class="aftercare">
+      <p class="eyebrow">Po zaplacení</p>
+      <h2>Nákup hotový. <em>Teď už jen krůček.</em></h2>
+      <p>Použijte stejný e-mail. Pokud už účet máte, přihlásíte se k němu a objednávku spojíme. Pokud ne, založíme nový — bez opisování nákupu.</p>
+    </section>
+  </main>
+
+  <aside class="cart" id="cart" aria-hidden="true" aria-label="Košík">
+    <div class="cart-head"><h2>Váš košík</h2><button id="cart-close" type="button" aria-label="Zavřít košík">×</button></div>
+    <div id="cart-lines" class="cart-lines"><p class="empty">Zatím je tu vzdušno.</p></div>
+    <div class="cart-footer">
+      <label class="terms"><input id="terms" type="checkbox"> <span>Souhlasím s <a href="/obchodni-podminky-eshop/" target="_blank" rel="noopener">obchodními podmínkami nákupu hardwaru</a>.</span></label>
+      <p class="draft-note" id="checkout-note" hidden>E-shopové VOP jsou zatím pracovní návrh. Platbu zapneme až po jejich schválení.</p>
+      <button class="checkout" id="checkout-button" type="button" disabled>Pokračovat k bezpečné platbě</button>
+      <a class="account-shortcut" data-account-link href="https://admin.hugopos.eu/login?start=1&amp;next=%2Fshop">Už máte účet? Přihlaste se — košík zůstane a adresu doplníme za vás.</a>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <dialog aria-labelledby="product-dialog-title" class="product-dialog" id="product-dialog">
+    <button class="dialog-close" type="button" aria-label="Zavřít detail">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <section class="success" id="success" hidden aria-live="polite">
+    <div><p class="eyebrow">Je to doma</p><h2>Nákup je hotový. 🎉</h2><p>Teď už jen krůček: přihlaste se nebo založte účet stejným e-mailem, který jste použili při nákupu.</p><a class="button primary" id="continue-account" href="#">Přihlásit nebo založit účet</a></div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="/" class="brand"><img src="../assets/hugo-icon.svg" alt=""><span>Hugo</span></a>
+          <p>Pokladna postavená kolem tvého telefonu, tvého menu a tvých hostů — ne naopak.</p>
+          <a href="mailto:hugo@piano.cz" class="foot-mail">hugo@piano.cz</a>
+          <a href="tel:+420770320248" class="foot-phone">Zavolej nám · +420 770 320 248 · Po–Ne 8–22</a>
+        </div>
+        <div class="foot-col">
+          <h5>Produkt</h5>
+          <a href="/#product">Zařízení</a>
+          <a href="/#brain">AI &amp; Brain</a>
+          <a href="/#setup">Spuštění</a>
+          <a href="/#pricing">Ceník</a>
+        </div>
+        <div class="foot-col">
+          <h5>Podpora</h5>
+          <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>
+          <a href="tel:+420770320248">+420 770 320 248</a>
+          <a href="https://status.hugopos.eu" target="_blank" rel="noopener">Stav služeb</a>
+          <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener">Přihlásit se</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <div>© 2026 Hugo · český produkt od Piana · <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
+        <div class="legal">
+          <a href="/vseobecne-obchodni-podminky">Všeobecné obchodní podmínky</a>
+          <a href="mailto:hugo@piano.cz">Kontakt</a>
+          <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
+          <a href="#" data-footer-lang>English</a>
+          <a href="/obchodni-podminky-eshop/">VOP e-shopu</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="shop-i18n.js" defer></script>
+  <script src="shop.js" defer></script>
+</body>
+</html>

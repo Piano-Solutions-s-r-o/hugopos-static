@@ -26,7 +26,7 @@
   /* type: 'html' (innerHTML) is default; multiple matches use all:true with an array */
   var ENTRIES = [
     /* NAV */
-    { sel: '.nav-links a', all: true, cs: ['Produkt', 'AI &amp; Brain', 'Spuštění', 'Ceník', 'Reference'] },
+    { sel: '.nav-links a', all: true, cs: ['Produkt', 'AI &amp; Brain', 'Spuštění', 'Ceník', 'E-shop', 'Reference'] },
     { sel: '.nav-cta .btn.btn-primary', cs: 'Začít zdarma ' + ARR },
 
     /* HERO */
