@@ -1,20 +1,21 @@
 (function () {
   'use strict';
 
-  var TERMINAL_IMAGE = '../assets/eshop/terminal-product-temp.jpg';
+  var TERMINAL_IMAGE = '../assets/eshop/terminal-hugo-yellow.png';
   var ASSET_ROOT = '../assets/eshop/';
   var caseVariants = [
-    { id: 'electric_blue', color: '#274b83', filter: 'none', names: { cs: 'Elektrická modř', en: 'Electric Blue' } },
-    { id: 'red_impulse', color: '#a7262f', filter: 'hue-rotate(105deg) saturate(1.35)', names: { cs: 'Rudý impuls', en: 'Red Impulse' } },
-    { id: 'sun_spark', color: '#e8c62c', filter: 'hue-rotate(175deg) saturate(1.4) brightness(1.18)', names: { cs: 'Sluneční jiskra', en: 'Sun Spark' } },
-    { id: 'night_ink', color: '#17191c', filter: 'grayscale(1) brightness(.42)', names: { cs: 'Noční inkoust', en: 'Night Ink' } },
-    { id: 'sage_calm', color: '#71806a', filter: 'hue-rotate(255deg) saturate(.55) brightness(.95)', names: { cs: 'Šalvějový klid', en: 'Sage Calm' } }
+    { id: 'red_impulse', color: '#d93645', image: 'case-red-impulse.jpg', names: { cs: 'Rudý impuls', en: 'Red Impulse' } },
+    { id: 'mint_current', color: '#16b89d', image: 'case-mint-current.jpg', names: { cs: 'Mátový proud', en: 'Mint Current' } },
+    { id: 'sage_calm', color: '#58ad63', image: 'case-sage-calm.jpg', names: { cs: 'Šalvějový klid', en: 'Sage Calm' } },
+    { id: 'sun_spark', color: '#f2ca28', image: 'case-sun-spark.jpg', names: { cs: 'Luční med', en: 'Meadow Honey' } },
+    { id: 'lagoon_breeze', color: '#22a9cf', image: 'case-lagoon-breeze.jpg', names: { cs: 'Laguna', en: 'Lagoon' } },
+    { id: 'electric_blue', color: '#315f91', image: 'case-electric-blue.jpg', names: { cs: 'Hluboký oceán', en: 'Deep Ocean' } }
   ];
   var products = {
     pax_a920: {
       id: 'pax_a920', name: 'Terminál Hugo', kicker: 'All-in-one', image: TERMINAL_IMAGE,
       lead: 'Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.',
-      gallery: [TERMINAL_IMAGE, ASSET_ROOT + 'terminal-cafe-temp.jpg', ASSET_ROOT + 'case-blue-temp.jpg'],
+      gallery: [TERMINAL_IMAGE, ASSET_ROOT + 'terminal-cafe-temp.jpg', ASSET_ROOT + 'case-sun-spark.jpg'],
       specs: [['Model', 'PAX A920 Pro'], ['Připojení', 'Wi-Fi · 4G · Bluetooth'], ['Použití', 'Pokladna · platby · účtenky']],
       available: false, price: null
     },
@@ -26,18 +27,23 @@
       available: false, price: null
     },
     terminal_case: {
-      id: 'terminal_case', name: 'Obal na terminál', kicker: 'Každý den jinak', image: ASSET_ROOT + 'case-blue-temp.jpg',
+      id: 'terminal_case', name: 'Další obal na terminál', kicker: 'Accessories', image: ASSET_ROOT + 'case-sun-spark.jpg',
       lead: 'Pružný ochranný obal dává terminálu jistější úchop a vaší obsluze vlastní barvu.',
-      gallery: [ASSET_ROOT + 'case-blue-temp.jpg', ASSET_ROOT + 'terminal-cafe-temp.jpg'],
-      specs: [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Pět odstínů']],
+      gallery: [ASSET_ROOT + 'case-sun-spark.jpg', ASSET_ROOT + 'case-red-impulse.jpg', ASSET_ROOT + 'case-electric-blue.jpg'],
+      specs: [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']],
+      available: false, price: null
+    },
+    terminal_case_extra: {
+      id: 'terminal_case_extra', name: 'Další obal na terminál', image: ASSET_ROOT + 'case-sun-spark.jpg',
       available: false, price: null
     }
   };
   var CART_STORAGE_KEY = 'hugo-eshop-cart-v1';
   var cart = [];
-  var selectedCaseVariant = 'sun_spark';
+  var selectedTerminalCaseVariant = 'sun_spark';
+  var selectedExtraCaseVariant = 'sun_spark';
   var checkoutEnabled = false;
-  var legal = { version: 'draft-2026-08-31', status: 'draft' };
+  var legal = { version: '2026-09-15', status: 'published' };
 
   function cartIsOrderable(lines, catalogue) {
     return lines.length > 0 && lines.every(function (line) {
@@ -46,36 +52,47 @@
     });
   }
 
-  function serializeCartHandoff(lines, caseVariant) {
+  function serializeCartHandoff(lines, caseVariant, extraCaseVariant) {
     var allowedVariant = caseVariants.some(function (item) { return item.id === caseVariant; })
       ? caseVariant
       : 'sun_spark';
+    var allowedExtraVariant = caseVariants.some(function (item) { return item.id === extraCaseVariant; })
+      ? extraCaseVariant
+      : allowedVariant;
     var seen = {};
     var safeCart = (Array.isArray(lines) ? lines : []).filter(function (line) {
-      if (!line || (line.id !== 'pax_a920' && line.id !== 'belt_holster') || seen[line.id]) return false;
+      if (!line || !['pax_a920', 'belt_holster', 'terminal_case_extra'].includes(line.id) || seen[line.id]) return false;
       seen[line.id] = true;
       return true;
-    }).map(function (line) { return { id: line.id }; });
-    return JSON.stringify({ version: 1, caseVariant: allowedVariant, cart: safeCart });
+    }).map(function (line) {
+      var qty = Number.isInteger(line.qty) && line.qty >= 1 && line.qty <= 99 ? line.qty : 1;
+      return { id: line.id, qty: qty };
+    });
+    return JSON.stringify({ version: 1, caseVariant: allowedVariant, extraCaseVariant: allowedExtraVariant, cart: safeCart });
   }
 
   function parseCartHandoff(value) {
     if (typeof value !== 'string' || value.length === 0 || value.length > 1000) return null;
     try {
       var parsed = JSON.parse(value);
-      if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.cart) || parsed.cart.length > 2) return null;
+      if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.cart) || parsed.cart.length > 3) return null;
       var seen = {};
       var safeCart = [];
       for (var i = 0; i < parsed.cart.length; i += 1) {
         var line = parsed.cart[i];
-        if (!line || (line.id !== 'pax_a920' && line.id !== 'belt_holster') || seen[line.id]) return null;
+        if (!line || !['pax_a920', 'belt_holster', 'terminal_case_extra'].includes(line.id) || seen[line.id]) return null;
+        var qty = line.qty === undefined ? 1 : line.qty;
+        if (!Number.isInteger(qty) || qty < 1 || qty > 99) return null;
         seen[line.id] = true;
-        safeCart.push({ id: line.id });
+        safeCart.push({ id: line.id, qty: qty });
       }
       var caseVariant = caseVariants.some(function (item) { return item.id === parsed.caseVariant; })
         ? parsed.caseVariant
         : 'sun_spark';
-      return { caseVariant: caseVariant, cart: safeCart };
+      var extraCaseVariant = caseVariants.some(function (item) { return item.id === parsed.extraCaseVariant; })
+        ? parsed.extraCaseVariant
+        : caseVariant;
+      return { caseVariant: caseVariant, extraCaseVariant: extraCaseVariant, cart: safeCart };
     } catch (_error) {
       return null;
     }
@@ -97,6 +114,7 @@
   var scrim = document.getElementById('scrim');
   var terms = document.getElementById('terms');
   var checkoutButton = document.getElementById('checkout-button');
+  var checkoutNote = document.getElementById('checkout-note');
   var dialog = document.getElementById('product-dialog');
   var dialogContent = document.getElementById('dialog-content');
   var productOrder = ['pax_a920', 'belt_holster', 'terminal_case'];
@@ -114,9 +132,12 @@
       var restoredVariant = caseVariants.some(function (item) { return item.id === stored.caseVariant; })
         ? stored.caseVariant
         : 'sun_spark';
-      selectedCaseVariant = restoredVariant;
-      cart = stored.cart.filter(function (line) { return line && (line.id === 'pax_a920' || line.id === 'belt_holster'); })
-        .map(function (line) { return { id: line.id, key: line.id, variant: null, variantName: null }; });
+      selectedTerminalCaseVariant = restoredVariant;
+      selectedExtraCaseVariant = caseVariants.some(function (item) { return item.id === stored.extraCaseVariant; })
+        ? stored.extraCaseVariant
+        : restoredVariant;
+      cart = stored.cart.filter(function (line) { return line && ['pax_a920', 'belt_holster', 'terminal_case_extra'].includes(line.id); })
+        .map(function (line) { return { id: line.id, key: line.id, qty: line.qty || 1, variant: null, variantName: null }; });
       syncCaseLine();
     } catch (_error) {}
   }
@@ -124,8 +145,9 @@
   function persistCart() {
     try {
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify({
-        caseVariant: selectedCaseVariant,
-        cart: cart.filter(function (line) { return line.id !== 'terminal_case'; }).map(function (line) { return { id: line.id }; }),
+        caseVariant: selectedTerminalCaseVariant,
+        extraCaseVariant: selectedExtraCaseVariant,
+        cart: cart.filter(function (line) { return line.id !== 'terminal_case'; }).map(function (line) { return { id: line.id, qty: line.qty || 1 }; }),
       }));
     } catch (_error) {}
   }
@@ -165,6 +187,7 @@
       .then(function (data) {
         checkoutEnabled = data.checkoutEnabled === true;
         legal = data.legal || legal;
+        checkoutNote.hidden = legal.status === 'published';
         (data.products || []).forEach(function (item) {
           if (!products[item.id]) return;
           products[item.id].available = item.available === true;
@@ -186,17 +209,22 @@
   }
 
   function renderCataloguePrices() {
-    Object.keys(products).forEach(function (id) {
+    ['pax_a920', 'belt_holster', 'terminal_case'].forEach(function (id) {
       var product = products[id];
       var priceNode = document.querySelector('[data-price="' + id + '"]');
       if (!priceNode) return;
+      if (id === 'terminal_case') {
+        var extra = products.terminal_case_extra;
+        priceNode.innerHTML = extra.available
+          ? money(extra.price, extra.currency) + '<small>' + t('priceNote') + '</small>'
+          : t('unavailable');
+        return;
+      }
       if (!product.available) {
         priceNode.textContent = t('unavailable');
         return;
       }
-      priceNode.innerHTML = id === 'terminal_case'
-        ? t('freeCase') + '<small>' + t('freeHint') + '</small>'
-        : money(product.price, product.currency) + '<small>' + (id === 'belt_holster' ? t('priceNoteInclusive') : t('priceNote')) + '</small>';
+      priceNode.innerHTML = money(product.price, product.currency) + '<small>' + t('priceNote') + '</small>';
     });
   }
 
@@ -216,21 +244,28 @@
 
   function renderCart() {
     persistCart();
-    document.getElementById('bag-count').textContent = String(cart.length);
+    var cartCount = cart.reduce(function (sum, line) { return sum + (line.qty || 1); }, 0);
+    document.getElementById('bag-count').textContent = String(cartCount);
     if (!cart.length) {
       cartLines.innerHTML = '<p class="empty">' + t('empty') + '</p>';
     } else {
       cartLines.innerHTML = cart.map(function (line) {
         var p = products[line.id];
-        var name = productValue(line.id, 'cardTitles', p.name);
+        var name = line.id === 'terminal_case'
+          ? t('freeCase')
+          : (line.id === 'terminal_case_extra' ? t('extraCaseLabel') : productValue(line.id, 'cardTitles', p.name));
         var variant = line.variantName ? '<small>' + line.variantName + '</small>' : '';
         var price = !p.available || !Number.isInteger(p.price)
           ? t('unavailable')
           : (line.id === 'terminal_case'
             ? t('freeIncluded')
-            : money(p.price, p.currency) + ' ' + (line.id === 'belt_holster' ? t('inclVat') : t('exclVat')));
+            : (line.qty > 1 ? line.qty + ' × ' : '') + money(p.price, p.currency) + ' ' + t('exclVat'));
         var remove = line.id === 'terminal_case' ? '' : '<button type="button" data-remove="' + line.key + '" aria-label="' + t('remove') + ' ' + name + '">×</button>';
-        return '<div class="cart-line"><img src="' + p.image + '" alt=""><div><h3>' + name + '</h3>' + variant + '<p>' + price + '</p></div>' + remove + '</div>';
+        var selectedImage = caseVariants.find(function (item) { return item.id === line.variant; });
+        var image = selectedImage && ['terminal_case', 'terminal_case_extra'].includes(line.id)
+          ? ASSET_ROOT + selectedImage.image
+          : p.image;
+        return '<div class="cart-line"><img src="' + image + '" alt=""><div><h3>' + name + '</h3>' + variant + '<p>' + price + '</p></div>' + remove + '</div>';
       }).join('');
     }
     updateAccountLinks();
@@ -240,7 +275,7 @@
   function updateAccountLinks() {
     var cartPath = '/shop';
     if (cart.length) {
-      cartPath += '?eshop_cart=' + encodeURIComponent(serializeCartHandoff(cart, selectedCaseVariant));
+      cartPath += '?eshop_cart=' + encodeURIComponent(serializeCartHandoff(cart, selectedTerminalCaseVariant, selectedExtraCaseVariant));
     }
     document.querySelectorAll('[data-account-link]').forEach(function (link) {
       link.href = adminBase() + '/login?start=1&next=' + encodeURIComponent(cartPath);
@@ -261,8 +296,18 @@
   function addProduct(id) {
     if (!canAddProduct(id)) return;
     if (id === 'terminal_case') return;
-    if (!cart.some(function (line) { return line.id === id; })) {
-      cart.push({ id: id, key: id, variant: null, variantName: null });
+    var existing = cart.find(function (line) { return line.id === id; });
+    if (existing && id === 'terminal_case_extra') {
+      existing.qty = Math.min(99, (existing.qty || 1) + 1);
+    } else if (!existing) {
+      var selected = caseVariants.find(function (variant) { return variant.id === selectedExtraCaseVariant; });
+      cart.push({
+        id: id,
+        key: id,
+        qty: 1,
+        variant: id === 'terminal_case_extra' ? selected.id : null,
+        variantName: id === 'terminal_case_extra' ? caseVariantName(selected) : null
+      });
     }
     if (id === 'pax_a920') {
       syncCaseLine();
@@ -272,13 +317,20 @@
   }
 
   function syncCaseLine() {
+    var includedVariant = caseVariants.find(function (item) { return item.id === selectedTerminalCaseVariant; });
+    var extraVariant = caseVariants.find(function (item) { return item.id === selectedExtraCaseVariant; });
+    cart.forEach(function (line) {
+      if (line.id === 'terminal_case_extra') {
+        line.variant = extraVariant.id;
+        line.variantName = caseVariantName(extraVariant);
+      }
+    });
     if (!cart.some(function (line) { return line.id === 'pax_a920'; })) {
       cart = cart.filter(function (line) { return line.id !== 'terminal_case'; });
       return;
     }
-    var variant = caseVariants.find(function (item) { return item.id === selectedCaseVariant; });
     cart = cart.filter(function (line) { return line.id !== 'terminal_case'; });
-    cart.push({ id: 'terminal_case', key: 'terminal_case', variant: variant.id, variantName: caseVariantName(variant) });
+    cart.push({ id: 'terminal_case', key: 'terminal_case', qty: cart.find(function (line) { return line.id === 'pax_a920'; }).qty || 1, variant: includedVariant.id, variantName: caseVariantName(includedVariant) });
   }
 
   function openProduct(id) {
@@ -288,22 +340,29 @@
     var lead = productValue(id, 'productLeads', p.lead);
     var productSpecs = productValue(id, 'productSpecs', p.specs);
     var kicker = productValue(id, 'cardKickers', p.kicker);
-    var gallery = p.gallery.map(function (src, index) { return '<img src="' + src + '" alt="' + (index ? name + (window.HUGO_LANG === 'en' ? ' in use' : ' v provozu') : name) + '">'; }).join('');
+    var caseKind = p.id === 'pax_a920' ? 'included' : p.id === 'terminal_case' ? 'extra' : null;
+    var selectedId = caseKind === 'included' ? selectedTerminalCaseVariant : selectedExtraCaseVariant;
+    var selected = caseVariants.find(function (variant) { return variant.id === selectedId; }) || caseVariants[3];
+    var gallerySources = caseKind
+      ? [ASSET_ROOT + selected.image].concat(p.id === 'pax_a920' ? [TERMINAL_IMAGE, ASSET_ROOT + 'terminal-cafe-temp.jpg'] : p.gallery.slice(1))
+      : p.gallery;
+    var gallery = gallerySources.map(function (src, index) { return '<img src="' + src + '" alt="' + (index ? name + (window.HUGO_LANG === 'en' ? ' in use' : ' v provozu') : name) + '">'; }).join('');
     var specs = productSpecs.map(function (row) { return '<li><span>' + row[0] + '</span><strong>' + row[1] + '</strong></li>'; }).join('');
     var swatches = '';
-    if (p.id === 'terminal_case') {
-      var selected = caseVariants.find(function (variant) { return variant.id === selectedCaseVariant; }) || caseVariants[0];
+    if (caseKind) {
       swatches = '<div class="swatches dialog-swatches" role="radiogroup" aria-label="' + t('caseColour') + '">' + caseVariants.map(function (variant) {
         var active = variant.id === selected.id;
         var variantName = caseVariantName(variant);
-        return '<button class="swatch' + (active ? ' is-active' : '') + '" style="--swatch:' + variant.color + '" data-variant="' + variant.id + '" data-filter="' + variant.filter + '" type="button" aria-label="' + variantName + '" aria-checked="' + (active ? 'true' : 'false') + '" role="radio"></button>';
+        return '<button class="swatch' + (active ? ' is-active' : '') + '" style="--swatch:' + variant.color + '" data-variant="' + variant.id + '" data-image="' + variant.image + '" type="button" aria-label="' + variantName + '" aria-checked="' + (active ? 'true' : 'false') + '" role="radio"></button>';
       }).join('') + '<span class="swatch-name" aria-live="polite">' + caseVariantName(selected) + '</span></div>';
     }
     var button = p.id === 'terminal_case'
-      ? '<button class="add-button" data-use-case type="button">' + t('useColour') + '</button>'
+      ? (canAddProduct('terminal_case_extra')
+        ? '<button class="add-button" data-add-case type="button">' + t('addExtraCase') + '</button>'
+        : '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>')
       : (canAddProduct(p.id) ? '<button class="add-button" data-dialog-add="' + p.id + '" type="button">' + t('addToCart') + '</button>' : '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>');
-    dialogContent.innerHTML = '<div class="dialog-layout"' + (p.id === 'terminal_case' ? ' data-case-scope' : '') + '><div class="dialog-gallery">' + gallery.replace('<img ', '<img data-case-image ') + '</div><div class="dialog-copy"><p class="eyebrow">' + kicker + '</p><h2 id="product-dialog-title">' + name + '</h2><p class="lead">' + lead + '</p>' + swatches + '<ul class="specs">' + specs + '</ul>' + button + '</div></div>';
-    if (p.id === 'terminal_case') previewSwatch(dialogContent.querySelector('[data-variant="' + selectedCaseVariant + '"]'));
+    dialogContent.innerHTML = '<div class="dialog-layout"' + (caseKind ? ' data-case-scope data-case-kind="' + caseKind + '"' : '') + '><div class="dialog-gallery">' + gallery.replace('<img ', '<img data-case-image ') + '</div><div class="dialog-copy"><p class="eyebrow">' + kicker + '</p><h2 id="product-dialog-title">' + name + '</h2><p class="lead">' + lead + '</p>' + swatches + '<ul class="specs">' + specs + '</ul>' + button + '</div></div>';
+    if (caseKind) previewSwatch(dialogContent.querySelector('[data-variant="' + selected.id + '"]'));
     dialog.showModal();
   }
 
@@ -315,15 +374,17 @@
     var name = caseVariantName(variant);
     group.querySelector('.swatch-name').textContent = name;
     var image = button.closest('[data-case-scope]').querySelector('[data-case-image]');
-    image.style.filter = button.dataset.filter;
+    image.src = ASSET_ROOT + button.dataset.image;
     image.alt = name + ' — ' + t('caseAlt');
     if (button.closest('#dialog-content')) dialogContent.dataset.previewVariant = variant.id;
   }
 
   function selectSwatch(button) {
-    selectedCaseVariant = button.dataset.variant;
-    document.querySelectorAll('.swatch').forEach(function (node) {
-      var active = node.dataset.variant === selectedCaseVariant;
+    var kind = button.closest('[data-case-kind]').dataset.caseKind;
+    if (kind === 'included') selectedTerminalCaseVariant = button.dataset.variant;
+    else selectedExtraCaseVariant = button.dataset.variant;
+    document.querySelectorAll('[data-case-kind="' + kind + '"] .swatch').forEach(function (node) {
+      var active = node.dataset.variant === button.dataset.variant;
       node.classList.toggle('is-active', active);
       node.setAttribute('aria-checked', active ? 'true' : 'false');
       if (active) previewSwatch(node);
@@ -336,7 +397,7 @@
     if (checkoutButton.disabled) return;
     checkoutButton.disabled = true;
     checkoutButton.textContent = t('opening');
-    var checkoutPayload = { items: cart.map(function (line) { return { id: line.id, qty: 1, variant: line.variant || undefined }; }), termsAccepted: true, termsVersion: legal.version, locale: window.HUGO_LANG };
+    var checkoutPayload = { items: cart.map(function (line) { return { id: line.id, qty: line.qty || 1, variant: line.variant || undefined }; }), termsAccepted: true, termsVersion: legal.version, locale: window.HUGO_LANG };
     var idempotencyKey = crypto.randomUUID();
     if (window.self !== window.top && new URLSearchParams(location.search).get('embedded') === '1') {
       window.parent.postMessage({ type: 'hugo:eshop-checkout', payload: checkoutPayload, idempotencyKey: idempotencyKey }, adminBase());
@@ -348,7 +409,7 @@
       body: JSON.stringify(checkoutPayload)
     }).then(function (response) { return response.json().then(function (body) { if (!response.ok) throw new Error(t('checkoutError')); return body; }); })
       .then(function (body) { location.assign(body.url); })
-      .catch(function (error) { document.getElementById('checkout-note').textContent = error.message; checkoutButton.textContent = t('checkout'); updateCheckoutState(); });
+      .catch(function (error) { checkoutNote.hidden = false; checkoutNote.textContent = error.message; checkoutButton.textContent = t('checkout'); updateCheckoutState(); });
   }
 
   function showSuccessIfNeeded() {
@@ -388,9 +449,10 @@
     if (guide) openProduct(guide.dataset.openProduct);
     var dialogAdd = event.target.closest('[data-dialog-add]');
     if (dialogAdd) dialog.close();
-    if (event.target.closest('[data-use-case]')) {
-      var preview = dialogContent.querySelector('[data-variant="' + (dialogContent.dataset.previewVariant || selectedCaseVariant) + '"]');
+    if (event.target.closest('[data-add-case]')) {
+      var preview = dialogContent.querySelector('[data-variant="' + (dialogContent.dataset.previewVariant || selectedExtraCaseVariant) + '"]');
       selectSwatch(preview);
+      addProduct('terminal_case_extra');
       dialog.close();
     }
     var swatch = event.target.closest('.swatch');
@@ -411,12 +473,13 @@
   updateSiteNav();
   window.addEventListener('message', function (event) {
     if (event.origin !== adminBase() || event.data?.type !== 'hugo:eshop-checkout-error') return;
-    document.getElementById('checkout-note').textContent = t('checkoutError');
+    checkoutNote.hidden = false;
+    checkoutNote.textContent = t('checkoutError');
     checkoutButton.textContent = t('checkout');
     updateCheckoutState();
   });
   document.addEventListener('hugo:language', function () {
-    document.querySelectorAll('.case-card .swatch').forEach(function (node) {
+    document.querySelectorAll('[data-case-scope] .swatch').forEach(function (node) {
       var variant = caseVariants.find(function (item) { return item.id === node.dataset.variant; });
       if (variant) node.setAttribute('aria-label', caseVariantName(variant));
     });
@@ -424,8 +487,7 @@
     renderCataloguePrices();
     renderCart();
     if (dialog.open) dialog.close();
-    var active = document.querySelector('.case-card .swatch.is-active');
-    if (active) previewSwatch(active);
+    document.querySelectorAll('[data-case-scope] .swatch.is-active').forEach(previewSwatch);
   });
   restoreCart();
   loadCatalogue();
