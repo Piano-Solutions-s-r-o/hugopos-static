@@ -1,6 +1,5 @@
 (function () {
   'use strict';
-
   var TERMINAL_IMAGE = '../assets/eshop/terminal-hugo-yellow.png';
   var ASSET_ROOT = '../assets/eshop/';
   var caseVariants = [
@@ -15,8 +14,8 @@
     pax_a920: {
       id: 'pax_a920', name: 'Terminál Hugo', kicker: 'All-in-one', image: TERMINAL_IMAGE,
       lead: 'Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.',
-      gallery: [TERMINAL_IMAGE, ASSET_ROOT + 'terminal-cafe-temp.jpg', ASSET_ROOT + 'case-sun-spark.jpg'],
-      specs: [['Model', 'PAX A920 Pro'], ['Připojení', 'Wi-Fi · 4G · Bluetooth'], ['Použití', 'Pokladna · platby · účtenky']],
+      gallery: [TERMINAL_IMAGE, ASSET_ROOT + 'terminal-in-use.jpg', ASSET_ROOT + 'terminal-hugo-views.jpg'],
+      specs: [['Model', 'PAX A920 Pro Core'], ['Systém', 'Android 10 · čtyřjádrový ARM Cortex A53'], ['Displej', '5,5″ kapacitní dotykový'], ['Platby', 'Čip a PIN · bezkontaktní NFC · magnetický proužek'], ['Připojení', '4G · Wi-Fi · Bluetooth'], ['Výdrž a tisk', 'Baterie 5 150 mAh · vestavěná termální tiskárna']],
       available: false, price: null
     },
     belt_holster: {
@@ -43,6 +42,7 @@
   var selectedTerminalCaseVariant = 'sun_spark';
   var selectedExtraCaseVariant = 'sun_spark';
   var selectedDeliveryMethod = 'dpd';
+  var cartStep = 'items';
   var delivery = {};
   var checkoutEnabled = false;
   var legal = { version: '2026-09-15', status: 'published' };
@@ -57,22 +57,24 @@
     });
   }
 
+  function gallerySourcesFor(product, caseKind, selected) {
+    return caseKind === 'extra' ? [ASSET_ROOT + selected.image].concat(product.gallery.slice(1)) : product.gallery;
+  }
   var serializeCartHandoff = handoff.serializeCartHandoff;
   var parseCartHandoff = handoff.parseCartHandoff;
-
   // Keep the availability rule independently testable without booting a DOM.
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-      cartIsOrderable: cartIsOrderable,
-      parseCartHandoff: parseCartHandoff,
-      serializeCartHandoff: serializeCartHandoff
-    };
+    module.exports = { cartIsOrderable, gallerySourcesFor, parseCartHandoff, serializeCartHandoff };
     return;
   }
 
   var bagButton = document.getElementById('bag-button');
   var cartPanel = document.getElementById('cart');
   var cartLines = document.getElementById('cart-lines');
+  var cartItemsStep = document.getElementById('cart-items-step');
+  var cartReviewStep = document.getElementById('cart-review-step');
+  var cartBack = document.getElementById('cart-back');
+  var cartTitle = cartPanel.querySelector('.cart-head h2'), reviewButton = document.getElementById('review-button');
   var scrim = document.getElementById('scrim');
   var terms = document.getElementById('terms');
   var checkoutButton = document.getElementById('checkout-button');
@@ -195,10 +197,20 @@
   }
 
   function openCart() {
+    showCartStep('items');
     cartPanel.classList.add('is-open');
     cartPanel.setAttribute('aria-hidden', 'false');
     bagButton.setAttribute('aria-expanded', 'true');
     scrim.hidden = false;
+  }
+
+  function showCartStep(step) {
+    var reviewing = step === 'review' && cartIsOrderable(cart, products);
+    cartStep = reviewing ? 'review' : 'items';
+    cartItemsStep.hidden = reviewing;
+    cartReviewStep.hidden = !reviewing;
+    cartBack.hidden = !reviewing;
+    cartTitle.textContent = t(reviewing ? 'reviewTitle' : 'cartTitle');
   }
 
   function closeCart() {
@@ -213,6 +225,7 @@
     var cartCount = cart.reduce(function (sum, line) { return sum + (line.qty || 1); }, 0);
     document.getElementById('bag-count').textContent = String(cartCount);
     if (!cart.length) {
+      showCartStep('items');
       cartLines.innerHTML = '<p class="empty">' + t('empty') + '</p>';
     } else {
       cartLines.innerHTML = cart.map(function (line) {
@@ -244,7 +257,9 @@
       input.checked = input.value === selectedDeliveryMethod;
       input.disabled = option?.available !== true;
       var price = input.closest('label').querySelector('[data-delivery-price]');
-      price.textContent = option?.available === true ? money(option.amountMinor, option.currency) : t('unavailable');
+      price.textContent = option?.available === true
+        ? money(option.amountMinor, option.currency) + (input.value === 'dpd' ? ' ' + t('exclVat') : '')
+        : t('unavailable');
     });
   }
 
@@ -260,6 +275,7 @@
   }
 
   function updateCheckoutState() {
+    reviewButton.disabled = !cartIsOrderable(cart, products);
     checkoutButton.disabled = !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products) || delivery[selectedDeliveryMethod]?.available !== true;
   }
 
@@ -319,9 +335,7 @@
     var caseKind = p.id === 'pax_a920' ? 'included' : p.id === 'terminal_case' ? 'extra' : null;
     var selectedId = caseKind === 'included' ? selectedTerminalCaseVariant : selectedExtraCaseVariant;
     var selected = caseVariants.find(function (variant) { return variant.id === selectedId; }) || caseVariants[3];
-    var gallerySources = caseKind
-      ? [ASSET_ROOT + selected.image].concat(p.id === 'pax_a920' ? [TERMINAL_IMAGE, ASSET_ROOT + 'terminal-cafe-temp.jpg'] : p.gallery.slice(1))
-      : p.gallery;
+    var gallerySources = gallerySourcesFor(p, caseKind, selected);
     var gallery = gallerySources.map(function (src, index) { return '<img src="' + src + '" alt="' + (index ? name + (window.HUGO_LANG === 'en' ? ' in use' : ' v provozu') : name) + '">'; }).join('');
     var specs = productSpecs.map(function (row) { return '<li><span>' + row[0] + '</span><strong>' + row[1] + '</strong></li>'; }).join('');
     var swatches = '';
@@ -337,7 +351,8 @@
         ? '<button class="add-button" data-add-case type="button">' + t('addExtraCase') + '</button>'
         : '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>')
       : (canAddProduct(p.id) ? '<button class="add-button" data-dialog-add="' + p.id + '" type="button">' + t('addToCart') + '</button>' : '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>');
-    dialogContent.innerHTML = '<div class="dialog-layout"' + (caseKind ? ' data-case-scope data-case-kind="' + caseKind + '"' : '') + '><div class="dialog-gallery">' + gallery.replace('<img ', '<img data-case-image ') + '</div><div class="dialog-copy"><p class="eyebrow">' + kicker + '</p><h2 id="product-dialog-title">' + name + '</h2><p class="lead">' + lead + '</p>' + swatches + '<ul class="specs">' + specs + '</ul>' + button + '</div></div>';
+    var interactiveGallery = caseKind === 'extra' ? gallery.replace('<img ', '<img data-case-image ') : gallery;
+    dialogContent.innerHTML = '<div class="dialog-layout"' + (caseKind ? ' data-case-scope data-case-kind="' + caseKind + '"' : '') + '><div class="dialog-gallery">' + interactiveGallery + '</div><div class="dialog-copy"><p class="eyebrow">' + kicker + '</p><h2 id="product-dialog-title">' + name + '</h2><p class="lead">' + lead + '</p>' + swatches + '<ul class="specs">' + specs + '</ul>' + button + '</div></div>';
     if (caseKind) previewSwatch(dialogContent.querySelector('[data-variant="' + selected.id + '"]'));
     dialog.showModal();
   }
@@ -350,8 +365,10 @@
     var name = caseVariantName(variant);
     group.querySelector('.swatch-name').textContent = name;
     var image = button.closest('[data-case-scope]').querySelector('[data-case-image]');
-    image.src = ASSET_ROOT + button.dataset.image;
-    image.alt = name + ' — ' + t('caseAlt');
+    if (image) {
+      image.src = ASSET_ROOT + button.dataset.image;
+      image.alt = name + ' — ' + t('caseAlt');
+    }
     if (button.closest('#dialog-content')) dialogContent.dataset.previewVariant = variant.id;
   }
 
@@ -437,6 +454,8 @@
   document.addEventListener('mouseover', function (event) { var swatch = event.target.closest('.swatch'); if (swatch) previewSwatch(swatch); });
   document.addEventListener('focusin', function (event) { var swatch = event.target.closest('.swatch'); if (swatch) previewSwatch(swatch); });
   bagButton.addEventListener('click', openCart);
+  reviewButton.addEventListener('click', function () { showCartStep('review'); });
+  cartBack.addEventListener('click', function () { showCartStep('items'); });
   document.getElementById('cart-close').addEventListener('click', closeCart);
   scrim.addEventListener('click', closeCart);
   terms.addEventListener('change', updateCheckoutState);
@@ -470,6 +489,7 @@
     renderCataloguePrices();
     renderDelivery();
     renderCart();
+    showCartStep(cartStep);
     if (dialog.open) dialog.close();
     document.querySelectorAll('[data-case-scope] .swatch.is-active').forEach(previewSwatch);
   });

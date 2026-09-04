@@ -14,7 +14,7 @@
       cardTitles: ['Terminál Hugo', 'Kožené pouzdro na pásek', 'Další obal na terminál'],
       cardDescriptions: ['Platby, účtenka a pokladna v jedné lehké krabičce.', 'Terminál po ruce, ruce připravené na tác a plný plac.', 'Měkčí dopad, jistější úchop a barva, která patří k vám.'],
       productLeads: ['Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.', 'Měkká kožená kapsa drží terminál u těla, ale nechá ho vytáhnout jedním pohybem. Na plac, zahrádku i event.', 'Pružný ochranný obal dává terminálu jistější úchop a vaší obsluze vlastní barvu.'],
-      productSpecs: [[['Model', 'PAX A920 Pro'], ['Připojení', 'Wi-Fi · 4G · Bluetooth'], ['Použití', 'Pokladna · platby · účtenky']], [['Materiál', 'Pravá kůže · finální specifikaci doplníme'], ['Uchycení', 'Poutko na pásek'], ['Kompatibilita', 'Terminál Hugo']], [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']]],
+      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['Systém', 'Android 10 · čtyřjádrový ARM Cortex A53'], ['Displej', '5,5″ kapacitní dotykový'], ['Platby', 'Čip a PIN · bezkontaktní NFC · magnetický proužek'], ['Připojení', '4G · Wi-Fi · Bluetooth'], ['Výdrž a tisk', 'Baterie 5 150 mAh · vestavěná termální tiskárna']], [['Materiál', 'Pravá kůže · finální specifikaci doplníme'], ['Uchycení', 'Poutko na pásek'], ['Kompatibilita', 'Terminál Hugo']], [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']]],
       details: 'Prohlédnout detail', add: 'Přidat', chooseColour: 'Přidat další obal', freeCase: 'První obal v ceně terminálu', includedCaseNote: 'Jeden obal v ceně terminálu',
       guideEyebrow: 'Těžký výběr?', guideTitle: 'Nevíte, co vzít? <em>Začněte tady.</em>',
       guideSteps: ['01 · Základ', '02 · Ochrana', '03 · Volné ruce'],
@@ -23,9 +23,9 @@
       guideLinks: ['Ukázat terminál →', 'Vybrat barvu →', 'Prohlédnout pouzdro →'],
       afterEyebrow: 'Po zaplacení', afterTitle: 'Nákup hotový. <em>Teď už jen krůček.</em>',
       afterText: 'Použijte stejný e-mail. Pokud už účet máte, přihlásíte se k němu a objednávku spojíme. Pokud ne, založíme nový — bez opisování nákupu.',
-      cartTitle: 'Váš košík', deliveryTitle: 'Doprava', deliveryOptions: ['Doprava DPD', 'Osobní odběr'], termsPrefix: 'Souhlasím s', termsLink: 'obchodními podmínkami nákupu hardwaru',
+      cartTitle: 'Váš košík', reviewTitle: 'Rekapitulace objednávky', reviewOrder: 'Pokračovat k objednávce', backToCart: 'Zpět do košíku', deliveryTitle: 'Doprava', deliveryOptions: ['Doprava DPD', 'Osobní odběr'], termsPrefix: 'Souhlasím s', termsLink: 'obchodními podmínkami nákupu hardwaru',
       draft: 'E-shopové VOP jsou zatím pracovní návrh. Platbu zapneme až po jejich schválení.',
-      checkout: 'Pokračovat k bezpečné platbě', accountShortcut: 'Už máte účet? Přihlaste se — košík zůstane a adresu doplníme za vás.',
+      checkout: 'Pokračovat k bezpečné platbě', accountShortcut: 'Už máte účet? Přihlaste se. Košík zůstane a adresu doplníme za vás.',
       successEyebrow: 'Je to doma', successTitle: 'Nákup je hotový. 🎉',
       successText: 'Teď už jen krůček: přihlaste se nebo založte účet stejným e-mailem, který jste použili při nákupu.',
       finishAccount: 'Přihlásit nebo založit účet', successLinkedTitle: 'Nákup je hotový a propojený. 🎉',
@@ -57,7 +57,7 @@
       cardTitles: ['Hugo terminal', 'Leather belt holster', 'Additional terminal case'],
       cardDescriptions: ['Payments, receipts and POS in one light device.', 'Your terminal close by, your hands free for a tray and a busy floor.', 'A softer landing, safer grip and a colour that feels like yours.'],
       productLeads: ['A light terminal running your POS, payments and receipts. No second box and no cable clutter.', 'A soft leather pocket keeps the terminal close and releases it in one movement. Built for the floor, terrace and events.', 'A flexible protective case gives the terminal a safer grip and your team a colour of their own.'],
-      productSpecs: [[['Model', 'PAX A920 Pro'], ['Connectivity', 'Wi-Fi · 4G · Bluetooth'], ['Use', 'POS · payments · receipts']], [['Material', 'Genuine leather · final specification to follow'], ['Attachment', 'Belt loop'], ['Compatibility', 'Hugo terminal']], [['Surface', 'Soft non-slip finish'], ['Protection', 'Edges and back'], ['Colours', 'Six shades']]],
+      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['System', 'Android 10 · quad-core ARM Cortex A53'], ['Display', '5.5″ capacitive touchscreen'], ['Payments', 'Chip & PIN · contactless NFC · magnetic stripe'], ['Connectivity', '4G · Wi-Fi · Bluetooth'], ['Battery and printing', '5,150 mAh battery · built-in thermal printer']], [['Material', 'Genuine leather · final specification to follow'], ['Attachment', 'Belt loop'], ['Compatibility', 'Hugo terminal']], [['Surface', 'Soft non-slip finish'], ['Protection', 'Edges and back'], ['Colours', 'Six shades']]],
       details: 'View details', add: 'Add', chooseColour: 'Add another case', freeCase: 'First case included with terminal', includedCaseNote: 'One case included with the terminal',
       guideEyebrow: 'Hard to choose?', guideTitle: 'Not sure what to get? <em>Start here.</em>',
       guideSteps: ['01 · Essentials', '02 · Protection', '03 · Hands free'],
@@ -66,9 +66,9 @@
       guideLinks: ['Show terminal →', 'Choose colour →', 'View holster →'],
       afterEyebrow: 'After payment', afterTitle: 'Purchase complete. <em>Just one small step left.</em>',
       afterText: 'Use the same email. If you already have an account, sign in and we will link the order. If not, create one without re-entering the purchase.',
-      cartTitle: 'Your bag', deliveryTitle: 'Delivery', deliveryOptions: ['DPD delivery', 'Personal pickup'], termsPrefix: 'I agree to the', termsLink: 'hardware purchase terms',
+      cartTitle: 'Your bag', reviewTitle: 'Order review', reviewOrder: 'Continue to order review', backToCart: 'Back to bag', deliveryTitle: 'Delivery', deliveryOptions: ['DPD delivery', 'Personal pickup'], termsPrefix: 'I agree to the', termsLink: 'hardware purchase terms',
       draft: 'The shop terms are still a draft. Payments will open after approval.', checkout: 'Continue to secure payment',
-      accountShortcut: 'Already have an account? Sign in — your cart stays and we will prefill your address.',
+      accountShortcut: 'Already have an account? Sign in. Your cart stays and we will prefill your address.',
       successEyebrow: 'It is yours', successTitle: 'Purchase complete. 🎉',
       successText: 'Just one small step left: sign in or create an account using the same email as your purchase.',
       finishAccount: 'Sign in or create account', successLinkedTitle: 'Purchase complete and linked. 🎉',
@@ -105,7 +105,7 @@
     ['.guide-card > span', 'allText', 'guideSteps'], ['.guide-card h3', 'allText', 'guideTitles'],
     ['.guide-card p', 'allText', 'guideDescriptions'], ['.guide-card strong', 'allText', 'guideLinks'],
     ['.aftercare .eyebrow', 'text', 'afterEyebrow'], ['.aftercare h2', 'html', 'afterTitle'], ['.aftercare p:last-child', 'text', 'afterText'],
-    ['.cart-head h2', 'text', 'cartTitle'], ['.delivery-choice legend', 'text', 'deliveryTitle'],
+    ['.cart-head h2', 'text', 'cartTitle'], ['#review-button', 'text', 'reviewOrder'], ['#cart-back', 'aria', 'backToCart'], ['.delivery-choice legend', 'text', 'deliveryTitle'],
     ['.delivery-choice label > span', 'allText', 'deliveryOptions'], ['.terms span', 'terms', null], ['#checkout-note', 'text', 'draft'],
     ['#checkout-button', 'text', 'checkout'], ['.account-shortcut', 'text', 'accountShortcut'],
     ['#success .eyebrow', 'text', 'successEyebrow'], ['#success h2', 'text', 'successTitle'],
@@ -142,6 +142,10 @@
       }
       if (type === 'cta') {
         if (nodes[0] && nodes[0].firstChild) nodes[0].firstChild.textContent = t(value) + ' ';
+        return;
+      }
+      if (type === 'aria') {
+        if (nodes[0]) nodes[0].setAttribute('aria-label', t(value));
         return;
       }
       if (type === 'allText') value = Array.isArray(value) ? value.map(t) : t(value);
