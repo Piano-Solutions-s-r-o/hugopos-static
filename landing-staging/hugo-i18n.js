@@ -16,7 +16,6 @@
   var CHKSP = '<span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> ';
   var APPLE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.9 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.2-.5 7.9 1.3 10.4.9 1.2 1.9 2.6 3.3 2.5 1.3 0 1.8-.8 3.4-.8 1.6 0 2.1.8 3.4.8 1.4 0 2.3-1.3 3.2-2.5.9-1.2 1.3-2.4 1.3-2.5-.1 0-2.9-1.1-2.9-4.6zM13.9 4.6c.7-.9 1.2-2.1 1.1-3.3-1 .1-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.2 1.1.1 2.3-.6 3-1.5z"/></svg> ';
   var ANDRO = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg> ';
-  var PHONE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> ';
   var WAVE  = '<span class="wave"><i></i><i></i><i></i><i></i><i></i></span> ';
   function ICO(x){ return '<span class="ico">' + x + '</span> '; }
   function NUMN(n){ return '<span class="n">' + n + '</span> '; }
@@ -32,7 +31,7 @@
     /* HERO */
     { sel: '.hero-eyebrow', cs: '<span class="pip">★</span> Pro české kavárny, bary a restaurace &nbsp;·&nbsp; připraveno na EET 2.0' },
     { sel: '.hero h1', cs: 'Jedna appka řídí <br/> <span class="hl">celý podnik.</span> <em>Na telefonu, co máš.</em>' },
-    { sel: '.hero p.lead', cs: 'Hugo je moderní pokladna pro kavárny, bary a restaurace — objednávky, menu, platby kartou, spropitné i účtenky v jedné appce na iPhonu nebo Androidu, který už máš — nebo si k tomu vezmi fakt moderní terminál od nás (žádná ošklivá černá krabice). Tak jako tak prodáváš za 5 minut.' },
+    { sel: '.hero p.lead', cs: 'Hugo je moderní pokladna pro kavárny, bary a restaurace — objednávky, menu, spropitné i účtenky v jedné appce na zařízení, které už máš. Platby kartou bereš na Androidu, nebo přes fakt moderní terminál od nás (žádná ošklivá černá krabice). Tak jako tak prodáváš za 5 minut.' },
     { sel: '.hero-ctas .btn-primary', cs: 'Začít zdarma ' + ARR },
     { sel: '.hero-ctas .btn-ghost', cs: 'Podívat se, jak funguje ' + PLAY },
     { sel: '.hero-meta span', all: true, cs: [CHK24 + ' Bez karty na start', CHK24 + ' Spustíš za 5 minut', CHK24 + ' Zrušíš kdykoli'] },
@@ -55,7 +54,7 @@
     { sel: '#product .section-head .eyebrow', cs: 'Jakékoli zařízení · jedna pokladna' },
     { sel: '#product .section-head h2', cs: 'Jeden Hugo. <em>iPhone, Android, tablet, terminál — všechno prostě funguje.</em>' },
     { sel: '#product .section-head p.lead', cs: 'Žádný proprietární hardware, žádná béžová krabice, co práší u kasy. Podej telefon číšníkovi, opři tablet o bar, na špičku připoj terminál — všechno se synchronizuje v reálném čase.' },
-    { sel: '.dev-iphone p', cs: 'Tap to Pay na iPhonu. Žádná čtečka, žádný dongle. Přijmeš jakoukoli bezkontaktní kartu i peněženku.' },
+    { sel: '.dev-iphone p', cs: 'Hugo běží plynule i na iPhonu. Objednávky, menu, dýška a účtenky máš v jedné appce.' },
     { sel: '.dev-android p', cs: 'NFC platby na jakémkoli moderním Androidu. Stejná appka, stejná rychlost, stejný Brain.' },
     { sel: '.dev-any .label', cs: '+ všechno ostatní' },
     { sel: '.dev-any h3', cs: 'Kdekoli chceš' },
@@ -81,7 +80,7 @@
     { sel: '.rel-item p', all: true, cs: [
       'Vypadne wifi ve špičce? Markuj dál objednávky i hotovost — Hugo se sesynchronizuje, až budeš zpátky, a až se EET v roce 2027 vrátí, účtenky se offline zařadí a samy odešlou.',
       'Připoj svou tiskárnu účtenek a pokladní zásuvku, nebo jeď úplně bez papíru. Žádná proprietární krabička ke koupi ani pronájmu.',
-      'Tap to Pay na iPhonu, NFC na Androidu. Platební terminál žije v telefonu — nic navíc, co bys ztrácel, nabíjel nebo měnil.',
+      'Hugo používáš na zařízení, které už máš. Platby kartou bereš na Androidu, nebo přes terminál Hugo.',
       'Cokoli kdykoli vyexportuješ. Žádné vázání — odejdeš, kdy chceš, a čísla si vezmeš s sebou.'
     ] },
 
@@ -134,10 +133,10 @@
     { sel: '#pricing .section-head p.lead', cs: 'Žádné porovnávání tarifů, žádná pásma podle obratu, žádný obchodník na telefonu — stejná cena i stejná sazba za karty pro food truck i pro zavedenou restauraci.' },
     { sel: '.config-controls .ctrl:nth-child(1) .ctrl-label', cs: CNUM('1') + 'Poplatky za karty — jedna sazba, navždy' },
     { sel: '.config-controls .ctrl:nth-child(2) .ctrl-label', cs: CNUM('2') + 'Vyber si zařízení' },
-    { sel: '.fee-row .fr-k', all: true, cs: ['Hugo terminál nebo tvůj Android', 'Tap to Pay na iPhonu'] },
+    { sel: '.fee-row .fr-k', all: true, cs: ['Hugo terminál nebo tvůj Android'] },
     { sel: '.devopt .do-t', all: true, cs: ['Telefon, co už máš', 'Hugo terminál all-in-one'] },
     { sel: '.devopt .do-s', all: true, cs: [
-      'iOS i Android. Tap to Pay na iPhonu, NFC na Androidu — žádná čtečka, žádný dongle, žádné kabely.',
+      'Hugo funguje na iOS i Androidu. Platby kartou bereš na Androidu, nebo s terminálem Hugo.',
       'Jednorázově. Terminál, tiskárna účtenek a Hugo v jedné krabičce — nic dalšího nekupuješ.'
     ] },
     { sel: '.devopt .do-tag', cs: '&minus;5 000 Kč příspěvek od státu' },
@@ -146,7 +145,7 @@
     { sel: '.sum-u', cs: 'Kč / měsíc' },
     { sel: '.sum-plus', cs: '+ 0,9 % + 1 Kč z platby kartou — při jakémkoli obratu' },
     { sel: '.sum-feat li', all: true, cs: [
-      CHKF + 'Platby kartou a Tap to Pay <b style="color:var(--green); font-weight:700;">v ceně</b>',
+      CHKF + 'Platby kartou na Androidu <b style="color:var(--green); font-weight:700;">v ceně</b>',
       CHKF + 'Piano Pilot — pomůže ti s řízením podniku',
       CHKF + 'Export pro účetnictví',
       CHKF + 'Zprovozněno do 5 minut',
@@ -166,16 +165,15 @@
     /* WAITLIST / ONBOARDING */
     { sel: '.waitlist .eyebrow', cs: '<span class="live-dot"></span> Onboarding zdarma · bez závazku' },
     { sel: '.waitlist h2', cs: 'Přejdi za den. <span class="hl">Nastavíme to</span> s tebou.' },
-    { sel: '.waitlist .lead', cs: 'Založ si účet a bereš platby během pár minut. Chceš pomoct? Domluv si bezplatný 15minutový hovor — naimportujeme tvoje menu a rozjedeš to před další špičkou. <em>Bez karty, bez závazku.</em>' },
+    { sel: '.waitlist .lead', cs: 'Založ si účet a bereš platby během pár minut. Naimportuj menu a Hugo rozjedeš před další špičkou. <em>Bez karty, bez závazku.</em>' },
     { sel: '.waitlist-perks li', all: true, cs: [
       CHKSP + 'Menu naimportujeme — z fotky nebo ze starého systému',
-      CHKSP + '15minutový videohovor — česky, kdy se ti to hodí',
       CHKSP + 'Stávající terminál může běžet, dokud přecházíš',
       CHKSP + '14 dní zdarma — pak 190 Kč měsíčně, zrušíš kdykoli'
     ] },
     { sel: '.waitlist-counter', cs: 'Zdarma · bez karty' },
     { sel: '.waitlist-form h3', cs: 'Začni s Hugem.' },
-    { sel: '.waitlist-form h3 + p', cs: 'Založ si účet hned, nebo nech kontakt a do 24 hodin zavoláme a nastavíme to s tebou.' },
+    { sel: '.waitlist-form h3 + p', cs: 'Založ si účet hned a Hugo si nastav vlastním tempem.' },
     { sel: '.waitlist-fields button.btn', cs: 'Založit účet zdarma ' + ARR },
     { sel: '.waitlist-spots .spots-label', cs: 'Už máš jinou pokladnu? <b>Menu ti přeneseme zdarma.</b>' },
     { sel: '.waitlist-fineprint', cs: 'Žádný spam. Tvoje data jsou v bezpečí.' },
@@ -184,14 +182,14 @@
     { sel: '.final-card h2', cs: 'První tržba je pět minut daleko.' },
     { sel: '.final-card > p', cs: 'Tři kroky, žádný závazek — a DPH, účtenky i tu nudnou práci, kterou tě staré pokladny nutily dělat ručně, vyřešíme my.' },
     { sel: '.final-step', all: true, cs: [NUMN('1') + 'Stáhni Hugo', NUMN('2') + 'Vyfoť menu', NUMN('3') + 'Vezmi první platbu'] },
-    { sel: '.final-ctas a', all: true, cs: [APPLE + 'Stáhnout pro iOS', ANDRO + 'Stáhnout pro Android', PHONE + 'Zavolat &middot; +420 770 320 248'] },
+    { sel: '.final-ctas a', all: true, cs: [APPLE + 'Stáhnout pro iOS', ANDRO + 'Stáhnout pro Android'] },
     { sel: '.final-fine span', all: true, cs: [CHK26 + ' Bez karty na start', CHK26 + ' Zrušíš kdykoli', CHK26 + ' Skuteční lidé, česky, 7 dní v týdnu'] },
 
     /* FOOTER */
     { sel: '.foot-brand p', cs: 'Pokladna postavená kolem tvého telefonu, tvého menu a tvých hostů — ne naopak.' },
     { sel: '.foot-col h5', all: true, cs: ['Produkt', 'Podpora'] },
     { sel: '.foot-grid > div:nth-child(2) a', all: true, cs: ['Zařízení', 'AI &amp; Brain', 'Spuštění', 'Ceník'] },
-    { sel: '.foot-grid > div:nth-child(3) a', all: true, cs: ['hugo@piano.cz', '+420 770 320 248', 'Stav služeb', 'Přihlásit se'] },
+    { sel: '.foot-grid > div:nth-child(3) a', all: true, cs: ['hugo@piano.cz', 'Stav služeb', 'Přihlásit se'] },
     { sel: '.foot-bottom > div:first-child', cs: '© 2026 Hugo &middot; český produkt od Piana &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>' },
     { sel: '.foot-bottom .legal a', all: true, cs: ['Všeobecné obchodní podmínky', 'Kontakt', 'GDPR', 'English'] },
 
@@ -219,8 +217,7 @@
     { sel: '.annbar-txt', cs: '<b>EET se vrací 1. 1. 2027.</b> Přejdi na Hugo teď a měj klid — se zaváděcí cenou zamčenou jen do 1. 12. 2026.' },
     { sel: '.annbar-cta', cs: 'Zjistit víc &rarr;' },
     { sel: '.form-alt-or', cs: 'nebo spusť za 30 sekund' },
-    { sel: '.foot-phone', cs: 'Zavolej nám &middot; +420 770 320 248 &middot; Po&ndash;Ne 8&ndash;22' },
-    { sel: '.form-call', cs: 'Radši zavoláš? <a href="tel:+420770320248">+420 770 320 248</a> &middot; nebo napiš na <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>' },
+    { sel: '.form-call', cs: 'Dotazy? Napiš na <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>.' },
     { sel: '.faq .section-head .eyebrow', cs: 'Než se rozhodneš' },
     { sel: '.faq .section-head h2', cs: 'Otázky, co padají nejčastěji.' },
     { sel: '.faq-item summary .q', all: true, cs: [
@@ -232,7 +229,7 @@
       'Co DPH a EET?'
     ] },
     { sel: '.faq-item .a', all: true, cs: [
-      'Jeden tarif: 190 Kč měsíčně místo 990 Kč, když platby kartou bereš přes nás — k tomu 0,9 % + 1 Kč z platby kartou, vždycky a při jakémkoli obratu (Tap to Pay na iPhonu 0,9 % + 2,75 Kč). Prvních 14 dní je zdarma, a když nebudeš spokojený nebo spokojená, vrátíme ti peníze. Žádné tarify k porovnávání, žádný háček, žádná smlouva.',
+      'Jeden tarif: 190 Kč měsíčně místo 990 Kč, když platby kartou bereš přes nás — k tomu 0,9 % + 1 Kč z platby kartou, vždycky a při jakémkoli obratu. Prvních 14 dní je zdarma, a když nebudeš spokojený nebo spokojená, vrátíme ti peníze. Žádné tarify k porovnávání, žádný háček, žádná smlouva.',
       'Žádná smlouva ani výpovědní lhůta. Zrušíš kdykoli a data si odneseš.',
       'Menu naimportujeme, Hugo běží vedle stávající pokladny a přepneš, až budeš chtít. Migrace je zdarma.',
       'Ne. Hugo běží na iPhonu nebo Androidu, který už máš. Když chceš pořádné zařízení na pult, náš all-in-one terminál s Hugem stojí 4 900 Kč jednorázově — a příspěvek od státu z toho ubere 5 000 Kč. Připojit můžeš i vlastní tiskárnu účtenek a pokladní zásuvku.',
@@ -270,8 +267,8 @@
 
   /* ---- localized strings used by inline page scripts ---- */
   window.HUGO_PRICING = {
-    en: { thanks: 'Thanks — we’ll call within 24 hours.' },
-    cs: { thanks: 'Děkujeme — ozveme se do 24 hodin.' }
+    en: { thanks: 'Thanks — your account is ready to finish setting up.' },
+    cs: { thanks: 'Děkujeme — účet je připravený k dokončení.' }
   };
 
   var TITLES = {

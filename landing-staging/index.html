@@ -71,7 +71,7 @@ html.hugo-gated body{visibility:hidden!important}
 </script>
 
 <title>Hugo — pokladna, která se zaplatí za 5 minut</title>
-<meta name="description" content="Hugo je moderní pokladna pro kavárny, bary a restaurace — objednávky, menu, platby kartou, spropitné i účtenky v jedné appce na iPhonu nebo Androidu, který už máš. Spustíš za 5 minut." />
+<meta name="description" content="Hugo je moderní pokladna pro kavárny, bary a restaurace — objednávky, menu, spropitné i účtenky v jedné appce na zařízení, které už máš. Platby kartou přijímáš na Androidu nebo přes terminál Hugo. Spustíš za 5 minut." />
 <link rel="canonical" href="https://hugopos.eu/" />
 <meta name="theme-color" content="#14110D" />
 <link rel="icon" href="assets/hugo-icon.svg" type="image/svg+xml" />
@@ -294,10 +294,12 @@ html.hugo-gated body{visibility:hidden!important}
     box-shadow: 0 0 0 4px rgba(27, 168, 91, 0.18);
   }
 
-  /* Hero phones */
+  /* Hero terminal */
   .hero-stage{
     position: relative;
     height: 640px;
+    display: grid;
+    place-items: center;
   }
   .blob{
     position: absolute; inset: 0;
@@ -307,6 +309,14 @@ html.hugo-gated body{visibility:hidden!important}
     filter: blur(40px);
     opacity: .55;
     z-index: 0;
+  }
+  .hero-terminal-image{
+    position: relative;
+    z-index: 1;
+    width: min(100%, 680px);
+    max-height: 640px;
+    object-fit: contain;
+    filter: drop-shadow(0 26px 28px rgba(20,17,13,.2));
   }
   .phone{
     position: absolute;
@@ -1395,9 +1405,7 @@ html.hugo-gated body{visibility:hidden!important}
     .hero{ padding: 36px 0 60px; }
     .hero-grid{ grid-template-columns: 1fr; gap: 24px; }
     .hero-stage{ height: 540px; }
-    .phone{ width: 260px; }
-    .phone-a{ right: 8%; }
-    .phone-b{ right: 40%; top: 70px; }
+    .hero-terminal-image{ max-height: 540px; }
     .devices, .pricing-wrap{ margin: 0 16px; }
     .device-grid{ grid-template-columns: 1fr; }
     .dev-iphone, .dev-android, .dev-any{ grid-column: span 1; }
@@ -1416,8 +1424,7 @@ html.hugo-gated body{visibility:hidden!important}
     .container{ padding: 0 18px; }
     .strip-inner{ justify-content: center; }
     .hero-stage{ height: 460px; }
-    .phone{ width: 220px; }
-    .fc-tip, .fc-fast{ display: none; }
+    .hero-terminal-image{ max-height: 460px; }
     .final-card{ padding: 48px 22px; border-radius: 30px; }
     .final-card::before, .final-card::after{ display: none; }
     .devices{ border-radius: 30px; padding: 60px 0; }
@@ -1469,7 +1476,14 @@ html.hugo-gated body{visibility:hidden!important}
   .store-badge svg{ width:16px; height:16px; }
   .annbar{ background:var(--ink); color:#fff; font-size:13.5px; position:relative; }
   .annbar-in{ display:flex; align-items:center; justify-content:center; gap:14px; padding:10px 56px; text-align:center; flex-wrap:wrap; }
-  .annbar-txt b{ color:var(--yellow); }
+  .annbar-txt b{
+    display:inline-block;
+    color:var(--ink);
+    background:var(--yellow);
+    padding:2px 8px;
+    border-radius:999px;
+    box-shadow:0 0 22px rgba(255,223,44,.48);
+  }
   .annbar-cta{ font-weight:700; color:var(--ink); background:var(--yellow); padding:6px 13px; border-radius:999px; font-size:12.5px; white-space:nowrap; }
   .annbar-cta:hover{ background:var(--yellow-deep); }
   .annbar-close{ position:absolute; right:14px; top:50%; transform:translateY(-50%); background:transparent; border:0; color:rgba(255,255,255,0.55); font-size:20px; line-height:1; cursor:pointer; padding:4px 8px; }
@@ -1615,9 +1629,9 @@ html.hugo-gated body{visibility:hidden!important}
       </h1>
       <p class="lead">
         Hugo is the modern cash register for cafés, bars and restaurants &mdash;
-        orders, menu, card payments, tips and VAT in one app on the iPhone or
-        Android you already have &mdash; or pair a genuinely modern terminal from us
-        (not some ugly black box). Either way you&rsquo;re selling in 5 minutes.
+        orders, menu, tips and VAT in one app on the device you already have.
+        Take card payments on Android, or pair a genuinely modern terminal from us.
+        Either way you&rsquo;re selling in 5 minutes.
       </p>
       <div class="hero-ctas">
         <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Start free
@@ -1641,39 +1655,7 @@ html.hugo-gated body{visibility:hidden!important}
     <div class="hero-stage">
       <div class="blob"></div>
 
-      <div class="float-card fc-tip">
-        <div class="ico">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <div>
-          <div style="font-weight:700">+30 Kč tip</div>
-          <div style="color:var(--muted); font-size:11px">Stůl 14 · just now</div>
-        </div>
-      </div>
-
-      <div class="phone phone-b">
-        <div class="notch"></div>
-        <div class="screen">
-          <img src="assets/screen-kuchyne.png" alt="Hugo kitchen analytics screen" />
-        </div>
-      </div>
-
-      <div class="phone phone-a">
-        <div class="notch"></div>
-        <div class="screen">
-          <img src="assets/screen-platba.png" alt="Hugo payment screen showing 300 Kč" />
-        </div>
-      </div>
-
-      <div class="float-card fc-fast">
-        <div class="ico">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <div>
-          <div class="big">5 min</div>
-          <div class="sub">avg. time to first sale</div>
-        </div>
-      </div>
+      <img class="hero-terminal-image" src="assets/terminal-hugo-prazdroj.png" alt="Terminál Piano s pokladnou Hugo a platbou kartou" />
     </div>
   </div>
 </section>
@@ -1704,7 +1686,7 @@ html.hugo-gated body{visibility:hidden!important}
           <div class="dev-card dev-iphone">
             <span class="label">iOS</span>
             <h3>iPhone</h3>
-            <p>Tap to Pay on iPhone. No reader, no dongle. Accept any contactless card or wallet.</p>
+            <p>Hugo runs smoothly on iPhone. Keep orders, menu, tips and receipts in one app.</p>
             <div class="art">
               <div class="scr"><img src="assets/screen-platba.png" alt="" /></div>
             </div>
@@ -1781,7 +1763,7 @@ html.hugo-gated body{visibility:hidden!important}
       <div class="floor-card">
         <div class="shot"><img src="assets/floor-pay.png" alt="Taking a cash payment in Hugo" /></div>
         <div class="step">03 &middot; PAY</div>
-        <h4>Split, tip, tap to pay</h4>
+        <h4>Split, tip, take payment</h4>
         <p>Split by item or guest, then take card, contactless or QR in one tap &mdash; tip prompt built in.</p>
       </div>
     </div>
@@ -1809,7 +1791,7 @@ html.hugo-gated body{visibility:hidden!important}
       <div class="rel-item">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6"/><circle cx="12" cy="16" r="2"/></svg></span>
         <h4>No reader to charge</h4>
-        <p>Tap to Pay on iPhone, NFC on Android. The card terminal lives in the phone &mdash; nothing extra to lose, charge or replace.</p>
+        <p>Use Hugo on the device you already have. Take card payments on Android, or use a Hugo terminal when you need one.</p>
       </div>
       <div class="rel-item">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
@@ -1832,7 +1814,6 @@ html.hugo-gated body{visibility:hidden!important}
         <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Start free
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="tel:+420770320248" class="btn btn-ghost btn-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +420 770 320 248</a>
       </div>
     </div>
   </div>
@@ -2032,10 +2013,6 @@ html.hugo-gated body{visibility:hidden!important}
                   <span class="fr-k">Hugo terminal or your Android phone</span>
                   <span class="fr-v">0,9 % + 1 Kč</span>
                 </div>
-                <div class="fee-row">
-                  <span class="fr-k">Tap to Pay on iPhone</span>
-                  <span class="fr-v">0,9 % + 2,75 Kč</span>
-                </div>
               </div>
               <p class="pay-note">Transparent MIF++ pricing. The same rate at 30 000 Kč a month and at 1 000 000 Kč a month &mdash; and the money lands in your account within 2 days, without changing your bank.</p>
             </div>
@@ -2045,7 +2022,7 @@ html.hugo-gated body{visibility:hidden!important}
               <div class="devopts">
                 <div class="devopt">
                   <div class="do-h"><span class="do-t">The phone you already own</span><span class="do-p">0 Kč</span></div>
-                  <p class="do-s">iOS or Android. Tap to Pay on iPhone, NFC on Android &mdash; no reader, no dongle, no cables.</p>
+                  <p class="do-s">Use Hugo on iOS or Android. Card payments are available on Android; add a Hugo terminal whenever you need one.</p>
                 </div>
                 <div class="devopt">
                   <div class="do-h"><span class="do-t">Hugo all-in-one terminal</span><span class="do-p">4 900 Kč</span></div>
@@ -2074,7 +2051,7 @@ html.hugo-gated body{visibility:hidden!important}
             <div class="sum-plus">+ 0,9 % + 1 Kč per card payment &mdash; at any revenue</div>
 
             <ul class="sum-feat">
-              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Card payments &amp; Tap to Pay <b style="color:var(--green); font-weight:700;">included</b></li>
+              <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Card payments on Android <b style="color:var(--green); font-weight:700;">included</b></li>
               <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Piano Pilot &mdash; helps you actually run the place</li>
               <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Export for your accountant</li>
               <li class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Up and running in 5 minutes</li>
@@ -2119,18 +2096,13 @@ html.hugo-gated body{visibility:hidden!important}
         <span class="eyebrow"><span class="live-dot"></span> Free onboarding &middot; no commitment</span>
         <h2>Switch in a day. <span class="hl">We&rsquo;ll set it up</span> with you.</h2>
         <p class="lead">
-          Create your account and you&rsquo;re taking payments in minutes. Want a hand?
-          Book a free 15-minute call &mdash; we&rsquo;ll import your menu and have you live
-          before the next rush. <em>No card, no commitment.</em>
+          Create your account and you&rsquo;re taking payments in minutes. Import your menu
+          and have Hugo ready before the next rush. <em>No card, no commitment.</em>
         </p>
         <ul class="waitlist-perks">
           <li>
             <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
             We import your menu &mdash; from a photo or your old system
-          </li>
-          <li>
-            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            A 15-minute video call &mdash; in Czech, when it suits you
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -2146,7 +2118,7 @@ html.hugo-gated body{visibility:hidden!important}
       <form class="waitlist-form" onsubmit="event.preventDefault(); window.hugoWaitlistSubmit &amp;&amp; window.hugoWaitlistSubmit(this);">
         <span class="waitlist-counter">Free &middot; no card</span>
         <h3>Start with Hugo.</h3>
-        <p>Create your account now, or leave your details and we&rsquo;ll call within 24&nbsp;hours to set it up with you.</p>
+        <p>Create your account now and set up Hugo at your own pace.</p>
         <div class="waitlist-fields">
           <input type="email" placeholder="Email address" required />
           <input type="text" placeholder="Your name (optional)" />
@@ -2166,7 +2138,7 @@ html.hugo-gated body{visibility:hidden!important}
           <span class="spots-label" style="margin:0 auto;">Already on another POS? <b>We migrate your menu for free.</b></span>
         </div>
         <p class="waitlist-fineprint">No spam. Your data is safe.</p>
-        <p class="form-call">Prefer to talk? <a href="tel:+420770320248">+420 770 320 248</a> &middot; or write to <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></p>
+        <p class="form-call">Questions? Write to <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>.</p>
       </form>
     </div>
   </div>
@@ -2182,7 +2154,7 @@ html.hugo-gated body{visibility:hidden!important}
     <div class="faq-list">
       <details class="faq-item" open>
         <summary><span class="q">How much does Hugo cost? What&rsquo;s the catch?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">One plan: 190 Kč a month (instead of 990 Kč) when you take card payments through us &mdash; plus 0,9 % + 1 Kč per card payment, always, whatever your revenue (Tap to Pay on iPhone is 0,9 % + 2,75 Kč). First 14 days are free, and if you&rsquo;re not happy we give you your money back. No tiers, no catch, no contract.</div>
+        <div class="a">One plan: 190 Kč a month (instead of 990 Kč) when you take card payments through us &mdash; plus 0,9 % + 1 Kč per card payment, always, whatever your revenue. First 14 days are free, and if you&rsquo;re not happy we give you your money back. No tiers, no catch, no contract.</div>
       </details>
       <details class="faq-item">
         <summary><span class="q">Do I have to sign a contract?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
@@ -2228,7 +2200,6 @@ html.hugo-gated body{visibility:hidden!important}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
           Download for Android
         </a>
-        <a href="tel:+420770320248" class="btn btn-ghost btn-lg" style="border-color: rgba(20,17,13,0.3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call us &middot; +420 770 320 248</a>
       </div>
       <div class="final-fine">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No card to start</span>
@@ -2249,7 +2220,6 @@ html.hugo-gated body{visibility:hidden!important}
         </a>
         <p>The point-of-sale built around your phone, your menu, and your customers &mdash; not the other way around.</p>
         <a href="mailto:hugo@piano.cz" class="foot-mail">hugo@piano.cz</a>
-        <a href="tel:+420770320248" class="foot-phone">Call us &middot; +420 770 320 248 &middot; Mon&ndash;Sun 8&ndash;22</a>
       </div>
       <div class="foot-col">
         <h5>Product</h5>
@@ -2261,7 +2231,6 @@ html.hugo-gated body{visibility:hidden!important}
       <div class="foot-col">
         <h5>Support</h5>
         <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>
-        <a href="tel:+420770320248">+420 770 320 248</a>
         <a href="https://status.hugopos.eu" target="_blank" rel="noopener">Service status</a>
         <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener">Sign in</a>
       </div>
@@ -2281,7 +2250,6 @@ html.hugo-gated body{visibility:hidden!important}
 
 <!-- =============== STICKY MOBILE CTA =============== -->
 <div class="mobilebar" id="mobilebar">
-  <a href="tel:+420770320248" class="mb-call" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
   <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary mb-cta">Start free
     <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
   </a>
