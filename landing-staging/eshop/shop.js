@@ -35,6 +35,13 @@
     terminal_case_extra: {
       id: 'terminal_case_extra', name: 'Další obal na terminál', image: ASSET_ROOT + 'case-sun-spark.jpg',
       available: false, price: null
+    },
+    printer_zj5809: {
+      id: 'printer_zj5809', name: 'Bluetooth tiskárna účtenek', kicker: 'ZJ-5809/BT', image: ASSET_ROOT + 'printer-zj5809.jpg',
+      lead: 'Kompaktní tiskárna účtenek, která se s terminálem spáruje přes Bluetooth. Když host chce papír, dostane ho — bez kabelu přes celý bar.',
+      gallery: [ASSET_ROOT + 'printer-zj5809.jpg'],
+      specs: [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Včetně pouzdra']],
+      available: false, price: null
     }
   };
   var CART_STORAGE_KEY = 'hugo-eshop-cart-v1';
@@ -81,7 +88,7 @@
   var checkoutNote = document.getElementById('checkout-note');
   var dialog = document.getElementById('product-dialog');
   var dialogContent = document.getElementById('dialog-content');
-  var productOrder = ['pax_a920', 'belt_holster', 'terminal_case'];
+  var productOrder = ['pax_a920', 'belt_holster', 'terminal_case', 'printer_zj5809'];
 
   function restoreCart() {
     try {
@@ -101,7 +108,7 @@
         ? stored.extraCaseVariant
         : restoredVariant;
       selectedDeliveryMethod = handoff.deliveryMethod(stored.deliveryMethod);
-      cart = stored.cart.filter(function (line) { return line && ['pax_a920', 'belt_holster', 'terminal_case_extra'].includes(line.id); })
+      cart = stored.cart.filter(function (line) { return line && ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809'].includes(line.id); })
         .map(function (line) { return { id: line.id, key: line.id, qty: line.qty || 1, variant: null, variantName: null }; });
       syncCaseLine();
     } catch (_error) {}
@@ -177,7 +184,7 @@
   }
 
   function renderCataloguePrices() {
-    ['pax_a920', 'belt_holster', 'terminal_case'].forEach(function (id) {
+    ['pax_a920', 'belt_holster', 'terminal_case', 'printer_zj5809'].forEach(function (id) {
       var product = products[id];
       var priceNode = document.querySelector('[data-price="' + id + '"]');
       if (!priceNode) return;

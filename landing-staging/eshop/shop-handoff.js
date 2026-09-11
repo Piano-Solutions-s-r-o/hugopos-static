@@ -1,7 +1,11 @@
 (function (root) {
   'use strict';
 
-  var CART_IDS = ['pax_a920', 'belt_holster', 'terminal_case_extra'];
+  // What a HANDOFF cart line may carry when the storefront sends the basket into the
+  // Admin. A line whose id is missing here is silently dropped, so this list must track
+  // the storefront's orderable set — the printer was invisible on the storefront for the
+  // same class of reason (HUGO-1583).
+  var CART_IDS = ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809'];
   var CASE_VARIANTS = ['red_impulse', 'mint_current', 'sage_calm', 'sun_spark', 'lagoon_breeze', 'electric_blue'];
   var DELIVERY_METHODS = ['dpd', 'pickup'];
 
@@ -34,7 +38,7 @@
     if (typeof value !== 'string' || value.length === 0 || value.length > 1000) return null;
     try {
       var parsed = JSON.parse(value);
-      if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.cart) || parsed.cart.length > 3) return null;
+      if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.cart) || parsed.cart.length > CART_IDS.length) return null;
       var seen = {};
       var safeCart = [];
       for (var i = 0; i < parsed.cart.length; i += 1) {
