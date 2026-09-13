@@ -9,12 +9,12 @@
       pickHardware: 'Vybrat hardware', needAdvice: 'Potřebuji poradit',
       trust: ['Bezpečná platba', 'Jednoduchost', 'Kvalita'],
       heroCaption: 'Terminál, který na place nepřekáží.', sectionEyebrow: 'Vyberte si svoje tempo',
-      sectionTitle: 'Tři věci. <em>Žádný katalog na sto stran.</em>',
-      cardKickers: ['All-in-one', 'Accessories', 'Accessories'],
-      cardTitles: ['Terminál Hugo', 'Kožené pouzdro na pásek', 'Další obal na terminál'],
-      cardDescriptions: ['Platby, účtenka a pokladna v jedné lehké krabičce.', 'Terminál po ruce, ruce připravené na tác a plný plac.', 'Měkčí dopad, jistější úchop a barva, která patří k vám.'],
-      productLeads: ['Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.', 'Měkká kožená kapsa drží terminál u těla, ale nechá ho vytáhnout jedním pohybem. Na plac, zahrádku i event.', 'Pružný ochranný obal dává terminálu jistější úchop a vaší obsluze vlastní barvu.'],
-      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['Systém', 'Android 10 · čtyřjádrový ARM Cortex A53'], ['Displej', '5,5″ kapacitní dotykový'], ['Platby', 'Čip a PIN · bezkontaktní NFC · magnetický proužek'], ['Připojení', '4G · Wi-Fi · Bluetooth'], ['Výdrž a tisk', 'Baterie 5 150 mAh · vestavěná termální tiskárna']], [['Materiál', 'Pravá kůže · finální specifikaci doplníme'], ['Uchycení', 'Poutko na pásek'], ['Kompatibilita', 'Terminál Hugo']], [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']]],
+      sectionTitle: 'Čtyři věci. <em>Žádný katalog na sto stran.</em>',
+      cardKickers: ['All-in-one', 'Accessories', 'Accessories', 'ZJ-5809/BT'],
+      cardTitles: ['Terminál Hugo', 'Kožené pouzdro na pásek', 'Další obal na terminál', 'Bluetooth tiskárna účtenek'],
+      cardDescriptions: ['Platby, účtenka a pokladna v jedné lehké krabičce.', 'Terminál po ruce, ruce připravené na tác a plný plac.', 'Měkčí dopad, jistější úchop a barva, která patří k vám.', 'Papírová účtenka pro hosty, kteří ji chtějí. Bez kabelu přes celý bar.'],
+      productLeads: ['Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.', 'Měkká kožená kapsa drží terminál u těla, ale nechá ho vytáhnout jedním pohybem. Na plac, zahrádku i event.', 'Pružný ochranný obal dává terminálu jistější úchop a vaší obsluze vlastní barvu.', 'Kompaktní tiskárna účtenek, která se s terminálem spáruje přes Bluetooth. Když host chce papír, dostane ho — bez kabelu přes celý bar.'],
+      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['Systém', 'Android 10 · čtyřjádrový ARM Cortex A53'], ['Displej', '5,5″ kapacitní dotykový'], ['Platby', 'Čip a PIN · bezkontaktní NFC · magnetický proužek'], ['Připojení', '4G · Wi-Fi · Bluetooth'], ['Výdrž a tisk', 'Baterie 5 150 mAh · vestavěná termální tiskárna']], [['Materiál', 'Pravá kůže · finální specifikaci doplníme'], ['Uchycení', 'Poutko na pásek'], ['Kompatibilita', 'Terminál Hugo']], [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']], [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Včetně pouzdra']]],
       details: 'Prohlédnout detail', add: 'Přidat', chooseColour: 'Přidat další obal', freeCase: 'První obal v ceně terminálu', includedCaseNote: 'Jeden obal v ceně terminálu',
       guideEyebrow: 'Těžký výběr?', guideTitle: 'Nevíte, co vzít? <em>Začněte tady.</em>',
       guideSteps: ['01 · Základ', '02 · Ochrana', '03 · Volné ruce'],
@@ -43,7 +43,7 @@
       useColour: 'Použít tuto barvu', addExtraCase: 'Přidat další obal', addToCart: 'Přidat do košíku', preparing: 'Připravujeme',
       remove: 'Odebrat', caseColour: 'Barva obalu', caseAlt: 'ochranný obal na platební terminál'
       ,title: 'E-shop — terminály a příslušenství Hugo', description: 'Vyberte si terminál a příslušenství Hugo. Nejdřív nákup, potom už jen pár kliknutí k hotovému účtu.',
-      a11y: ['Hugo — domů', 'Hlavní navigace', 'Výhody nákupu', 'Zobrazit detail terminálu Hugo', 'Zobrazit detail koženého pouzdra', 'Zobrazit detail dalšího ochranného obalu', 'Barva obalu', 'Košík', 'Zavřít košík', 'Zavřít detail', 'Obsluha přijímá platbu kartou na žlutém terminálu Hugo', 'Terminál Hugo s obalem Luční med', 'Kožené pouzdro na pásek s platebním terminálem', 'Další obal na terminál v barvě Luční med']
+      a11y: ['Hugo — domů', 'Hlavní navigace', 'Výhody nákupu', 'Zobrazit detail terminálu Hugo', 'Zobrazit detail koženého pouzdra', 'Zobrazit detail dalšího ochranného obalu', 'Zobrazit detail Bluetooth tiskárny účtenek', 'Barva obalu', 'Košík', 'Zavřít košík', 'Zavřít detail', 'Obsluha přijímá platbu kartou na žlutém terminálu Hugo', 'Terminál Hugo s obalem Luční med', 'Kožené pouzdro na pásek s platebním terminálem', 'Další obal na terminál v barvě Luční med', 'Bluetooth tiskárna účtenek ZJ-5809/BT']
     },
     en: {
       navLinks: ['Product', 'AI & Brain', 'Setup', 'Pricing', 'E-shop', 'Customers'], startFree: 'Start free', cart: 'Bag',
@@ -52,12 +52,12 @@
       pickHardware: 'Choose hardware', needAdvice: 'Help me choose',
       trust: ['Secure payment', 'Simplicity', 'Quality'],
       heroCaption: 'A terminal that never gets in the way.', sectionEyebrow: 'Choose your pace',
-      sectionTitle: 'Three things. <em>No hundred-page catalogue.</em>',
-      cardKickers: ['All-in-one', 'Accessories', 'Accessories'],
-      cardTitles: ['Hugo terminal', 'Leather belt holster', 'Additional terminal case'],
-      cardDescriptions: ['Payments, receipts and POS in one light device.', 'Your terminal close by, your hands free for a tray and a busy floor.', 'A softer landing, safer grip and a colour that feels like yours.'],
-      productLeads: ['A light terminal running your POS, payments and receipts. No second box and no cable clutter.', 'A soft leather pocket keeps the terminal close and releases it in one movement. Built for the floor, terrace and events.', 'A flexible protective case gives the terminal a safer grip and your team a colour of their own.'],
-      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['System', 'Android 10 · quad-core ARM Cortex A53'], ['Display', '5.5″ capacitive touchscreen'], ['Payments', 'Chip & PIN · contactless NFC · magnetic stripe'], ['Connectivity', '4G · Wi-Fi · Bluetooth'], ['Battery and printing', '5,150 mAh battery · built-in thermal printer']], [['Material', 'Genuine leather · final specification to follow'], ['Attachment', 'Belt loop'], ['Compatibility', 'Hugo terminal']], [['Surface', 'Soft non-slip finish'], ['Protection', 'Edges and back'], ['Colours', 'Six shades']]],
+      sectionTitle: 'Four things. <em>No hundred-page catalogue.</em>',
+      cardKickers: ['All-in-one', 'Accessories', 'Accessories', 'ZJ-5809/BT'],
+      cardTitles: ['Hugo terminal', 'Leather belt holster', 'Additional terminal case', 'Bluetooth receipt printer'],
+      cardDescriptions: ['Payments, receipts and POS in one light device.', 'Your terminal close by, your hands free for a tray and a busy floor.', 'A softer landing, safer grip and a colour that feels like yours.', 'A paper receipt for the guests who want one. No cable across the bar.'],
+      productLeads: ['A light terminal running your POS, payments and receipts. No second box and no cable clutter.', 'A soft leather pocket keeps the terminal close and releases it in one movement. Built for the floor, terrace and events.', 'A flexible protective case gives the terminal a safer grip and your team a colour of their own.', 'A compact receipt printer that pairs with the terminal over Bluetooth. When a guest wants paper, they get it — with no cable across the bar.'],
+      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['System', 'Android 10 · quad-core ARM Cortex A53'], ['Display', '5.5″ capacitive touchscreen'], ['Payments', 'Chip & PIN · contactless NFC · magnetic stripe'], ['Connectivity', '4G · Wi-Fi · Bluetooth'], ['Battery and printing', '5,150 mAh battery · built-in thermal printer']], [['Material', 'Genuine leather · final specification to follow'], ['Attachment', 'Belt loop'], ['Compatibility', 'Hugo terminal']], [['Surface', 'Soft non-slip finish'], ['Protection', 'Edges and back'], ['Colours', 'Six shades']], [['Model', 'ZJ-5809/BT'], ['Paper width', '58 mm'], ['Connectivity', 'Bluetooth · charging cable included'], ['Accessories', 'Case included']]],
       details: 'View details', add: 'Add', chooseColour: 'Add another case', freeCase: 'First case included with terminal', includedCaseNote: 'One case included with the terminal',
       guideEyebrow: 'Hard to choose?', guideTitle: 'Not sure what to get? <em>Start here.</em>',
       guideSteps: ['01 · Essentials', '02 · Protection', '03 · Hands free'],
@@ -87,7 +87,7 @@
       useColour: 'Use this colour', addExtraCase: 'Add another case', addToCart: 'Add to bag', preparing: 'Coming soon',
       remove: 'Remove', caseColour: 'Case colour', caseAlt: 'protective payment-terminal case'
       ,title: 'Shop — Hugo terminals and accessories', description: 'Choose your Hugo terminal and accessories. Purchase first, then finish your account in a few clicks.',
-      a11y: ['Hugo — home', 'Main navigation', 'Purchase benefits', 'View Hugo terminal details', 'View leather holster details', 'View additional protective case details', 'Case colour', 'Bag', 'Close bag', 'Close details', 'A server accepts a card payment on a yellow Hugo terminal', 'Hugo terminal with a Meadow Honey case', 'Leather belt holster holding a payment terminal', 'Additional terminal case in Meadow Honey']
+      a11y: ['Hugo — home', 'Main navigation', 'Purchase benefits', 'View Hugo terminal details', 'View leather holster details', 'View additional protective case details', 'View Bluetooth receipt printer details', 'Case colour', 'Bag', 'Close bag', 'Close details', 'A server accepts a card payment on a yellow Hugo terminal', 'Hugo terminal with a Meadow Honey case', 'Leather belt holster holding a payment terminal', 'Additional terminal case in Meadow Honey', 'ZJ-5809/BT Bluetooth receipt printer']
     }
   };
 
@@ -99,8 +99,8 @@
     ['.products .section-head h2', 'html', 'sectionTitle'], ['.product-card .kicker', 'allText', 'cardKickers'],
     ['.product-card .product-copy h3', 'allText', 'cardTitles'], ['.product-card .product-desc', 'allText', 'cardDescriptions'],
     ['.included-note', 'text', 'includedCaseNote'],
-    ['.product-card .text-link', 'allText', ['details', 'details', 'details']],
-    ['.product-card [data-add]', 'allText', ['add', 'add']], ['.product-card [data-open-product="terminal_case"]', 'text', 'chooseColour'],
+    ['.product-card .text-link', 'allText', ['details', 'details', 'details', 'details']],
+    ['.product-card [data-add]', 'allText', ['add', 'add', 'add']], ['.product-card [data-open-product="terminal_case"]', 'text', 'chooseColour'],
     ['.guide-title .eyebrow', 'text', 'guideEyebrow'], ['.guide-title h2', 'html', 'guideTitle'],
     ['.guide-card > span', 'allText', 'guideSteps'], ['.guide-card h3', 'allText', 'guideTitles'],
     ['.guide-card p', 'allText', 'guideDescriptions'], ['.guide-card strong', 'allText', 'guideLinks'],
@@ -164,10 +164,11 @@
     [
       ['.brand', 'aria-label'], ['.nav nav', 'aria-label'], ['.trust', 'aria-label'],
       ['[data-product="pax_a920"] .image-button', 'aria-label'], ['[data-product="belt_holster"] .image-button', 'aria-label'],
-      ['[data-product="terminal_case"] .image-button', 'aria-label'], ['.product-card .swatches', 'aria-label'],
+      ['[data-product="terminal_case"] .image-button', 'aria-label'], ['[data-product="printer_zj5809"] .image-button', 'aria-label'], ['.product-card .swatches', 'aria-label'],
       ['#cart', 'aria-label'], ['#cart-close', 'aria-label'], ['.dialog-close', 'aria-label'],
       ['.hero-photo img', 'alt'], ['[data-product="pax_a920"] .image-button img', 'alt'],
-      ['[data-product="belt_holster"] .image-button img', 'alt'], ['[data-product="terminal_case"] .image-button img', 'alt']
+      ['[data-product="belt_holster"] .image-button img', 'alt'], ['[data-product="terminal_case"] .image-button img', 'alt'],
+      ['[data-product="printer_zj5809"] .image-button img', 'alt']
     ].forEach(function (row, index) {
       var node = document.querySelector(row[0]);
       if (node) node.setAttribute(row[1], accessible[index]);
