@@ -1,6 +1,8 @@
 (function () {
   'use strict';
-  var TERMINAL_IMAGE = '../assets/eshop/terminal-hugo-yellow.png';
+  // The terminal photo shown before a colour is chosen (cart line, catalogue image). It is
+  // the in-stock default colour; the detail gallery follows the selected colour.
+  var TERMINAL_IMAGE = '../assets/eshop/case-red-impulse.jpg';
   var ASSET_ROOT = '../assets/eshop/';
   var caseVariants = [
     { id: 'red_impulse', color: '#d93645', image: 'case-red-impulse.jpg', names: { cs: 'Rudý impuls', en: 'Red Impulse' } },
@@ -40,14 +42,21 @@
       id: 'printer_zj5809', name: 'Bluetooth tiskárna účtenek', kicker: 'ZJ-5809/BT', image: ASSET_ROOT + 'printer-zj5809.jpg',
       lead: 'Kompaktní tiskárna účtenek, která se s terminálem spáruje přes Bluetooth. Když host chce papír, dostane ho — bez kabelu přes celý bar.',
       gallery: [ASSET_ROOT + 'printer-zj5809.jpg'],
-      specs: [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Včetně pouzdra']],
+      specs: [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Bez pouzdra']],
       available: false, price: null
     }
   };
   var CART_STORAGE_KEY = 'hugo-eshop-cart-v1';
   var cart = [];
-  var selectedTerminalCaseVariant = 'sun_spark';
-  var selectedExtraCaseVariant = 'sun_spark';
+  // HUGO-1662 — mirrors the API default, which must be an in-stock colour. Which colours
+  // are in stock is never hardcoded here: it arrives with the catalogue
+  // (`caseVariants[].inStock`), and the API refuses a restocking colour at checkout.
+  var DEFAULT_CASE_VARIANT = 'red_impulse';
+  var caseStock = {};
+  function caseInStock(id) { return caseStock[id] !== false; }
+  function isCaseVariant(id) { return caseVariants.some(function (item) { return item.id === id; }); }
+  var selectedTerminalCaseVariant = DEFAULT_CASE_VARIANT;
+  var selectedExtraCaseVariant = DEFAULT_CASE_VARIANT;
   var selectedDeliveryMethod = 'dpd';
   var cartStep = 'items';
   var delivery = {};
@@ -65,7 +74,7 @@
   }
 
   function gallerySourcesFor(product, caseKind, selected) {
-    return caseKind === 'extra' ? [ASSET_ROOT + selected.image].concat(product.gallery.slice(1)) : product.gallery;
+    return caseKind ? [ASSET_ROOT + selected.image].concat(product.gallery.slice(1)) : product.gallery;
   }
   var serializeCartHandoff = handoff.serializeCartHandoff;
   var parseCartHandoff = handoff.parseCartHandoff;
@@ -100,13 +109,11 @@
         params.delete('cart');
         history.replaceState({}, '', location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash);
       }
-      var restoredVariant = caseVariants.some(function (item) { return item.id === stored.caseVariant; })
-        ? stored.caseVariant
-        : 'sun_spark';
+      // Stock is not known yet; `applyCaseStock` moves a restocking colour to the default
+      // as soon as the catalogue answers.
+      var restoredVariant = isCaseVariant(stored.caseVariant) ? stored.caseVariant : DEFAULT_CASE_VARIANT;
       selectedTerminalCaseVariant = restoredVariant;
-      selectedExtraCaseVariant = caseVariants.some(function (item) { return item.id === stored.extraCaseVariant; })
-        ? stored.extraCaseVariant
-        : restoredVariant;
+      selectedExtraCaseVariant = isCaseVariant(stored.extraCaseVariant) ? stored.extraCaseVariant : restoredVariant;
       selectedDeliveryMethod = handoff.deliveryMethod(stored.deliveryMethod);
       cart = stored.cart.filter(function (line) { return line && ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809'].includes(line.id); })
         .map(function (line) { return { id: line.id, key: line.id, qty: line.qty || 1, variant: null, variantName: null }; });
@@ -168,10 +175,12 @@
           products[item.id].currency = item.currency;
         });
         delivery = Object.fromEntries((data.delivery || []).map(function (item) { return [item.id, item]; }));
+        applyCaseStock(data.caseVariants);
         renderDelivery();
         document.querySelectorAll('[data-add]').forEach(function (add) {
           add.disabled = !canAddProduct(add.dataset.add);
         });
+        document.querySelectorAll('[data-case-scope] .swatch.is-active').forEach(previewSwatch); refreshStockNotes();
         renderCataloguePrices();
         // A restored cart renders before this async response. Re-render with
         // authoritative Stripe availability/prices so its totals and checkout
@@ -282,12 +291,21 @@
   }
 
   function updateCheckoutState() {
-    reviewButton.disabled = !cartIsOrderable(cart, products);
-    checkoutButton.disabled = !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products) || delivery[selectedDeliveryMethod]?.available !== true;
+    var casesInStock = cart.every(function (line) { return !line.variant || caseInStock(line.variant); });
+    reviewButton.disabled = !cartIsOrderable(cart, products) || !casesInStock;
+    checkoutButton.disabled = !casesInStock || !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products) || delivery[selectedDeliveryMethod]?.available !== true;
   }
 
-  function canAddProduct(id) {
+  function isPriced(id) {
     var product = products[id];
+    if (!product || !product.available) return false;
+    return id !== 'pax_a920' || products.terminal_case.available === true;
+  }
+
+  function canAddProduct(id, previewVariant) {
+    var product = products[id];
+    if (id === 'pax_a920' && !caseInStock(previewVariant || selectedTerminalCaseVariant)) return false;
+    if (id === 'terminal_case_extra' && !caseInStock(previewVariant || selectedExtraCaseVariant)) return false;
     if (!product || !product.available) return false;
     return id !== 'pax_a920' || products.terminal_case.available === true;
   }
@@ -341,7 +359,7 @@
     var kicker = productValue(id, 'cardKickers', p.kicker);
     var caseKind = p.id === 'pax_a920' ? 'included' : p.id === 'terminal_case' ? 'extra' : null;
     var selectedId = caseKind === 'included' ? selectedTerminalCaseVariant : selectedExtraCaseVariant;
-    var selected = caseVariants.find(function (variant) { return variant.id === selectedId; }) || caseVariants[3];
+    var selected = caseVariants.find(function (variant) { return variant.id === selectedId; }) || caseVariants[0];
     var gallerySources = gallerySourcesFor(p, caseKind, selected);
     var gallery = gallerySources.map(function (src, index) { return '<img src="' + src + '" alt="' + (index ? name + (window.HUGO_LANG === 'en' ? ' in use' : ' v provozu') : name) + '">'; }).join('');
     var specs = productSpecs.map(function (row) { return '<li><span>' + row[0] + '</span><strong>' + row[1] + '</strong></li>'; }).join('');
@@ -351,16 +369,20 @@
         var active = variant.id === selected.id;
         var variantName = caseVariantName(variant);
         return '<button class="swatch' + (active ? ' is-active' : '') + '" style="--swatch:' + variant.color + '" data-variant="' + variant.id + '" data-image="' + variant.image + '" type="button" aria-label="' + variantName + '" aria-checked="' + (active ? 'true' : 'false') + '" role="radio"></button>';
-      }).join('') + '<span class="swatch-name" aria-live="polite">' + caseVariantName(selected) + '</span></div>';
+      }).join('') + '<span class="swatch-name" aria-live="polite">' + caseVariantName(selected) + '</span></div><p class="stock-note" aria-live="polite" hidden></p>';
     }
-    var button = p.id === 'terminal_case'
-      ? (canAddProduct('terminal_case_extra')
+    // HUGO-1662 — a priced product always gets its real add button; for case products
+    // `renderStockNote` then enables/labels it for the SELECTED colour, so switching from
+    // a restocking colour to an in-stock one inside the dialog makes it buyable again.
+    var orderId = p.id === 'terminal_case' ? 'terminal_case_extra' : p.id;
+    var button = !isPriced(orderId)
+      ? '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>'
+      : (p.id === 'terminal_case'
         ? '<button class="add-button" data-add-case type="button">' + t('addExtraCase') + '</button>'
-        : '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>')
-      : (canAddProduct(p.id) ? '<button class="add-button" data-dialog-add="' + p.id + '" type="button">' + t('addToCart') + '</button>' : '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>');
-    var interactiveGallery = caseKind === 'extra' ? gallery.replace('<img ', '<img data-case-image ') : gallery;
+        : '<button class="add-button" data-dialog-add="' + p.id + '" type="button">' + t('addToCart') + '</button>');
+    var interactiveGallery = caseKind ? gallery.replace('<img ', '<img data-case-image ') : gallery;
     dialogContent.innerHTML = '<div class="dialog-layout"' + (caseKind ? ' data-case-scope data-case-kind="' + caseKind + '"' : '') + '><div class="dialog-gallery">' + interactiveGallery + '</div><div class="dialog-copy"><p class="eyebrow">' + kicker + '</p><h2 id="product-dialog-title">' + name + '</h2><p class="lead">' + lead + '</p>' + swatches + '<ul class="specs">' + specs + '</ul>' + button + '</div></div>';
-    if (caseKind) previewSwatch(dialogContent.querySelector('[data-variant="' + selected.id + '"]'));
+    if (caseKind) { markRestockingSwatches(); previewSwatch(dialogContent.querySelector('[data-variant="' + selected.id + '"]')); refreshStockNotes(); }
     dialog.showModal();
   }
 
@@ -379,6 +401,67 @@
     if (button.closest('#dialog-content')) dialogContent.dataset.previewVariant = variant.id;
   }
 
+  function applyCaseStock(list) {
+    caseStock = Object.fromEntries((Array.isArray(list) ? list : [])
+      .filter(function (item) { return item && typeof item.id === 'string'; })
+      .map(function (item) { return [item.id, item.inStock === true]; }));
+    if (!caseInStock(selectedTerminalCaseVariant)) selectedTerminalCaseVariant = DEFAULT_CASE_VARIANT;
+    if (!caseInStock(selectedExtraCaseVariant)) selectedExtraCaseVariant = DEFAULT_CASE_VARIANT;
+    ['included', 'extra'].forEach(function (kind) {
+      var selectedId = kind === 'included' ? selectedTerminalCaseVariant : selectedExtraCaseVariant;
+      document.querySelectorAll('[data-case-kind="' + kind + '"] .swatch').forEach(function (node) {
+        var active = node.dataset.variant === selectedId;
+        node.classList.toggle('is-active', active);
+        node.setAttribute('aria-checked', active ? 'true' : 'false');
+      });
+    });
+    markRestockingSwatches();
+    syncCaseLine();
+  }
+
+  function addLabelFor(btn) {
+    if (btn.hasAttribute('data-add-case')) return t('addExtraCase');
+    if (btn.hasAttribute('data-dialog-add')) return t('addToCart');
+    return t('add');
+  }
+
+  function renderStockNote(scope, variant) {
+    if (!scope) return;
+    var note = scope.querySelector('.stock-note');
+    var inStock = caseInStock(variant.id);
+    if (note) {
+      note.hidden = inStock;
+      note.textContent = '';
+      if (!inStock) {
+        var names = caseVariants.filter(function (item) { return caseStock[item.id] === true; }).map(caseVariantName).join(', ');
+        var lead = document.createElement('b');
+        lead.textContent = t('restocking');
+        note.appendChild(lead);
+        note.appendChild(document.createTextNode(' ' + t('restockingText').replace('{name}', caseVariantName(variant)).replace('{inStock}', names)));
+      }
+    }
+    scope.querySelectorAll('[data-add], [data-dialog-add], [data-add-case]').forEach(function (btn) {
+      var id = btn.dataset.add || btn.dataset.dialogAdd || (btn.hasAttribute('data-add-case') ? 'terminal_case_extra' : null);
+      if (!id) return;
+      btn.disabled = !canAddProduct(id, variant.id);
+      btn.textContent = inStock ? addLabelFor(btn) : t('restockingButton');
+    });
+  }
+
+  function refreshStockNotes() {
+    document.querySelectorAll('[data-case-scope]').forEach(function (scope) {
+      var active = scope.querySelector('.swatch.is-active');
+      var variant = active && caseVariants.find(function (item) { return item.id === active.dataset.variant; });
+      if (variant) renderStockNote(scope, variant);
+    });
+  }
+
+  function markRestockingSwatches() {
+    document.querySelectorAll('.swatch[data-variant]').forEach(function (node) {
+      node.classList.toggle('is-restocking', !caseInStock(node.dataset.variant));
+    });
+  }
+
   function selectSwatch(button) {
     var kind = button.closest('[data-case-kind]').dataset.caseKind;
     if (kind === 'included') selectedTerminalCaseVariant = button.dataset.variant;
@@ -389,6 +472,7 @@
       node.setAttribute('aria-checked', active ? 'true' : 'false');
       if (active) previewSwatch(node);
     });
+    refreshStockNotes();
     syncCaseLine();
     renderCart();
   }
@@ -407,7 +491,7 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Idempotency-Key': idempotencyKey },
       body: JSON.stringify(checkoutPayload)
-    }).then(function (response) { return response.json().then(function (body) { if (!response.ok) throw new Error(t('checkoutError')); return body; }); })
+    }).then(function (response) { return response.json().then(function (body) { if (!response.ok) throw new Error(t(body?.error?.code === 'case_variant_out_of_stock' ? 'restockingCheckout' : 'checkoutError')); return body; }); })
       .then(function (body) { location.assign(body.url); })
       .catch(function (error) { checkoutNote.hidden = false; checkoutNote.textContent = error.message; checkoutButton.textContent = t('checkout'); updateCheckoutState(); });
   }
@@ -451,6 +535,10 @@
     if (dialogAdd) dialog.close();
     if (event.target.closest('[data-add-case]')) {
       var preview = dialogContent.querySelector('[data-variant="' + (dialogContent.dataset.previewVariant || selectedExtraCaseVariant) + '"]');
+      // HUGO-1662 — never add a previewed colour that is restocking; select it instead so
+      // the note explains why nothing was added.
+      if (!preview) return;
+      if (!caseInStock(preview.dataset.variant)) { selectSwatch(preview); return; }
       selectSwatch(preview);
       addProduct('terminal_case_extra');
       dialog.close();
@@ -459,6 +547,11 @@
     if (swatch) selectSwatch(swatch);
   });
   document.addEventListener('mouseover', function (event) { var swatch = event.target.closest('.swatch'); if (swatch) previewSwatch(swatch); });
+  document.addEventListener('mouseout', function (event) {
+    var group = event.target.closest('.swatches');
+    if (!group || group.contains(event.relatedTarget)) return;
+    previewSwatch(group.querySelector('.swatch.is-active'));
+  });
   document.addEventListener('focusin', function (event) { var swatch = event.target.closest('.swatch'); if (swatch) previewSwatch(swatch); });
   bagButton.addEventListener('click', openCart);
   reviewButton.addEventListener('click', function () { showCartStep('review'); });
@@ -498,9 +591,11 @@
     renderCart();
     showCartStep(cartStep);
     if (dialog.open) dialog.close();
-    document.querySelectorAll('[data-case-scope] .swatch.is-active').forEach(previewSwatch);
+    document.querySelectorAll('[data-case-scope] .swatch.is-active').forEach(previewSwatch); refreshStockNotes();
   });
   restoreCart();
+  markRestockingSwatches();
+  document.querySelectorAll('[data-case-scope] .swatch.is-active').forEach(previewSwatch); refreshStockNotes();
   loadCatalogue();
   renderCart();
   showSuccessIfNeeded();
