@@ -75,13 +75,16 @@
 
   /* ---------- hero ---------- */
   .hero{padding:80px 0 0; text-align:center}
+  /* Partner banner supplied by Mattoni, sits above the lockup. */
+  .banner{display:block; margin:0 auto clamp(28px,4vw,40px); width:min(100%,444px); height:auto}
+
   /* Co-brand lockup. The two logo cells are equal-width (1fr each), so the "+"
      sits dead centre whatever the marks measure. Both are driven off --h: Hugo's
-     icon is exactly --h, and the Mattoni emblem gets 1.75x that, because an
-     emblem-plus-wordmark needs more height than a bare wordmark to read as the
+     icon is exactly --h, and the Mattoni 1873 logo gets 1.25x that, because its
+     eagle-over-wordmark needs more height than a bare wordmark to read as the
      same size. */
   .lockup{
-    --h:clamp(42px,5.4vw,64px); --mark-h:calc(var(--h)*1.75);
+    --h:clamp(42px,5.4vw,64px); --mark-h:calc(var(--h)*1.25);
     display:grid; grid-template-columns:1fr auto 1fr;
     align-items:center; gap:clamp(20px,3.6vw,44px); line-height:1;
   }
@@ -215,8 +218,9 @@
 
 <section class="hero">
   <div class="container">
+    <img class="banner" src="../assets/partners/mattoni-eet-banner.svg" width="308" height="46" alt="EET 2.0 je za dveřmi. Mattoni má pro vás řešení a doporučuje." />
     <h1 class="lockup">
-      <img class="mat-mark" src="../assets/partners/mattoni.png" width="848" height="400" alt="Mattoni" />
+      <img class="mat-mark" src="../assets/partners/mattoni-1873.svg" width="800" height="231" alt="Mattoni 1873" />
       <span class="plus" aria-hidden="true">+</span>
       <span class="hugo"><img src="../assets/hugo-icon.svg" alt="" />Hugo</span>
     </h1>
