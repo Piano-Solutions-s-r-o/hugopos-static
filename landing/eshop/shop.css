@@ -86,3 +86,18 @@ footer .foot-bottom a{color:#2a2620}
 .delivery-choice label:has(input:disabled){opacity:.5;cursor:not-allowed}
 .cart-head-title{display:flex;align-items:center;gap:12px}
 .cart-head .cart-back{font-size:24px}
+
+/* HUGO-1662 — smaller product photos on white, restocking state */
+.product-card .image-button{height:280px;background:#fff;padding:34px 44px;border-bottom:1px solid rgba(20,17,13,.07)}
+.product-card .image-button img{object-fit:contain}
+.product-card .image-button:hover img{transform:scale(1.02)}
+.cart-line img{background:#fff;border:1px solid rgba(20,17,13,.08)}
+.swatch.is-restocking{opacity:.55}
+.swatch.is-restocking.is-active{opacity:1}
+.stock-note{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:#fff6d6;color:#5f4a00;font-size:13px;line-height:1.4}
+.stock-note b{font-weight:800}
+@media(max-width:980px){.product-card .image-button{height:240px;padding:28px 36px}.dialog-gallery img:first-child{height:280px}}
+@media(max-width:650px){.product-card .image-button{height:210px;padding:22px 28px}.dialog-gallery img:first-child{height:240px;padding:24px}}
+.dialog-gallery img{object-fit:contain;background:#fff;padding:22px;border:1px solid rgba(20,17,13,.06);height:220px}
+.dialog-gallery img:first-child{height:340px;padding:40px}
+@media(max-width:980px){.dialog-gallery img{height:180px}}

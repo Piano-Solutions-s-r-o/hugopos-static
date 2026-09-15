@@ -14,7 +14,7 @@
   }
 
   function serializeCartHandoff(lines, caseVariant, extraCaseVariant, selectedDeliveryMethod) {
-    var allowedVariant = CASE_VARIANTS.includes(caseVariant) ? caseVariant : 'sun_spark';
+    var allowedVariant = CASE_VARIANTS.includes(caseVariant) ? caseVariant : 'red_impulse';
     var allowedExtraVariant = CASE_VARIANTS.includes(extraCaseVariant) ? extraCaseVariant : allowedVariant;
     var seen = {};
     var safeCart = (Array.isArray(lines) ? lines : []).filter(function (line) {
@@ -49,7 +49,7 @@
         seen[line.id] = true;
         safeCart.push({ id: line.id, qty: qty });
       }
-      var caseVariant = CASE_VARIANTS.includes(parsed.caseVariant) ? parsed.caseVariant : 'sun_spark';
+      var caseVariant = CASE_VARIANTS.includes(parsed.caseVariant) ? parsed.caseVariant : 'red_impulse';
       var extraCaseVariant = CASE_VARIANTS.includes(parsed.extraCaseVariant) ? parsed.extraCaseVariant : caseVariant;
       return {
         caseVariant: caseVariant,

@@ -18,16 +18,16 @@
   var VARIANTS = {
     micro: {
       '.hero-eyebrow': {
-        cs: '<span class="pip">★</span> Pro food trucky, stánky a malé provozy &nbsp;·&nbsp; spustíš za 5 minut',
+        cs: '<span class="pip">★</span> Pro food trucky, stánky a malé provozy &nbsp;·&nbsp; spustíte za 5 minut',
         en: '<span class="pip">★</span> For food trucks, stalls &amp; solo spots &nbsp;·&nbsp; live in 5 minutes'
       },
       '.hero h1': {
-        cs: 'Pokladna, co se <span class="hl">vejde do kapsy.</span> <em>Spusť za 5 minut.</em>',
+        cs: 'Pokladna, co se <span class="hl">vejde do kapsy.</span> <em>Spustíte ji za 5 minut.</em>',
         en: 'A till that <span class="hl">fits in your pocket.</span> <em>Live in 5 minutes.</em>'
       },
       '.hero p.lead': {
-        cs: 'Žádné kabely, žádná smlouva — a žádná instalace na týden. Stáhni appku, vyfoť ceník a ber karty hned na Androidu, který máš — nebo si vezmi fakt moderní terminál od nás. Jen 190 Kč měsíčně, když platby bereš přes nás.',
-        en: 'No cables, no contract — and no week-long install. Download the app, snap your price list and take cards on the Android phone you own — or grab a genuinely modern terminal from us. Just 190 Kč a month when you take payments through us.'
+        cs: 'Žádné kabely, žádná smlouva a žádná instalace na týden. Stáhněte appku, vyfoťte ceník a přijímejte karty hned na Androidu, který máte, nebo na terminálu Hugo. Jen 190 Kč měsíčně bez DPH, když platby přijímáte přes nás.',
+        en: 'No cables, no contract — and no week-long install. Download the app, snap your price list and take cards on the Android phone you own — or grab a genuinely modern terminal from us. Just 190 Kč a month excl. VAT when you take payments through us.'
       },
       '.hero-ctas .btn-primary': {
         cs: 'Stáhnout zdarma ' + ARR,
@@ -40,46 +40,12 @@
         en: '<span class="pip">★</span> For restaurants &amp; multi-venue groups &nbsp;·&nbsp; free migration'
       },
       '.hero h1': {
-        cs: 'Pokladna, která <span class="hl">roste s tvou restaurací.</span> <em>I přes víc poboček.</em>',
+        cs: 'Pokladna, která <span class="hl">roste s vaší restaurací.</span> <em>I přes víc poboček.</em>',
         en: 'The POS that <span class="hl">scales with your restaurant.</span> <em>Across every venue.</em>'
       },
       '.hero p.lead': {
-        cs: 'Přejdi z Dotykačky nebo Storyous bez výpadku — a bez toho týdenního stěhování jako ze středověku. Menu naimportujeme my. Reporty, foodcost, sklad a předpovědi Piano Brain pro všechny pobočky na jednom místě.',
+        cs: 'Přejděte z Dotykačky nebo Storyous bez výpadku a bez týdenního stěhování jako ve středověku. Menu naimportujeme my. Reporty, foodcost, sklad a předpovědi Piano Brain pro všechny pobočky na jednom místě.',
         en: 'Switch from Dotykačka or Storyous with zero downtime — and none of that week-long, medieval migration. We import your menu. Reports, foodcost, stock and Piano Brain forecasts for every venue in one place.'
-      }
-    }
-  };
-
-  /* Per-variant stat-band overrides (3 stats: value innerHTML + label) */
-  var STATS = {
-    small: {
-      v: {
-        cs: ['+19<span class="u">%</span>', '&minus;4<span class="u">h/týd</span>', '5<span class="u">min</span>'],
-        en: ['+19<span class="u">%</span>', '&minus;4<span class="u">h/wk</span>', '5<span class="u">min</span>']
-      },
-      l: {
-        cs: ['vyšší spropitné, když appka sama nabídne dýško', 'méně administrativy — DPH, účtenky a foodcost samy', 'od stažení k první tržbě'],
-        en: ['higher tips with the on-screen tip prompt', 'less admin — VAT, receipts &amp; foodcost on autopilot', 'from download to your first sale']
-      }
-    },
-    micro: {
-      v: {
-        cs: ['190<span class="u">Kč/měs</span>', '5<span class="u">min</span>', '+19<span class="u">%</span>'],
-        en: ['190<span class="u">Kč/mo</span>', '5<span class="u">min</span>', '+19<span class="u">%</span>']
-      },
-      l: {
-        cs: ['měsíčně s našimi platbami, nic skrytého', 'od stažení k první tržbě', 'vyšší spropitné, když appka nabídne dýško'],
-        en: ['a month with our payments, nothing hidden', 'from download to first sale', 'higher tips with the on-screen tip prompt']
-      }
-    },
-    mid: {
-      v: {
-        cs: ['1<span class="u">den</span>', '&minus;4<span class="u">h/týd</span>', '&infin;<span class="u">poboček</span>'],
-        en: ['1<span class="u">day</span>', '&minus;4<span class="u">h/wk</span>', '&infin;<span class="u">venues</span>']
-      },
-      l: {
-        cs: ['k přechodu — bez výpadku', 'ručních reportů a administrativy', 'a zařízení na jednom účtu'],
-        en: ['to switch — no downtime', 'of manual reports &amp; admin', '&amp; devices on one account']
       }
     }
   };
@@ -90,9 +56,9 @@
       cs: {
         q: 'Jak vytáhnout víc z víkendu na trhu?',
         ph: 'Co vás zajímá nebo chcete vědět?',
-        a: '<p>O víkendu ti nejvíc vydělává <b>wrap s kuřecím</b> a <b>domácí limonáda</b> — spolu dělají skoro <b>40 %</b> tržby.</p>'
-         + '<p>Wrap teď prodáváš za <b>119 Kč</b>, okolní stánky za <b>135–145 Kč</b>. Klidně jdi na <b>129 Kč</b> — přidá ti to kolem <b>+1 600 Kč</b> za víkend a nikdo si nevšimne.</p>'
-         + '<p>A nachystej si o <b>pětinu víc</b> placek: minulé dva víkendy ti došly už kolem <b>14:00</b>.</p>'
+        a: '<p>O víkendu vám nejvíc vydělává <b>wrap s kuřecím</b> a <b>domácí limonáda</b> — spolu dělají skoro <b>40 %</b> tržby.</p>'
+         + '<p>Wrap teď prodáváte za <b>119 Kč</b>, okolní stánky za <b>135–145 Kč</b>. Klidně jděte na <b>129 Kč</b> — přidá vám to kolem <b>+1 600 Kč</b> za víkend a nikdo si nevšimne.</p>'
+         + '<p>A nachystejte si o <b>pětinu víc</b> placek: minulé dva víkendy vám došly už kolem <b>14:00</b>.</p>'
       },
       en: {
         q: 'How do I get more out of a market weekend?',
@@ -106,9 +72,9 @@
       cs: {
         q: 'Jak zvednout tržby ve slabých dnech?',
         ph: 'Co vás zajímá nebo chcete vědět?',
-        a: '<p>Nejslabší ti vychází <b>úterý a středa odpoledne</b> — kolem <b>2 900 Kč</b> za odpoledne, o třetinu míň než ve čtvrtek.</p>'
-         + '<p>Zkus na ty dny spojit <b>kávu a zákusek za 99 Kč</b>. Podobná akce ti v pátek zvedla průměrnou útratu na účet o <b>14 %</b>.</p>'
-         + '<p>Spropitné navíc roste tam, kde appka při placení sama nabídne dýško — drž to zapnuté u všech plateb a přidá ti to dalších pár stovek týdně.</p>'
+        a: '<p>Nejslabší vám vychází <b>úterý a středa odpoledne</b> — kolem <b>2 900 Kč</b> za odpoledne, o třetinu míň než ve čtvrtek.</p>'
+         + '<p>Zkuste na ty dny spojit <b>kávu a zákusek za 99 Kč</b>. Podobná akce vám v pátek zvedla průměrnou útratu na účet o <b>14 %</b>.</p>'
+         + '<p>Spropitné navíc roste tam, kde appka při placení sama nabídne dýško — nechte ji zapnutou u všech plateb a přidá vám to dalších pár stovek týdně.</p>'
       },
       en: {
         q: 'How do I lift sales on the slow days?',
@@ -122,9 +88,9 @@
       cs: {
         q: 'Jak můžu zlepšit marži u poledního menu?',
         ph: 'Co vás zajímá nebo chcete vědět?',
-        a: '<p>U tvého poledního menu doporučuji zaměřit se na <b>kuřecí řízek s bramborovou kaší</b>, který teď prodáváš za <b>165 Kč</b>. Foodcost vychází kolem <b>82 Kč</b>, takže marže je jen něco přes <b>50 %</b>.</p>'
-         + '<p>V okolí se přitom podobná jídla pohybují mezi <b>185–195 Kč</b>. Ideální krok je zvýšit cenu na <b>189 Kč</b> – tím se okamžitě posuneš na tržní úroveň a marže stoupne na <b>64 %</b>.</p>'
-         + '<p>Zároveň můžeš brambory nahradit celerem, který působí prémiověji („domácí celerová kaše"), a tím snížíš foodcost o dalších <b>6 Kč</b> na porci a výsledná marže ti vyroste téměř na <b>70 %</b>.</p>'
+        a: '<p>U vašeho poledního menu doporučuji zaměřit se na <b>kuřecí řízek s bramborovou kaší</b>, který teď prodáváte za <b>165 Kč</b>. Foodcost vychází kolem <b>82 Kč</b>, takže marže je jen něco přes <b>50 %</b>.</p>'
+         + '<p>V okolí se přitom podobná jídla pohybují mezi <b>185–195 Kč</b>. Ideální krok je zvýšit cenu na <b>189 Kč</b> – tím se okamžitě posunete na tržní úroveň a marže stoupne na <b>64 %</b>.</p>'
+         + '<p>Zároveň můžete brambory nahradit celerem, který působí prémiověji („domácí celerová kaše"), a tím snížíte foodcost o dalších <b>6 Kč</b> na porci a výsledná marže vám vyroste téměř na <b>70 %</b>.</p>'
       },
       en: {
         q: 'How can I improve the margin on my lunch menu?',
@@ -219,13 +185,6 @@
         if (el && ov[sel][lang] != null) el.innerHTML = ov[sel][lang];
       });
     }
-    var st = STATS[v];
-    if (st) {
-      var vs = document.querySelectorAll('.stats-grid .stat .v');
-      var ls = document.querySelectorAll('.stats-grid .stat .l');
-      (st.v[lang] || []).forEach(function (t, i) { if (vs[i]) vs[i].innerHTML = t; });
-      (st.l[lang] || []).forEach(function (t, i) { if (ls[i]) ls[i].innerHTML = t; });
-    }
     var ch = CHAT[v] && CHAT[v][lang];
     if (ch) {
       var q = document.getElementById('bcQ');
@@ -264,7 +223,7 @@
   function wire() {
     var eyebrow = document.querySelector('.hero-eyebrow');
     if (eyebrow) {
-      eyebrow.setAttribute('title', 'Klikni pro další verzi cílení');
+      eyebrow.setAttribute('title', 'Klikněte pro další verzi cílení');
       eyebrow.addEventListener('click', function () {
         var i = ORDER.indexOf(window.HUGO_VARIANT);
         selectVariant(ORDER[(i + 1) % ORDER.length]);
