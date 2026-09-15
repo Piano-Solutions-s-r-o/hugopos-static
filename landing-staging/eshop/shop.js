@@ -29,7 +29,7 @@
     },
     terminal_case: {
       id: 'terminal_case', name: 'Další obal na terminál', kicker: 'Accessories', image: ASSET_ROOT + 'case-sun-spark.jpg',
-      lead: 'Pružný ochranný obal dává terminálu jistější úchop a vaší obsluze vlastní barvu.',
+      lead: 'Pružný ochranný obal dává terminálu jistější úchop a tvé obsluze vlastní barvu.',
       gallery: [ASSET_ROOT + 'case-sun-spark.jpg', ASSET_ROOT + 'case-red-impulse.jpg', ASSET_ROOT + 'case-electric-blue.jpg'],
       specs: [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']],
       available: false, price: null
