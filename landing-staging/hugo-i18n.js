@@ -140,7 +140,7 @@
     { sel: '.vs-head span', all: true, cs: ['Disciplína', 'Stará pokladna', 'Hugo'] },
     { sel: '.vs-row .vs-k', all: true, cs: ['Od rozhodnutí k první platbě', 'Smlouva', 'Menu', 'Poplatek za kartu', 'Měsíčně', 'Hardware', 'Zaškolení obsluhy'] },
     { sel: '.vs-row .vs-old', all: true, cs: ['Až dorazí technik', 'Na roky, s výpovědní lhůtou', 'Přepíšeš ručně', 'Podle obratu a „individuální nabídky"', 'Podle balíčku a doplňků', 'Krabice na pronájem', 'Celý den'] },
-    { sel: '.vs-row .vs-new', all: true, cs: ['5 minut', 'Žádná, zrušíš kdykoli', 'Vyfotíš', '<span>0,9 % + 1 Kč <a class="mif-link" href="#mif">+ MIF++</a></span>', '<span>190 Kč <small class="vat">bez&nbsp;DPH</small></span>', 'Tvůj telefon nebo terminál Hugo', 'Jedna směna'] },
+    { sel: '.vs-row .vs-new', all: true, cs: ['5 minut', 'Žádná, zrušíš kdykoli', 'Vyfotíš', '<span>0,9 % + 1&nbsp;Kč&nbsp;(<a class="mif-link" href="#mif">MIF++</a>)</span>', '<span>190 Kč <small class="vat">bez&nbsp;DPH</small></span>', 'Tvůj telefon nebo terminál Hugo', 'Jedna směna'] },
     { sel: '.vs-foot p', cs: 'Pořád váháš? Prvních 14 dní je zdarma a když se ti Hugo nebude líbit, vrátíme peníze. Bez formulářů, bez výslechu.' },
     { sel: '.vs-foot .btn', cs: 'Vyzkoušet zdarma ' + ARR },
 
@@ -161,7 +161,7 @@
     { sel: '.sum-tier-meta', cs: 'jeden tarif · všechno v ceně' },
     { sel: '.sum-badge', cs: '14 DNÍ ZDARMA' },
     { sel: '.sum-u', cs: 'Kč / měsíc bez DPH' },
-    { sel: '.sum-plus', cs: '+ 0,9 % + 1 Kč z platby kartou <a class="mif-link" href="#mif">+ MIF++</a>. Náš poplatek je stejný při jakémkoli obratu.' },
+    { sel: '.sum-plus', cs: '+ 0,9 % + 1 Kč z platby kartou. Náš poplatek je stejný při jakémkoli obratu.' },
     { sel: '.sum-feat li', all: true, cs: [
       CHKF + 'Platby kartou na Androidu <b style="color:var(--green); font-weight:700;">v ceně</b>',
       CHKF + 'Piano Pilot ti pomůže řídit podnik',
@@ -208,7 +208,7 @@
     { sel: '.foot-col h5', all: true, cs: ['Produkt', 'Podpora'] },
     { sel: '.foot-grid > div:nth-child(2) a', all: true, cs: ['Zařízení', 'AI &amp; Brain', 'Spuštění', 'Ceník'] },
     { sel: '.foot-grid > div:nth-child(3) a', all: true, cs: ['hugo@piano.cz', 'Stav služeb', 'Přihlásit se'] },
-    { sel: '.foot-mif', cs: '<b>Co znamená MIF++?</b> Za platbu kartou platíš tři položky. Náš poplatek 0,9 % + 1 Kč za transakci. K tomu poplatky třetím stranám, které neurčujeme my a nejsou naším příjmem: mezibankovní poplatek (MIF) bance, která hostovi vydala kartu, a poplatek karetní asociaci Visa nebo Mastercard. Jejich výše se liší podle typu karty; u stravenkových karet a karet AMEX a Diners se přidává dodatečný poplatek. Všechny naše ceny a poplatky jsou bez DPH.' },
+    { sel: '.foot-mif', cs: '<b>Co znamená MIF++?</b> Poplatky za platby kartou se účtují dvěma způsoby a každý, kdo karty přijímá, platí podle jednoho z nich. <b>Blended</b> je jedna souhrnná sazba, ve které jsou všechny poplatky dohromady. <b>MIF++</b> (Interchange++) rozepíše platbu na jednotlivé položky, takže vidíš, komu a za co platíš. Hugo účtuje MIF++: náš poplatek 0,9 % + 1 Kč za transakci a k tomu poplatky třetím stranám, které neurčujeme my a nejsou naším příjmem. Jde o mezibankovní poplatek (MIF) bance, která hostovi vydala kartu, a poplatek karetní asociaci Visa nebo Mastercard. Jejich výše se liší podle typu karty; u stravenkových karet a karet AMEX a Diners se přidává dodatečný poplatek. Všechny naše ceny a poplatky jsou bez DPH.' },
     { sel: '.foot-bottom > div:first-child', cs: '© 2026 Hugo &middot; český produkt od Piana &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>' },
     { sel: '.foot-bottom .legal a', all: true, cs: ['Všeobecné obchodní podmínky', 'Kontakt', 'GDPR', 'English'] },
 
@@ -219,15 +219,15 @@
     /* === CRO additions === */
     /* CRO_ANCHOR */
     { sel: '.guarantee-txt', all: true, cs: [
-      '<b>14 dní zdarma, pak 190 Kč měsíčně</b> <small class="vat">bez&nbsp;DPH</small>. Když ti Hugo nesedne, vrátíme ti peníze. Bez formulářů, bez otázek.',
+      '<b>14 dní zdarma, pak 190 Kč měsíčně.</b> Když ti Hugo nesedne, vrátíme ti peníze. Bez formulářů, bez otázek.',
       '<b>14 dní zdarma.</b> Když ti Hugo nesedne, vrátíme ti peníze. Bez formulářů, bez otázek.'
     ] },
     { sel: '.abbar-label', cs: 'Verze pro:' },
     { sel: '.ab-opt', all: true, cs: ['Mikro provoz', 'Kavárna & bar', 'Restaurace & síť'] },
-    { sel: '.pay-note', cs: 'Transparentní ceny v režimu <a class="mif-link" href="#mif">MIF++</a>. Náš poplatek je stejný při 30 000 Kč i při 1 000 000 Kč měsíčně. Peníze máš na účtu do 2 dnů a banku měnit nemusíš.' },
+    { sel: '.pay-note', cs: 'Transparentní ceny. Náš poplatek je stejný při 30 000 Kč i při 1 000 000 Kč měsíčně. Peníze máš na účtu do 2 dnů a banku měnit nemusíš.' },
     { sel: '.price-points li span', all: true, cs: [
       '<b>190 Kč měsíčně místo 990 Kč</b> <small class="vat">bez&nbsp;DPH</small>. Celá pokladna (objednávky, menu, DPH, reporty), když platby kartou přijímáš s námi. Jedna cena, nic skrytého.',
-      '<b>0,9 % + 1 Kč z platby kartou <a class="mif-link" href="#mif">+ MIF++</a>, vždycky</b>, ať máš jakýkoli obrat. Náš poplatek se ti potichu nezmění.',
+      '<b>0,9 % + 1 Kč (<a class="mif-link" href="#mif">MIF++</a>) z platby kartou, vždycky</b>, ať máš jakýkoli obrat. Náš poplatek se ti potichu nezmění.',
       '<b>Peníze z karet na účtu do 2 dnů.</b> Platby vyřešené od začátku do konce a banku si necháš svou.'
     ] },
     { sel: '.midcta-txt h3', cs: 'Hotovo ještě před polední špičkou.' },
@@ -248,7 +248,7 @@
       'Co DPH a EET?'
     ] },
     { sel: '.faq-item .a', all: true, cs: [
-      'Jeden tarif: 190 Kč měsíčně bez DPH místo 990 Kč, když platby kartou přijímáš přes nás, a k tomu náš poplatek 0,9 % + 1 Kč z platby kartou plus poplatky karetních společností (<a class="mif-link" href="#mif">MIF++</a>). Náš poplatek je vždycky stejný, při jakémkoli obratu. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Háček jsme hledali, nenašli.',
+      'Jeden tarif: 190 Kč měsíčně bez DPH místo 990 Kč, když platby kartou přijímáš přes nás, a k tomu 0,9 % + 1 Kč z platby kartou. To je náš poplatek, který je vždycky stejný při jakémkoli obratu; k němu se přičítají poplatky karetních společností. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Háček jsme hledali, nenašli.',
       'Ne. Žádná smlouva ani výpovědní lhůta. Zrušíš kdykoli a data si vyexportuješ.',
       'Nebude. Menu naimportujeme, Hugo poběží vedle stávající pokladny a přepneš, až budeš chtít. Migrace je zdarma.',
       'Ne. Hugo běží na iPhonu nebo Androidu, který už máš. Když chceš pořádné zařízení na pult, náš all-in-one terminál s Hugem stojí 4 900 Kč bez DPH jednorázově. Na pokladní zařízení se navíc připravuje daňový bonus 5 000 Kč. Připojit můžeš i vlastní tiskárnu účtenek a pokladní zásuvku.',
