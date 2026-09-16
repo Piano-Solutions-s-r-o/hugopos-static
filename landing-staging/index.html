@@ -97,6 +97,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="hugo-i18n.js"></script>
 <script src="hugo-variants.js"></script>
+<script>
+  /* Every MIF++ link points at the FAQ entry that explains it. A <details> does not
+     open itself on a fragment navigation in every browser, so open it here. */
+  (function () {
+    function openMif() {
+      if (location.hash !== '#mif') return;
+      var el = document.getElementById('mif');
+      if (!el) return;
+      el.open = true;
+      /* The final resting position comes from scroll-margin-top on .faq-item, because
+         the browser's own fragment scroll runs after this one and wins. */
+      requestAnimationFrame(function () { el.scrollIntoView({ block: 'start' }); });
+    }
+    document.addEventListener('click', function (ev) {
+      /* A modified click opens a new tab; leave this page as the reader left it. */
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
+      var link = ev.target.closest && ev.target.closest('a.mif-link');
+      if (!link || link.getAttribute('href') !== '#mif') return;
+      var el = document.getElementById('mif');
+      if (el) el.open = true;
+    });
+    window.addEventListener('hashchange', openMif);
+    document.addEventListener('DOMContentLoaded', openMif);
+  })();
+</script>
 
 <style>
   :root{
@@ -1398,12 +1423,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .foot-brand p{
     color: var(--muted); font-size: 14px; max-width: 280px; margin: 14px 0 0;
   }
-  .foot-mif{ margin: 0 0 22px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; line-height: 1.55; max-width: 880px; }
-  .foot-mif b{ color: var(--ink-2); }
   .mif-link{ color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; white-space: nowrap; }
   .foot-bottom{
     display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
     font-size: 13px; color: var(--muted);
+    /* The divider used to sit on the MIF++ paragraph that moved into the FAQ. */
+    padding-top: 18px; border-top: 1px solid var(--line);
   }
   .foot-bottom .legal{ display: flex; gap: 18px; flex-wrap: wrap; }
   .foot-bottom a{ color: var(--ink-2); }
@@ -1463,13 +1488,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media(max-width:900px){ .tm-grid{ grid-template-columns:1fr; } }
   .faq{ background:var(--cream-2); }
   .faq-list{ max-width:860px; margin:8px auto 0; display:grid; gap:12px; }
-  .faq-item{ background:#fff; border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; }
+  .faq-item{ background:#fff; border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;
+    /* The nav is sticky, so a #mif deep link would otherwise park the question under it. */
+    scroll-margin-top:96px; }
   .faq-item summary{ list-style:none; cursor:pointer; padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; font-family:var(--display); font-weight:700; font-variation-settings:"wdth" 92; font-size:17px; letter-spacing:-.01em; color:var(--ink); }
   .faq-item summary::-webkit-details-marker{ display:none; }
   .faq-item summary .pm{ width:28px; height:28px; flex:0 0 28px; border-radius:999px; background:var(--cream-2); display:inline-flex; align-items:center; justify-content:center; transition:transform .2s ease, background .2s ease; }
   .faq-item summary .pm svg{ width:15px; height:15px; color:var(--ink); }
   .faq-item[open] summary .pm{ transform:rotate(45deg); background:var(--yellow); }
   .faq-item .a{ padding:0 24px 22px; color:var(--muted); font-size:15px; line-height:1.6; max-width:72ch; }
+  .faq-item .a .a-list{ margin:10px 0 12px; padding-left:20px; display:grid; gap:6px; }
+  .faq-item .a .a-list b{ color:var(--ink-2); }
   .foot-phone{ display:block; margin-top:6px; font-weight:700; color:var(--ink); font-size:15px; }
   .foot-phone:hover{ color:var(--ink-2); }
   .form-call{ text-align:center; margin:10px 0 0; font-size:13px; color:rgba(255,255,255,0.6); }
@@ -2303,7 +2332,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq-list">
       <details class="faq-item" open>
         <summary><span class="q">How much does Hugo cost? What&rsquo;s the catch?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">One plan: 190 Kč a month excl. VAT (instead of 990 Kč) when you take card payments through us &mdash; plus 0,9 % + 1 Kč per card payment. That is our fee, always the same whatever your revenue; the card companies&rsquo; fees come on top. First 14 days are free, and if you&rsquo;re not happy we give you your money back. No tiers, no catch, no contract.</div>
+        <div class="a">One plan: 190 Kč a month excl. VAT (instead of 990 Kč) when you take card payments through us &mdash; plus 0,9 % + 1 Kč per card payment. That is our fee, always the same whatever your revenue; the third-party fees on top are <a class="mif-link" href="#mif">itemised below</a>. First 14 days are free, and if you&rsquo;re not happy we give you your money back. No tiers, no catch, no contract.</div>
+      </details>
+      <details class="faq-item" id="mif">
+        <summary><span class="q">What does MIF++ mean? Is it an extra cost?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
+        <div class="a">MIF++ is how a card fee is itemised, so you can see who gets what. We add nothing on top of it: the same fees are in there as in a single &ldquo;blended&rdquo; rate, they just aren&rsquo;t hidden in one number. Every card payment carries:
+          <ul class="a-list">
+            <li><b>0,9 % + 1 Kč to us</b> for processing the payment &mdash; always the same, whatever your revenue.</li>
+            <li><b>The interchange fee (MIF)</b> to the bank that issued your guest&rsquo;s card.</li>
+            <li><b>The scheme fee</b> to Visa or Mastercard.</li>
+          </ul>
+          We neither set nor keep the last two &mdash; they go on in full. For consumer cards issued in the EEA the interchange fee is capped by EU law at 0,2 % (debit) and 0,3 % (credit). Rates differ by card type, and meal-voucher, AMEX and Diners cards carry an extra fee. All prices and fees exclude VAT. You have enough paperwork without us, so we tried to write this so it reads once. The cap on the interchange fee was filled in on your behalf in Brussels: the one form you never have to see.</div>
       </details>
       <details class="faq-item">
         <summary><span class="q">Do I have to sign a contract?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
@@ -2385,7 +2424,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <p class="foot-mif" id="mif"><b>What does MIF++ mean?</b> Card fees are charged in one of two ways, and everyone who accepts cards pays under one of them. <b>Blended</b> is a single all-in rate with every fee folded together. <b>MIF++</b> (Interchange++) itemises the payment, so you can see who you pay and for what. Hugo charges MIF++: our fee of 0,9 % + 1 Kč per transaction, plus third-party fees we don&rsquo;t set and don&rsquo;t keep: the interchange fee (MIF) paid to the bank that issued your guest&rsquo;s card, and the scheme fee paid to Visa or Mastercard. These vary by card type; meal-voucher cards and AMEX or Diners cards carry an extra fee. All our prices and fees exclude VAT.</p>
     <div class="foot-bottom">
       <div>&copy; 2026 Hugo &middot; a Czech product by Piano &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
       <div class="legal">
