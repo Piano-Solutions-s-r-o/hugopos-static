@@ -208,7 +208,6 @@
     { sel: '.foot-col h5', all: true, cs: ['Produkt', 'Podpora'] },
     { sel: '.foot-grid > div:nth-child(2) a', all: true, cs: ['Zařízení', 'AI &amp; Brain', 'Spuštění', 'Ceník'] },
     { sel: '.foot-grid > div:nth-child(3) a', all: true, cs: ['hugo@piano.cz', 'Stav služeb', 'Přihlásit se'] },
-    { sel: '.foot-mif', cs: '<b>Co znamená MIF++?</b> Poplatky za platby kartou se účtují dvěma způsoby a každý, kdo karty přijímá, platí podle jednoho z nich. <b>Blended</b> je jedna souhrnná sazba, ve které jsou všechny poplatky dohromady. <b>MIF++</b> (Interchange++) rozepíše platbu na jednotlivé položky, takže vidíš, komu a za co platíš. Hugo účtuje MIF++: náš poplatek 0,9 % + 1 Kč za transakci a k tomu poplatky třetím stranám, které neurčujeme my a nejsou naším příjmem. Jde o mezibankovní poplatek (MIF) bance, která hostovi vydala kartu, a poplatek karetní asociaci Visa nebo Mastercard. Jejich výše se liší podle typu karty; u stravenkových karet a karet AMEX a Diners se přidává dodatečný poplatek. Všechny naše ceny a poplatky jsou bez DPH.' },
     { sel: '.foot-bottom > div:first-child', cs: '© 2026 Hugo &middot; český produkt od Piana &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>' },
     { sel: '.foot-bottom .legal a', all: true, cs: ['Všeobecné obchodní podmínky', 'Kontakt', 'GDPR', 'English'] },
 
@@ -241,6 +240,7 @@
     { sel: '.faq .section-head h2', cs: 'Na tohle se ptáš nejčastěji.' },
     { sel: '.faq-item summary .q', all: true, cs: [
       'Kolik Hugo stojí? Kde je háček?',
+      'Co znamená MIF++? Je to něco navíc?',
       'Musím podepsat smlouvu?',
       'Mám Dotykačku nebo Storyous. Bude přechod peklo?',
       'Musím kupovat hardware?',
@@ -248,7 +248,8 @@
       'Co DPH a EET?'
     ] },
     { sel: '.faq-item .a', all: true, cs: [
-      'Jeden tarif: 190 Kč měsíčně bez DPH místo 990 Kč, když platby kartou přijímáš přes nás, a k tomu 0,9 % + 1 Kč z platby kartou. To je náš poplatek, který je vždycky stejný při jakémkoli obratu; k němu se přičítají poplatky karetních společností. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Háček jsme hledali, nenašli.',
+      'Jeden tarif: 190 Kč měsíčně bez DPH místo 990 Kč, když platby kartou přijímáš přes nás, a k tomu 0,9 % + 1 Kč z platby kartou. To je náš poplatek, vždycky stejný při jakémkoli obratu; k němu se přičítají poplatky třetích stran, které <a class="mif-link" href="#mif">rozepisujeme níž</a>. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Háček jsme hledali, nenašli.',
+      'MIF++ je způsob, jak se poplatek za platbu kartou rozepisuje, aby bylo vidět, komu a za co platíš. Nic navíc si nepřičítáme: jsou v něm stejné položky jako v jedné souhrnné sazbě („blended“), jen nejsou schované v jednom čísle. Z každé platby kartou jde:<ul class="a-list"><li><b>0,9 % + 1 Kč nám</b> za zpracování platby — vždycky stejně, ať máš jakýkoli obrat.</li><li><b>Mezibankovní poplatek (MIF)</b> bance, která tvému hostovi vydala kartu.</li><li><b>Poplatek karetní asociaci</b> Visa nebo Mastercard.</li></ul>Poslední dva neurčujeme my a nejsou naším příjmem, posíláme je dál v plné výši. U spotřebitelských karet vydaných v Evropském hospodářském prostoru je mezibankovní poplatek zastropovaný evropským nařízením na 0,2 % u debetních a 0,3 % u kreditních karet. Sazby se liší podle typu karty a u stravenkových karet a karet AMEX a Diners se přidává dodatečný poplatek. Všechny ceny a poplatky jsou bez DPH. Papírování a předpisů máš i bez nás dost, tak jsme se ti to snažili napsat na jedno přečtení. Strop na mezibankovní poplatek za tebe naštěstí vyřídili úředníci v Bruselu: jediný formulář, který nikdy neuvidíš.',
       'Ne. Žádná smlouva ani výpovědní lhůta. Zrušíš kdykoli a data si vyexportuješ.',
       'Nebude. Menu naimportujeme, Hugo poběží vedle stávající pokladny a přepneš, až budeš chtít. Migrace je zdarma.',
       'Ne. Hugo běží na iPhonu nebo Androidu, který už máš. Když chceš pořádné zařízení na pult, náš all-in-one terminál s Hugem stojí 4 900 Kč bez DPH jednorázově. Na pokladní zařízení se navíc připravuje daňový bonus 5 000 Kč. Připojit můžeš i vlastní tiskárnu účtenek a pokladní zásuvku.',
