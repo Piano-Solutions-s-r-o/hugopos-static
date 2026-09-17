@@ -9,13 +9,14 @@
       pickHardware: 'Vybrat hardware', needAdvice: 'Potřebuji poradit',
       trust: ['Bezpečná platba', 'Jednoduchost', 'Kvalita'],
       heroCaption: 'Terminál, který na place nepřekáží.', sectionEyebrow: 'Vyber si svoje tempo',
-      sectionTitle: 'Čtyři věci. <em>Žádný katalog na sto stran.</em>',
-      cardKickers: ['All-in-one', 'Accessories', 'Accessories', 'ZJ-5809/BT'],
-      cardTitles: ['Terminál Hugo', 'Kožené pouzdro na pásek', 'Další obal na terminál', 'Bluetooth tiskárna účtenek'],
-      cardDescriptions: ['Platby, účtenka a pokladna v jedné lehké krabičce.', 'Terminál po ruce, ruce připravené na tác a plný plac.', 'Měkčí dopad, jistější úchop a barva, která patří k tobě.', 'Papírová účtenka pro hosty, kteří ji chtějí. Bez kabelu přes celý bar.'],
-      productLeads: ['Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.', 'Měkká kožená kapsa drží terminál u těla, ale nechá ho vytáhnout jedním pohybem. Na plac, zahrádku i event.', 'Pružný ochranný obal dává terminálu jistější úchop a tvé obsluze vlastní barvu.', 'Kompaktní tiskárna účtenek, která se s terminálem spáruje přes Bluetooth. Když host chce papír, dostane ho — bez kabelu přes celý bar.'],
-      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['Systém', 'Android 10 · čtyřjádrový ARM Cortex A53'], ['Displej', '5,5″ kapacitní dotykový'], ['Platby', 'Čip a PIN · bezkontaktní NFC · magnetický proužek'], ['Připojení', '4G · Wi-Fi · Bluetooth'], ['Výdrž a tisk', 'Baterie 5 150 mAh · vestavěná termální tiskárna']], [['Materiál', 'Pravá kůže · finální specifikaci doplníme'], ['Uchycení', 'Poutko na pásek'], ['Kompatibilita', 'Terminál Hugo']], [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']], [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Bez pouzdra']]],
+      sectionTitle: 'Pět věcí. <em>Žádný katalog na sto stran.</em>',
+      cardKickers: ['All-in-one', 'Accessories', 'Accessories', 'ZJ-5809/BT', 'Android'],
+      cardTitles: ['Terminál Hugo', 'Kožené pouzdro na pásek', 'Další obal na terminál', 'Bluetooth tiskárna účtenek', 'Android Tap-to-Pay'],
+      cardDescriptions: ['Platby, účtenka a pokladna v jedné lehké krabičce.', 'Terminál po ruce, ruce připravené na tác a plný plac.', 'Měkčí dopad, jistější úchop a barva, která patří k tobě.', 'Papírová účtenka pro hosty, kteří ji chtějí. Bez kabelu přes celý bar.', 'Bezkontaktní platby přímo v telefonu obsluhy. Stačí Android s NFC.'],
+      productLeads: ['Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.', 'Měkká kožená kapsa drží terminál u těla, ale nechá ho vytáhnout jedním pohybem. Na plac, zahrádku i event.', 'Pružný ochranný obal dává terminálu jistější úchop a tvé obsluze vlastní barvu.', 'Kompaktní tiskárna účtenek, která se s terminálem spáruje přes Bluetooth. Když host chce papír, dostane ho — bez kabelu přes celý bar.', 'Android Tap-to-Pay změní kompatibilní telefon obsluhy v bezkontaktní platební terminál — host jednoduše přiloží kartu nebo mobil k zadní straně telefonu. Žádný další hardware neobjednáváš, funkce je součástí Hugo účtu.'],
+      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['Systém', 'Android 10 · čtyřjádrový ARM Cortex A53'], ['Displej', '5,5″ kapacitní dotykový'], ['Platby', 'Čip a PIN · bezkontaktní NFC · magnetický proužek'], ['Připojení', '4G · Wi-Fi · Bluetooth'], ['Výdrž a tisk', 'Baterie 5 150 mAh · vestavěná termální tiskárna']], [['Materiál', 'Pravá kůže · finální specifikaci doplníme'], ['Uchycení', 'Poutko na pásek'], ['Kompatibilita', 'Terminál Hugo']], [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']], [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Bez pouzdra']], [['Co to je', 'Bezkontaktní platba kartou nebo mobilem přímo na telefonu obsluhy, bez zvláštního terminálu.'], ['Co potřebuješ', 'Telefon s Androidem a podporou NFC — mají ji téměř všechny novější telefony.'], ['Ověření telefonu', 'Při zakládání účtu zadáš model telefonu a kalibrace v onboardingu ti řekne, jestli je pro Tap-to-Pay použitelný.']]],
       details: 'Prohlédnout detail', add: 'Přidat', chooseColour: 'Přidat další obal', freeCase: 'První obal v ceně terminálu', includedCaseNote: 'Jeden obal v ceně terminálu',
+      free: 'Zdarma', freeFeatureNote: 'funkce v aplikaci Hugo',
       guideEyebrow: 'Těžký výběr?', guideTitle: 'Nevíš, co vzít? <em>Začni tady.</em>',
       guideSteps: ['01 · Základ', '02 · Ochrana', '03 · Volné ruce'],
       guideTitles: ['Chci rovnou prodávat', 'Terminál mám pořád v ruce', 'Běhám mezi stoly'],
@@ -41,9 +42,9 @@
       priceNote: 'bez DPH', priceNoteInclusive: 'včetně DPH', inclVat: 'včetně DPH', exclVat: 'bez DPH',
       opening: 'Otevírám bezpečnou platbu…', checkoutError: 'Platbu se nepodařilo otevřít. Zkus to prosím znovu.',
       useColour: 'Použít tuto barvu', addExtraCase: 'Přidat další obal', addToCart: 'Přidat do košíku', preparing: 'Připravujeme', restocking: 'Naskladňujeme.', restockingButton: 'Naskladňujeme', restockingCheckout: 'Vybraná barva obalu se právě naskladňuje. Zvol barvu skladem a zkus to znovu.', restockingText: '{name} je na cestě k nám. Hned můžeme poslat: {inStock}.',
-      remove: 'Odebrat', caseColour: 'Barva obalu', caseAlt: 'ochranný obal na platební terminál'
-      ,title: 'E-shop — terminály a příslušenství Hugo', description: 'Vyber si terminál a příslušenství Hugo. Nejdřív nákup, potom už jen pár kliknutí k hotovému účtu.',
-      a11y: ['Hugo — domů', 'Hlavní navigace', 'Výhody nákupu', 'Zobrazit detail terminálu Hugo', 'Zobrazit detail koženého pouzdra', 'Zobrazit detail dalšího ochranného obalu', 'Zobrazit detail Bluetooth tiskárny účtenek', 'Barva obalu', 'Košík', 'Zavřít košík', 'Zavřít detail', 'Obsluha přijímá platbu kartou na žlutém terminálu Hugo', 'Terminál Hugo s obalem Rudý impuls', 'Kožené pouzdro na pásek s platebním terminálem', 'Další obal na terminál v barvě Rudý impuls', 'Bluetooth tiskárna účtenek ZJ-5809/BT']
+      remove: 'Odebrat', caseColour: 'Barva obalu', caseAlt: 'ochranný obal na platební terminál',
+      title: 'E-shop — terminály a příslušenství Hugo', description: 'Vyber si terminál a příslušenství Hugo. Nejdřív nákup, potom už jen pár kliknutí k hotovému účtu.',
+      a11y: ['Hugo — domů', 'Hlavní navigace', 'Výhody nákupu', 'Zobrazit detail terminálu Hugo', 'Zobrazit detail koženého pouzdra', 'Zobrazit detail dalšího ochranného obalu', 'Zobrazit detail Bluetooth tiskárny účtenek', 'Barva obalu', 'Košík', 'Zavřít košík', 'Zavřít detail', 'Obsluha přijímá platbu kartou na žlutém terminálu Hugo', 'Terminál Hugo s obalem Rudý impuls', 'Kožené pouzdro na pásek s platebním terminálem', 'Další obal na terminál v barvě Rudý impuls', 'Bluetooth tiskárna účtenek ZJ-5809/BT', 'Zobrazit detail Android Tap-to-Pay', 'Ilustrace bezkontaktní platby telefonem s NFC']
     },
     en: {
       navLinks: ['Product', 'AI & Brain', 'Setup', 'Pricing', 'E-shop', 'Customers'], startFree: 'Start free', cart: 'Bag',
@@ -52,13 +53,14 @@
       pickHardware: 'Choose hardware', needAdvice: 'Help me choose',
       trust: ['Secure payment', 'Simplicity', 'Quality'],
       heroCaption: 'A terminal that never gets in the way.', sectionEyebrow: 'Choose your pace',
-      sectionTitle: 'Four things. <em>No hundred-page catalogue.</em>',
-      cardKickers: ['All-in-one', 'Accessories', 'Accessories', 'ZJ-5809/BT'],
-      cardTitles: ['Hugo terminal', 'Leather belt holster', 'Additional terminal case', 'Bluetooth receipt printer'],
-      cardDescriptions: ['Payments, receipts and POS in one light device.', 'Your terminal close by, your hands free for a tray and a busy floor.', 'A softer landing, safer grip and a colour that feels like yours.', 'A paper receipt for the guests who want one. No cable across the bar.'],
-      productLeads: ['A light terminal running your POS, payments and receipts. No second box and no cable clutter.', 'A soft leather pocket keeps the terminal close and releases it in one movement. Built for the floor, terrace and events.', 'A flexible protective case gives the terminal a safer grip and your team a colour of their own.', 'A compact receipt printer that pairs with the terminal over Bluetooth. When a guest wants paper, they get it — with no cable across the bar.'],
-      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['System', 'Android 10 · quad-core ARM Cortex A53'], ['Display', '5.5″ capacitive touchscreen'], ['Payments', 'Chip & PIN · contactless NFC · magnetic stripe'], ['Connectivity', '4G · Wi-Fi · Bluetooth'], ['Battery and printing', '5,150 mAh battery · built-in thermal printer']], [['Material', 'Genuine leather · final specification to follow'], ['Attachment', 'Belt loop'], ['Compatibility', 'Hugo terminal']], [['Surface', 'Soft non-slip finish'], ['Protection', 'Edges and back'], ['Colours', 'Six shades']], [['Model', 'ZJ-5809/BT'], ['Paper width', '58 mm'], ['Connectivity', 'Bluetooth · charging cable included'], ['Accessories', 'No case']]],
+      sectionTitle: 'Five things. <em>No hundred-page catalogue.</em>',
+      cardKickers: ['All-in-one', 'Accessories', 'Accessories', 'ZJ-5809/BT', 'Android'],
+      cardTitles: ['Hugo terminal', 'Leather belt holster', 'Additional terminal case', 'Bluetooth receipt printer', 'Android Tap-to-Pay'],
+      cardDescriptions: ['Payments, receipts and POS in one light device.', 'Your terminal close by, your hands free for a tray and a busy floor.', 'A softer landing, safer grip and a colour that feels like yours.', 'A paper receipt for the guests who want one. No cable across the bar.', 'Contactless payments right on your staff’s phone. Just Android with NFC.'],
+      productLeads: ['A light terminal running your POS, payments and receipts. No second box and no cable clutter.', 'A soft leather pocket keeps the terminal close and releases it in one movement. Built for the floor, terrace and events.', 'A flexible protective case gives the terminal a safer grip and your team a colour of their own.', 'A compact receipt printer that pairs with the terminal over Bluetooth. When a guest wants paper, they get it — with no cable across the bar.', 'Android Tap-to-Pay turns a compatible staff phone into a contactless payment terminal — the guest simply taps their card or phone against the back of it. There is no extra hardware to order; the feature comes with your Hugo account.'],
+      productSpecs: [[['Model', 'PAX A920 Pro Core'], ['System', 'Android 10 · quad-core ARM Cortex A53'], ['Display', '5.5″ capacitive touchscreen'], ['Payments', 'Chip & PIN · contactless NFC · magnetic stripe'], ['Connectivity', '4G · Wi-Fi · Bluetooth'], ['Battery and printing', '5,150 mAh battery · built-in thermal printer']], [['Material', 'Genuine leather · final specification to follow'], ['Attachment', 'Belt loop'], ['Compatibility', 'Hugo terminal']], [['Surface', 'Soft non-slip finish'], ['Protection', 'Edges and back'], ['Colours', 'Six shades']], [['Model', 'ZJ-5809/BT'], ['Paper width', '58 mm'], ['Connectivity', 'Bluetooth · charging cable included'], ['Accessories', 'No case']], [['What it is', 'Contactless card or phone payment directly on your staff’s phone — no separate terminal needed.'], ['What you need', 'An Android phone with NFC support — found on almost every newer phone.'], ['Phone check', 'When you set up your account you enter your phone model, and the onboarding calibration tells you if it works with Tap-to-Pay.']]],
       details: 'View details', add: 'Add', chooseColour: 'Add another case', freeCase: 'First case included with terminal', includedCaseNote: 'One case included with the terminal',
+      free: 'Free', freeFeatureNote: 'a feature in the Hugo app',
       guideEyebrow: 'Hard to choose?', guideTitle: 'Not sure what to get? <em>Start here.</em>',
       guideSteps: ['01 · Essentials', '02 · Protection', '03 · Hands free'],
       guideTitles: ['I want to start selling', 'The terminal is always in my hand', 'I move between tables'],
@@ -85,9 +87,9 @@
       priceNoteInclusive: 'incl. VAT', inclVat: 'incl. VAT', exclVat: 'excl. VAT',
       opening: 'Opening secure payment…', checkoutError: 'Payment could not be opened. Please try again.',
       useColour: 'Use this colour', addExtraCase: 'Add another case', addToCart: 'Add to bag', preparing: 'Coming soon', restocking: 'Restocking.', restockingButton: 'Restocking', restockingCheckout: 'The chosen case colour is being restocked. Pick an in-stock colour and try again.', restockingText: '{name} is on its way to us. Ready to ship now: {inStock}.',
-      remove: 'Remove', caseColour: 'Case colour', caseAlt: 'protective payment-terminal case'
-      ,title: 'Shop — Hugo terminals and accessories', description: 'Choose your Hugo terminal and accessories. Purchase first, then finish your account in a few clicks.',
-      a11y: ['Hugo — home', 'Main navigation', 'Purchase benefits', 'View Hugo terminal details', 'View leather holster details', 'View additional protective case details', 'View Bluetooth receipt printer details', 'Case colour', 'Bag', 'Close bag', 'Close details', 'A server accepts a card payment on a yellow Hugo terminal', 'Hugo terminal with a Red Impulse case', 'Leather belt holster holding a payment terminal', 'Additional terminal case in Red Impulse', 'ZJ-5809/BT Bluetooth receipt printer']
+      remove: 'Remove', caseColour: 'Case colour', caseAlt: 'protective payment-terminal case',
+      title: 'Shop — Hugo terminals and accessories', description: 'Choose your Hugo terminal and accessories. Purchase first, then finish your account in a few clicks.',
+      a11y: ['Hugo — home', 'Main navigation', 'Purchase benefits', 'View Hugo terminal details', 'View leather holster details', 'View additional protective case details', 'View Bluetooth receipt printer details', 'Case colour', 'Bag', 'Close bag', 'Close details', 'A server accepts a card payment on a yellow Hugo terminal', 'Hugo terminal with a Red Impulse case', 'Leather belt holster holding a payment terminal', 'Additional terminal case in Red Impulse', 'ZJ-5809/BT Bluetooth receipt printer', 'View Android Tap-to-Pay details', 'Illustration of a contactless payment tapped against an NFC phone']
     }
   };
 
@@ -99,8 +101,8 @@
     ['.products .section-head h2', 'html', 'sectionTitle'], ['.product-card .kicker', 'allText', 'cardKickers'],
     ['.product-card .product-copy h3', 'allText', 'cardTitles'], ['.product-card .product-desc', 'allText', 'cardDescriptions'],
     ['.included-note', 'text', 'includedCaseNote'],
-    ['.product-card .text-link', 'allText', ['details', 'details', 'details', 'details']],
-    ['.product-card [data-add]', 'allText', ['add', 'add', 'add']], ['.product-card [data-open-product="terminal_case"]', 'text', 'chooseColour'],
+    ['.product-card .text-link', 'allText', ['details', 'details', 'details', 'details', 'details']],
+    ['.product-card [data-add]', 'allText', ['add', 'add', 'add', 'add']], ['.product-card [data-open-product="terminal_case"]', 'text', 'chooseColour'],
     ['.guide-title .eyebrow', 'text', 'guideEyebrow'], ['.guide-title h2', 'html', 'guideTitle'],
     ['.guide-card > span', 'allText', 'guideSteps'], ['.guide-card h3', 'allText', 'guideTitles'],
     ['.guide-card p', 'allText', 'guideDescriptions'], ['.guide-card strong', 'allText', 'guideLinks'],
@@ -168,7 +170,8 @@
       ['#cart', 'aria-label'], ['#cart-close', 'aria-label'], ['.dialog-close', 'aria-label'],
       ['.hero-photo img', 'alt'], ['[data-product="pax_a920"] .image-button img', 'alt'],
       ['[data-product="belt_holster"] .image-button img', 'alt'], ['[data-product="terminal_case"] .image-button img', 'alt'],
-      ['[data-product="printer_zj5809"] .image-button img', 'alt']
+      ['[data-product="printer_zj5809"] .image-button img', 'alt'],
+      ['[data-product="android_tap_to_pay"] .image-button', 'aria-label'], ['[data-product="android_tap_to_pay"] .image-button img', 'alt']
     ].forEach(function (row, index) {
       var node = document.querySelector(row[0]);
       if (node) node.setAttribute(row[1], accessible[index]);

@@ -5,7 +5,7 @@
   // Admin. A line whose id is missing here is silently dropped, so this list must track
   // the storefront's orderable set — the printer was invisible on the storefront for the
   // same class of reason (HUGO-1583).
-  var CART_IDS = ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809'];
+  var CART_IDS = ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809', 'android_tap_to_pay'];
   var CASE_VARIANTS = ['red_impulse', 'mint_current', 'sage_calm', 'sun_spark', 'lagoon_breeze', 'electric_blue'];
   var DELIVERY_METHODS = ['dpd', 'pickup'];
 
