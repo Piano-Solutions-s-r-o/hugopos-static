@@ -42,7 +42,7 @@
       id: 'printer_zj5809', name: 'Bluetooth tiskárna účtenek', kicker: 'ZJ-5809/BT', image: ASSET_ROOT + 'printer-zj5809.jpg',
       lead: 'Kompaktní tiskárna účtenek, která se s terminálem spáruje přes Bluetooth. Když host chce papír, dostane ho — bez kabelu přes celý bar.',
       gallery: [ASSET_ROOT + 'printer-zj5809.jpg'],
-      specs: [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Bez pouzdra']],
+      specs: [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Včetně pouzdra']],
       available: false, price: null
     },
     // A free (0 Kč) software feature sold through the normal cart → checkout → Stripe
