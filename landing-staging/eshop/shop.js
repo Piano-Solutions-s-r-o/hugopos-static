@@ -549,7 +549,7 @@
       .then(function (response) { if (!response.ok) throw new Error('status'); return response.json(); })
       .then(function (body) {
         // HUGO-1694 — a cart that settles at 0 Kč (e.g. android_tap_to_pay alone)
-        // completes with paymentStatus "no_payment_required", never "paid". The API's
+        // may complete as paymentStatus "no_payment_required" or "paid". The API's
         // `settled` field is the ONE canonical answer to "is this order done" — never
         // re-derive it here from paymentStatus.
         if (body.settled !== true) return;
