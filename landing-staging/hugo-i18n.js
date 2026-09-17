@@ -203,6 +203,17 @@
     { sel: '.final-ctas a', all: true, cs: [APPLE + 'Stáhnout pro iOS', ANDRO + 'Stáhnout pro Android'] },
     { sel: '.final-fine span', all: true, cs: [CHK26 + ' Bez karty na start', CHK26 + ' Zrušíš kdykoli', CHK26 + ' Skuteční lidé, česky'] },
 
+    /* SOCIALS */
+    { sel: '.social-kicker', cs: 'Hugo mimo kasu' },
+    { sel: '.social-copy h2', cs: 'Co funguje v provozu. <em>Bez omáčky.</em>' },
+    { sel: '.social-copy > p', cs: 'Krátké tipy k platbám, každodennímu provozu a funkcím Huga, které ti ušetří pár kliknutí.' },
+    { sel: '.social-main-cta', cs: 'Mrknout na tipy na Instagramu &rarr;' },
+    { sel: '.social-elsewhere-label', cs: 'Hugo najdeš i tady' },
+    { sel: '.instagram-note', cs: 'Tři poslední příspěvky' },
+    { sel: '.instagram-slide-label', all: true, cs: ['Příspěvek 1 na Instagramu', 'Příspěvek 2 na Instagramu', 'Příspěvek 3 na Instagramu'] },
+    { sel: '.ig-prev-label', cs: 'Předchozí příspěvek' },
+    { sel: '.ig-next-label', cs: 'Další příspěvek' },
+
     /* FOOTER */
     { sel: '.foot-brand p', cs: 'Pokladna postavená kolem tvého telefonu, tvého menu a tvých hostů. Ne naopak.' },
     { sel: '.foot-col h5', all: true, cs: ['Produkt', 'Podpora'] },

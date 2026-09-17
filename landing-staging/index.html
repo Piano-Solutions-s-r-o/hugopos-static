@@ -1403,6 +1403,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .final-fine span{ display: inline-flex; align-items: center; gap: 7px; }
   .final-fine svg{ width: 15px; height: 15px; color: var(--ink); }
 
+  /* ============ SOCIALS ============ */
+  .socials{ padding:100px 0; background:var(--cream); color:var(--ink); overflow:hidden; border-top:1px solid var(--line); }
+  .social-layout{ display:grid; grid-template-columns:minmax(260px,.72fr) minmax(0,1.45fr); align-items:center; gap:clamp(42px,6vw,86px); }
+  .social-copy{ max-width:440px; }
+  .social-kicker{ display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+  .social-kicker::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--yellow-deep); box-shadow:0 0 0 5px rgba(255,214,0,.22); }
+  .social-copy h2{ margin:0; font-size:clamp(42px,5.5vw,72px); line-height:.96; letter-spacing:-.045em; }
+  .social-copy h2 em{ font-style:normal; background:linear-gradient(transparent 63%,var(--yellow) 63%); }
+  .social-copy>p{ margin:25px 0 0; max-width:37ch; color:var(--ink-2); font-size:18px; line-height:1.58; }
+  .social-main-cta{ display:inline-flex; align-items:center; justify-content:center; min-height:50px; margin-top:28px; padding:12px 21px; border-radius:999px; background:var(--ink); color:#fff; font-weight:800; transition:transform .18s ease, background .18s ease, color .18s ease; }
+  .social-main-cta:hover{ transform:translateY(-2px); background:var(--yellow); color:var(--ink); }
+  .social-main-cta:focus-visible,.social-network:focus-visible{ outline:3px solid var(--yellow-deep); outline-offset:3px; }
+  .social-elsewhere{ display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-top:34px; padding-top:22px; border-top:1px solid var(--line); }
+  .social-elsewhere-label{ width:100%; color:var(--muted); font-size:13px; }
+  .social-network{ display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:9px 13px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.42); color:var(--ink); font-size:14px; font-weight:750; transition:transform .18s ease, border-color .18s ease, background .18s ease; }
+  .social-network:hover{ transform:translateY(-2px); border-color:rgba(20,17,13,.28); background:#fff; }
+  .social-network svg{ width:18px; height:18px; fill:currentColor; }
+  .instagram-card{ min-width:0; }
+  .instagram-label{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:14px; }
+  .instagram-handle{ display:inline-flex; align-items:center; gap:9px; font-size:14px; font-weight:800; }
+  .instagram-handle svg{ width:21px; height:21px; fill:currentColor; }
+  .instagram-note{ color:var(--muted); font-size:13px; }
+  .instagram-carousel{ position:relative; height:390px; overflow:hidden; padding:10px; border:1px solid var(--line); border-radius:26px; background:rgba(255,255,255,.5); box-shadow:0 28px 70px -46px rgba(20,17,13,.6); }
+  .instagram-track{ display:flex; gap:14px; height:100%; will-change:transform; transition:transform 900ms cubic-bezier(.22,.7,.25,1); }
+  .instagram-slide{ flex:0 0 calc((100% - 28px)/3); min-width:0; display:block; overflow:hidden; border-radius:18px; background:#e8e3d8; box-shadow:0 18px 38px -28px rgba(20,17,13,.8); }
+  .instagram-slide img{ display:block; width:100%; height:100%; object-fit:cover; }
+  .ig-arrow{ position:absolute; z-index:3; top:50%; width:44px; height:44px; margin-top:-22px; display:grid; place-items:center; border:1px solid rgba(20,17,13,.12); border-radius:50%; background:rgba(255,255,255,.92); color:var(--ink); box-shadow:0 12px 30px -18px #000; cursor:pointer; backdrop-filter:blur(8px); }
+  .ig-arrow:hover{ background:#fff; }
+  .ig-arrow:focus-visible{ outline:3px solid var(--yellow-deep); outline-offset:3px; }
+  .ig-arrow svg{ width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+  .ig-prev{ left:5px; }
+  .ig-next{ right:5px; }
+  .social-sr{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  @media(max-width:980px){
+    .social-layout{ grid-template-columns:minmax(230px,.65fr) minmax(0,1fr); gap:36px; }
+    .instagram-carousel{ height:330px; }
+  }
+  @media(max-width:760px){
+    .socials{ padding:64px 0; }
+    .social-layout{ grid-template-columns:1fr; gap:44px; }
+    .social-copy{ max-width:none; }
+    .social-copy>p{ max-width:44ch; }
+    .instagram-carousel{ height:390px; padding:12px; }
+    .instagram-track{ gap:12px; }
+    .instagram-slide{ flex-basis:calc((100% - 12px)/1.45); }
+    .instagram-note{ display:none; }
+  }
+
   /* ============ FOOTER ============ */
   footer{
     padding: 50px 0 40px;
@@ -1800,8 +1848,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="video-band" aria-label="Video">
   <div class="container">
     <div class="video-frame" id="heroVideo">
-      <button class="video-facade" type="button" data-video-id="RrHqchVTWtU" aria-label="Play the Hugo video">
-        <img src="https://i.ytimg.com/vi/RrHqchVTWtU/maxres1.jpg" alt="" decoding="async" onload="this.onload=null;if(this.naturalWidth<200)this.src='https://i.ytimg.com/vi/RrHqchVTWtU/hq1.jpg'">
+      <button class="video-facade" type="button" data-video-id="a95ibmg9onA" aria-label="Play the Hugo video">
+        <img src="https://i.ytimg.com/vi/a95ibmg9onA/maxres1.jpg" alt="" decoding="async" onload="this.onload=null;if(this.naturalWidth<200)this.src='https://i.ytimg.com/vi/a95ibmg9onA/hq1.jpg'">
         <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8.5 5.5 19 12 8.5 18.5" fill="currentColor"/></svg></span>
       </button>
     </div>
@@ -2398,6 +2446,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- =============== SOCIALS =============== -->
+<section class="socials" id="socials" aria-labelledby="socialsTitle">
+  <div class="container">
+    <div class="social-layout">
+      <div class="social-copy">
+        <span class="social-kicker">Hugo mimo kasu</span>
+        <h2 class="display" id="socialsTitle">What works in service. <em>No fluff.</em></h2>
+        <p>Short tips for payments, everyday operations and the bits of Hugo that save you a few clicks.</p>
+        <a class="social-main-cta" href="https://www.instagram.com/jsem_hugo_pos/" target="_blank" rel="noopener">See the tips on Instagram &rarr;</a>
+        <div class="social-elsewhere">
+          <span class="social-elsewhere-label">Hugo elsewhere</span>
+          <a class="social-network social-linkedin" href="https://www.linkedin.com/showcase/hugopos/" target="_blank" rel="noopener"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M100.3 448H7.4V148.9h92.9V448zM53.8 108.1C24.1 108.1 0 83.5 0 53.8 0 24.1 24.1 0 53.8 0s53.8 24.1 53.8 53.8c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448h-.1z"/></svg>LinkedIn &nearr;</a>
+          <a class="social-network social-facebook" href="https://www.facebook.com/jsemhugopos" target="_blank" rel="noopener"><svg viewBox="0 0 320 512" aria-hidden="true"><path d="M80 299.3V512h116V299.3h86.5l18-97.8H196v-34.6c0-51.7 20.3-71.5 72.7-71.5 16.3 0 29.4.4 37 1.2V7.9C291.4 4 256.4 0 236.2 0 129.3 0 80 50.5 80 159.4v42.1H14v97.8h66z"/></svg>Facebook &nearr;</a>
+        </div>
+      </div>
+      <article class="instagram-card">
+        <div class="instagram-label"><span class="instagram-handle"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230zm-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2zm93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0zm129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>@jsem_hugo_pos</span><span class="instagram-note">Three recent posts</span></div>
+        <div class="instagram-carousel" aria-roledescription="carousel">
+          <div class="instagram-track">
+            <a class="instagram-slide" href="https://www.instagram.com/p/DdYmZClHC9j/" target="_blank" rel="noopener"><img src="assets/social/instagram-latest.jpg" alt="" loading="lazy" /><span class="social-sr instagram-slide-label">Instagram post 1</span></a>
+            <a class="instagram-slide" href="https://www.instagram.com/p/DdVpXEQjH7f/" target="_blank" rel="noopener"><img src="assets/social/instagram-post-2.jpg" alt="" loading="lazy" /><span class="social-sr instagram-slide-label">Instagram post 2</span></a>
+            <a class="instagram-slide" href="https://www.instagram.com/p/DdTZMAvjCRq/" target="_blank" rel="noopener"><img src="assets/social/instagram-post-3.jpg" alt="" loading="lazy" /><span class="social-sr instagram-slide-label">Instagram post 3</span></a>
+          </div>
+          <button class="ig-arrow ig-prev" type="button"><span class="social-sr ig-prev-label">Previous post</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+          <button class="ig-arrow ig-next" type="button"><span class="social-sr ig-next-label">Next post</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- =============== FOOTER =============== --><footer>
   <div class="container">
     <div class="foot-grid">
@@ -2600,6 +2679,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var prevApply = window.applyHugoLang;
   if (prevApply) window.applyHugoLang = function (l) { prevApply(l); show(cur < 0 ? 0 : cur, true); layout(); update(); };
   update();
+})();
+</script>
+<script>
+/* Lightweight Instagram carousel; every slide links to the original post. */
+(function () {
+  var carousel = document.querySelector('.instagram-carousel');
+  var track = document.querySelector('.instagram-track');
+  if (!carousel || !track || track.children.length < 2) return;
+  Array.from(track.children).forEach(function (slide) {
+    var clone = slide.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.tabIndex = -1;
+    track.appendChild(clone);
+  });
+  var moving = false;
+  var direction = 0;
+  var timer;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function distance() {
+    var slide = track.firstElementChild;
+    return slide.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
+  }
+  function withoutTransition(transform) {
+    track.style.transition = 'none';
+    track.style.transform = transform;
+    track.offsetHeight;
+    track.style.transition = '';
+  }
+  function next() {
+    if (moving) return;
+    moving = true;
+    direction = 1;
+    track.style.transform = 'translate3d(-' + distance() + 'px,0,0)';
+  }
+  function previous() {
+    if (moving) return;
+    moving = true;
+    direction = -1;
+    track.insertBefore(track.lastElementChild, track.firstElementChild);
+    withoutTransition('translate3d(-' + distance() + 'px,0,0)');
+    requestAnimationFrame(function () { requestAnimationFrame(function () { track.style.transform = 'translate3d(0,0,0)'; }); });
+  }
+  function start() {
+    clearInterval(timer);
+    if (!reduceMotion) timer = setInterval(next, 5500);
+  }
+  track.addEventListener('transitionend', function (event) {
+    if (event.propertyName !== 'transform') return;
+    if (direction === 1) track.appendChild(track.firstElementChild);
+    withoutTransition('translate3d(0,0,0)');
+    moving = false;
+    direction = 0;
+  });
+  document.querySelector('.ig-prev').addEventListener('click', function () { previous(); start(); });
+  document.querySelector('.ig-next').addEventListener('click', function () { next(); start(); });
+  carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+  carousel.addEventListener('mouseleave', start);
+  carousel.addEventListener('focusin', function () { clearInterval(timer); });
+  carousel.addEventListener('focusout', function (event) { if (!carousel.contains(event.relatedTarget)) start(); });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) clearInterval(timer); else start(); });
+  window.addEventListener('resize', function () { if (!moving) withoutTransition('translate3d(0,0,0)'); });
+  start();
 })();
 </script>
 <script>
