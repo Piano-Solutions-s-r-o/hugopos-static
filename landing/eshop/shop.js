@@ -42,7 +42,21 @@
       id: 'printer_zj5809', name: 'Bluetooth tiskárna účtenek', kicker: 'ZJ-5809/BT', image: ASSET_ROOT + 'printer-zj5809.jpg',
       lead: 'Kompaktní tiskárna účtenek, která se s terminálem spáruje přes Bluetooth. Když host chce papír, dostane ho — bez kabelu přes celý bar.',
       gallery: [ASSET_ROOT + 'printer-zj5809.jpg'],
-      specs: [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Bez pouzdra']],
+      specs: [['Model', 'ZJ-5809/BT'], ['Šířka pásky', '58 mm'], ['Připojení', 'Bluetooth · nabíjecí kabel v balení'], ['Příslušenství', 'Včetně pouzdra']],
+      available: false, price: null
+    },
+    // A free (0 Kč) software feature sold through the normal cart → checkout → Stripe
+    // pipeline like every other product: its own catalogue entry, its own Stripe price
+    // (tagged non-physical server-side), just never fulfilled as hardware.
+    android_tap_to_pay: {
+      id: 'android_tap_to_pay', name: 'Android Tap-to-Pay', kicker: 'Android', image: ASSET_ROOT + 'android-tap-to-pay.svg',
+      lead: 'Android Tap-to-Pay změní kompatibilní telefon obsluhy v bezkontaktní platební terminál — host jednoduše přiloží kartu nebo mobil k zadní straně telefonu. Žádný další hardware neobjednáváš, funkce je součástí Hugo účtu.',
+      gallery: [ASSET_ROOT + 'android-tap-to-pay.svg'],
+      specs: [
+        ['Co to je', 'Bezkontaktní platba kartou nebo mobilem přímo na telefonu obsluhy, bez zvláštního terminálu.'],
+        ['Co potřebuješ', 'Telefon s Androidem a podporou NFC — mají ji téměř všechny novější telefony.'],
+        ['Ověření telefonu', 'Při zakládání účtu zadáš model telefonu a kalibrace v onboardingu ti řekne, jestli je pro Tap-to-Pay použitelný.']
+      ],
       available: false, price: null
     }
   };
@@ -76,11 +90,25 @@
   function gallerySourcesFor(product, caseKind, selected) {
     return caseKind ? [ASSET_ROOT + selected.image].concat(product.gallery.slice(1)) : product.gallery;
   }
+  // Single source of truth for "is this catalogue-priced product free": both the
+  // catalogue card and the cart line key their free-label rendering on this, never on
+  // a product id, so a new 0 Kč SKU (e.g. android_tap_to_pay) needs no per-id branch.
+  function isZeroPriced(product) {
+    return Boolean(product) && product.price === 0;
+  }
+  // Products that ship nothing (HUGO-1694) — mirrors the server's `physical: false` flag
+  // (API/src/config/eshop_prices.js). A cart containing ONLY these needs no delivery
+  // method choice and is never charged the DPD fee; the server enforces the same rule
+  // independently, this only keeps the storefront from asking a question it doesn't need to.
+  var NON_PHYSICAL_IDS = ['android_tap_to_pay'];
+  function cartHasPhysicalItem(lines) {
+    return (lines || []).some(function (line) { return !NON_PHYSICAL_IDS.includes(line.id); });
+  }
   var serializeCartHandoff = handoff.serializeCartHandoff;
   var parseCartHandoff = handoff.parseCartHandoff;
   // Keep the availability rule independently testable without booting a DOM.
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { cartIsOrderable, gallerySourcesFor, parseCartHandoff, serializeCartHandoff };
+    module.exports = { cartHasPhysicalItem, cartIsOrderable, gallerySourcesFor, isZeroPriced, NON_PHYSICAL_IDS, parseCartHandoff, serializeCartHandoff };
     return;
   }
 
@@ -90,6 +118,7 @@
   var cartItemsStep = document.getElementById('cart-items-step');
   var cartReviewStep = document.getElementById('cart-review-step');
   var cartBack = document.getElementById('cart-back');
+  var deliveryFieldset = document.querySelector('.delivery-choice');
   var cartTitle = cartPanel.querySelector('.cart-head h2'), reviewButton = document.getElementById('review-button');
   var scrim = document.getElementById('scrim');
   var terms = document.getElementById('terms');
@@ -97,7 +126,7 @@
   var checkoutNote = document.getElementById('checkout-note');
   var dialog = document.getElementById('product-dialog');
   var dialogContent = document.getElementById('dialog-content');
-  var productOrder = ['pax_a920', 'belt_holster', 'terminal_case', 'printer_zj5809'];
+  var productOrder = ['pax_a920', 'belt_holster', 'terminal_case', 'printer_zj5809', 'android_tap_to_pay'];
 
   function restoreCart() {
     try {
@@ -115,7 +144,7 @@
       selectedTerminalCaseVariant = restoredVariant;
       selectedExtraCaseVariant = isCaseVariant(stored.extraCaseVariant) ? stored.extraCaseVariant : restoredVariant;
       selectedDeliveryMethod = handoff.deliveryMethod(stored.deliveryMethod);
-      cart = stored.cart.filter(function (line) { return line && ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809'].includes(line.id); })
+      cart = stored.cart.filter(function (line) { return line && ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809', 'android_tap_to_pay'].includes(line.id); })
         .map(function (line) { return { id: line.id, key: line.id, qty: line.qty || 1, variant: null, variantName: null }; });
       syncCaseLine();
     } catch (_error) {}
@@ -193,7 +222,7 @@
   }
 
   function renderCataloguePrices() {
-    ['pax_a920', 'belt_holster', 'terminal_case', 'printer_zj5809'].forEach(function (id) {
+    ['pax_a920', 'belt_holster', 'terminal_case', 'printer_zj5809', 'android_tap_to_pay'].forEach(function (id) {
       var product = products[id];
       var priceNode = document.querySelector('[data-price="' + id + '"]');
       if (!priceNode) return;
@@ -208,7 +237,11 @@
         priceNode.textContent = t('unavailable');
         return;
       }
-      priceNode.innerHTML = money(product.price, product.currency) + '<small>' + t('priceNote') + '</small>';
+      // Keyed on the resolved price, never the product id: any product the catalogue
+      // prices at 0 gets the localized "free" label instead of `money(0)`.
+      priceNode.innerHTML = isZeroPriced(product)
+        ? t('free') + '<small>' + t('freeFeatureNote') + '</small>'
+        : money(product.price, product.currency) + '<small>' + t('priceNote') + '</small>';
     });
   }
 
@@ -254,7 +287,9 @@
           ? t('unavailable')
           : (line.id === 'terminal_case'
             ? t('freeIncluded')
-            : (line.qty > 1 ? line.qty + ' × ' : '') + money(p.price, p.currency) + ' ' + t('exclVat'));
+            : (isZeroPriced(p)
+              ? t('free')
+              : (line.qty > 1 ? line.qty + ' × ' : '') + money(p.price, p.currency) + ' ' + t('exclVat')));
         var remove = line.id === 'terminal_case' ? '' : '<button type="button" data-remove="' + line.key + '" aria-label="' + t('remove') + ' ' + name + '">×</button>';
         var selectedImage = caseVariants.find(function (item) { return item.id === line.variant; });
         var image = selectedImage && ['terminal_case', 'terminal_case_extra'].includes(line.id)
@@ -263,6 +298,9 @@
         return '<div class="cart-line"><img src="' + image + '" alt=""><div><h3>' + name + '</h3>' + variant + '<p>' + price + '</p></div>' + remove + '</div>';
       }).join('');
     }
+    // HUGO-1694 — nothing to deliver, nothing to ask: a cart holding only non-physical
+    // lines (e.g. android_tap_to_pay) never shows the delivery-method choice.
+    if (deliveryFieldset) deliveryFieldset.hidden = !cartHasPhysicalItem(cart);
     updateAccountLinks();
     updateCheckoutState();
   }
@@ -292,8 +330,12 @@
 
   function updateCheckoutState() {
     var casesInStock = cart.every(function (line) { return !line.variant || caseInStock(line.variant); });
+    // HUGO-1694 — a cart with nothing physical in it needs no delivery choice, so its
+    // availability never gates checkout (see also the hidden `.delivery-choice` fieldset
+    // in renderCart).
+    var physicalCart = cartHasPhysicalItem(cart);
     reviewButton.disabled = !cartIsOrderable(cart, products) || !casesInStock;
-    checkoutButton.disabled = !casesInStock || !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products) || delivery[selectedDeliveryMethod]?.available !== true;
+    checkoutButton.disabled = !casesInStock || !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products) || (physicalCart && delivery[selectedDeliveryMethod]?.available !== true);
   }
 
   function isPriced(id) {
@@ -481,7 +523,10 @@
     if (checkoutButton.disabled) return;
     checkoutButton.disabled = true;
     checkoutButton.textContent = t('opening');
-    var checkoutPayload = { items: cart.map(function (line) { return { id: line.id, qty: line.qty || 1, variant: line.variant || undefined }; }), deliveryMethod: selectedDeliveryMethod, termsAccepted: true, termsVersion: legal.version, locale: window.HUGO_LANG };
+    // HUGO-1694 — a non-physical-only cart has nothing to deliver, so it never sends a
+    // delivery method (mirrors the Admin shop and the server's own rule).
+    var checkoutPayload = { items: cart.map(function (line) { return { id: line.id, qty: line.qty || 1, variant: line.variant || undefined }; }), termsAccepted: true, termsVersion: legal.version, locale: window.HUGO_LANG };
+    if (cartHasPhysicalItem(cart)) checkoutPayload.deliveryMethod = selectedDeliveryMethod;
     var idempotencyKey = crypto.randomUUID();
     if (window.self !== window.top && new URLSearchParams(location.search).get('embedded') === '1') {
       window.parent.postMessage({ type: 'hugo:eshop-checkout', payload: checkoutPayload, idempotencyKey: idempotencyKey }, adminBase());
@@ -503,7 +548,11 @@
     fetch(apiBase() + '/v1/public/eshop/sessions/' + encodeURIComponent(session))
       .then(function (response) { if (!response.ok) throw new Error('status'); return response.json(); })
       .then(function (body) {
-        if (body.paymentStatus !== 'paid') return;
+        // HUGO-1694 — a cart that settles at 0 Kč (e.g. android_tap_to_pay alone)
+        // completes with paymentStatus "no_payment_required", never "paid". The API's
+        // `settled` field is the ONE canonical answer to "is this order done" — never
+        // re-derive it here from paymentStatus.
+        if (body.settled !== true) return;
         cart = [];
         renderCart();
         try { localStorage.removeItem(CART_STORAGE_KEY); } catch (_error) {}
