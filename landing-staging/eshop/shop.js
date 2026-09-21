@@ -101,14 +101,23 @@
   // method choice and is never charged the DPD fee; the server enforces the same rule
   // independently, this only keeps the storefront from asking a question it doesn't need to.
   var NON_PHYSICAL_IDS = ['android_tap_to_pay'];
+  var MEAL_VOUCHER_PRODUCT_IDS = ['pax_a920', 'android_tap_to_pay'];
   function cartHasPhysicalItem(lines) {
     return (lines || []).some(function (line) { return !NON_PHYSICAL_IDS.includes(line.id); });
+  }
+  function cartNeedsMealVoucherChoice(lines) {
+    return (lines || []).some(function (line) { return MEAL_VOUCHER_PRODUCT_IDS.includes(line.id); });
+  }
+  function mealVoucherChoiceComplete(preference) {
+    return Boolean(preference)
+      && typeof preference.accepts === 'boolean'
+      && (!preference.accepts || preference.providers.length > 0);
   }
   var serializeCartHandoff = handoff.serializeCartHandoff;
   var parseCartHandoff = handoff.parseCartHandoff;
   // Keep the availability rule independently testable without booting a DOM.
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { cartHasPhysicalItem, cartIsOrderable, gallerySourcesFor, isZeroPriced, NON_PHYSICAL_IDS, parseCartHandoff, serializeCartHandoff };
+    module.exports = { cartHasPhysicalItem, cartIsOrderable, cartNeedsMealVoucherChoice, gallerySourcesFor, isZeroPriced, mealVoucherChoiceComplete, NON_PHYSICAL_IDS, parseCartHandoff, serializeCartHandoff };
     return;
   }
 
@@ -119,6 +128,8 @@
   var cartReviewStep = document.getElementById('cart-review-step');
   var cartBack = document.getElementById('cart-back');
   var deliveryFieldset = document.querySelector('.delivery-choice');
+  var mealVoucherFieldset = document.querySelector('.meal-voucher-choice');
+  var mealVoucherProviders = document.querySelector('.meal-voucher-providers');
   var cartTitle = cartPanel.querySelector('.cart-head h2'), reviewButton = document.getElementById('review-button');
   var scrim = document.getElementById('scrim');
   var terms = document.getElementById('terms');
@@ -127,6 +138,26 @@
   var dialog = document.getElementById('product-dialog');
   var dialogContent = document.getElementById('dialog-content');
   var productOrder = ['pax_a920', 'belt_holster', 'terminal_case', 'printer_zj5809', 'android_tap_to_pay'];
+
+  function selectedMealVoucherPreference() {
+    var answer = document.querySelector('[name="meal-voucher-acceptance"]:checked');
+    if (!answer) return null;
+    var accepts = answer.value === 'yes';
+    return {
+      accepts: accepts,
+      providers: accepts
+        ? Array.from(document.querySelectorAll('[name="meal-voucher-provider"]:checked')).map(function (input) { return input.value; })
+        : []
+    };
+  }
+
+  function renderMealVoucherChoice() {
+    if (!mealVoucherFieldset) return;
+    mealVoucherFieldset.hidden = !cartNeedsMealVoucherChoice(cart);
+    if (mealVoucherProviders) {
+      mealVoucherProviders.hidden = selectedMealVoucherPreference()?.accepts !== true;
+    }
+  }
 
   function restoreCart() {
     try {
@@ -301,6 +332,7 @@
     // HUGO-1694 — nothing to deliver, nothing to ask: a cart holding only non-physical
     // lines (e.g. android_tap_to_pay) never shows the delivery-method choice.
     if (deliveryFieldset) deliveryFieldset.hidden = !cartHasPhysicalItem(cart);
+    renderMealVoucherChoice();
     updateAccountLinks();
     updateCheckoutState();
   }
@@ -334,8 +366,10 @@
     // availability never gates checkout (see also the hidden `.delivery-choice` fieldset
     // in renderCart).
     var physicalCart = cartHasPhysicalItem(cart);
+    var mealVoucherReady = !cartNeedsMealVoucherChoice(cart)
+      || mealVoucherChoiceComplete(selectedMealVoucherPreference());
     reviewButton.disabled = !cartIsOrderable(cart, products) || !casesInStock;
-    checkoutButton.disabled = !casesInStock || !checkoutEnabled || legal.status !== 'published' || !terms.checked || !cartIsOrderable(cart, products) || (physicalCart && delivery[selectedDeliveryMethod]?.available !== true);
+    checkoutButton.disabled = !casesInStock || !checkoutEnabled || legal.status !== 'published' || !terms.checked || !mealVoucherReady || !cartIsOrderable(cart, products) || (physicalCart && delivery[selectedDeliveryMethod]?.available !== true);
   }
 
   function isPriced(id) {
@@ -527,6 +561,7 @@
     // delivery method (mirrors the Admin shop and the server's own rule).
     var checkoutPayload = { items: cart.map(function (line) { return { id: line.id, qty: line.qty || 1, variant: line.variant || undefined }; }), termsAccepted: true, termsVersion: legal.version, locale: window.HUGO_LANG };
     if (cartHasPhysicalItem(cart)) checkoutPayload.deliveryMethod = selectedDeliveryMethod;
+    if (cartNeedsMealVoucherChoice(cart)) checkoutPayload.mealVouchers = selectedMealVoucherPreference();
     var idempotencyKey = crypto.randomUUID();
     if (window.self !== window.top && new URLSearchParams(location.search).get('embedded') === '1') {
       window.parent.postMessage({ type: 'hugo:eshop-checkout', payload: checkoutPayload, idempotencyKey: idempotencyKey }, adminBase());
@@ -608,6 +643,12 @@
   document.getElementById('cart-close').addEventListener('click', closeCart);
   scrim.addEventListener('click', closeCart);
   terms.addEventListener('change', updateCheckoutState);
+  document.querySelectorAll('[name="meal-voucher-acceptance"], [name="meal-voucher-provider"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      renderMealVoucherChoice();
+      updateCheckoutState();
+    });
+  });
   document.querySelectorAll('[name="delivery-method"]').forEach(function (input) {
     input.addEventListener('change', function () {
       selectedDeliveryMethod = handoff.deliveryMethod(input.value);
