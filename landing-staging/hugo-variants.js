@@ -30,7 +30,7 @@
         en: 'No cables, no contract — and no week-long install. Download the app, snap your price list and take cards on the Android phone you own — or grab a genuinely modern terminal from us. Just 190 Kč a month excl. VAT when you take payments through us.'
       },
       '.hero-ctas .btn-primary': {
-        cs: 'Stáhnout zdarma ' + ARR,
+        cs: 'Vyzkoušet zdarma ' + ARR,
         en: 'Download free ' + ARR
       }
     },
