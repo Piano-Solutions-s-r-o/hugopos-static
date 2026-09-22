@@ -90,7 +90,7 @@
         ph: 'Co tě zajímá nebo chceš vědět?',
         a: '<p>U tvého poledního menu doporučuji zaměřit se na <b>kuřecí řízek s bramborovou kaší</b>, který teď prodáváš za <b>165 Kč</b>. Foodcost vychází kolem <b>82 Kč</b>, takže marže je jen něco přes <b>50 %</b>.</p>'
          + '<p>V okolí se přitom podobná jídla pohybují mezi <b>185–195 Kč</b>. Ideální krok je zvýšit cenu na <b>189 Kč</b> – tím se okamžitě posuneš na tržní úroveň a marže stoupne na <b>64 %</b>.</p>'
-         + '<p>Zároveň můžeš brambory nahradit celerem, který působí prémiověji („domácí celerová kaše"), a tím snížíš foodcost o dalších <b>6 Kč</b> na porci a výsledná marže ti vyroste téměř na <b>70 %</b>.</p>'
+         + '<p>Zároveň můžeš brambory nahradit celerem, který působí prémiověji („domácí celerová kaše“), a tím snížíš foodcost o dalších <b>6 Kč</b> na porci a výsledná marže ti vyroste téměř na <b>70 %</b>.</p>'
       },
       en: {
         q: 'How can I improve the margin on my lunch menu?',
