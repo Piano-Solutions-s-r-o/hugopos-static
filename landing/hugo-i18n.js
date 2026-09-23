@@ -46,7 +46,7 @@
       CHK24 + ' Peníze z karet na účtu do 2 dnů',
       CHK24 + ' Připraveno na EET 2.0'
     ] },
-    { sel: '.quote p', cs: '„Přešli jsme v úterý ráno. Do polední špičky celý tým markoval objednávky <span class="mk">bez jediného dotazu.</span>"' },
+    { sel: '.quote p', cs: '„Přešli jsme v úterý ráno. Do polední špičky celý tým markoval objednávky <span class="mk">bez jediného dotazu.</span>“' },
     { sel: '.quote .who span:last-child', cs: '<b>Petr Novák</b> · Pivovarská šenkovna, Brno' },
 
     /* PRODUCT / DEVICES */
@@ -98,7 +98,7 @@
     { sel: '.brain-callouts .callout p', all: true, cs: [
       'Hugo upozorní, co dnes nejspíš dojde a co připravit. Méně vyhodíš a hit ti nedojde uprostřed služby.',
       'Uvidíš, kdy bude příští týden rušno a kdy klid, ještě než napíšeš rozpis. Méně postávání, žádná podceněná špička.',
-      '„Proč bylo v pátek mrtvo?" Dostaneš přímou odpověď i s čísly, česky nebo anglicky.'
+      '„Proč bylo v pátek mrtvo?“ Dostaneš přímou odpověď i s čísly, česky nebo anglicky.'
     ] },
     { sel: '.brain-viz .ntag', all: true, cs: [
       ICO('€') + ' Tržby', ICO('✓') + ' Sklad', ICO('★') + ' Recenze',
@@ -113,7 +113,7 @@
     { sel: '.setup-card h3', all: true, cs: ['Vyfoť', 'Řekni', 'Automaticky'] },
     { sel: '.setup-card > p', all: true, cs: [
       'Vyfoť tištěné menu. Hugo z něj za pár vteřin vytáhne položky, ceny i doplňky.',
-      'Řekni Hugovi, co se změnilo. „Přidej Albariño za 89 Kč a k řízku půlporci." Hotovo.',
+      'Řekni Hugovi, co se změnilo. „Přidej Albariño za 89 Kč a k řízku půlporci.“ Hotovo.',
       'Daně, DPH, účtenky, spropitné, dělení účtů i foodcost řeší Hugo potichu na pozadí. Ty řešíš hosty.'
     ] },
     { sel: '.bubble.user', cs: WAVE + 'Přidej Albariño 0,15 l za 89 Kč' },
@@ -139,7 +139,7 @@
     { sel: '.vs .section-head p.lead', cs: 'Staré pokladny nejsou špatné. Jen vznikly v době, kdy se menu psalo křídou a technik byl součást dodávky. Tady je, co se od té doby změnilo.' },
     { sel: '.vs-head span', all: true, cs: ['Disciplína', 'Stará pokladna', 'Hugo'] },
     { sel: '.vs-row .vs-k', all: true, cs: ['Od rozhodnutí k první platbě', 'Smlouva', 'Menu', 'Poplatek za kartu', 'Měsíčně', 'Hardware', 'Zaškolení obsluhy'] },
-    { sel: '.vs-row .vs-old', all: true, cs: ['Až dorazí technik', 'Na roky, s výpovědní lhůtou', 'Přepíšeš ručně', 'Podle obratu a „individuální nabídky"', 'Podle balíčku a doplňků', 'Krabice na pronájem', 'Celý den'] },
+    { sel: '.vs-row .vs-old', all: true, cs: ['Až dorazí technik', 'Na roky, s výpovědní lhůtou', 'Přepíšeš ručně', 'Podle obratu a „individuální nabídky“', 'Podle balíčku a doplňků', 'Krabice na pronájem', 'Celý den'] },
     { sel: '.vs-row .vs-new', all: true, cs: ['5 minut', 'Žádná, zrušíš kdykoli', 'Vyfotíš', '<span>0,9 % + 1&nbsp;Kč&nbsp;(<a class="mif-link" href="#mif">MIF++</a>)</span>', '<span>190 Kč <small class="vat">bez&nbsp;DPH</small></span>', 'Tvůj telefon nebo terminál Hugo', 'Jedna směna'] },
     { sel: '.vs-foot p', cs: 'Pořád váháš? Prvních 14 dní je zdarma a když se ti Hugo nebude líbit, vrátíme peníze. Bez formulářů, bez výslechu.' },
     { sel: '.vs-foot .btn', cs: 'Vyzkoušet zdarma ' + ARR },
@@ -147,7 +147,7 @@
     /* PRICING — one plan */
     { sel: '#pricing .section-head .eyebrow', cs: 'Ceník. Jeden tarif a hotovo' },
     { sel: '#pricing .section-head h2', cs: '190 Kč měsíčně <small class="vat">bez&nbsp;DPH</small>. <em>Jeden tarif, když platby přijímáš s námi.</em>' },
-    { sel: '#pricing .section-head p.lead', cs: 'Žádná tabulka tarifů, žádná pásma podle obratu, žádný obchodník, co „zavolá zpátky". Stejná cena i stejný náš poplatek za karty pro food truck i pro zavedenou restauraci.' },
+    { sel: '#pricing .section-head p.lead', cs: 'Žádná tabulka tarifů, žádná pásma podle obratu, žádný obchodník, co „zavolá zpátky“. Stejná cena i stejný náš poplatek za karty pro food truck i pro zavedenou restauraci.' },
     { sel: '.config-controls .ctrl:nth-child(1) .ctrl-label', cs: CNUM('1') + 'Poplatky za karty. Náš poplatek je jeden, navždy' },
     { sel: '.config-controls .ctrl:nth-child(2) .ctrl-label', cs: CNUM('2') + 'Vyber zařízení' },
     { sel: '.fee-row .fr-k', all: true, cs: ['Terminál Hugo nebo tvůj Android'] },
