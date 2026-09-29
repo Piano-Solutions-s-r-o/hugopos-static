@@ -25,7 +25,7 @@
   /* type: 'html' (innerHTML) is default; multiple matches use all:true with an array */
   var ENTRIES = [
     /* NAV */
-    { sel: '.nav-links a', all: true, cs: ['Produkt', 'AI &amp; Brain', 'Spuštění', 'Srovnání', 'Ceník', 'E-shop', 'Reference'] },
+    { sel: '.nav-links a', all: true, cs: ['Produkt', 'AI &amp; Brain', 'Spuštění', 'Srovnání', 'Ceník', 'Reference'] },
     { sel: '.nav-cta .btn.btn-primary', cs: 'Začít zdarma ' + ARR },
 
     /* HERO */
@@ -65,7 +65,6 @@
     { sel: '.tc h2', cs: 'Sedí k baru.<br/><em>I k tvému vkusu.</em>' },
     { sel: '.tc p.lead', cs: 'Šest barev obalu, jeden rychlý terminál. Vyber tu, která ladí s podnikem. Nebo s náladou obsluhy.' },
     { sel: '.tc-note', cs: 'Jeden obal je v ceně terminálu. Skladem je Rudý impuls, další barvy naskladňujeme.' },
-    { sel: '.tc-cta', cs: 'Vybrat barvu v e-shopu' },
 
     /* ON THE FLOOR */
     { sel: '.floor .section-head .eyebrow', cs: 'Na place' },
