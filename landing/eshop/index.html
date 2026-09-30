@@ -2,6 +2,18 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8">
+  <script>
+    // HUGO-1820 — the public e-shop is hidden until an unclaimed purchase can reach the
+    // warehouse on its own. Anyone arriving directly goes home; only Stripe's own return
+    // (session_id / checkout) stays, so a buyer already mid-purchase can finish linking it.
+    // `preview=1` keeps the page reachable for the storefront e2e suite and internal review;
+    // it is linked from nowhere. No `noindex` meta here: a source page must never carry one
+    // (Docs/deployment.md, HUGO-671 tripwire) — it failed the 2026-09-30 production release.
+    (function () {
+      var params = new URLSearchParams(location.search);
+      if (!params.has('session_id') && !params.has('checkout') && params.get('preview') !== '1') location.replace('/');
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>E-shop — terminály a příslušenství Hugo</title>
   <meta name="description" content="Vyber si terminál a příslušenství Hugo. Nejdřív nákup, potom už jen pár kliknutí k hotovému účtu.">
