@@ -1518,12 +1518,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   /* ============ CUSTOMER REFERENCE (HUGO-1826) ============ */
-  .refband{ padding: 8px 0 72px; scroll-margin-top: 96px; }
+  .refband{ padding: 0 0 80px; scroll-margin-top: 96px; }
   .ref-card{
     position: relative; max-width: 980px; margin: 0 auto;
-    background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+    background: transparent; border: 1px solid var(--line); border-radius: var(--radius-lg);
     padding: 44px 52px 36px; overflow: hidden;
-    box-shadow: 0 24px 60px -36px rgba(20,17,13,0.35);
   }
   .ref-card::before{
     content: ""; position: absolute; inset: 0 auto 0 0; width: 8px; background: var(--yellow);
@@ -1536,7 +1535,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .ref-top{ position: relative; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
   .ref-tag{
     font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-    color: var(--muted); background: var(--cream); border-radius: 999px; padding: 6px 12px;
+    color: var(--muted); background: var(--cream-2); border-radius: 999px; padding: 6px 12px;
   }
   .ref-card blockquote{ position: relative; margin: 0; }
   .ref-card blockquote p{
@@ -1560,6 +1559,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .ref-card{ padding: 32px 22px 26px 28px; border-radius: 24px; }
     .ref-mark{ font-size: 130px; right: 16px; top: -10px; }
   }
+
+  /* ============ SUB-PAGE LINKS (HUGO-1828) ============ */
+  .switch-ctas{ display:flex; flex-wrap:wrap; gap:10px; }
+  .vs-more{ margin:18px 0 0; font-weight:600; font-size:16px; }
+  .vs-more a{ border-bottom:2px solid var(--yellow-deep); padding-bottom:2px; }
+  .guar-stack{ display:grid; gap:10px; margin-top:18px; max-width:560px; }
+  .guar-stack > .guarantee.on-dark{ display:flex; max-width:none; margin-top:0; }
+  .guarantee.cheapest{ text-decoration:none; transition:border-color .15s ease; }
+  .guarantee.cheapest:hover{ border-color:rgba(255,255,255,0.3); }
+  .guarantee.cheapest .ch-l{ color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
 
   /* ============ CRO ADDITIONS ============ */
   .hero-meta .rr svg{ width:16px; height:16px; color:var(--green); flex:0 0 16px; }
@@ -1825,8 +1834,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#product">Product</a>
       <a href="#brain">AI &amp; Brain</a>
       <a href="#setup">Setup</a>
-      <a href="#vs">Compare</a>
-      <a href="#pricing">Pricing</a>
+      <a href="/srovnani">Compare</a>
+      <a href="/cenik">Pricing</a>
       <a href="#reference">Customers</a>
     </nav>
     <div class="nav-cta">
@@ -1887,6 +1896,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- =============== VIDEO =============== -->
+<section class="video-band" aria-label="Video">
+  <div class="container">
+    <div class="video-frame" id="heroVideo">
+      <button class="video-facade" type="button" data-video-id="a95ibmg9onA" aria-label="Play the Hugo video">
+        <img src="https://i.ytimg.com/vi/a95ibmg9onA/maxres1.jpg" alt="" decoding="async" onload="this.onload=null;if(this.naturalWidth<200)this.src='https://i.ytimg.com/vi/a95ibmg9onA/hq1.jpg'">
+        <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8.5 5.5 19 12 8.5 18.5" fill="currentColor"/></svg></span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- =============== CUSTOMER REFERENCE (HUGO-1826) =============== -->
 <section class="refband" id="reference">
   <div class="container">
@@ -1907,18 +1928,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </span>
       </figcaption>
     </figure>
-  </div>
-</section>
-
-<!-- =============== VIDEO =============== -->
-<section class="video-band" aria-label="Video">
-  <div class="container">
-    <div class="video-frame" id="heroVideo">
-      <button class="video-facade" type="button" data-video-id="a95ibmg9onA" aria-label="Play the Hugo video">
-        <img src="https://i.ytimg.com/vi/a95ibmg9onA/maxres1.jpg" alt="" decoding="async" onload="this.onload=null;if(this.naturalWidth<200)this.src='https://i.ytimg.com/vi/a95ibmg9onA/hq1.jpg'">
-        <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8.5 5.5 19 12 8.5 18.5" fill="currentColor"/></svg></span>
-      </button>
-    </div>
   </div>
 </section>
 
@@ -2000,7 +2009,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="trust">
   <div class="container">
     <div class="trust-row">
-      <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No contract &mdash; cancel any time</span>
+      <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No notice period &mdash; cancel any time</span>
       <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Card money in your account within 2 days</span>
       <span class="trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ready for EET 2.0</span>
     </div>
@@ -2077,7 +2086,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="midcta-in">
       <div class="midcta-txt">
         <h3>Ready before the lunch rush.</h3>
-        <p>190 Kč a month <small class="vat">excl.&nbsp;VAT</small> &middot; live in 5 minutes &middot; no card, no contract.</p>
+        <p>190 Kč a month <small class="vat">excl.&nbsp;VAT</small> &middot; live in 5 minutes &middot; no card, no notice period.</p>
       </div>
       <div class="midcta-actions">
         <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Start free
@@ -2220,9 +2229,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Coming from another POS</span>
         <h2>Already on Dotykačka or Storyous? <em>We do the heavy lifting.</em></h2>
         <p class="lead">A six-year-old till with 140 menu items isn&rsquo;t a five-minute job &mdash; and we don&rsquo;t pretend it is. We move your menu across, run Hugo next to your current system, and flip the switch only when you&rsquo;re ready.</p>
+        <div class="switch-ctas">
         <a href="mailto:hugo@piano.cz" class="btn btn-dark btn-lg">Book a free migration
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
+        <a href="/srovnani" class="btn btn-ghost btn-lg switch-compare">Hugo vs. Dotykačka &amp; co.</a>
+        </div>
       </div>
       <div class="switch-points">
         <div class="switch-point">
@@ -2262,13 +2274,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="vs-board" role="table" aria-label="Hugo compared with a traditional POS">
       <div class="vs-head" role="row"><span role="columnheader">What</span><span role="columnheader">Old till</span><span role="columnheader">Hugo</span></div>
       <div class="vs-row" role="row"><span class="vs-k" role="cell">From decision to first payment</span><span class="vs-old" role="cell">Whenever the technician shows up</span><span class="vs-new" role="cell">5 minutes</span></div>
-      <div class="vs-row" role="row"><span class="vs-k" role="cell">Contract</span><span class="vs-old" role="cell">Years, with a notice period</span><span class="vs-new" role="cell">None, cancel any time</span></div>
+      <div class="vs-row" role="row"><span class="vs-k" role="cell">Notice period</span><span class="vs-old" role="cell">Months, on a multi-year contract</span><span class="vs-new" role="cell">None, cancel any time</span></div>
       <div class="vs-row" role="row"><span class="vs-k" role="cell">Menu</span><span class="vs-old" role="cell">You retype it by hand</span><span class="vs-new" role="cell">You snap a photo</span></div>
       <div class="vs-row" role="row"><span class="vs-k" role="cell">Card fee</span><span class="vs-old" role="cell">"Depends on turnover"</span><span class="vs-new" role="cell"><span>0,9 % + 1&nbsp;Kč&nbsp;(<a class="mif-link" href="#mif">MIF++</a>)</span></span></div>
       <div class="vs-row" role="row"><span class="vs-k" role="cell">Monthly</span><span class="vs-old" role="cell">Depends on the bundle and add-ons</span><span class="vs-new" role="cell"><span>190 Kč <small class="vat">excl.&nbsp;VAT</small></span></span></div>
       <div class="vs-row" role="row"><span class="vs-k" role="cell">Hardware</span><span class="vs-old" role="cell">A box on lease</span><span class="vs-new" role="cell">Your phone or the Hugo terminal</span></div>
       <div class="vs-row" role="row"><span class="vs-k" role="cell">Staff training</span><span class="vs-old" role="cell">A full day</span><span class="vs-new" role="cell">One shift</span></div>
     </div>
+    <p class="vs-more"><a href="/srovnani">Compare Hugo with Dotykačka, Storyous, KASA FIK, KiloMayo and SumUp &rarr;</a></p>
     <div class="vs-foot">
       <p>Still on the fence? The first 14 days are free, and if you don&rsquo;t like Hugo we refund you. No forms, no interrogation.</p>
       <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Try it free</a>
@@ -2284,18 +2297,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Pricing &mdash; one plan, that&rsquo;s it</span>
         <h2>190 Kč a month <small class="vat">excl.&nbsp;VAT</small>. <em>One plan, when you take payments with us.</em></h2>
         <p class="lead">No tiers to compare, no revenue bands, no sales call &mdash; the same price and the same card rate for a food truck and for a full restaurant.</p>
-        <div class="guarantee on-dark">
-          <span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/><polyline points="9 12 11 14 15 10"/></svg></span>
-          <p class="guarantee-txt"><b>14 days free.</b> And if you&rsquo;re not happy, we give you your money back &mdash; no forms, no questions.</p>
+        <div class="guar-stack">
+          <div class="guarantee on-dark">
+            <span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+            <p class="guarantee-txt"><b>14 days free.</b> And if you&rsquo;re not happy, we give you your money back &mdash; no forms, no questions.</p>
+          </div>
+          <!-- HUGO-1828: these four figures are the fixed scenario computed in cenik/index.html (ROWS script). Change both or neither. -->
+          <a class="guarantee on-dark cheapest" href="/cenik#srovnani">
+            <span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></span>
+            <p class="cheapest-txt"><b>Cheapest of the tills we compared.</b> 1 890 Kč a month for a café with 100 000 Kč in card payments, software and every card fee included. Dotykačka 2 200 Kč, KASA FIK 2 612 Kč, SumUp 2 668 Kč. <span class="ch-l">See how we calculated it&nbsp;&rarr;</span></p>
+          </a>
         </div>
       </div>
 
       <ul class="price-points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>190 Kč a month instead of 990 Kč</b> <small class="vat">excl.&nbsp;VAT</small> &mdash; the whole POS (orders, menu, VAT, reports) when you take card payments with us. One price, nothing hidden.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>190 Kč a month instead of 490 Kč</b> <small class="vat">excl.&nbsp;VAT</small> &mdash; the whole POS (orders, menu, VAT, reports) when you take card payments with us. One price, nothing hidden.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>0,9 % + 1 Kč (<a class="mif-link" href="#mif">MIF++</a>) per card payment &mdash; always</b>, whatever your revenue. Our fee never quietly changes on you.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span><b>Card money in your account within 2 days</b> &mdash; payments sorted end to end, and you keep the bank you already have.</span></li>
       </ul>
-
       <div class="config">
         <!-- MAIN CARD: two columns, what you get left, price right -->
         <div class="config-card">
@@ -2338,7 +2357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <div class="sum-price">
-              <span class="sum-strike">990 Kč</span>
+              <span class="sum-strike">490 Kč</span>
               <span class="sum-v">190</span>
               <span class="sum-u">Kč / month excl. VAT</span>
             </div>
@@ -2356,7 +2375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
 
             <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;">Start 14 days free</a>
-            <div class="sum-fine">14 days free. No contract. Cancel any time. Keep your data.</div>
+            <div class="sum-fine">14 days free. No notice period. Cancel any time. Keep your data.</div>
           </aside>
         </div>
       </div>
@@ -2445,7 +2464,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq-list">
       <details class="faq-item" open>
         <summary><span class="q">How much does Hugo cost? What&rsquo;s the catch?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">One plan: 190 Kč a month excl. VAT (instead of 990 Kč) when you take card payments through us &mdash; plus 0,9 % + 1 Kč per card payment. That is our fee, always the same whatever your revenue; the third-party fees on top are <a class="mif-link" href="#mif">itemised below</a>. First 14 days are free, and if you&rsquo;re not happy we give you your money back. No tiers, no catch, no contract.</div>
+        <div class="a">One plan: 190 Kč a month excl. VAT (instead of 490 Kč) when you take card payments through us &mdash; plus 0,9 % + 1 Kč per card payment. That is our fee, always the same whatever your revenue; the third-party fees on top are <a class="mif-link" href="#mif">itemised below</a>. First 14 days are free, and if you&rsquo;re not happy we give you your money back. No tiers, no catch, no notice period.</div>
       </details>
       <details class="faq-item" id="mif">
         <summary><span class="q">What does MIF++ mean? Is it an extra cost?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
@@ -2458,8 +2477,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           We neither set nor keep the last two &mdash; they go on in full. For consumer cards issued in the EEA the interchange fee is capped by EU law at 0,2 % (debit) and 0,3 % (credit). Rates differ by card type, and meal-voucher, AMEX and Diners cards carry an extra fee. All prices and fees exclude VAT. You have enough paperwork without us, so we tried to write this so it reads once. The cap on the interchange fee was filled in on your behalf in Brussels: the one form you never have to see.</div>
       </details>
       <details class="faq-item">
-        <summary><span class="q">Do I have to sign a contract?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">No contract and no notice period. Cancel any time and take your data with you.</div>
+        <summary><span class="q">Is there a notice period?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
+        <div class="a">No notice period. Cancel any time and take your data with you.</div>
       </details>
       <details class="faq-item">
         <summary><span class="q">I&rsquo;m on Dotykačka or Storyous &mdash; is switching a pain?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>

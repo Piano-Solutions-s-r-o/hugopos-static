@@ -48,7 +48,7 @@
 
     /* TRUST */
     { sel: '.trust-chip', all: true, cs: [
-      CHK24 + ' Žádná smlouva, žádná výpovědní lhůta',
+      CHK24 + ' Žádná výpovědní lhůta',
       CHK24 + ' Peníze z karet na účtu do 2 dnů',
       CHK24 + ' Připraveno na EET 2.0'
     ] },
@@ -131,6 +131,7 @@
     { sel: '.switch h2', cs: 'Máš Dotykačku nebo Storyous? <em>Stěhování uděláme za tebe.</em>' },
     { sel: '.switch p.lead', cs: 'Šest let stará pokladna se 140 položkami není práce na pět minut a nebudeme předstírat, že je. Menu přeneseme, Hugo rozjedeme vedle stávajícího systému a přepneš, až budeš chtít.' },
     { sel: '.switch .btn-dark', cs: 'Domluvit migraci zdarma ' + ARR },
+    { sel: '.switch .switch-compare', cs: 'Hugo vs. Dotykačka a spol.' },
     { sel: '.switch-point h4', all: true, cs: ['Menu přeneseme za tebe', 'Obě pokladny běží vedle sebe', 'Obsluha to zvládne za jednu směnu'] },
     { sel: '.switch-point p', all: true, cs: [
       'Pošli fotku nebo export ze starého systému. Položky, ceny i doplňky složíme my, ty je jen zkontroluješ.',
@@ -143,9 +144,10 @@
     { sel: '.vs .section-head h2', cs: 'Porovnej si to. <em>My si výsledek tipneme.</em>' },
     { sel: '.vs .section-head p.lead', cs: 'Staré pokladny nejsou špatné. Jen vznikly v době, kdy se menu psalo křídou a technik byl součást dodávky. Tady je, co se od té doby změnilo.' },
     { sel: '.vs-head span', all: true, cs: ['Disciplína', 'Stará pokladna', 'Hugo'] },
-    { sel: '.vs-row .vs-k', all: true, cs: ['Od rozhodnutí k první platbě', 'Smlouva', 'Menu', 'Poplatek za kartu', 'Měsíčně', 'Hardware', 'Zaškolení obsluhy'] },
-    { sel: '.vs-row .vs-old', all: true, cs: ['Až dorazí technik', 'Na roky, s výpovědní lhůtou', 'Přepíšeš ručně', 'Podle obratu a „individuální nabídky“', 'Podle balíčku a doplňků', 'Krabice na pronájem', 'Celý den'] },
+    { sel: '.vs-row .vs-k', all: true, cs: ['Od rozhodnutí k první platbě', 'Výpovědní lhůta', 'Menu', 'Poplatek za kartu', 'Měsíčně', 'Hardware', 'Zaškolení obsluhy'] },
+    { sel: '.vs-row .vs-old', all: true, cs: ['Až dorazí technik', 'Měsíce, se smlouvou na roky', 'Přepíšeš ručně', 'Podle obratu a „individuální nabídky“', 'Podle balíčku a doplňků', 'Krabice na pronájem', 'Celý den'] },
     { sel: '.vs-row .vs-new', all: true, cs: ['5 minut', 'Žádná, zrušíš kdykoli', 'Vyfotíš', '<span>0,9 % + 1&nbsp;Kč&nbsp;(<a class="mif-link" href="#mif">MIF++</a>)</span>', '<span>190 Kč <small class="vat">bez&nbsp;DPH</small></span>', 'Tvůj telefon nebo terminál Hugo', 'Jedna směna'] },
+    { sel: '.vs-more a', cs: 'Porovnej Hugo s Dotykačkou, Storyous, KASA FIK, KiloMayo a SumUp &rarr;' },
     { sel: '.vs-foot p', cs: 'Pořád váháš? Prvních 14 dní je zdarma a když se ti Hugo nebude líbit, vrátíme peníze. Bez formulářů, bez výslechu.' },
     { sel: '.vs-foot .btn', cs: 'Vyzkoušet zdarma ' + ARR },
 
@@ -153,6 +155,7 @@
     { sel: '#pricing .section-head .eyebrow', cs: 'Ceník. Jeden tarif a hotovo' },
     { sel: '#pricing .section-head h2', cs: '190 Kč měsíčně <small class="vat">bez&nbsp;DPH</small>. <em>Jeden tarif, když platby přijímáš s námi.</em>' },
     { sel: '#pricing .section-head p.lead', cs: 'Žádná tabulka tarifů, žádná pásma podle obratu, žádný obchodník, co „zavolá zpátky“. Stejná cena i stejný náš poplatek za karty pro food truck i pro zavedenou restauraci.' },
+    { sel: '.cheapest-txt', cs: '<b>Nejlevnější ze srovnávaných pokladen.</b> 1 890 Kč měsíčně pro kavárnu se 100 000 Kč v kartách, software i všechny poplatky za karty. Dotykačka 2 200 Kč, KASA FIK 2 612 Kč, SumUp 2 668 Kč. <span class="ch-l">Podívej se, jak jsme počítali&nbsp;&rarr;</span>' },
     { sel: '.config-controls .ctrl:nth-child(1) .ctrl-label', cs: CNUM('1') + 'Poplatky za karty. Náš poplatek je jeden, navždy' },
     { sel: '.config-controls .ctrl:nth-child(2) .ctrl-label', cs: CNUM('2') + 'Vyber zařízení' },
     { sel: '.fee-row .fr-k', all: true, cs: ['Terminál Hugo nebo tvůj Android'] },
@@ -178,7 +181,7 @@
       CHKF + 'Česká firma, český produkt, česká podpora'
     ] },
     { sel: '.summary .btn.btn-primary', cs: 'Začít 14 dní zdarma' },
-    { sel: '.sum-fine', cs: '14 dní zdarma. Bez smlouvy. Zrušíš kdykoli. Data si kdykoli vyexportuješ.' },
+    { sel: '.sum-fine', cs: '14 dní zdarma. Bez výpovědní lhůty. Zrušíš kdykoli. Data si kdykoli vyexportuješ.' },
 
     /* POWER BAND */
     { sel: '.power h2', cs: 'Skutečná síla. <span class="hl">Nulové tření.</span>' },
@@ -241,12 +244,12 @@
     { sel: '.ab-opt', all: true, cs: ['Mikro provoz', 'Kavárna & bar', 'Restaurace & síť'] },
     { sel: '.pay-note', cs: 'Transparentní ceny. Náš poplatek je stejný při 30 000 Kč i při 1 000 000 Kč měsíčně. Peníze máš na účtu do 2 dnů a banku měnit nemusíš.' },
     { sel: '.price-points li span', all: true, cs: [
-      '<b>190 Kč měsíčně místo 990 Kč</b> <small class="vat">bez&nbsp;DPH</small>. Celá pokladna (objednávky, menu, DPH, reporty), když platby kartou přijímáš s námi. Jedna cena, nic skrytého.',
+      '<b>190 Kč měsíčně místo 490 Kč</b> <small class="vat">bez&nbsp;DPH</small>. Celá pokladna (objednávky, menu, DPH, reporty), když platby kartou přijímáš s námi. Jedna cena, nic skrytého.',
       '<b>0,9 % + 1 Kč (<a class="mif-link" href="#mif">MIF++</a>) z platby kartou, vždycky</b>, ať máš jakýkoli obrat. Náš poplatek se ti potichu nezmění.',
       '<b>Peníze z karet na účtu do 2 dnů.</b> Platby vyřešené od začátku do konce a banku si necháš svou.'
     ] },
     { sel: '.midcta-txt h3', cs: 'Hotovo ještě před polední špičkou.' },
-    { sel: '.midcta-txt p', cs: 'Za 190 Kč měsíčně <small class="vat">bez&nbsp;DPH</small> &middot; spustíš za 5 minut &middot; bez karty, bez smlouvy.' },
+    { sel: '.midcta-txt p', cs: 'Za 190 Kč měsíčně <small class="vat">bez&nbsp;DPH</small> &middot; spustíš za 5 minut &middot; bez karty, bez výpovědní lhůty.' },
     { sel: '.midcta-actions .btn-primary', cs: 'Začít zdarma ' + ARR },
     { sel: '.annbar-txt', cs: '<b>EET se vrací 1. 1. 2027.</b> Přejdi na Hugo teď a měj klid. Zaváděcí cena platí jen do 1. 12. 2026.' },
     { sel: '.annbar-cta', cs: 'Zjistit víc &rarr;' },
@@ -257,16 +260,16 @@
     { sel: '.faq-item summary .q', all: true, cs: [
       'Kolik Hugo stojí? Kde je háček?',
       'Co znamená MIF++? Je to něco navíc?',
-      'Musím podepsat smlouvu?',
+      'Je tam nějaká výpovědní lhůta?',
       'Mám Dotykačku nebo Storyous. Bude přechod peklo?',
       'Musím kupovat hardware?',
       'Kdy dostanu peníze z karet?',
       'Co DPH a EET?'
     ] },
     { sel: '.faq-item .a', all: true, cs: [
-      'Jeden tarif: 190 Kč měsíčně bez DPH místo 990 Kč, když platby kartou přijímáš přes nás, a k tomu 0,9 % + 1 Kč z platby kartou. To je náš poplatek, vždycky stejný při jakémkoli obratu; k němu se přičítají poplatky třetích stran, které <a class="mif-link" href="#mif">rozepisujeme níž</a>. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Háček jsme hledali, nenašli.',
+      'Jeden tarif: 190 Kč měsíčně bez DPH místo 490 Kč, když platby kartou přijímáš přes nás, a k tomu 0,9 % + 1 Kč z platby kartou. To je náš poplatek, vždycky stejný při jakémkoli obratu; k němu se přičítají poplatky třetích stran, které <a class="mif-link" href="#mif">rozepisujeme níž</a>. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Háček jsme hledali, nenašli.',
       'MIF++ je způsob, jak se poplatek za platbu kartou rozepisuje, aby bylo vidět, komu a za co platíš. Nic navíc si nepřičítáme: jsou v něm stejné položky jako v jedné souhrnné sazbě („blended“), jen nejsou schované v jednom čísle. Z každé platby kartou jde:<ul class="a-list"><li><b>0,9 % + 1 Kč nám</b> za zpracování platby — vždycky stejně, ať máš jakýkoli obrat.</li><li><b>Mezibankovní poplatek (MIF)</b> bance, která tvému hostovi vydala kartu.</li><li><b>Poplatek karetní asociaci</b> Visa nebo Mastercard.</li></ul>Poslední dva neurčujeme my a nejsou naším příjmem, posíláme je dál v plné výši. U spotřebitelských karet vydaných v Evropském hospodářském prostoru je mezibankovní poplatek zastropovaný evropským nařízením na 0,2 % u debetních a 0,3 % u kreditních karet. Sazby se liší podle typu karty a u stravenkových karet a karet AMEX a Diners se přidává dodatečný poplatek. Všechny ceny a poplatky jsou bez DPH. Papírování a předpisů máš i bez nás dost, tak jsme se ti to snažili napsat na jedno přečtení. Strop na mezibankovní poplatek za tebe naštěstí vyřídili úředníci v Bruselu: jediný formulář, který nikdy neuvidíš.',
-      'Ne. Žádná smlouva ani výpovědní lhůta. Zrušíš kdykoli a data si vyexportuješ.',
+      'Ne. Žádná výpovědní lhůta. Zrušíš kdykoli a data si vyexportuješ.',
       'Nebude. Menu naimportujeme, Hugo poběží vedle stávající pokladny a přepneš, až budeš chtít. Migrace je zdarma.',
       'Ne. Hugo běží na iPhonu nebo Androidu, který už máš. Když chceš pořádné zařízení na pult, náš all-in-one terminál s Hugem stojí 4 900 Kč bez DPH jednorázově. Na pokladní zařízení se navíc připravuje daňový bonus 5 000 Kč. Připojit můžeš i vlastní tiskárnu účtenek a pokladní zásuvku.',
       'Do 2 dnů, rovnou na účet, který už máš. Banku měnit nemusíš.',
