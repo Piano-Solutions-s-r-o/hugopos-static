@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<!-- HUGO_STAGING_GATE (staging only) -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- HUGO-1844: served by the static host for every unknown path (DO error_document),
+     with a 404 status, so it stays out of the index without a robots meta. -->
+<!-- HUGO-596: the .cz brand domain shares this static app; forward unknown .cz paths to .eu too. -->
+<script>
+  (function () {
+    var h = location.hostname;
+    if (h === "hugopos.cz" || h.slice(-11) === ".hugopos.cz") {
+      location.replace("https://hugopos.eu" + location.pathname + location.search + location.hash);
+    }
+  })();
+</script>
+<title>Stránka nenalezena — Hugo</title>
+<meta name="theme-color" content="#14110D" />
+<link rel="icon" href="/assets/hugo-icon.svg" type="image/svg+xml" />
+<style>
+  :root{ --ink:#14110D; --muted:#6b645b; --yellow:#FFD23F; --bg:#FBF8F1; }
+  *{ box-sizing: border-box; }
+  body{ margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+    background: var(--bg); color: var(--ink);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main{ max-width: 520px; text-align: center; }
+  img{ width: 64px; height: 64px; }
+  h1{ font-size: clamp(28px, 6vw, 40px); line-height: 1.1; margin: 20px 0 12px; }
+  p{ color: var(--muted); font-size: 17px; line-height: 1.5; margin: 0 0 24px; }
+  .ctas{ display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  a.btn{ display: inline-block; padding: 13px 22px; border-radius: 999px; font-weight: 700;
+    text-decoration: none; color: var(--ink); border: 2px solid var(--ink); }
+  a.btn.primary{ background: var(--yellow); border-color: var(--yellow); }
+  .en{ margin-top: 40px; font-size: 15px; }
+  .en a{ color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <img src="/assets/hugo-icon.svg" alt="Hugo" width="64" height="64" />
+  <h1>Tahle stránka neexistuje</h1>
+  <p>Odkaz je možná starý nebo v něm je překlep. Všechno o pokladně Hugo najdeš na hlavní stránce.</p>
+  <div class="ctas">
+    <a class="btn primary" href="/">Na hlavní stránku</a>
+    <a class="btn" href="/cenik/">Ceník</a>
+  </div>
+  <p class="en" lang="en">Page not found. <a href="/en/">Go to the English homepage</a>.</p>
+</main>
+</body>
+</html>

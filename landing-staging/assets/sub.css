@@ -40,9 +40,9 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .nav-links a.is-on{ box-shadow:inset 0 -2px 0 var(--yellow-deep); }
 .nav-cta{ margin-left:auto; display:flex; gap:10px; align-items:center; }
 .lang{ display:inline-flex; background:#fff; border:1px solid var(--line); border-radius:var(--radius-pill); padding:3px; gap:2px; }
-.lang button{ appearance:none; border:0; background:transparent; cursor:pointer; font-family:var(--body); font-weight:600;
+.lang button, .lang a{ appearance:none; border:0; background:transparent; cursor:pointer; font-family:var(--body); font-weight:600;
   font-size:12.5px; color:var(--muted); padding:6px 11px; border-radius:var(--radius-pill); line-height:1; }
-.lang button.is-on{ background:var(--ink); color:#fff; }
+.lang button.is-on, .lang a.is-on{ background:var(--ink); color:#fff; }
 @media (max-width:860px){ .nav-links{ display:none; } .nav-cta .btn{ display:none; } }
 
 /* ---------- buttons ---------- */
