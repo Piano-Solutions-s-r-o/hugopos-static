@@ -10,7 +10,8 @@
      It forwards to the same entry every landing CTA uses (Admin /login?start=1, HUGO-616),
      which mints a fresh PKCE challenge per visit. Never link a copied sso.hugopos.eu/auth URL:
      its code_challenge belongs to the browser that started it, so the recipient's sign-in
-     fails at /auth/callback. The whole query is forwarded (start=1 always forced), so every
+     fails at /auth/callback. signup=1 (HUGO-1850) makes Admin ask UOA for prompt=create, so the
+     page opens on account creation. The whole query is forwarded (start=1 always forced), so every
      param Admin /login reads (next, eshop_session) arrives too — keep that in mind when adding
      one. utm_* reaches the Admin URL but is NOT yet attributed in GA4: Login strips the query
      before the page_view fires (same gap as every landing CTA). The noscript fallback drops
@@ -19,10 +20,11 @@
   (function () {
     var params = new URLSearchParams(location.search);
     params.set("start", "1");
+    params.set("signup", "1");
     location.replace("https://admin.hugopos.eu/login?" + params.toString());
   })();
 </script>
-<noscript><meta http-equiv="refresh" content="0; url=https://admin.hugopos.eu/login?start=1" /></noscript>
+<noscript><meta http-equiv="refresh" content="0; url=https://admin.hugopos.eu/login?start=1&amp;signup=1" /></noscript>
 <title>Registrace — Hugo</title>
 <link rel="canonical" href="https://hugopos.eu/start/" />
 <meta name="theme-color" content="#14110D" />
@@ -44,7 +46,7 @@
 <main>
   <img src="/assets/hugo-icon.svg" alt="Hugo" width="64" height="64" />
   <p>Přesměrovávám tě na registraci do Huga…</p>
-  <a class="btn" href="https://admin.hugopos.eu/login?start=1">Pokračovat na registraci</a>
+  <a class="btn" href="https://admin.hugopos.eu/login?start=1&amp;signup=1">Pokračovat na registraci</a>
 </main>
 </body>
 </html>
