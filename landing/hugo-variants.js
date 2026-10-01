@@ -26,8 +26,8 @@
         en: 'A till that <span class="hl">fits in your pocket.</span> <em>Live in 5 minutes.</em>'
       },
       '.hero p.lead': {
-        cs: 'Žádné kabely, žádná smlouva a žádná instalace na týden. Stáhni appku, vyfoť ceník a přijímej karty hned na Androidu, který máš, nebo na terminálu Hugo. Jen 190 Kč měsíčně bez DPH, když platby přijímáš přes nás.',
-        en: 'No cables, no contract — and no week-long install. Download the app, snap your price list and take cards on the Android phone you own — or grab a genuinely modern terminal from us. Just 190 Kč a month excl. VAT when you take payments through us.'
+        cs: 'Žádné kabely, žádná výpovědní lhůta a žádná instalace na týden. Stáhni appku, vyfoť ceník a přijímej karty hned na Androidu, který máš, nebo na terminálu Hugo. Jen 190 Kč měsíčně bez DPH, když platby přijímáš přes nás.',
+        en: 'No cables, no notice period — and no week-long install. Download the app, snap your price list and take cards on the Android phone you own — or grab a genuinely modern terminal from us. Just 190 Kč a month excl. VAT when you take payments through us.'
       },
       '.hero-ctas .btn-primary': {
         cs: 'Vyzkoušet zdarma ' + ARR,
