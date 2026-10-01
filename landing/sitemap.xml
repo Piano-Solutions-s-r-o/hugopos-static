@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://hugopos.eu/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/en/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/srovnani/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/srovnani/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/compare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/srovnani/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/en/compare/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/srovnani/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/compare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/srovnani/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/cenik/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenik/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/cenik/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/en/pricing/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenik/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/cenik/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/vseobecne-obchodni-podminky/</loc>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/obchodni-podminky-eshop/</loc>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/mattoni-doporucuje/</loc>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/prazdroj-doporucuje/</loc>
+  </url>
+</urlset>
