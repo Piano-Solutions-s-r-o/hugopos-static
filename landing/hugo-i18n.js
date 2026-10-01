@@ -37,6 +37,12 @@
     { sel: '.hero-meta span', all: true, cs: [CHK24 + ' Bez karty na start', CHK24 + ' Prodáváš za 5 minut', CHK24 + ' Zrušíš kdykoli'] },
     { sel: '.fc-fast .sub', cs: 'prům. čas k první tržbě' },
 
+    /* CUSTOMER REFERENCE (HUGO-1826) — the customer's own words, verbatim minus the greeting */
+    { sel: '.ref-tag', cs: 'Terminál Piano + Hugo' },
+    { sel: '.ref-q', cs: 'S terminálem od Piano jsem velice spokojený. Vše se dá jednoduše přímo v terminálu zadat, buď jako samostatné položky, nebo rychlý prodej zadáním částky. Pokladní systém Hugo je přehledný a jednoduchý na obsluhu. Dříve jsem přijímal hotovost, popřípadě platbu QR kódem. <span class="hl">Teď je vše jednodušší a pro zákazníka příjemnější.</span> Vřele doporučuji.' },
+    { sel: '.ref-ps', cs: 'Ještě bych doplnil skvělou komunikaci s týmem Piano.' },
+    { sel: '.ref-who .rl', cs: 'stánek Bar u Lemura' },
+
     /* LOGO STRIP */
     { sel: '.strip-label', cs: 'Už na Hugovi kasírují v Česku i na Slovensku' },
 
