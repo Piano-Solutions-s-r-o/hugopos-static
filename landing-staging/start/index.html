@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<!-- HUGO_STAGING_GATE (staging only) -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- HUGO-1848: hugopos.eu/start — the short registration link sales sends with an offer.
+     It forwards to the same entry every landing CTA uses (Admin /login?start=1, HUGO-616),
+     which mints a fresh PKCE challenge per visit. Never link a copied sso.hugopos.eu/auth URL:
+     its code_challenge belongs to the browser that started it, so the recipient's sign-in
+     fails at /auth/callback. The whole query is forwarded (start=1 always forced), so every
+     param Admin /login reads (next, eshop_session) arrives too — keep that in mind when adding
+     one. utm_* reaches the Admin URL but is NOT yet attributed in GA4: Login strips the query
+     before the page_view fires (same gap as every landing CTA). The noscript fallback drops
+     the query. Kept out of the sitemap (generator/routes.mjs). -->
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    params.set("start", "1");
+    location.replace("https://admin.hugopos.eu/login?" + params.toString());
+  })();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://admin.hugopos.eu/login?start=1" /></noscript>
+<title>Registrace — Hugo</title>
+<link rel="canonical" href="https://hugopos.eu/start/" />
+<meta name="theme-color" content="#14110D" />
+<link rel="icon" href="/assets/hugo-icon.svg" type="image/svg+xml" />
+<style>
+  :root{ --ink:#14110D; --muted:#6b645b; --yellow:#FFD23F; --bg:#FBF8F1; }
+  *{ box-sizing: border-box; }
+  body{ margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+    background: var(--bg); color: var(--ink);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main{ max-width: 520px; text-align: center; }
+  img{ width: 64px; height: 64px; }
+  p{ color: var(--muted); font-size: 17px; line-height: 1.5; margin: 20px 0 24px; }
+  a.btn{ display: inline-block; padding: 13px 22px; border-radius: 999px; font-weight: 700;
+    text-decoration: none; color: var(--ink); background: var(--yellow); }
+</style>
+</head>
+<body>
+<main>
+  <img src="/assets/hugo-icon.svg" alt="Hugo" width="64" height="64" />
+  <p>Přesměrovávám tě na registraci do Huga…</p>
+  <a class="btn" href="https://admin.hugopos.eu/login?start=1">Pokračovat na registraci</a>
+</main>
+</body>
+</html>
