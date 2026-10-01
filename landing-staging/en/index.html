@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-ab-home>
 <head>
 <meta charset="utf-8" />
 <!-- HUGO_STAGING_GATE (staging only) -->
@@ -64,6 +64,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NC3PW2KC');</script>
 <!-- End Google Tag Manager -->
+<script src="/hugo-ab.js"></script>
 <!-- HUGO-596 — redirect the .cz brand domain to the canonical .eu.
      This single static landing app is served for BOTH hugopos.eu and hugopos.cz
      (their DNS points here); the .eu host is left untouched. Runs in <head>
@@ -1648,8 +1649,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media(max-width:760px){ .midcta-in{ flex-direction:column; align-items:flex-start; padding:30px 26px; } }
   /* ============ A/B VARIANT SWITCHER ============ */
   .abbar{ display:none; }
-  .hero-eyebrow{ cursor:pointer; transition:border-color .15s ease, background .15s ease; }
-  .hero-eyebrow:hover{ border-color:rgba(20,17,13,0.32); background:#fffdf5; }
+  /* HUGO-1860 — the variant switcher is the internal ?ab=1 preview only. */
+  .eb-arrow{ display:none !important; }
+  .ab-preview .eb-arrow{ display:inline-flex !important; }
+  .ab-preview .hero-eyebrow{ cursor:pointer; transition:border-color .15s ease, background .15s ease; }
+  /* A non-default arm is swapped in after parse; hide its four slots until then. */
+  .ab-pending .hero-eyebrow, .ab-pending .hero h1, .ab-pending .hero p.lead, .ab-pending .hero-ctas .btn-primary{ visibility:hidden; }
+  .ab-preview .hero-eyebrow:hover{ border-color:rgba(20,17,13,0.32); background:#fffdf5; }
   .hero-eyebrow-row{ display:inline-flex; align-items:center; gap:8px; margin-bottom:24px; }
   .eb-arrow{
     appearance:none; flex:0 0 auto; width:30px; height:30px; border-radius:999px; cursor:pointer;

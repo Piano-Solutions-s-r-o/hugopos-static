@@ -4,7 +4,9 @@
      micro  — food trucks / stalls / solo (default; prerendered into the HTML)
      small  — café & bar
      mid    — restaurant & multi-venue chain
-   The switcher cycles them; the choice persists in localStorage + ?v=.
+   Which variant a visitor sees is decided by hugo-ab.js (HUGO-1860 A/B test:
+   random, persisted, measured). The switcher below is the internal preview only
+   (`?ab=1`); its choice lives in ?v= and is never written to the A/B assignment.
    Copy comes from the page's #hugo-strings blob (Web/landing/i18n/runtime.mjs,
    HUGO-1844): every variant defines every slot, so a switch never depends on a
    base being restored. The page language is fixed by its URL.
@@ -88,15 +90,7 @@
     io.observe(sec);
   }
 
-  window.HUGO_VARIANT = (function () {
-    try {
-      var u = new URLSearchParams(location.search).get('v');
-      if (u && ORDER.indexOf(u) >= 0) return u;
-      var s = localStorage.getItem('hugo-variant');
-      if (s && ORDER.indexOf(s) >= 0) return s;
-    } catch (e) {}
-    return DEFAULT;
-  })();
+  if (ORDER.indexOf(window.HUGO_VARIANT) < 0) window.HUGO_VARIANT = DEFAULT;
 
   function applyVariant() {
     var v = window.HUGO_VARIANT;
@@ -126,7 +120,6 @@
   function selectVariant(v) {
     if (ORDER.indexOf(v) < 0) return;
     window.HUGO_VARIANT = v;
-    try { localStorage.setItem('hugo-variant', v); } catch (e) {}
     try {
       var url = new URL(location.href);
       url.searchParams.set('v', v);
@@ -144,6 +137,8 @@
   }
 
   function wire() {
+    /* Visitors in the A/B test must not switch arms; only the ?ab=1 preview may. */
+    if (!document.documentElement.classList.contains('ab-preview')) return;
     var eyebrow = document.querySelector('.hero-eyebrow');
     if (eyebrow) {
       if (strings().eyebrowTitle) eyebrow.setAttribute('title', strings().eyebrowTitle);
@@ -170,6 +165,7 @@
     ensureBrainObserver();
     /* The prerendered HTML already shows micro; only a different choice rewrites it. */
     if (window.HUGO_VARIANT !== DEFAULT) applyVariant();
+    document.documentElement.classList.remove('ab-pending');
     wire();
   }
 
