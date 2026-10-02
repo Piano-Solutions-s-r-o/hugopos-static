@@ -40,6 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/assets/sub.css" />
 <script src="/hugo-i18n.js" defer></script>
+<script src="/hugo-nav.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC3PW2KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -47,7 +48,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="nav">
   <div class="container nav-inner">
     <a href="/en/" class="brand"><img src="/assets/hugo-icon.svg" alt="" /><span>Hugo</span></a>
-    <nav class="nav-links">
+    <!-- Before the links in DOM order so Tab goes button → links; CSS `order` keeps it last visually. -->
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
       <a href="/en/#product">Product</a>
       <a href="/en/compare/" class="is-on">Compare</a>
       <a href="/en/pricing/">Pricing</a>
