@@ -43,7 +43,20 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .lang button, .lang a{ appearance:none; border:0; background:transparent; cursor:pointer; font-family:var(--body); font-weight:600;
   font-size:12.5px; color:var(--muted); padding:6px 11px; border-radius:var(--radius-pill); line-height:1; }
 .lang button.is-on, .lang a.is-on{ background:var(--ink); color:#fff; }
-@media (max-width:860px){ .nav-links{ display:none; } .nav-cta .btn{ display:none; } }
+/* HUGO-1872 — mobile menu (hugo-nav.js) */
+.nav-burger{ order:1; display:none; appearance:none; border:1px solid var(--line); background:#fff; width:40px; height:40px; flex:0 0 40px; border-radius:999px; padding:0; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
+.nav-burger span{ display:block; width:16px; height:2px; border-radius:2px; background:var(--ink); transition:transform .2s ease, opacity .2s ease; }
+.menu-open .nav-burger span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+.menu-open .nav-burger span:nth-child(2){ opacity:0; }
+.menu-open .nav-burger span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+@media (max-width:860px){
+  .nav-links{ display:none; } .nav-cta .btn{ display:none; }
+  .nav-burger{ display:inline-flex; }
+  .nav.menu-open .nav-links{ display:flex; flex-direction:column; gap:0; position:absolute; top:100%; left:0; right:0; margin:0; padding:4px 20px 14px; background:var(--cream); border-bottom:1px solid var(--line); box-shadow:0 18px 30px -18px rgba(20,17,13,.35); max-height:calc(100vh - 68px); overflow-y:auto; }
+  .nav.menu-open .nav-links a{ padding:14px 0; font-size:17px; border-bottom:1px solid var(--line); box-shadow:none; }
+  .nav.menu-open .nav-links a:last-child{ border-bottom:0; }
+  .nav.menu-open .nav-links a.is-on{ font-weight:700; }
+}
 
 /* ---------- buttons ---------- */
 .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family:var(--body); font-weight:600;
