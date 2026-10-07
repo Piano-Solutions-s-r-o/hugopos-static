@@ -89,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="prow head" role="row"><div role="columnheader">Co</div><div role="columnheader">Cena (bez DPH)</div></div>
       <div class="prow" role="row">
         <div class="k" role="cell"><b>Pokladna Hugo, všechno v ceně</b><span>Objednávky, menu, sklad, směny, reporty, DPH i účtenky. Když karty přijímáš s námi.</span></div>
-        <div class="v" role="cell"><span><s>490 Kč</s> 190 Kč / měsíc</span></div>
+        <div class="v" role="cell"><span>190 Kč / měsíc</span></div>
       </div>
       <div class="prow" role="row">
         <div class="k" role="cell"><b>Platba kartou, náš poplatek</b><span>Stejný při jakémkoli obratu. Peníze na účtu do 2 dnů, banku neměníš.</span></div>
@@ -132,13 +132,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="container">
     <div class="sec-head">
       <span class="eyebrow">Hugo proti ostatním pokladnám</span>
-      <h2>Stejná kavárna, čtyři pokladny. <em>Hádej, kdo vyjde nejlevněji.</em></h2>
-      <p class="lead">Kavárna se 100 000 Kč měsíčně v kartách a průměrnou účtenkou 250 Kč (400 plateb), v nejlevnějším tarifu se skladem a mapou stolů. Software i všechny poplatky za karty, bez DPH.</p>
+      <h2>Modelová kavárna, čtyři pokladny. <em>Software a platby kartou.</em></h2>
+      <p class="comparison-date">Stav srovnání: 1. 10. 2026. Ceny a podmínky se mohou měnit.</p>
+      <p class="lead">Modelové srovnání k 1. 10. 2026: jedna provozovna, 100 000 Kč měsíčně v kartách, průměrná účtenka 250 Kč (400 plateb). Vybrané tarify se skladem a mapou stolů; běžné spotřebitelské karty. Software a odhad karetních poplatků, bez DPH a hardwaru. Pro jiný provoz může vyjít levněji jiný systém.</p>
     </div>
 
     <div class="scen-tabs" role="tablist">
       <button type="button" role="tab" data-months="1" class="is-on">Měsíčně</button>
-      <button type="button" role="tab" data-months="12">Za rok</button>
+      <button type="button" role="tab" data-months="12">Za 12 stejných měsíců</button>
     </div>
     <div class="bars" id="bars"><div class="bar is-hugo"><span class="nm">Hugo</span><span class="track"><span class="fill" style="display:block;width:63.3%"></span></span><span class="amt">1&nbsp;690&nbsp;Kč</span></div><div class="bar"><span class="nm">Dotykačka</span><span class="track"><span class="fill" style="display:block;width:82.5%"></span></span><span class="amt">2&nbsp;200&nbsp;Kč</span></div><div class="bar"><span class="nm">KASA FIK</span><span class="track"><span class="fill" style="display:block;width:97.9%"></span></span><span class="amt">2&nbsp;612&nbsp;Kč</span></div><div class="bar"><span class="nm">SumUp</span><span class="track"><span class="fill" style="display:block;width:100.0%"></span></span><span class="amt">2&nbsp;668&nbsp;Kč</span></div></div>
 
@@ -162,7 +163,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </table>
     </div>
 
-    <p class="note">Stav k 1. 10. 2026 podle veřejných ceníků výrobců, bez DPH. Poplatky za karty: Hugo 1,1 %, Dotypay 0,89 % (NAPLNO, licence 910 Kč při obratu 60–120 tis.), KASA PAY 1,49 %, u všech navíc beze změny mezibankovní a asociační poplatek (MIF++, tady odhadem 0,4 % z obratu; skutečná výše záleží na kartách tvých hostů); SumUp 0,95 % vč. všeho u běžných debetních a kreditních karet s Platby Plus (519 Kč měsíčně). Hardware v tom není: Hugo poběží na tvém telefonu za 0 Kč, zařízení ostatních najdeš v tabulce. Při jiném obratu a jiné účtence vyjdou jiná čísla. Storyous a KiloMayo ceny nezveřejňují. Celé srovnání: <a href="/srovnani/" style="text-decoration:underline">Hugo proti ostatním</a>.</p>
+    <p class="note">Výpočet: měsíční licence + případné předplatné plateb + procentní poplatky z obratu 100 000 Kč. Hugo: 190 + 1 100 + odhad 400 = <b>1 690 Kč/měsíc</b>. Dotykačka: 910 + 890 + odhad 400 = 2 200 Kč; KASA FIK: 721,65 + 1 490 + odhad 400 = 2 611,65 Kč; SumUp: POS Plus 1 199 + Platby Plus 519 + 950 = 2 668 Kč. Graf zaokrouhluje na celé koruny; roční pohled násobí nezaokrouhlený měsíční model dvanácti, nepředpovídá budoucí ceny. <a href="#metodika">Předpoklady, omezení a zdroje</a>.</p>
   </div>
 </section>
 
@@ -175,6 +176,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <a href="https://admin.hugopos.eu/login?start=1" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Začít zdarma</a>
     </div>
+  </div>
+</section>
+
+<section class="sec comparison-methodology" id="metodika" aria-labelledby="methodology-title">
+  <div class="container">
+    <div class="sec-head"><h2 id="methodology-title">Jak jsme to spočítali.</h2></div>
+    <p class="comparison-intro">Náš právník slíbil jednu krátkou poznámku. Výsledek vidíš níž. A teď lidsky: každá hospoda má jiné účty. Proto ukazujeme, s čím jsme počítali, odkud máme ceny a co v součtu není. Ať si můžeš přepočítat svůj provoz — klidně ti vyjde líp někdo jiný. Ceníky se mění, tak je každý měsíc kontrolujeme.</p>
+    <p><b>Rozsah a zdroje.</b> <a href="/srovnani/#tabulka">Tabulka šesti systémů</a> srovnává vybrané měsíční paušály a gastro funkce podle oficiálních veřejných ceníků a produktových stránek k 1. 10. 2026. Balíčky nejsou totožné a tabulka nepokrývá celý trh. „Nenalezeno“ znamená, že údaj nebyl v podkladech pro toto srovnání nalezen; není to tvrzení, že dodavatel službu nenabízí nebo že cena nemůže být výhodnější.</p>
+    <p><b>Model, nikoli nabídka pro každý podnik.</b> <a href="/cenik/#srovnani">Modelová kavárna</a> počítá s jednou provozovnou, obratem 100 000 Kč měsíčně v kartách a 400 platbami po 250 Kč. Zahrnuje software a odhad poplatků za běžné spotřebitelské karty. Licence Dotykačky a KASA FIK jsou přepočtené z roční platby; SumUp POS Plus a Platby Plus jsou placené měsíčně. Nejde o nejlevnější možnou kombinaci všech nabídek. Hardware, další zařízení, individuální slevy, doplňky, zaváděcí akce a DPH do součtů nepatří. Roční pohled je 12 stejných měsíců, bez předpovědi cen.</p>
+    <p><b>Karty a MIF++.</b> Hugo účtuje 1,1 % bez pevného příplatku za transakci, navíc mezibankovní a asociační poplatky beze změny. V modelu pro Hugo, Dotypay a KASA PAY odhadujeme tyto dvě složky společně na 0,4 % obratu; nejde o garantovanou sazbu. SumUp má souhrnnou sazbu (blended); model používá 0,95 % s Platby Plus za 519 Kč měsíčně pro příslušné spotřebitelské karty. U jiných karet či online plateb mohou platit jiné sazby. Skutečný výsledek závisí na obratu, skladbě karet a smlouvě.</p>
+    <p><b>Kdy může vyjít lépe jiná varianta?</b> Pokud nepotřebuješ sklad a mapu stolů, základní aplikace SumUp má podle podkladů k 1. 10. 2026 paušál 0 Kč a sazbu 1,95 % za osobní platby. Při nízkém obratu může vyjít levněji než placený gastro tarif. Výsledek mohou změnit také roční předplatné, individuální nabídka nebo hardware, který už vlastníš. Proto z modelu nelze dovodit nejnižší cenu pro každého zákazníka.</p>
+    <p><b>Kontroly a opravy.</b> Veřejné podklady kontrolujeme na měsíční bázi. Datum stavu měníme až po ověření srovnávaných údajů; nejde o živý ceník dodavatelů. Před rozhodnutím si ověř aktuální nabídku přímo u nich. Našel jsi změnu nebo zastupuješ některý ze systémů? Napiš na <a href="mailto:hugo@piano.cz">hugo@piano.cz</a> s odkazem na podklad. Podnět ověříme a případnou nepřesnost opravíme.</p>
+    <h3>Oficiální zdroje pro ověření aktuální nabídky</h3>
+    <ul class="comparison-sources">
+      <li><a href="https://dotykacka.cz/cenik/">Dotykačka / Dotypay</a></li>
+      <li><a href="https://www.storyous.com/cs/faq">Storyous / Teya</a></li>
+      <li><a href="https://www.kasafik.cz/web/cs/cenik/">KASA FIK</a></li>
+      <li><a href="https://kilomayo.com/">KiloMayo</a></li>
+      <li><a href="https://www.sumup.com/cs-cz/ceny/">SumUp</a></li>
+    </ul>
   </div>
 </section>
 </main>
