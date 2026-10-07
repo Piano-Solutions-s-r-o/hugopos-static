@@ -6,15 +6,15 @@
 <meta name="robots" content="noindex, nofollow">
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pilsner Urquell + Hugo — speciální nabídka pro připravenost na EET 2.0</title>
-<meta name="description" content="Speciální nabídka pro zákazníky Pilsner Urquell. Pokladna Hugo: karty, účtenka i pokladna v jednom terminálu, spuštění za 5 minut, 0 Kč měsíčně bez DPH do konce roku 2026, karty 1,1 %." />
+<title>Plzeňský Prazdroj + Hugo — EET 2.0 v suchu</title>
+<meta name="description" content="Speciální nabídka pro zákazníky Plzeňského Prazdroje. Pokladna Hugo: karty, účtenka i pokladna v jednom terminálu, spuštění za 5 minut, 0 Kč měsíčně do konce roku 2026, následně 190 Kč/měsíc, bez DPH; karty 1,1 % (MIF++)." />
 <link rel="canonical" href="https://hugopos.eu/prazdroj-doporucuje/" />
 <meta name="theme-color" content="#004B2A" />
 <link rel="icon" href="../assets/hugo-icon.svg" type="image/svg+xml" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Hugo" />
-<meta property="og:title" content="Pilsner Urquell + Hugo" />
-<meta property="og:description" content="Speciální nabídka pro zákazníky Pilsner Urquell, kteří chtějí být připravení na EET 2.0." />
+<meta property="og:title" content="Plzeňský Prazdroj + Hugo" />
+<meta property="og:description" content="EET 2.0 v suchu - speciální nabídka pro zákazníky Plzeňského Prazdroje. 0 Kč měsíčně do konce roku 2026, následně 190 Kč/měsíc, bez DPH." />
 <meta property="og:url" content="https://hugopos.eu/prazdroj-doporucuje/" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,7 +85,12 @@
     display:grid; grid-template-columns:1fr auto 1fr;
     align-items:center; gap:clamp(20px,3.6vw,44px); line-height:1;
   }
-  .lockup .mat-mark{justify-self:end; height:var(--mark-h); width:auto; object-fit:contain}
+  /* Preserve the supplied 1080px PNG; frame its visible 896x500px logo,
+     excluding only transparent canvas margins (left 111px, top 291px). */
+  .partner-mark{justify-self:end; position:relative; overflow:hidden;
+    height:var(--mark-h); width:calc(var(--mark-h)*1.792)}
+  .lockup .mat-mark{position:absolute; width:120.536%; max-width:none; height:auto;
+    left:-12.388%; top:-58.2%}
   .lockup .plus{font-family:var(--display); font-weight:300; color:#B9B0A0; line-height:1;
     font-size:calc(var(--h)*.8)}
   .lockup .hugo{justify-self:start; display:inline-flex; align-items:center;
@@ -157,8 +162,11 @@
     border-radius:12px; padding:8px 14px; font-size:13.5px; font-weight:600; line-height:1.35}
   .amount{font-family:var(--display); font-weight:800; letter-spacing:-.035em; line-height:.9;
     font-size:clamp(56px,8vw,86px); color:var(--yellow); margin-top:18px}
-  .amount small{display:block; font-family:var(--body); font-size:18px; font-weight:500;
+  .amount small{display:block; font-family:var(--body); font-size:18px; font-weight:500; line-height:1.4;
     letter-spacing:0; color:#CFC8BC; margin-top:14px}
+  .follow-on{margin-top:16px; font-size:18px; color:#fff}
+  .mif-ref{text-decoration:underline; text-underline-offset:3px}
+  .mif-note{grid-column:1/-1; font-size:14px; line-height:1.6; color:#DAD3C7; scroll-margin-top:24px}
   .rate{margin-top:20px; font-size:15.5px; color:#DAD3C7}
   .rate b{color:#fff; font-weight:600}
   .price-notes{list-style:none; margin:0; padding:0; color:#DAD3C7; font-size:15.5px}
@@ -197,7 +205,7 @@
     .btn{width:100%}
     .hero .ctas{flex-direction:column}
     .lockup{grid-template-columns:1fr; justify-items:center; gap:16px; --h:52px}
-    .lockup .mat-mark,.lockup .hugo{justify-self:center}
+    .lockup .partner-mark,.lockup .hugo{justify-self:center}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 </style>
@@ -214,16 +222,16 @@
 <section class="hero">
   <div class="container">
     <h1 class="lockup">
-      <img class="mat-mark" src="../assets/partners/pilsner-urquell-transparent.png" width="668" height="497" alt="Pilsner Urquell" />
+      <span class="partner-mark"><img class="mat-mark" src="../assets/partners/plzensky-prazdroj-logo.png" width="1080" height="1080" alt="Plzeňský Prazdroj" /></span>
       <span class="plus" aria-hidden="true">+</span>
       <span class="hugo"><img src="../assets/hugo-icon.svg" alt="" />Hugo</span>
     </h1>
 
-    <p class="sub">Speciální nabídka pro zákazníky, kteří chtějí být připravení na EET 2.0.</p>
+    <p class="sub">EET 2.0 v suchu - speciální nabídka pro zákazníky Plzeňského Prazdroje.</p>
 
     <div class="ctas">
       <a class="btn btn-primary" href="https://admin.hugopos.eu/login?start=1&amp;partner=prazdroj" target="_blank" rel="noopener">
-        Založit pokladnu
+        Registrovat
         <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a class="btn btn-ghost" href="#cena">Cena a podmínky</a>
@@ -231,8 +239,8 @@
 
     <div class="facts">
       <div class="fact"><div class="n">5 minut</div><div class="l">od stažení k první účtence</div></div>
-      <div class="fact"><div class="n">0 Kč</div><div class="l">měsíčně bez DPH, akční cena do konce roku 2026</div></div>
-      <div class="fact"><div class="n">1,1&nbsp;% <span class="mif-n">(MIF++)</span></div><div class="l">z platby kartou</div></div>
+      <div class="fact"><div class="n">0 Kč</div><div class="l">měsíčně do konce roku 2026,<br />následně 190 Kč/měsíc, bez DPH</div></div>
+      <div class="fact"><div class="n">1,1&nbsp;% <span class="mif-n">(MIF++)<a class="mif-ref" href="#mif-note" aria-label="Vysvětlení MIF++">*</a></span></div><div class="l">z platby kartou</div></div>
     </div>
   </div>
 </section>
@@ -245,11 +253,11 @@
         <img src="../assets/eshop/terminal-in-use.jpg" alt="Terminál Hugo v provozu" />
       </div>
       <div class="show-txt">
-        <h2>Tři přístroje na baru nahradí jeden</h2>
+        <h2>Vaše první pokladna: karty, účtenky i menu v jednom</h2>
         <ul class="show-list">
           <li>
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
-            <div><b>Platby kartou</b><span>Bezkontaktně i chipem, přímo v terminálu.</span></div>
+            <div><b>Platby kartou</b><span>Bezkontaktně přiložením karty, telefonu nebo hodinek.</span></div>
           </li>
           <li>
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v18l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6"/></svg></span>
@@ -338,9 +346,10 @@
   <div class="container">
     <div class="price-in">
       <div>
-        <span class="tag">Akční cena pro zákazníky Pilsner Urquell do konce roku 2026</span>
-        <div class="amount">0 Kč<small>měsíčně za provozovnu, bez DPH</small></div>
-        <p class="rate"><b>Platby kartou 1,1&nbsp;% (MIF++)</b> z transakce, bez DPH.</p>
+        <span class="tag">Akční cena pro zákazníky Plzeňského Prazdroje do konce roku 2026</span>
+        <div class="amount">0 Kč<small>měsíčně za provozovnu do konce roku 2026</small></div>
+        <p class="follow-on">Následně 190 Kč/měsíc za provozovnu, bez DPH.</p>
+        <p class="rate"><b>Platby kartou 1,1&nbsp;% (MIF++)<a class="mif-ref" href="#mif-note" aria-label="Vysvětlení MIF++">*</a></b> z transakce, bez DPH.</p>
       </div>
       <ul class="price-notes">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><b>Jeden tarif</b> — všechny funkce, žádné příplatkové moduly.</div></li>
@@ -348,12 +357,13 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><b>Přerušení na sezónu</b> — uspíte a zase probudíte.</div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><b>Bez vstupních nákladů</b> — pokladnu si spustíte bez technika.</div></li>
       </ul>
+      <p class="mif-note" id="mif-note" tabindex="-1">*Transparentní model zpoplatnění karetních transakcí, kdy se cena skládá ze tří oddělených složek: mezibankovního poplatku (MIF), poplatku karetní asociace a marže poskytovatele.</p>
       <div class="price-cta">
         <a class="btn btn-primary" href="https://admin.hugopos.eu/login?start=1&amp;partner=prazdroj" target="_blank" rel="noopener">
-          Založit pokladnu
+          Registrovat
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <p class="fine">Registrace je zdarma. Platit začnete až ve chvíli, kdy pokladnu spustíte.</p>
+        <p class="fine">Registrace je zdarma. Měsíční poplatek za pokladnu je do konce roku 2026 nulový; poplatky za platby kartou se účtují od první transakce.</p>
       </div>
     </div>
   </div>
@@ -364,7 +374,7 @@
     <h2>Začněte ještě dnes</h2>
     <p>Účet si založíte za pár minut a pokladnu si nastavíte vlastním tempem.</p>
     <a class="btn btn-primary" href="https://admin.hugopos.eu/login?start=1&amp;partner=prazdroj" target="_blank" rel="noopener">
-      Založit pokladnu
+      Registrovat
       <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
   </div>
