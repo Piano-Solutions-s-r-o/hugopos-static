@@ -190,3 +190,14 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .foot-in{ display:flex; flex-wrap:wrap; gap:12px 24px; justify-content:space-between; border-top:1px solid var(--line); padding-top:22px; }
 .foot a{ color:var(--ink-2); }
 .foot .links{ display:flex; flex-wrap:wrap; gap:16px; }
+
+/* Comparison qualifications stay readable beside the figures (HUGO-1952). */
+.comparison-date{ margin-top:14px; font-weight:600; }
+.comparison-methodology{ padding:28px 0; font-size:13px; line-height:1.5; color:var(--muted); }
+.comparison-methodology .sec-head{ margin-bottom:12px; }
+.comparison-methodology .sec-head h2{ font-size:22px; line-height:1.2; margin-top:0; color:var(--ink); }
+.comparison-methodology p{ max-width:none; margin-bottom:10px; line-height:1.5; }
+.comparison-methodology .comparison-intro{ font-size:15px; color:var(--ink-2); margin-bottom:16px; }
+.comparison-methodology h3{ font-size:14px; margin-top:16px; }
+.comparison-methodology a,.note a{ text-decoration:underline; text-underline-offset:3px; }
+.comparison-sources{ display:flex; flex-wrap:wrap; gap:6px 22px; padding-left:18px; margin:8px 0 0; }

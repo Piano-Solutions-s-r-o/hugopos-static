@@ -1,0 +1,5 @@
+# Admin is an authenticated app: keep it out of search results (HUGO-1938).
+# Crawling stays allowed on purpose so crawlers can read the noindex meta in
+# index.html; a Disallow here would hide that meta and let the bare URL be listed.
+User-agent: *
+Allow: /
