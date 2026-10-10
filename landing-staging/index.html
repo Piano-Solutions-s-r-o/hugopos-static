@@ -1653,7 +1653,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media(max-width:560px){ .annbar-in{ padding:9px 38px; font-size:12.5px; } }
   .midcta{ padding:44px 0; }
   .midcta-in{ background:var(--ink); color:#fff; border-radius:var(--radius-lg); padding:38px 42px; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; }
-  .midcta-txt h3{ font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 90; font-size:clamp(24px,2.6vw,34px); letter-spacing:-.025em; margin:0 0 7px; line-height:1.02; }
+  .midcta-txt h3, #setup .midcta-txt h2{ font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 90; font-size:clamp(24px,2.6vw,34px); letter-spacing:-.025em; margin:0 0 7px; line-height:1.02; }
   .midcta-txt p{ margin:0; color:rgba(255,255,255,0.65); font-size:15px; }
   .midcta-actions{ display:flex; gap:12px; flex-wrap:wrap; }
   .midcta .btn-ghost{ color:#fff; border-color:rgba(255,255,255,0.25); }
@@ -1868,7 +1868,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav class="nav-links" id="navLinks">
       <a href="#product">Produkt</a>
       <a href="#brain">AI &amp; Brain</a>
-      <a href="#setup">Spuštění</a>
+      <a href="/jak-zacit/">Jak začít</a>
       <a href="/srovnani/">Srovnání</a>
       <a href="/cenik/">Ceník</a>
       <a href="#reference">Reference</a>
@@ -2169,67 +2169,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- =============== TAP / TALK / AUTO =============== -->
-<section id="setup" class="setup">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Od krabice k první tržbě za 5 minut</span>
-      <h2>Vyfoť, řekni, hotovo. <em>Bez přepisování menu. Bez školicího dne. Bez technika.</em></h2>
-      <p class="lead">Hugo se naučí, co prodáváš, jak to prodáváš a kam patří doplňky. Stačí fotka menu, pár vět nebo účtenky z minulého týdne. Technik v polokošili, týden zaškolování a 200stránkový manuál si může nechat konkurence.</p>
-    </div>
-
-    <div class="setup-grid">
-      <!-- TAP -->
-      <div class="setup-card">
-        <div class="num">1</div>
-        <h3>Vyfoť</h3>
-        <p>Vyfoť tištěné menu. Hugo z něj za pár vteřin vytáhne položky, ceny i doplňky.</p>
-        <div class="setup-art tap-art">
-          <div class="tap-card">Pivo Plzeň 0,5 l<br/><span style="font-weight:500; font-size:13px;">79 Kč</span></div>
-          <div class="tap-card small">Smažený sýr · 189 Kč</div>
-          <div class="tap-finger">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11V5a2 2 0 1 1 4 0v6"/><path d="M13 11h4a3 3 0 0 1 3 3v4a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4v-3"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- TALK -->
-      <div class="setup-card">
-        <div class="num">2</div>
-        <h3>Řekni</h3>
-        <p>Řekni Hugovi, co se změnilo. „Přidej Albariño za 89 Kč a k řízku půlporci.“ Hotovo.</p>
-        <div class="setup-art talk-art">
-          <div class="bubble user"><span class="wave"><i></i><i></i><i></i><i></i><i></i></span> Přidej Albariño 0,15 l za 89 Kč</div>
-          <div class="bubble ai">Přidáno pod <b>Víno bílé</b>. Chceš i lahev 0,75 l?</div>
-        </div>
-      </div>
-
-      <!-- AUTO -->
-      <div class="setup-card">
-        <div class="num">3</div>
-        <h3>Automaticky</h3>
-        <p>Daně, DPH, účtenky, spropitné, dělení účtů i foodcost řeší Hugo potichu na pozadí. Ty řešíš hosty.</p>
-        <div class="setup-art auto-art">
-          <div class="auto-row">
-            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="name">DPH, účtenky a EET 2027</span><span class="meta">nastaveno</span>
-          </div>
-          <div class="auto-row">
-            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="name">Foodcost z účtenek</span><span class="meta">34&nbsp;%</span>
-          </div>
-          <div class="auto-row">
-            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="name">Dělení spropitného po hodinách</span><span class="meta">připraveno</span>
-          </div>
-          <div class="auto-row pending">
-            <span class="check"></span>
-            <span class="name">Týdenní souhrn</span><span class="meta">Ne 22:00</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- =============== HOW TO START =============== -->
+<section id="setup" class="midcta">
+  <div class="container"><div class="midcta-in">
+    <div class="midcta-txt"><h2>Jak začít? Tři kroky a jedeš.</h2><p>Založení pokladny, párování appky i platby kartou. Celý postup a video na jednom místě.</p></div>
+    <div class="midcta-actions"><a class="btn btn-primary btn-lg" href="/jak-zacit/">Ukaž mi, jak začít</a></div>
+  </div></div>
 </section>
 
 <!-- =============== SWITCHING =============== -->
@@ -2558,7 +2503,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>Produkt</h2>
         <a href="#product">Zařízení</a>
         <a href="#brain">AI &amp; Brain</a>
-        <a href="#setup">Spuštění</a>
+        <a href="/jak-zacit/">Jak začít</a>
         <a href="#pricing">Ceník</a>
       </div>
       <div class="foot-col">

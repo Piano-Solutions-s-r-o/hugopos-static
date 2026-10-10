@@ -1653,7 +1653,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media(max-width:560px){ .annbar-in{ padding:9px 38px; font-size:12.5px; } }
   .midcta{ padding:44px 0; }
   .midcta-in{ background:var(--ink); color:#fff; border-radius:var(--radius-lg); padding:38px 42px; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; }
-  .midcta-txt h3{ font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 90; font-size:clamp(24px,2.6vw,34px); letter-spacing:-.025em; margin:0 0 7px; line-height:1.02; }
+  .midcta-txt h3, #setup .midcta-txt h2{ font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 90; font-size:clamp(24px,2.6vw,34px); letter-spacing:-.025em; margin:0 0 7px; line-height:1.02; }
   .midcta-txt p{ margin:0; color:rgba(255,255,255,0.65); font-size:15px; }
   .midcta-actions{ display:flex; gap:12px; flex-wrap:wrap; }
   .midcta .btn-ghost{ color:#fff; border-color:rgba(255,255,255,0.25); }
@@ -1868,7 +1868,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav class="nav-links" id="navLinks">
       <a href="#product">Product</a>
       <a href="#brain">AI &amp; Brain</a>
-      <a href="#setup">Setup</a>
+      <a href="/en/getting-started/">How to start</a>
       <a href="/en/compare/">Compare</a>
       <a href="/en/pricing/">Pricing</a>
       <a href="#reference">Customers</a>
@@ -2177,70 +2177,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- =============== TAP / TALK / AUTO =============== -->
-<section id="setup" class="setup">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">From box to first sale in 5 minutes</span>
-      <h2>Tap, talk, automatic. <em>No manual setup. No menu typing. No training day.</em></h2>
-      <p class="lead">Hugo learns what you sell, how you sell it, and where the modifiers go &mdash; from a photo of your menu, your voice, or last week&rsquo;s receipts. No installer in a polo shirt, no week-long onboarding, no 200-page manual.</p>
-    </div>
-
-    <div class="setup-grid">
-      <!-- TAP -->
-      <div class="setup-card">
-        <div class="num">1</div>
-        <h3>Tap</h3>
-        <p>Snap a photo of your printed menu. Hugo extracts items, prices and modifiers in seconds.</p>
-        <div class="setup-art tap-art">
-          <div class="tap-card">Pilsner 0.5 l<br/><span style="font-weight:500; font-size:13px;">79 Kč</span></div>
-          <div class="tap-card small">Fried cheese · 189 Kč</div>
-          <div class="tap-finger">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11V5a2 2 0 1 1 4 0v6"/><path d="M13 11h4a3 3 0 0 1 3 3v4a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4v-3"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- TALK -->
-      <div class="setup-card">
-        <div class="num">2</div>
-        <h3>Talk</h3>
-        <p>Tell Hugo what changed. &ldquo;Add Albariño wine for 89 Kč, half-portion option for the schnitzel.&rdquo; Done.</p>
-        <div class="setup-art talk-art">
-          <div class="bubble user">
-            <span class="wave"><i></i><i></i><i></i><i></i><i></i></span>
-            Add Albariño 0,15 l for 89 Kč
-          </div>
-          <div class="bubble ai">Added under <b>White wine</b>. Want a 0,75 l bottle too?</div>
-        </div>
-      </div>
-
-      <!-- AUTO -->
-      <div class="setup-card">
-        <div class="num">3</div>
-        <h3>Automatic</h3>
-        <p>Hugo handles taxes, VAT, receipts, tips, splits, foodcost &mdash; quietly, in the background, forever.</p>
-        <div class="setup-art auto-art">
-          <div class="auto-row">
-            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="name">VAT, receipts &amp; EET 2027</span><span class="meta">configured</span>
-          </div>
-          <div class="auto-row">
-            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="name">Foodcost from receipts</span><span class="meta">34&nbsp;%</span>
-          </div>
-          <div class="auto-row">
-            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="name">Tip splits by hours</span><span class="meta">ready</span>
-          </div>
-          <div class="auto-row pending">
-            <span class="check"></span>
-            <span class="name">Weekly summary</span><span class="meta">Sun 22:00</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- =============== HOW TO START =============== -->
+<section id="setup" class="midcta">
+  <div class="container"><div class="midcta-in">
+    <div class="midcta-txt"><h2>How to start? Three steps and you’re off.</h2><p>Till setup, app pairing and card payments. The walkthrough and video, all in one place.</p></div>
+    <div class="midcta-actions"><a class="btn btn-primary btn-lg" href="/en/getting-started/">Show me how to start</a></div>
+  </div></div>
 </section>
 
 <!-- =============== SWITCHING =============== -->
@@ -2598,7 +2540,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>Product</h2>
         <a href="#product">Devices</a>
         <a href="#brain">AI &amp; Brain</a>
-        <a href="#setup">Getting started</a>
+        <a href="/en/getting-started/">How to start</a>
         <a href="#pricing">Pricing</a>
       </div>
       <div class="foot-col">
