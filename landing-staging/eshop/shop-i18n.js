@@ -25,7 +25,7 @@
       afterEyebrow: 'Po zaplacení', afterTitle: 'Nákup hotový. <em>Teď už jen krůček.</em>',
       afterText: 'Použij stejný e-mail. Pokud už účet máš, přihlásíš se k němu a objednávku spojíme. Pokud ne, založíme nový — bez opisování nákupu.',
       cartTitle: 'Tvůj košík', reviewTitle: 'Rekapitulace objednávky', reviewOrder: 'Pokračovat k objednávce', backToCart: 'Zpět do košíku', deliveryTitle: 'Doprava', deliveryOptions: ['Doprava DPD', 'Osobní odběr'], termsPrefix: 'Souhlasím s', termsLink: 'obchodními podmínkami nákupu hardwaru',
-      mealVoucherTitle: 'Přijímáte stravenky?', mealVoucherHint: 'Volbu předáme supportu v poznámce objednávky, aby mohl zařídit smlouvy.', mealVoucherAnswers: ['Ano', 'Ne'], mealVoucherProvidersTitle: 'Vyberte alespoň jednoho poskytovatele', mealVoucherProviders: ['Edenred', 'UP', 'Pluxee', 'Benefit Plus'], mealVoucherPreparing: 'Připravujeme',
+      mealVoucherTitle: 'Přijímáš stravenky?', mealVoucherHint: 'Volbu předáme supportu v poznámce objednávky, aby mohl zařídit smlouvy.', mealVoucherAnswers: ['Ano', 'Ne'], mealVoucherProvidersTitle: 'Vyber alespoň jednoho poskytovatele', mealVoucherProviders: ['Edenred', 'UP', 'Pluxee', 'Benefit Plus'], mealVoucherPreparing: 'Připravujeme',
       draft: 'E-shopové VOP jsou zatím pracovní návrh. Platbu zapneme až po jejich schválení.',
       checkout: 'Pokračovat k bezpečné platbě', accountShortcut: 'Už máš účet? Přihlas se. Košík zůstane a adresu doplníme za tebe.',
       successEyebrow: 'Je to doma', successTitle: 'Nákup je hotový. 🎉',
