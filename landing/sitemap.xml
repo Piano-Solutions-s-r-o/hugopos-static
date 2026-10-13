@@ -25,6 +25,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/srovnani/"/>
   </url>
   <url>
+    <loc>https://hugopos.eu/jak-zacit/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/jak-zacit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/getting-started/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/jak-zacit/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/en/getting-started/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/jak-zacit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/getting-started/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/jak-zacit/"/>
+  </url>
+  <url>
     <loc>https://hugopos.eu/cenik/</loc>
     <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenik/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/pricing/"/>
