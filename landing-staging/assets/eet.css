@@ -1,0 +1,102 @@
+/* HUGO-2086 — /eet: EET 2.0 in short blocks. Page layout only; the animated
+   certificate walkthrough is in eet-guide.css. Tokens, nav, buttons and the
+   section scaffolding come from sub.css. */
+.eet-facts, .eet-chips, .eet-four, .eet-fears, .eet-good, .eet-prices, .eet-links, .eet-notes, .eet-list ul { list-style: none; margin: 0; padding: 0; }
+
+/* ---------- hero: three facts ---------- */
+.eet-hero { padding-bottom: 24px; }
+.eet-hero h1 { max-width: 18ch; }
+.eet-facts { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.eet-facts li { display: grid; align-content: start; gap: 6px; padding: 22px 24px; font-size: 15.5px; color: var(--ink-2); background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); }
+.eet-facts b { font: 800 clamp(26px, 3vw, 38px)/1.05 var(--display); letter-spacing: -.03em; color: var(--ink); }
+.eet-fact-k { font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.eet-facts small { font-size: 12.5px; }
+.eet-facts .is-hugo { background: var(--yellow); border-color: var(--yellow-deep); }
+.eet-facts .is-hugo .eet-fact-k { color: var(--ink-2); }
+
+/* ---------- who it applies to ---------- */
+.eet-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.eet-chips li { display: flex; align-items: center; gap: 10px; padding: 12px 20px 12px 14px; font: 650 18px var(--display); background: #fff; border: 1px solid var(--line); border-radius: var(--radius-pill); }
+.eet-chips span { font-size: 24px; line-height: 1; }
+.eet-off { max-width: 760px; margin-top: 28px; padding: 22px 24px; border: 1px dashed #14110d4d; border-radius: var(--radius-md); }
+.eet-off h3 { margin-bottom: 8px; font-size: 19px; font-weight: 700; }
+.eet-off p { font-size: 16px; color: var(--ink-2); }
+.eet-off b { padding: 0 4px; background: var(--hl); border-radius: 4px; }
+.eet-off .note { margin-top: 10px; }
+
+/* ---------- reported / not reported ---------- */
+.eet-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.eet-list { padding: 26px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); }
+.eet-list h3 { margin-bottom: 14px; font-size: 22px; font-weight: 800; }
+.eet-list ul { display: grid; gap: 12px; }
+.eet-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 17px; font-weight: 500; }
+.eet-list li::before { flex: 0 0 26px; height: 26px; display: grid; place-items: center; font-size: 14px; font-weight: 800; border-radius: 50%; }
+.eet-list.is-yes li::before { content: "✓"; color: #14803f; background: #1ba85b29; }
+.eet-list.is-no { background: none; border: 1px dashed #14110d4d; }
+.eet-list.is-no li::before { content: "✕"; color: var(--muted); background: #14110d14; }
+.eet-aside { margin-top: 18px; font: 650 19px var(--display); letter-spacing: -.01em; }
+
+/* ---------- four steps ---------- */
+.eet-four { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.eet-four li { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 26px 22px; background: #fff; border: 1px solid var(--line); border-radius: 26px; }
+.eet-n { width: 44px; height: 44px; display: grid; place-items: center; font: 800 23px var(--display); background: var(--yellow); border-radius: 50%; }
+.eet-four h3 { font: 700 22px/1.15 var(--display); letter-spacing: -.02em; }
+.eet-four p { font-size: 15px; line-height: 1.55; color: var(--muted); }
+.eet-four .is-key { color: #fff; background: var(--ink); border-color: var(--ink); }
+.eet-four .is-key .eet-n { color: var(--ink); }
+.eet-four .is-key p { color: #cfc8bb; }
+.eet-key { position: absolute; left: 22px; top: -12px; padding: 5px 12px; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: var(--yellow); border-radius: var(--radius-pill); }
+.eet-four a { margin-top: auto; padding-top: 6px; font-weight: 600; color: var(--yellow); text-decoration: underline; text-underline-offset: 4px; }
+.eet-four a:focus-visible { outline-color: var(--yellow); }
+
+/* ---------- worries ---------- */
+.eet-fears { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.eet-fears li { padding: 24px 26px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); }
+.eet-fears h3 { margin-bottom: 8px; font: 700 21px/1.2 var(--display); letter-spacing: -.02em; }
+.eet-fears p { font-size: 16px; color: var(--ink-2); }
+
+/* ---------- two things that get better ---------- */
+.eet-good { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.eet-good li { padding: 26px; color: #fff; background: #20594b; border-radius: var(--radius-md); }
+.eet-good b { display: block; font: 800 clamp(34px, 4.4vw, 54px)/1 var(--display); letter-spacing: -.04em; color: var(--yellow); }
+.eet-good h3 { margin: 12px 0 6px; font-size: 21px; }
+.eet-good p { font-size: 15.5px; color: #e0eeea; }
+
+/* ---------- price ---------- */
+.eet-ready { display: grid; gap: 26px; padding: clamp(28px, 5vw, 56px); color: var(--cream); background: var(--ink); border-radius: var(--radius-lg); }
+.eet-ready h2 { font-weight: 800; font-size: clamp(28px, 3.8vw, 46px); line-height: 1.03; color: #fff; }
+.eet-ready h2 em { font-style: normal; color: var(--yellow); }
+.eet-ready-head p { margin-top: 12px; font-size: 18px; color: #cfc8bb; }
+.eet-prices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.eet-prices li { display: grid; align-content: start; gap: 6px; padding: 22px; background: #24201a; border: 1px solid #3a352d; border-radius: var(--radius-md); }
+.eet-prices b { font: 800 clamp(24px, 2.8vw, 34px)/1.05 var(--display); letter-spacing: -.03em; color: var(--yellow); }
+.eet-prices span { font-size: 16px; color: #fff; }
+.eet-prices small { font-size: 13px; color: #a9a294; }
+.eet-ready-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.eet-ready-cta p { font-size: 14.5px; color: #cfc8bb; }
+.eet-ready-cta p a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.eet-ready a:focus-visible { outline-color: var(--yellow); }
+
+/* ---------- don't leave it late + official sources ---------- */
+.eet-soon { padding-top: 24px; }
+.eet-soon .sec-head { margin-bottom: 22px; }
+.eet-links { display: flex; flex-wrap: wrap; gap: 14px; }
+.eet-links a { min-width: 250px; display: grid; gap: 2px; padding: 16px 22px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); transition: border-color .2s; }
+.eet-links a:hover { border-color: #14110d66; }
+.eet-links b { font-size: 16.5px; }
+.eet-links span { font-size: 14px; color: var(--muted); }
+.eet-links span::after { content: " ↗"; }
+
+@media (max-width: 980px) {
+  .eet-four { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+}
+@media (max-width: 760px) {
+  .eet-facts, .eet-two, .eet-fears, .eet-good, .eet-prices { grid-template-columns: 1fr; }
+  .eet-facts { margin-top: 32px; }
+  .eet-chips li { padding: 10px 16px 10px 12px; font-size: 16px; }
+  .eet-ready-cta .btn { width: 100%; white-space: normal; }
+  .eet-links a { flex: 1 1 100%; }
+}
+@media (max-width: 560px) {
+  .eet-four { grid-template-columns: 1fr; }
+}

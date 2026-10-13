@@ -1,0 +1,137 @@
+/* HUGO-2086 — the certificate walkthrough on /eet. Three drawn screens, built from
+   the atoms in getting-started-screens.css (.ui, .win, .fld, .ok-ring, .phone …).
+   Without eet-guide.js, or with reduced motion, each step shows its finished
+   screen above its caption, and so does print. The script adds .is-enhanced: the
+   screens then share one stage and play in turn like a short looped video. */
+.eet-sprite { position: absolute; }
+.eet-ic { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.eet-guide { scroll-margin-top: 76px; }
+.eet-player { container-type: inline-size; --eet-ms: 6500ms; }
+.eet-frame { position: relative; }
+.eet-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.eet-step { min-width: 0; display: grid; align-content: start; gap: 14px; }
+.eet-cap { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; background: #fff; border: 1px solid var(--line); border-radius: 22px; }
+.eet-num { flex: 0 0 38px; height: 38px; display: grid; place-items: center; font: 800 20px var(--display); background: var(--yellow); border-radius: 50%; transition: background .3s; }
+.eet-cap h3 { margin: 6px 0; font: 700 21px/1.15 var(--display); letter-spacing: -.02em; }
+.eet-cap p { font-size: 15px; line-height: 1.5; color: var(--muted); }
+.eet-demo { margin-top: 16px; font-size: 12px; text-align: center; color: var(--muted); }
+.eet-notes { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 24px; }
+.eet-notes li { position: relative; padding-left: 30px; font-size: 15px; color: var(--ink-2); }
+.eet-notes li::before { content: "i"; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; display: grid; place-items: center; font: 800 12px var(--display); background: var(--yellow); border-radius: 50%; }
+
+/* ---------- drawn screens: the state portal, the upload, the result ---------- */
+.eet-shot { --gov: #1f4e8c; }
+.eet-shot .eet-gov { display: flex; align-items: center; gap: .3em; font: 650 .82em/1 var(--display); letter-spacing: -.02em; color: var(--gov); }
+.eet-shot .eet-gov i { width: 1.05em; height: 1.05em; background: var(--gov); border-radius: .24em; }
+.eet-shot .eet-chip-gov, .eet-shot .eet-ico-gov { color: var(--gov); background: #e3ecf7; }
+.eet-shot .eet-btn-gov { color: #fff; background: var(--gov); }
+.eet-shot .eet-file { width: max-content; display: flex; align-items: center; gap: .45em; padding: .45em .8em .45em .6em; font-size: .6em; font-weight: 600; color: #14110d; background: #fff; border: 1px solid #d9d3c8; border-radius: .7em; box-shadow: 0 .4em 1em #14110d1f; }
+.eet-shot .eet-file .eet-ic { font-size: 1.3em; color: var(--gov); }
+.eet-shot .eet-toast { position: absolute; right: .7em; bottom: .7em; z-index: 3; display: flex; align-items: center; gap: .6em; padding: .4em .8em .4em .4em; background: #14110d; border-radius: 1em; box-shadow: 0 .8em 1.8em #14110d47; }
+.eet-shot .eet-toast .eet-file { border: 0; box-shadow: none; }
+.eet-shot .eet-toast small { font-size: .5em; font-weight: 600; color: #fff; }
+.eet-shot .eet-toast small::before { content: "✓ "; color: #5fd08f; }
+.eet-shot .eet-drop { width: 100%; max-width: 13.5em; min-height: 3.3em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35em; padding: .5em; background: #f4f9f7; border: 1.5px solid #7fae9f; border-radius: .7em; }
+.eet-shot .eet-drop small { font-size: .46em; font-weight: 600; color: #675d55; }
+.eet-shot .eet-pass { width: max-content; letter-spacing: .12em; }
+.eet-shot .eet-ptr { display: none; position: absolute; z-index: 5; left: var(--px, 58%); top: var(--py, 80%); width: 1.1em; height: 1.1em; }
+.eet-ptr::before { content: ""; position: absolute; inset: 0; background: #14110d; clip-path: polygon(0 0, 0 82%, 24% 62%, 42% 100%, 58% 92%, 40% 56%, 72% 56%); filter: drop-shadow(0 0 1px #fff); }
+.eet-ptr::after { content: ""; position: absolute; left: -.9em; top: -.9em; width: 1.8em; height: 1.8em; background: #14110d2e; border-radius: 50%; scale: 0; }
+.eet-shot[data-eet="download"] { --pd: 1.3s; --py: 74%; }
+.eet-shot[data-eet="upload"] { --pd: 3.4s; --py: 84%; }
+
+/* the result: Admin says "active", the till next to it reports a payment */
+.eet-shot[data-eet="done"] .win { inset: 0 5.2em 1.2em 0; }
+.eet-shot[data-eet="done"] .wz-card { align-items: flex-start; padding-right: 3.2em; text-align: left; }
+.eet-shot[data-eet="done"] .phone { left: auto; right: .2em; top: auto; bottom: 0; margin: 0; font-size: .74em; rotate: 5deg; }
+.eet-shot .eet-bill { display: grid; gap: .45em; padding: .7em .6em; background: #fff; border-radius: .8em; }
+.eet-shot .eet-bill i { height: .42em; background: #e4e0d8; border-radius: 9em; }
+.eet-shot .eet-bill i:nth-child(2) { width: 72%; }
+.eet-shot .eet-bill i:nth-child(3) { width: 48%; }
+.eet-shot .eet-sum { display: flex; align-items: baseline; justify-content: space-between; padding: 0 .3em; }
+.eet-shot .eet-sum small { font-size: .5em; font-weight: 600; color: #8c8275; }
+.eet-shot .eet-sum b { font: 700 .95em var(--display); letter-spacing: -.02em; }
+.eet-shot .eet-sent { margin: auto auto 0; padding: .5em 1.1em; font-size: .62em; font-weight: 700; color: #fff; background: #1ba85b; border-radius: 9em; }
+.eet-shot .eet-sent::before { content: "✓ "; }
+
+/* ---------- player controls (shown by the script) ---------- */
+.eet-controls { display: flex; align-items: center; gap: 8px; }
+.eet-controls[hidden] { display: none; }
+.eet-toggle { flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; font-size: 20px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 50%; cursor: pointer; }
+.eet-toggle .is-play { display: none; fill: currentColor; }
+.is-paused .eet-toggle .is-play { display: block; }
+.is-paused .eet-toggle .is-pause { display: none; }
+.eet-seg { flex: 1; height: 44px; padding: 19px 0; background: none; border: 0; cursor: pointer; }
+/* One image layer over a colour: with a second layer the size list would not interpolate. */
+.eet-seg i { display: block; height: 6px; background: #d9d2c3 linear-gradient(var(--ink) 0 0) left / 0% 100% no-repeat; border-radius: 6px; }
+.eet-seg.is-past i { background-size: 100% 100%; }
+
+@keyframes eet-bar { to { background-size: 100% 100%; } }
+@keyframes eet-rise { from { opacity: 0; translate: 0 .9em; } }
+@keyframes eet-pop { from { opacity: 0; scale: .4; } 60% { scale: 1.12; } }
+@keyframes eet-draw { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+@keyframes eet-press { 40% { scale: .93; filter: brightness(.94); } }
+@keyframes eet-ptr { from { opacity: 0; translate: 6em 5em; } 85% { scale: 1; } 92% { scale: .82; } to { opacity: 1; translate: none; scale: 1; } }
+@keyframes eet-ripple { from { scale: 0; opacity: 1; } to { scale: 1.6; opacity: 0; } }
+@keyframes eet-toast { from { opacity: 0; translate: 0 3em; } 70% { translate: 0 -.3em; } }
+@keyframes eet-fly { from { opacity: 0; translate: 5em -4.5em; rotate: 14deg; scale: 1.25; } 30% { opacity: 1; } }
+@keyframes eet-empty { from, to { background: #faf8f3; border: 1.5px dashed #b9b2a4; } }
+@keyframes eet-type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+@keyframes eet-slide { from { opacity: 0; translate: 3em 2em; } }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  /* one stage on the left, the three captions on the right */
+  .eet-player.is-enhanced .eet-frame { min-height: 43cqw; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding-left: 53%; }
+  .eet-player.is-enhanced .eet-frame::before { content: ""; position: absolute; left: -3%; top: 50%; width: 53%; aspect-ratio: 1; translate: 0 -50%; background: radial-gradient(closest-side, #ffdf2cb3, transparent); border-radius: 50%; filter: blur(38px); }
+  .eet-player.is-enhanced .eet-steps { grid-template-columns: 1fr; gap: 12px; }
+  .eet-player.is-enhanced .eet-step { display: block; }
+  .eet-player.is-enhanced .eet-shot { position: absolute; left: 0; top: 50%; width: 47%; translate: 0 calc(-50% + 22px); scale: .95; opacity: 0; visibility: hidden; transition: opacity .35s, translate .5s cubic-bezier(.2, .8, .2, 1), scale .5s cubic-bezier(.2, .8, .2, 1), visibility 0s .5s; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-shot { translate: 0 -50%; scale: 1; opacity: 1; visibility: visible; transition-delay: 0s; }
+  .eet-player.is-enhanced .eet-cap { cursor: pointer; background: #ffffff8c; border-color: transparent; transition: background .3s, border-color .3s, box-shadow .3s; }
+  .eet-player.is-enhanced .eet-step:not(.is-on) .eet-num { background: #e6dfcf; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-cap { background: #fff; border-color: var(--ink); box-shadow: 0 14px 30px #14110d14; }
+  .eet-player.is-enhanced .eet-ptr { display: block; }
+  .eet-seg.is-on i { animation: eet-bar var(--eet-ms) linear forwards; }
+
+  /* each screen acts its step out while it is on */
+  .is-enhanced .is-on .wz-card > * { animation: eet-rise .6s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i, 0) * 110ms + 150ms); }
+  .eet-shot .wz-card > :nth-child(2) { --i: 1; }
+  .eet-shot .wz-card > :nth-child(3) { --i: 2; }
+  .eet-shot .wz-card > :nth-child(4) { --i: 3; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-tap { animation: eet-rise .6s calc(var(--i, 0) * 110ms + 150ms) cubic-bezier(.2, .8, .2, 1) both, eet-press .4s calc(var(--pd) + 1.05s); }
+  .eet-player.is-enhanced .eet-step.is-on .eet-ptr { animation: eet-ptr 1.1s var(--pd) cubic-bezier(.3, .7, .2, 1) both; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-ptr::after { animation: eet-ripple .6s calc(var(--pd) + 1.05s) both; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-toast { animation: eet-toast .7s calc(var(--pd) + 1.5s) cubic-bezier(.2, .8, .2, 1) both; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-drop { animation: eet-rise .6s 260ms cubic-bezier(.2, .8, .2, 1) both, eet-empty 1.75s step-end; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-drop .eet-file { animation: eet-fly .85s .9s cubic-bezier(.2, .8, .2, 1) both; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-pass { animation: eet-type 1s 2.1s steps(8, end) both; }
+  .eet-player.is-enhanced .eet-step.is-on .ok-ring { animation: eet-pop .6s .15s cubic-bezier(.3, 1.4, .5, 1) both; }
+  .eet-player.is-enhanced .eet-step.is-on .ok-ring circle { --len: 145; animation: eet-draw .7s .35s ease-out both; }
+  .eet-player.is-enhanced .eet-step.is-on .ok-ring path { --len: 40; animation: eet-draw .35s .95s ease-out both; }
+  .eet-player.is-enhanced .eet-step.is-on .row-ok::before { animation: eet-pop .5s calc(var(--i, 0) * 110ms + 450ms) cubic-bezier(.3, 1.4, .5, 1) both; }
+  .eet-player.is-enhanced .eet-step.is-on .phone { animation: eet-slide .7s 1.5s cubic-bezier(.2, .8, .2, 1) both; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-sent { animation: eet-pop .5s 2.7s cubic-bezier(.3, 1.4, .5, 1) both; }
+
+  /* a step that cannot play yet (not seen, or picked while out of view) waits in its
+     finished state; frozen on its first frame it would be an empty screen */
+  .eet-player.is-waiting *, .eet-player.is-waiting *::before, .eet-player.is-waiting *::after { animation: none !important; }
+  /* paused by the visitor, or simply not on screen; :is() would drop the pseudo-elements */
+  .eet-player:is(.is-paused, .is-offscreen) *, .eet-player:is(.is-paused, .is-offscreen) *::before, .eet-player:is(.is-paused, .is-offscreen) *::after { animation-play-state: paused !important; }
+}
+@media screen and (prefers-reduced-motion: no-preference) and (max-width: 900px) {
+  /* phones: the stage on top, the progress bars under it, the captions below */
+  .eet-player.is-enhanced { max-width: 560px; margin-inline: auto; }
+  .eet-player.is-enhanced .eet-frame { min-height: 0; display: block; padding: calc(100cqw * 20 / 22 + 64px) 0 0; }
+  .eet-player.is-enhanced .eet-frame::before { left: 5%; top: 0; width: 90%; translate: none; }
+  .eet-player.is-enhanced .eet-shot { top: 0; width: 100%; max-width: none; translate: 0 22px; }
+  .eet-player.is-enhanced .eet-step.is-on .eet-shot { translate: none; }
+  .eet-player.is-enhanced .eet-controls { position: absolute; left: 0; right: 0; top: calc(100cqw * 20 / 22 + 10px); }
+}
+@media (max-width: 900px) {
+  .eet-steps { grid-template-columns: 1fr; gap: 28px; }
+  .eet-shot { max-width: 440px; margin: 0 auto; }
+  .eet-notes { grid-template-columns: 1fr; }
+}
+@media print {
+  .eet-controls { display: none; }
+}
