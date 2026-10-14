@@ -7,14 +7,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Plzeňský Prazdroj + Hugo — EET 2.0 v suchu</title>
-<meta name="description" content="Speciální nabídka pro zákazníky Plzeňského Prazdroje. Pokladna Hugo: karty, účtenka i pokladna v jednom terminálu, spuštění za 5 minut, 0 Kč měsíčně do konce roku 2026, následně 190 Kč/měsíc, bez DPH; karty 1,1 % (MIF++)." />
+<meta name="description" content="Speciální nabídka pro zákazníky Plzeňského Prazdroje. Pokladna Hugo: karty, účtenka i pokladna v jednom terminálu, spuštění za 5 minut, zdarma do konce roku 2026, následně 190 Kč/měsíc, bez DPH; karty 1,1 % (MIF++)." />
 <link rel="canonical" href="https://hugopos.eu/prazdroj-doporucuje/" />
 <meta name="theme-color" content="#004B2A" />
 <link rel="icon" href="../assets/hugo-icon.svg" type="image/svg+xml" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Hugo" />
 <meta property="og:title" content="Plzeňský Prazdroj + Hugo" />
-<meta property="og:description" content="EET 2.0 v suchu - speciální nabídka pro zákazníky Plzeňského Prazdroje. 0 Kč měsíčně do konce roku 2026, následně 190 Kč/měsíc, bez DPH." />
+<meta property="og:description" content="EET 2.0 v suchu - speciální nabídka pro zákazníky Plzeňského Prazdroje. Zdarma do konce roku 2026, následně 190 Kč/měsíc, bez DPH." />
 <meta property="og:url" content="https://hugopos.eu/prazdroj-doporucuje/" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,6 +140,15 @@
   .step p{color:var(--muted); font-size:15px}
   .step .t{margin-top:16px; font-size:13px; font-weight:600; color:var(--mat)}
 
+  /* ---------- onboarding video ---------- */
+  .video{padding:56px 0 0}
+  .video-in{margin:0; display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(24px,4vw,48px); align-items:center;
+    background:#fff; border:1px solid var(--line); border-radius:30px; padding:clamp(22px,3vw,34px)}
+  .video-in .eyebrow{font-size:13px; font-weight:600; color:var(--mat); text-transform:uppercase; letter-spacing:.06em}
+  .video-in h2{margin-top:10px}
+  .video-in p{color:var(--muted); margin-top:12px}
+  .video-in video{display:block; width:100%; height:auto; aspect-ratio:16/9; border-radius:18px; background:#000}
+
   /* ---------- benefit grid ---------- */
   .bens{padding:80px 0 0}
   .bens h2{max-width:20ch}
@@ -169,6 +178,10 @@
   .mif-note{grid-column:1/-1; font-size:14px; line-height:1.6; color:#DAD3C7; scroll-margin-top:24px}
   .rate{margin-top:20px; font-size:15.5px; color:#DAD3C7}
   .rate b{color:#fff; font-weight:600}
+  .cond{display:flex; gap:10px; align-items:flex-start; margin-top:22px; padding:12px 14px;
+    border:1px solid rgba(255,223,44,.32); border-radius:14px; background:rgba(255,223,44,.06);
+    font-size:14.5px; line-height:1.45; color:#EDE6D9}
+  .cond svg{width:16px; height:16px; color:var(--yellow); flex:none; margin-top:2px}
   .price-notes{list-style:none; margin:0; padding:0; color:#DAD3C7; font-size:15.5px}
   .price-notes li{display:flex; gap:12px; padding:14px 0; border-top:1px solid rgba(255,255,255,.12)}
   .price-notes li:first-child{border-top:0; padding-top:0}
@@ -177,6 +190,21 @@
   .price-cta{grid-column:1/-1; margin-top:6px; padding-top:28px; border-top:1px solid rgba(255,255,255,.14);
     display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px}
   .price-cta .fine{font-size:14px; color:#A9A296; max-width:40ch}
+
+  /* ---------- additional hardware ---------- */
+  .hw{padding:80px 0 0}
+  .hw .kicker{color:var(--muted); margin-top:12px; font-size:17px; max-width:52ch}
+  .hw-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:32px}
+  .hw-card{display:grid; grid-template-columns:auto 1fr auto; gap:18px; align-items:center;
+    background:#fff; border:1px solid var(--line); border-radius:20px; padding:22px 24px}
+  .hw-card .ic{width:44px; height:44px; border-radius:13px; background:var(--cream-2);
+    display:grid; place-items:center; color:var(--mat)}
+  .hw-card .ic svg{width:22px; height:22px}
+  .hw-card p{color:var(--muted); font-size:14.5px; margin-top:4px}
+  .hw-price{font-family:var(--display); font-weight:700; font-size:22px; letter-spacing:-.02em;
+    white-space:nowrap; text-align:right}
+  .hw-price small{display:block; font-family:var(--body); font-size:13px; font-weight:500;
+    letter-spacing:0; color:var(--muted)}
 
   /* ---------- close ---------- */
   .close{padding:80px 0 90px; text-align:center}
@@ -199,6 +227,7 @@
     .show-img{min-height:280px}
     .rail,.grid{grid-template-columns:1fr}
     .price-in{grid-template-columns:1fr}
+    .video-in,.hw-grid{grid-template-columns:1fr}
   }
   @media (max-width:560px){
     .hero{padding-top:40px}
@@ -206,6 +235,8 @@
     .hero .ctas{flex-direction:column}
     .lockup{grid-template-columns:1fr; justify-items:center; gap:16px; --h:52px}
     .lockup .partner-mark,.lockup .hugo{justify-self:center}
+    .hw-card{grid-template-columns:auto 1fr}
+    .hw-price{grid-column:2; text-align:left}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 </style>
@@ -230,7 +261,7 @@
     <p class="sub">EET 2.0 v suchu - speciální nabídka pro zákazníky Plzeňského Prazdroje.</p>
 
     <div class="ctas">
-      <a class="btn btn-primary" href="https://admin.hugopos.eu/login?start=1&amp;partner=prazdroj" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href="https://hugopos.eu/start/?partner=prazdroj" target="_blank" rel="noopener">
         Registrovat
         <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -239,7 +270,7 @@
 
     <div class="facts">
       <div class="fact"><div class="n">5 minut</div><div class="l">od stažení k první účtence</div></div>
-      <div class="fact"><div class="n">0 Kč</div><div class="l">měsíčně do konce roku 2026,<br />následně 190 Kč/měsíc, bez DPH</div></div>
+      <div class="fact"><div class="n">ZDARMA</div><div class="l">do konce roku 2026,<br />následně 190 Kč/měsíc, bez DPH</div></div>
       <div class="fact"><div class="n">1,1&nbsp;% <span class="mif-n">(MIF++)<a class="mif-ref" href="#mif-note" aria-label="Vysvětlení MIF++">*</a></span></div><div class="l">z platby kartou</div></div>
     </div>
   </div>
@@ -249,8 +280,7 @@
   <div class="container">
     <div class="show-in">
       <div class="show-img">
-        <!-- PLACEHOLDER: nahradit fotkou terminálu s platebními kartami (dodá klient). -->
-        <img src="../assets/eshop/terminal-in-use.jpg" alt="Terminál Hugo v provozu" />
+        <img src="../assets/hugo-admin-laptop-1200.webp" srcset="../assets/hugo-admin-laptop-800.webp 800w, ../assets/hugo-admin-laptop-1200.webp 1200w, ../assets/hugo-admin-laptop-1600.webp 1600w" sizes="(max-width:940px) 100vw, 900px" width="1200" height="800" alt="Nastavení pokladny Hugo v administraci na notebooku" />
       </div>
       <div class="show-txt">
         <h2>Vaše první pokladna: karty, účtenky i menu v jednom</h2>
@@ -304,6 +334,23 @@
   </div>
 </section>
 
+<section class="video">
+  <div class="container">
+    <figure class="video-in">
+      <figcaption>
+        <span class="eyebrow">Video návod</span>
+        <h2 id="onboarding-video-title">Podívejte se, jak začít</h2>
+        <p id="onboarding-video-desc">Celý postup v jednom videu, česky.</p>
+      </figcaption>
+      <!-- HUGO-2139: dočasně video z /jak-zacit; finální onboarding video dodá vlastník. -->
+      <video width="1920" height="1080" controls playsinline preload="none" poster="../assets/getting-started-poster.jpg" aria-labelledby="onboarding-video-title" aria-describedby="onboarding-video-desc">
+        <source src="../assets/hugo-zakaznicke-video-v4.mp4" type="video/mp4" />
+        <a href="../assets/hugo-zakaznicke-video-v4.mp4">Otevřít video</a>
+      </video>
+    </figure>
+  </div>
+</section>
+
 <section class="bens">
   <div class="container">
     <h2>Proč to dává smysl</h2>
@@ -326,7 +373,7 @@
       <div class="ben">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
         <h3>Běží na vašem zařízení</h3>
-        <p>iOS i Android, telefon i tablet. Nemusíte nic kupovat.</p>
+        <p>Hugo běží na Applu, Androidu i na Piano terminálu.</p>
       </div>
       <div class="ben">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H7l-3 3V4z"/></svg></span>
@@ -347,9 +394,10 @@
     <div class="price-in">
       <div>
         <span class="tag">Akční cena pro zákazníky Plzeňského Prazdroje do konce roku 2026</span>
-        <div class="amount">0 Kč<small>měsíčně za provozovnu do konce roku 2026</small></div>
+        <div class="amount">ZDARMA<small>za provozovnu do konce roku 2026</small></div>
         <p class="follow-on">Následně 190 Kč/měsíc za provozovnu, bez DPH.</p>
         <p class="rate"><b>Platby kartou 1,1&nbsp;% (MIF++)<a class="mif-ref" href="#mif-note" aria-label="Vysvětlení MIF++">*</a></b> z transakce, bez DPH.</p>
+        <p class="cond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg><span>Nabídka je podmíněna využíváním Piano platebních služeb (platby kartou).</span></p>
       </div>
       <ul class="price-notes">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><b>Jeden tarif</b> — všechny funkce, žádné příplatkové moduly.</div></li>
@@ -359,11 +407,30 @@
       </ul>
       <p class="mif-note" id="mif-note" tabindex="-1">*Transparentní model zpoplatnění karetních transakcí, kdy se cena skládá ze tří oddělených složek: mezibankovního poplatku (MIF), poplatku karetní asociace a marže poskytovatele.</p>
       <div class="price-cta">
-        <a class="btn btn-primary" href="https://admin.hugopos.eu/login?start=1&amp;partner=prazdroj" target="_blank" rel="noopener">
+        <a class="btn btn-primary" href="https://hugopos.eu/start/?partner=prazdroj" target="_blank" rel="noopener">
           Registrovat
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <p class="fine">Registrace je zdarma. Měsíční poplatek za pokladnu je do konce roku 2026 nulový; poplatky za platby kartou se účtují od první transakce.</p>
+        <p class="fine">Registrace je zdarma. Měsíční poplatek za pokladnu do konce roku 2026 neplatíte; poplatky za platby kartou se účtují od první transakce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hw" id="hardware">
+  <div class="container">
+    <h2>Doplňkový hardware</h2>
+    <p class="kicker">Chcete pokladnu na větším displeji? K Hugovi nabízíme tablety včetně stojánku.</p>
+    <div class="hw-grid">
+      <div class="hw-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M12 16v4M8 21h8"/></svg></span>
+        <div><h3>Lenovo Idea Tab Pro</h3><p>Matte Edition 12,7″ · Luna Grey · včetně stojánku</p></div>
+        <div class="hw-price">12&nbsp;345&nbsp;Kč<small>bez DPH</small></div>
+      </div>
+      <div class="hw-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M12 16v4M8 21h8"/></svg></span>
+        <div><h3>iPad 11″ (2025)</h3><p>Stříbrná · včetně stojánku</p></div>
+        <div class="hw-price">13&nbsp;579&nbsp;Kč<small>bez DPH</small></div>
       </div>
     </div>
   </div>
@@ -373,7 +440,7 @@
   <div class="container">
     <h2>Začněte ještě dnes</h2>
     <p>Účet si založíte za pár minut a pokladnu si nastavíte vlastním tempem.</p>
-    <a class="btn btn-primary" href="https://admin.hugopos.eu/login?start=1&amp;partner=prazdroj" target="_blank" rel="noopener">
+    <a class="btn btn-primary" href="https://hugopos.eu/start/?partner=prazdroj" target="_blank" rel="noopener">
       Registrovat
       <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
