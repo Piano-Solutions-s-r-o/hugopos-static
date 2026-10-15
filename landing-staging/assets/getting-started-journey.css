@@ -5,10 +5,8 @@
 .journey { margin: 110px calc(50% - 50vw) 0; padding: 0 calc(50vw - 50%); overflow-x: clip; }
 .journey-sprite { position: absolute; }
 .journey .ic { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.journey-intro { max-width: 780px; margin: 0 auto 88px; text-align: center; }
 .journey h2 { font: 700 clamp(32px, 4.8vw, 62px)/1.05 var(--display); letter-spacing: -.045em; margin: 20px 0; }
 .journey p { color: var(--muted); font-size: 18px; line-height: 1.65; }
-.journey-demo-label { display: inline-block; font-size: 12px; margin-top: 12px; padding: 9px 15px; border: 1px solid var(--line); border-radius: 30px; }
 .journey-heading { max-width: 780px; margin: 0 0 40px; }
 .journey-phase { scroll-margin-top: 100px; margin-bottom: 75px; }
 .journey-track { position: relative; }
@@ -73,7 +71,6 @@
 }
 @media (max-width: 760px) {
   .journey { margin-top: 75px; }
-  .journey-intro { margin-bottom: 60px; }
   .journey-step { grid-template-columns: 1fr; gap: 18px; padding: 35px 0; }
   .journey-options { grid-template-columns: 1fr; gap: 12px; }
   .journey-options label { padding: 16px 18px; font-size: 17px; }
