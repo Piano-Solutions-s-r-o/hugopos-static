@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<!-- HUGO_STAGING_GATE (staging only) -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- HUGO-2161: hugopos.eu/prazdroj — the short address for the Plzeňský Prazdroj partner
+     page. It only forwards to /prazdroj-doporucuje/ and keeps the query (utm_*) and the
+     hash (#cena). location.replace keeps the short address out of the back history. The
+     static host has no server-side redirects, so this mirrors /start (HUGO-1848). Kept out
+     of the sitemap (generator/routes.mjs); the canonical names the real page. No robots
+     noindex here: the production tripwire rejects it (HUGO-1821). The noscript fallback
+     drops the query and hash, as on /start. -->
+<script>
+  location.replace("/prazdroj-doporucuje/" + location.search + location.hash);
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/prazdroj-doporucuje/" /></noscript>
+<title>Plzeňský Prazdroj + Hugo</title>
+<link rel="canonical" href="https://hugopos.eu/prazdroj-doporucuje/" />
+<meta name="theme-color" content="#004B2A" />
+<link rel="icon" href="/assets/hugo-icon.svg" type="image/svg+xml" />
+<style>
+  :root{ --ink:#14110D; --muted:#6b645b; --yellow:#FFDF2C; --bg:#F3EFE6; }
+  *{ box-sizing: border-box; }
+  body{ margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+    background: var(--bg); color: var(--ink);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main{ max-width: 520px; text-align: center; }
+  img{ width: 64px; height: 64px; }
+  p{ color: var(--muted); font-size: 17px; line-height: 1.5; margin: 20px 0 24px; }
+  a.btn{ display: inline-block; padding: 13px 22px; border-radius: 999px; font-weight: 700;
+    text-decoration: none; color: var(--ink); background: var(--yellow); }
+</style>
+</head>
+<body>
+<main>
+  <img src="/assets/hugo-icon.svg" alt="Hugo" width="64" height="64" />
+  <p>Přesměrováváme na nabídku pro zákazníky Plzeňského Prazdroje…</p>
+  <a class="btn" href="/prazdroj-doporucuje/">Pokračovat na nabídku</a>
+</main>
+</body>
+</html>
