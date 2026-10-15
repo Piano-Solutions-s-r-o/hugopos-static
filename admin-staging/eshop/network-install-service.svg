@@ -1,0 +1,21 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+  <circle cx="206" cy="112" r="68" fill="#ffffff" stroke="#14110d" stroke-width="6"/>
+  <path d="M206 112V56A56 56 0 0 1 254.500 84Z" fill="#315f54"/>
+  <path d="M206 112V60M206 112L254 84" stroke="#14110d" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="206" cy="112" r="7" fill="#14110d"/>
+  <rect x="196" y="164" width="84" height="40" rx="20" fill="#ffdf2c" stroke="#14110d" stroke-width="5"/>
+  <text x="238" y="193" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="800" fill="#14110d">1 h</text>
+  <g fill="none" stroke-linecap="round" transform="translate(6 -4) scale(.88)">
+    <g transform="translate(70 262) rotate(35)">
+      <path d="M0 52V-30" stroke="#14110d" stroke-width="28"/>
+      <path d="M0 52V-30" stroke="#ffdf2c" stroke-width="16"/>
+      <path d="M-14 -66a24 24 0 1 0 28 0" stroke="#14110d" stroke-width="22"/>
+      <path d="M-14 -66a24 24 0 1 0 28 0" stroke="#f3efe6" stroke-width="10"/>
+    </g>
+    <g transform="translate(130 280) rotate(35)">
+      <path d="M0 40V-26" stroke="#14110d" stroke-width="28"/>
+      <path d="M0 40V-26" stroke="#315f54" stroke-width="16"/>
+      <path d="M0 -26V-82" stroke="#14110d" stroke-width="10"/>
+    </g>
+  </g>
+</svg>
