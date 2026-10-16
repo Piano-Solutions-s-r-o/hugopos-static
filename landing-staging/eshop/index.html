@@ -246,6 +246,7 @@
         <legend>Doprava</legend>
         <label><input name="delivery-method" type="radio" value="dpd" checked><span>Doprava DPD</span><strong data-delivery-price></strong></label>
         <label><input name="delivery-method" type="radio" value="pickup"><span>Osobní odběr</span><strong data-delivery-price></strong></label>
+        <p class="delivery-note" id="dpd-ships-within">Odesíláme do 2 pracovních dnů od zaplacení. Číslo zásilky DPD pak uvidíš v Hugo Adminu.</p>
       </fieldset>
       <label class="terms"><input id="terms" type="checkbox"> <span>Souhlasím s <a href="/obchodni-podminky-eshop/" target="_blank" rel="noopener">obchodními podmínkami nákupu hardwaru</a>.</span></label>
       <p class="draft-note" id="checkout-note" hidden>E-shopové VOP jsou zatím pracovní návrh. Platbu zapneme až po jejich schválení.</p>
@@ -260,7 +261,7 @@
   </dialog>
 
   <section class="success" id="success" hidden aria-live="polite">
-    <div><p class="eyebrow">Je to doma</p><h2>Nákup je hotový. 🎉</h2><p>Teď už jen krůček: přihlas se nebo založ účet stejným e-mailem jako při nákupu.</p><a class="button primary" id="continue-account" href="#">Přihlásit nebo založit účet</a></div>
+    <div><p class="eyebrow">Je to doma</p><h2>Nákup je hotový. 🎉</h2><p id="success-text">Teď už jen krůček: přihlas se nebo založ účet stejným e-mailem jako při nákupu.</p><p id="success-shipping" hidden></p><a class="button primary" id="continue-account" href="#">Přihlásit nebo založit účet</a></div>
   </section>
 
   <footer>
