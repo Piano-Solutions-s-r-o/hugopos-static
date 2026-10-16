@@ -49,6 +49,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/cenik/"/>
   </url>
   <url>
+    <loc>https://hugopos.eu/eet/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/eet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/eet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/eet/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/en/eet/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/eet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/eet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/eet/"/>
+  </url>
+  <url>
     <loc>https://hugopos.eu/vseobecne-obchodni-podminky/</loc>
   </url>
   <url>
