@@ -113,11 +113,18 @@
       && typeof preference.accepts === 'boolean'
       && (!preference.accepts || preference.providers.length > 0);
   }
+  // Which "when does it ship" sentence the thank-you page shows (HUGO-2165). Only a DPD
+  // order has a tracking number to promise; the status endpoint's `deliveryMethod` is the
+  // one answer, never re-derived from the cart.
+  function successShippingKey(deliveryMethod, linked) {
+    if (deliveryMethod !== 'dpd') return null;
+    return linked ? 'successShipsLinked' : 'successShipsGuest';
+  }
   var serializeCartHandoff = handoff.serializeCartHandoff;
   var parseCartHandoff = handoff.parseCartHandoff;
   // Keep the availability rule independently testable without booting a DOM.
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { cartHasPhysicalItem, cartIsOrderable, cartNeedsMealVoucherChoice, gallerySourcesFor, isZeroPriced, mealVoucherChoiceComplete, NON_PHYSICAL_IDS, parseCartHandoff, serializeCartHandoff };
+    module.exports = { cartHasPhysicalItem, cartIsOrderable, cartNeedsMealVoucherChoice, gallerySourcesFor, isZeroPriced, mealVoucherChoiceComplete, NON_PHYSICAL_IDS, parseCartHandoff, serializeCartHandoff, successShippingKey };
     return;
   }
 
@@ -128,6 +135,7 @@
   var cartReviewStep = document.getElementById('cart-review-step');
   var cartBack = document.getElementById('cart-back');
   var deliveryFieldset = document.querySelector('.delivery-choice');
+  var dpdShipsWithin = document.getElementById('dpd-ships-within');
   var mealVoucherFieldset = document.querySelector('.meal-voucher-choice');
   var mealVoucherProviders = document.querySelector('.meal-voucher-providers');
   var cartTitle = cartPanel.querySelector('.cart-head h2'), reviewButton = document.getElementById('review-button');
@@ -332,6 +340,8 @@
     // HUGO-1694 — nothing to deliver, nothing to ask: a cart holding only non-physical
     // lines (e.g. android_tap_to_pay) never shows the delivery-method choice.
     if (deliveryFieldset) deliveryFieldset.hidden = !cartHasPhysicalItem(cart);
+    // HUGO-2165 — the 2-business-day promise sits inside that fieldset and only applies to DPD.
+    if (dpdShipsWithin) dpdShipsWithin.hidden = selectedDeliveryMethod !== 'dpd';
     renderMealVoucherChoice();
     updateAccountLinks();
     updateCheckoutState();
@@ -596,12 +606,16 @@
         var continueLink = document.getElementById('continue-account');
         if (linked) {
           success.querySelector('h2').textContent = t('successLinkedTitle');
-          success.querySelector('div > p:last-of-type').textContent = t('successLinkedText');
+          document.getElementById('success-text').textContent = t('successLinkedText');
           continueLink.textContent = t('viewOrders');
           continueLink.href = adminBase() + '/orders';
         } else {
           continueLink.href = adminBase() + '/login?start=1&eshop_session=' + encodeURIComponent(session);
         }
+        var shipping = document.getElementById('success-shipping');
+        var shippingKey = successShippingKey(body.deliveryMethod, linked);
+        shipping.hidden = shippingKey === null;
+        if (shippingKey) shipping.textContent = t(shippingKey);
         success.hidden = false;
       }).catch(function () {});
   }
