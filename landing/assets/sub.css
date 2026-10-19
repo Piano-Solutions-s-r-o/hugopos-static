@@ -1,4 +1,4 @@
-/* Hugo landing — shared styles for content sub-pages (/srovnani, /cenik).
+/* Hugo landing — shared styles for content sub-pages (/srovnani, /cenove-srovnani).
    Mirrors the tokens, nav, buttons and the "vs-board" table look of the main
    page (index.html) so the sub-pages read as the same site. HUGO-1828. */
 :root{
@@ -74,7 +74,15 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 /* ---------- page hero ---------- */
 .phero{ padding:72px 0 40px; }
 .phero h1{ font-weight:800; font-variation-settings:"wdth" 95; font-size:clamp(38px,6vw,76px); line-height:.98; margin:14px 0 22px; max-width:16ch; }
-.phero h1 .hl{ background:var(--yellow); padding:0 .12em; border-radius:.12em; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+/* The highlight box is the font's content area (~1.2em for Spline Sans) while lines sit .98em
+   apart, so each wrapped line's box overlapped the line above by ~.22em and hid its y/p tails
+   ("Kdvž kartv", HUGO-2185). The band therefore starts .22em below the box top. */
+.phero h1 .hl{ background:linear-gradient(transparent .22em, var(--yellow) .22em); padding:0 .12em; border-radius:.12em; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+/* Printing without "background graphics" (Chromium's default) paints every box that has a
+   background as solid white over its whole height, transparent band included, so the next
+   line hid the tails again. On paper the highlight is dropped instead, with its padding, so
+   lines starting inside it stay flush with the rest of the heading. */
+@media print{ .phero h1 .hl{ background:none; padding:0; } }
 .phero h1 em{ font-style:normal; font-weight:500; color:var(--muted); font-variation-settings:"wdth" 75; }
 .phero .lead{ max-width:62ch; }
 /* Pricing header with illustration: text + CTAs left, barista right, facing the headline.

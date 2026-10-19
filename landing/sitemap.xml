@@ -37,16 +37,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/jak-zacit/"/>
   </url>
   <url>
-    <loc>https://hugopos.eu/cenik/</loc>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenik/"/>
+    <loc>https://hugopos.eu/cenove-srovnani/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenove-srovnani/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/pricing/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/cenik/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/cenove-srovnani/"/>
   </url>
   <url>
     <loc>https://hugopos.eu/en/pricing/</loc>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenik/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenove-srovnani/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/pricing/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/cenik/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/cenove-srovnani/"/>
   </url>
   <url>
     <loc>https://hugopos.eu/eet/</loc>

@@ -236,6 +236,35 @@
   }
   .effective svg{ width: 20px; height: 20px; flex: none; }
 
+  /* ============ PRICE LIST (příloha 7, HUGO-2183) ============ */
+  .pricelist h3{
+    font-family: var(--display); font-weight: 800;
+    font-variation-settings: "wdth" 95; letter-spacing: -0.01em;
+    font-size: 20px; line-height: 1.25; margin: 34px 0 14px; color: var(--ink);
+  }
+  .pricelist h4{ font-size: 16px; font-weight: 700; margin: 24px 0 10px; color: var(--ink); }
+  .price-effective{
+    display: inline-block; margin: 0 0 8px; padding: 7px 14px;
+    background: var(--yellow); border-radius: var(--radius-pill);
+    font-size: 14px; font-weight: 700; color: var(--ink);
+  }
+  .price-table{
+    width: 100%; border-collapse: separate; border-spacing: 0; margin: 0 0 18px;
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm);
+    overflow: hidden; font-size: 15px; line-height: 1.45;
+  }
+  .price-table th, .price-table td{
+    text-align: left; vertical-align: top; padding: 12px 14px;
+    border-top: 1px solid var(--line); color: var(--ink-2); font-weight: 400;
+  }
+  .price-table thead th{
+    border-top: 0; background: var(--cream-2);
+    font-size: 13px; font-weight: 700; color: var(--ink);
+  }
+  .price-table tbody th{ font-weight: 700; color: var(--ink); }
+  .price-table td.price{ font-weight: 700; color: var(--ink); }
+  .pricelist .note ul{ margin-top: 10px; }
+
   /* ============ FOOTER ============ */
   footer{ border-top: 1px solid var(--line); padding: 40px 0 60px; }
   .foot-inner{
@@ -257,6 +286,23 @@
     .toc a{ margin-left: 0; padding: 7px 10px; }
     .head{ padding: 44px 0 32px; }
   }
+  /* Price tables become one card per row: the column name rides on each cell. */
+  @media (max-width: 720px){
+    .price-table, .price-table tbody, .price-table tr,
+    .price-table th, .price-table td{ display: block; width: 100%; }
+    .price-table thead{
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
+    .price-table tr{ border-top: 1px solid var(--line); padding: 8px 0; }
+    .price-table tbody tr:first-child{ border-top: 0; }
+    .price-table th, .price-table td{ border-top: 0; padding: 6px 18px; }
+    .price-table td::before{
+      content: attr(data-label); display: block; margin-bottom: 2px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--muted);
+    }
+  }
   @media (max-width: 560px){
     .container{ padding: 0 18px; }
     body{ font-size: 16.5px; }
@@ -272,6 +318,8 @@
     article{ max-width: none; }
     section{ page-break-inside: auto; }
     .card, .note, .intro{ border: 1px solid #ccc; background: #fff; }
+    .price-table{ border: 1px solid #ccc; font-size: 10pt; }
+    .price-table tr{ page-break-inside: avoid; }
     .effective{ background: #fff; color: #000; border: 1px solid #000; }
   }
 </style>
@@ -306,7 +354,7 @@
       </span>
       <span class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h12"/></svg>
-        6 článků a 6 příloh
+        6 článků a 7 příloh
       </span>
       <span class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg>
@@ -341,6 +389,7 @@
       <li><a href="#priloha-4"><span class="toc-num">4</span>Dodatečné služby a funkcionality, bezpečnostní pojistky, hardware</a></li>
       <li><a href="#priloha-5"><span class="toc-num">5</span>Zásady ochrany osobních údajů (privacy notice)</a></li>
       <li><a href="#priloha-6"><span class="toc-num">6</span>Ukončení spolupráce, zrušení účtu</a></li>
+      <li><a href="#priloha-7"><span class="toc-num">7</span>Ceník služeb a produktů Hugo POS</a></li>
     </ol>
   </aside>
 
@@ -372,7 +421,7 @@
 
     <section id="cast-4">
       <h2><span class="num">4</span>Ceny a cenové podmínky</h2>
-      <p><span class="term">Předplatné (výše a splatnost):</span> Produkt Hugo POS &amp; AI asistent vám poskytujeme za měsíční nebo roční předplatné. Výše předplatného a případných dalších poplatků za doplňkové služby vychází z našeho platného ceníku, dostupného na <a href="https://hugopos.eu">https://hugopos.eu</a>. Předplatné je splatné předem na začátku období, kterého se týká. Při nezaplacení předplatného bude přístup ke službě omezen; přístup bude obnoven bezodkladně po uhrazení dlužné částky.</p>
+      <p><span class="term">Předplatné (výše a splatnost):</span> Produkt Hugo POS &amp; AI asistent vám poskytujeme za měsíční nebo roční předplatné. Výše předplatného a případných dalších poplatků za doplňkové služby vychází z našeho platného ceníku, který tvoří <a href="#priloha-7">přílohu č. 7</a> těchto VOP. Předplatné je splatné předem na začátku období, kterého se týká. Při nezaplacení předplatného bude přístup ke službě omezen; přístup bude obnoven bezodkladně po uhrazení dlužné částky.</p>
       <p><span class="term">Změny ceníku:</span> Poskytovatel si vyhrazuje právo jednostranně měnit ceny uvedené v ceníku, přičemž žádná taková změna cen se netýká již uhrazených částek. O každé změně ceníku vás informujeme e-mailem nebo v oznamovacím centru přímo v aplikaci, a to nejméně 30 dní před jeho účinností. Nesouhlasíte-li se změnou ceníku, máte právo smlouvu v plném rozsahu vypovědět, a to do 30 dní po oznámení o změně ceníku. Smlouva v takovém případě skončí uplynutím období, na které je uhrazeno předplatné bez toho, aby došlo k automatickému prodloužení smlouvy. Marným uplynutím lhůty pro podání výpovědi vstupuje nový ceník v účinnost a v plném rozsahu se vztahuje na vztahy založené smlouvou (vč. automaticky prodlužovaných smluv).</p>
     </section>
 
@@ -429,8 +478,8 @@
     <section id="priloha-4">
       <h2><span class="num pril">Příloha 4</span>Dodatečné služby a funkcionality, bezpečnostní pojistky, hardware</h2>
       <p><span class="term">A. Přechod od konkurence (Import):</span> Nabízíme automatický import vámi vybraných položek a dalších dat z vaší současné pokladny s využitím AI modelu. Odpadá tím nutnost ručního přepisování těchto dat do Hugo POS a všeho negativního, co takový postup nevyhnutelně přináší – riziko zvýšené chybovosti, delší čas a zvýšené personální náklady potřebné na instalaci.</p>
-      <p><span class="term">B. Obnova vědomě odstraněných dat:</span> Obnova dat, jejichž smazání / odstranění došlo v důsledku vašeho jednání, je poskytována jako placená doplňková služba dle platného ceníku, pokud je technicky proveditelná. Poskytovatel nezaručuje úspěšnost takové obnovy.</p>
-      <p><span class="term">C. Export dat při ukončení spolupráce:</span> Kdykoliv v průběhu trvání smlouvy si můžete exportovat svá data ve strojově čitelném formátu CSV/XML. Export dat po zrušení účtu je možný do 7 dnů od zrušení a může být zpoplatněn dle platného ceníku.</p>
+      <p><span class="term">B. Obnova vědomě odstraněných dat:</span> Obnova dat, jejichž smazání / odstranění došlo v důsledku vašeho jednání, je poskytována jako placená doplňková služba dle <a href="#priloha-7">platného ceníku</a>, pokud je technicky proveditelná. Poskytovatel nezaručuje úspěšnost takové obnovy.</p>
+      <p><span class="term">C. Export dat při ukončení spolupráce:</span> Kdykoliv v průběhu trvání smlouvy si můžete exportovat svá data ve strojově čitelném formátu CSV/XML. Export dat po zrušení účtu je možný do 7 dnů od zrušení a může být zpoplatněn dle <a href="#priloha-7">platného ceníku</a>.</p>
       <p><span class="term">D. Bezpečnostní pojistky:</span> U nevratných akcí (tedy úkony typu „smazat provozovnu“, „smazat celé menu“, „smazat účet“ apod.) si Hugo před realizací vyžádá vaše potvrzení. V každém případě lze systém plně ovládat i manuálně.</p>
       <p><span class="term">E. Hardware:</span> Pokud si od nás zakoupíte hardware, vztahují se na vás též Pravidla pro recyklaci a zpětný odběr elektrozařízení a baterií a Reklamační řád (vše dostupné na <a href="http://www.piano.cz/legal" target="_blank" rel="noopener">www.piano.cz/legal</a>).</p>
     </section>
@@ -504,8 +553,213 @@
       <p><span class="term">A. Trvání spolupráce (automatické prodlužování):</span> Smlouva trvá po celou dobu, kdy budete mít uhrazeno předplatné. Tím není dotčeno ujednání o bezplatném trial období v délce trvání 14 dní. Vztah založený smlouvou bude (i opakovaně) automaticky prodlužován vždy o stejné období (měsíc nebo rok), nebude-li v souladu s touto přílohou č. 6 smlouva řádně ukončena.</p>
       <p><span class="term">B. Ukončení smlouvy:</span> Smlouvu o užívání cloudového softwaru Hugo POS lze ukončit jednostrannou výpovědí nebo písemnou dohodou. Pokud byste opakovaně a závažným způsobem porušovali dohodnuté podmínky, můžeme smlouvu ukončit jednostrannou výpovědí s účinností doručením. Obě strany mají právo smlouvu ukončit bez udání důvodu s výpovědní dobou, která odpovídá délce období, na níž bylo uhrazeno předplatné. Uživatel k tomu může využít tlačítko „zrušit předplatné“ přímo v aplikaci.</p>
       <p><span class="term">C. Důsledky ukončení smlouvy:</span> Pokud ukončíte spolupráci jinak než z důvodů na naší straně nebo bez udání důvodu nebo pokud spolupráci sice ukončíme my, ale z důvodů na vaší straně, nebudou žádná uhrazená předplatná ani jiné poplatky předmětem vrácení, a to ani poměrně. V ostatních případech jednostranného ukončení smlouvy nebo v případě ukončení smlouvy dohodou může být součástí ukončení též poměrné vypořádání uhrazených předplatných či poplatků. Po uplynutí 7 dnů od ukončení smlouvy váš účet (nebo účty) zrušíme bez možnosti obnovy. Ve stejné lhůtě mohou být v našem systému nenávratně smazána i veškerá další vaše data, pokud právní předpisy nevyžadují jejich další uchování. Tím není dotčeno právo poskytovatele, ponechat si vaše anonymizovaná provozní data bez časového omezení.</p>
-      <p><span class="term">D. Export dat při ukončení spolupráce:</span> V souvislosti s ukončením spolupráce si můžete exportovat vaše historická data v defaultně nastaveném formátu a struktuře. Pokud požadujete specifický formát či strukturu exportovaných dat, jedná se o dodatečnou službu zpoplatněnou dle platného ceníku. V žádném případě není možné provést export historických dat poté, co váš účet (účty) zrušíme ve smyslu písm. C výše nebo poté, co jsou data smazána v důsledku vašeho jednání, vč. instrukce pro Huga.</p>
-      <p><span class="term">E. Zrušení účtu uživatelem:</span> Zrušení (smazání) účtu uživatelem představuje zvláštní typ jednostranného ukončení spolupráce na základě smlouvy. Jedná se o nevratnou akci provedenou v důsledku vědomého jednání uživatele, na níž se vztahuje bezpečnostní pojistka ve smyslu <a href="#priloha-4">přílohy č. 4</a>. Obnovení takto smazaného účtu je zpoplatněno dle platného ceníku a je možné pouze v případě, že je o něj písemně požádáno oprávněnou osobou nejpozději do 7 dnů od zrušení účtu. Při zrušení účtu uživatelem nebudou žádná uhrazená předplatná ani jiné poplatky předmětem vrácení, a to ani poměrně.</p>
+      <p><span class="term">D. Export dat při ukončení spolupráce:</span> V souvislosti s ukončením spolupráce si můžete exportovat vaše historická data v defaultně nastaveném formátu a struktuře. Pokud požadujete specifický formát či strukturu exportovaných dat, jedná se o dodatečnou službu zpoplatněnou dle <a href="#priloha-7">platného ceníku</a>. V žádném případě není možné provést export historických dat poté, co váš účet (účty) zrušíme ve smyslu písm. C výše nebo poté, co jsou data smazána v důsledku vašeho jednání, vč. instrukce pro Huga.</p>
+      <p><span class="term">E. Zrušení účtu uživatelem:</span> Zrušení (smazání) účtu uživatelem představuje zvláštní typ jednostranného ukončení spolupráce na základě smlouvy. Jedná se o nevratnou akci provedenou v důsledku vědomého jednání uživatele, na níž se vztahuje bezpečnostní pojistka ve smyslu <a href="#priloha-4">přílohy č. 4</a>. Obnovení takto smazaného účtu je zpoplatněno dle <a href="#priloha-7">platného ceníku</a> a je možné pouze v případě, že je o něj písemně požádáno oprávněnou osobou nejpozději do 7 dnů od zrušení účtu. Při zrušení účtu uživatelem nebudou žádná uhrazená předplatná ani jiné poplatky předmětem vrácení, a to ani poměrně.</p>
+    </section>
+
+    <!-- HUGO-2183: the binding price list, transcribed from the owner's document
+         "cenik-hugo-pos-2026-v4" (owner decision 2026-10-19: the hourly rate is
+         3 210 Kč everywhere — the document's footnote said 2 500 Kč). The marketing
+         page /cenove-srovnani/ is not the price list; change prices here. -->
+    <section id="priloha-7" class="pricelist">
+      <h2><span class="num pril">Příloha 7</span>Ceník služeb a produktů Hugo POS</h2>
+      <p class="price-effective">Platný a účinný od 15. 10. 2026</p>
+
+      <h3>1. Základní předplatné (SaaS)</h3>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Název položky / Služby</th>
+            <th scope="col">Popis a rozsah</th>
+            <th scope="col">Typ účtování</th>
+            <th scope="col">Standardní cena bez DPH</th>
+            <th scope="col">Zvýhodněná cena s programem „Hugo s aktivní platbou“*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Hugo POS &amp; AI asistent – Měsíční</th>
+            <td data-label="Popis a rozsah">Licenční přístup ke cloudové aplikaci a AI asistentovi Hugo při měsíční fakturaci.</td>
+            <td data-label="Typ účtování">Měsíčně (předem)</td>
+            <td data-label="Standardní cena bez DPH" class="price">1&nbsp;190&nbsp;Kč / měsíc</td>
+            <td data-label="Zvýhodněná cena s programem „Hugo s aktivní platbou“*" class="price">190&nbsp;Kč / měsíc (při zohlednění bonusu)</td>
+          </tr>
+          <tr>
+            <th scope="row">Zkušební období (Trial period)</th>
+            <td data-label="Popis a rozsah">Bezplatná zkušební doba 14 dní od dokončení registrace.</td>
+            <td data-label="Typ účtování">Jednorázově (14 dní)</td>
+            <td data-label="Standardní cena bez DPH" class="price">0&nbsp;Kč</td>
+            <td data-label="Zvýhodněná cena s programem „Hugo s aktivní platbou“*" class="price">0&nbsp;Kč</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <p><strong>* Podmínky programu „Hugo s aktivní platbou“ (Sleva 1&nbsp;000&nbsp;Kč / měsíc)</strong></p>
+        <p><span class="term">1. Výše a princip bonusu:</span> Standardní cena předplatného činí 1&nbsp;190&nbsp;Kč / měsíc. Za aktivní využívání platebních služeb Piano Payments v rámci programu „Hugo s aktivní platbou“ získává zákazník měsíční bonus ve výši 1&nbsp;000&nbsp;Kč / měsíc. Zvýhodněná cena předplatného při zohlednění bonusu činí 190&nbsp;Kč bez DPH / měsíc.</p>
+        <p><span class="term">2. Garantované období:</span> Bonus je poskytován automaticky po dobu prvních 3 měsíců od aktivace platebních služeb.</p>
+        <p><span class="term">3. Podmínka podílu na obratu (od 4. měsíce):</span> Nárok na bonus v daném měsíci vzniká při dosažení minimálně 10% podílu bezhotovostních plateb s využitím platebního řešení Piano Payments na celkovém obratu provozovny za vyhodnocovaný kalendářní měsíc.</p>
+        <p><span class="term">4. Nesplnění podmínek:</span></p>
+        <ul>
+          <li>Při nesplnění 10% podílu v příslušném měsíci bude zákazník upozorněn a bude mu poskytnut prostor pro nápravu.</li>
+          <li>Pokud zákazník nesplní podmínku ve 2 po sobě jdoucích měsících, nárok na bonus od následujícího fakturačního období zaniká a předplatné je účtováno dle standardního ceníku (1&nbsp;190&nbsp;Kč / měsíc).</li>
+          <li>Opakované nesplnění v kalendářním roce: Poskytovatel je oprávněn výhodu bonusu jednostranně odejmout též v případě, že zákazník nesplní podmínku pro přiznání bonusu více než 2krát za kalendářní rok.</li>
+        </ul>
+      </div>
+
+      <h3>2. Používání aplikace, zařízení a obsluha</h3>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Název položky / Služby</th>
+            <th scope="col">Popis a rozsah</th>
+            <th scope="col">Typ účtování</th>
+            <th scope="col">Cena bez DPH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Aplikace Hugo POS (iOS / Android / Web)</th>
+            <td data-label="Popis a rozsah">Provoz na vlastním telefonu, tabletu nebo počítači.</td>
+            <td data-label="Typ účtování">Trvale</td>
+            <td data-label="Cena bez DPH" class="price">0&nbsp;Kč</td>
+          </tr>
+          <tr>
+            <th scope="row">Počet zařízení, obsluhy a položek v menu</th>
+            <td data-label="Popis a rozsah">Přidání dalších tabletů na bar, telefonů pro obsluhu nebo rozšíření nabídky menu.</td>
+            <td data-label="Typ účtování">Bez omezení</td>
+            <td data-label="Cena bez DPH" class="price">0&nbsp;Kč</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3. Doplňkové a servisní služby (Správa dat a účtu)</h3>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Název položky / Služby</th>
+            <th scope="col">Popis a rozsah</th>
+            <th scope="col">Typ účtování</th>
+            <th scope="col">Cena bez DPH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Import dat z původního systému</th>
+            <td data-label="Popis a rozsah">Automatický přechod z jiné pokladny a import položek/menu s využitím AI.</td>
+            <td data-label="Typ účtování">Jednorázově</td>
+            <td data-label="Cena bez DPH" class="price">0&nbsp;Kč</td>
+          </tr>
+          <tr>
+            <th scope="row">Standardní export dat (CSV/XML)</th>
+            <td data-label="Popis a rozsah">Export historických dat ve standardních formátech během trvání předplatného.</td>
+            <td data-label="Typ účtování">Dle potřeby</td>
+            <td data-label="Cena bez DPH" class="price">0&nbsp;Kč</td>
+          </tr>
+          <tr>
+            <th scope="row">Obnova vědomě odstraněných dat</th>
+            <td data-label="Popis a rozsah">Obnova dat smazaných jednáním uživatele nebo nesprávným pokynem AI asistentovi (je-li technicky možná).</td>
+            <td data-label="Typ účtování">Dle stráveného času (min. 1 hodina)</td>
+            <td data-label="Cena bez DPH" class="price">3&nbsp;210&nbsp;Kč / hod.</td>
+          </tr>
+          <tr>
+            <th scope="row">Specifický / nestandardní export dat</th>
+            <td data-label="Popis a rozsah">Vyhotovení exportu historických dat v jiném než standardním formátu (CSV/XML) nebo ve specifické struktuře.</td>
+            <td data-label="Typ účtování">Dle stráveného času (min. 1 hodina)</td>
+            <td data-label="Cena bez DPH" class="price">3&nbsp;210&nbsp;Kč / hod.</td>
+          </tr>
+          <tr>
+            <th scope="row">Obnovení zrušeného / smazaného účtu</th>
+            <td data-label="Popis a rozsah">Technické obnovení účtu smazaného uživatelem na základě žádosti podané do 7 dnů od zrušení.</td>
+            <td data-label="Typ účtování">Dle stráveného času (min. 1 hodina)</td>
+            <td data-label="Cena bez DPH" class="price">3&nbsp;210&nbsp;Kč / hod.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <p><strong>* Poznámka k servisním službám:</strong> Úkony podléhající hodinové sazbě 3&nbsp;210&nbsp;Kč/hod. jsou účtovány dle skutečně stráveného času technické podpory/vývoje, přičemž minimální účtovaná výměra činí 1 hodinu za každý započatý úkon.</p>
+      </div>
+
+      <h3>4. Platební služby Piano Payments (Zvláštní sazba pro zákazníky Hugo)</h3>
+      <p>Níže uvedené transakční podmínky představují zvláštní zvýhodněnou sazbu platebních služeb, určenou výhradně pro zákazníky pokladního systému Hugo POS.</p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Název položky / Služby</th>
+            <th scope="col">Popis a rozsah</th>
+            <th scope="col">Účtování / Sazba</th>
+            <th scope="col">Cena bez DPH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Platební služby Piano Payments, akceptace platebních karet / tap-to-pay</th>
+            <td data-label="Popis a rozsah">Zvláštní sazba za zpracování transakce přes platební řešení Piano Payments (peníze na účtu do 2 pracovních dnů), vč. terminál / tap-to-pay.</td>
+            <td data-label="Účtování / Sazba">Procento z platby</td>
+            <td data-label="Cena bez DPH" class="price">1,1&nbsp;% MIF++</td>
+          </tr>
+          <tr>
+            <th scope="row">Poplatky karetních asociací a vydavatelů karet, vč. stravenkových karet</th>
+            <td data-label="Popis a rozsah">Mezibankovní a licenční poplatky, včetně poplatků za stravenkové a speciální karty.</td>
+            <td data-label="Účtování / Sazba">Dle ceníků karetních asociací a vydavatelů karet</td>
+            <td data-label="Cena bez DPH">V plné výši hrazeno dotčeným třetím stranám (výše jednotlivých poplatků se liší v závislosti na druhu/typu použité karty)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5. Hardware a další produkty Piano</h3>
+      <h4>A. Hardwarové vybavení a doplňkové servisní podmínky</h4>
+      <p>Na veškerý hardware zakoupený od Poskytovatele se vztahuje Ceník Piano Terminál a další podmínky dostupné na e-shopu hugopos.eu a <a href="http://www.piano.cz/legal" target="_blank" rel="noopener">www.piano.cz/legal</a>.</p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Název položky / Služby</th>
+            <th scope="col">Popis a rozsah</th>
+            <th scope="col">Typ účtování</th>
+            <th scope="col">Cena bez DPH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Piano Terminál pro HUGO, např. PAX A920 PRO</th>
+            <td data-label="Popis a rozsah">Mobilní terminál, tiskárna účtenek a pokladní aplikace Hugo v jednom zařízení.</td>
+            <td data-label="Typ účtování">Jednorázově</td>
+            <td data-label="Cena bez DPH" class="price">4&nbsp;900&nbsp;Kč</td>
+          </tr>
+          <tr>
+            <th scope="row">Ostatní HW, doprava, instalace a reklamace</th>
+            <td data-label="Popis a rozsah">Nákup dalšího příslušenství, ceník dopravy, instalace na místě, servis a reklamace podléhají platnému Ceníku Piano Terminál.</td>
+            <td data-label="Typ účtování">Dle konkrétní položky nebo typu úkonu</td>
+            <td data-label="Cena bez DPH">Dle Ceníku Piano Terminál</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>B. Integrace a navazující produkty Skupiny Piano</h4>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Název položky / Služby</th>
+            <th scope="col">Popis a rozsah</th>
+            <th scope="col">Účtování / Sazba</th>
+            <th scope="col">Cena bez DPH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Propojení na služby Skupiny Piano</th>
+            <td data-label="Popis a rozsah">Technická integrace na Piano Pilot/Brain, Qerko, Autset či Grason Plan.</td>
+            <td data-label="Účtování / Sazba">Jednorázově / Měsíčně</td>
+            <td data-label="Cena bez DPH" class="price">0&nbsp;Kč</td>
+          </tr>
+          <tr>
+            <th scope="row">Samostatné služby partnerů a Skupiny Piano</th>
+            <td data-label="Popis a rozsah">Vlastní modulární řešení (analytické nástroje, automatizace směn, automatické naskladňování atd.).</td>
+            <td data-label="Účtování / Sazba">Dle samostatných smluv</td>
+            <td data-label="Cena bez DPH">Dle ceníků konkrétních služeb</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
   </article>
