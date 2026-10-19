@@ -2,10 +2,17 @@
   'use strict';
 
   // What a HANDOFF cart line may carry when the storefront sends the basket into the
-  // Admin. A line whose id is missing here is silently dropped, so this list must track
-  // the storefront's orderable set — the printer was invisible on the storefront for the
-  // same class of reason (HUGO-1583).
-  var CART_IDS = ['pax_a920', 'belt_holster', 'terminal_case_extra', 'printer_zj5809', 'android_tap_to_pay'];
+  // Admin, and what a restored cart (localStorage / ?cart=) may hold. A line whose id is
+  // missing here is silently dropped, so this list must track the storefront's orderable
+  // set — the printer was invisible on the storefront for the same class of reason
+  // (HUGO-1583). The 0 Kč lines that ride along (`terminal_case`, the tablet stands) are
+  // deliberately absent: each side re-derives them from the terminal / tablet (HUGO-2182).
+  var CART_IDS = [
+    'pax_a920', 'belt_holster', 'terminal_case_extra', 'charging_base_a920',
+    'printer_zj5809', 'paper_roll_57', 'printer_rp110', 'paper_roll_80',
+    'android_tap_to_pay', 'tablet_idea_tab_pro', 'tablet_ipad_11', 'tablet_galaxy_tab_a11_plus',
+    'network_install_service'
+  ];
   var CASE_VARIANTS = ['red_impulse', 'mint_current', 'sage_calm', 'sun_spark', 'lagoon_breeze', 'electric_blue'];
   var DELIVERY_METHODS = ['dpd', 'pickup'];
 
@@ -63,6 +70,7 @@
   }
 
   var api = {
+    CART_IDS: CART_IDS,
     deliveryMethod: deliveryMethod,
     parseCartHandoff: parseCartHandoff,
     serializeCartHandoff: serializeCartHandoff
