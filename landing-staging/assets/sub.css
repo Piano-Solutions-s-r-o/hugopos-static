@@ -1,4 +1,4 @@
-/* Hugo landing — shared styles for content sub-pages (/srovnani, /cenik).
+/* Hugo landing — shared styles for content sub-pages (/srovnani, /cenove-srovnani).
    Mirrors the tokens, nav, buttons and the "vs-board" table look of the main
    page (index.html) so the sub-pages read as the same site. HUGO-1828. */
 :root{
