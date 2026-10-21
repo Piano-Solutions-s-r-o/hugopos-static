@@ -7,10 +7,12 @@
   // set — the printer was invisible on the storefront for the same class of reason
   // (HUGO-1583). The 0 Kč lines that ride along (`terminal_case`, the tablet stands) are
   // deliberately absent: each side re-derives them from the terminal / tablet (HUGO-2182).
+  // The withdrawn Lenovo is absent too (HUGO-2252): a localStorage line for it is dropped, and a
+  // stale handoff or ?cart= link that names it is refused whole, like any unknown id.
   var CART_IDS = [
     'pax_a920', 'belt_holster', 'terminal_case_extra', 'charging_base_a920',
     'printer_zj5809', 'paper_roll_57', 'printer_rp110', 'paper_roll_80',
-    'android_tap_to_pay', 'tablet_idea_tab_pro', 'tablet_ipad_11', 'tablet_galaxy_tab_a11_plus',
+    'android_tap_to_pay', 'tablet_ipad_11', 'tablet_galaxy_tab_a11_plus',
     'network_install_service'
   ];
   var CASE_VARIANTS = ['red_impulse', 'mint_current', 'sage_calm', 'sun_spark', 'lagoon_breeze', 'electric_blue'];
