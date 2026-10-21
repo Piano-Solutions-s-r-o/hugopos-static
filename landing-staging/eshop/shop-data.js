@@ -69,10 +69,13 @@
   };
   // HUGO-2182 — the grid is grouped like the Admin shop (Admin/src/pages/shop/catalogue.js
   // PRODUCT_SECTIONS). The cards in index.html follow this order exactly (test-pinned).
+  // HUGO-2252 — the Lenovo (`tablet_idea_tab_pro`) is temporarily withdrawn: no card, no cart
+  // line (shop-handoff.js), and the server refuses it. Its product entry above stays, so
+  // selling it again means putting it back here, in index.html and in CART_IDS.
   var PRODUCT_SECTIONS = [
     { id: 'terminal', productIds: ['pax_a920', 'terminal_case', 'belt_holster', 'charging_base_a920'] },
     { id: 'printers', productIds: ['printer_zj5809', 'paper_roll_57', 'printer_rp110', 'paper_roll_80'] },
-    { id: 'mobile', productIds: ['android_tap_to_pay', 'tablet_idea_tab_pro', 'tablet_ipad_11', 'tablet_galaxy_tab_a11_plus'] },
+    { id: 'mobile', productIds: ['android_tap_to_pay', 'tablet_ipad_11', 'tablet_galaxy_tab_a11_plus'] },
     { id: 'installation', productIds: ['network_install_service'] }
   ];
   var productOrder = PRODUCT_SECTIONS.reduce(function (ids, section) { return ids.concat(section.productIds); }, []);
