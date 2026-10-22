@@ -122,7 +122,8 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .tbl .is-hugo{ background:var(--hl); font-weight:700; color:var(--ink); }
 .tbl thead th.is-hugo{ background:var(--yellow); color:var(--ink); }
 .tbl td{ min-width:120px; }
-.tbl td small{ display:block; color:var(--muted); font-weight:400; font-size:12.5px; margin-top:3px; }
+.tbl td small, .tbl tbody th small{ display:block; color:var(--muted); font-weight:400; font-size:12.5px; margin-top:3px; }
+.tbl tbody th small{ white-space:normal; max-width:220px; }
 .tbl .yes{ color:var(--green); font-weight:700; }
 .tbl .no{ color:var(--red); font-weight:700; }
 .tbl-hint{ display:none; font-size:13px; color:var(--muted); margin:10px 2px 0; }
