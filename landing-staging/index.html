@@ -1762,6 +1762,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tc-grid{ display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 56px; align-items: center; }
   .tc-copy{ margin-bottom: 0; }
   .tc-note{ margin: 18px 0 26px; color: var(--muted); font-size: 15px; font-weight: 600; }
+  .tc-more{ margin: -12px 0 26px; font-size: 15px; }
   .tc-stage{ display: grid; justify-items: center; gap: 22px; overflow: hidden; padding: 24px 12px; width: 100%; }
   .tc-imgs{ position: relative; width: min(460px, 82vw); aspect-ratio: 1110 / 518; }
   .tc-imgs img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;
@@ -1782,6 +1783,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .tc-copy .lead{ font-size: 16px; }
     .tc-note{ margin: 10px 0 0; }
     .tc-cta{ display: none; }
+    /* The pinned phone layout has no height to spare; the FAQ and footer link there instead. */
+    .tc-more{ display: none; }
     /* Narrow screens: start at the top (never push the heading above the clipped pin)
        and size the photo from the height left, so the swatches stay above the fixed
        mobile CTA bar (~76 px) even on a 553 px tall phone. */
@@ -2015,6 +2018,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>Sedí k baru.<br/><em>I k tvému vkusu.</em></h2>
         <p class="lead">Terminál Hugo 3&nbsp;v&nbsp;1 je PAX A920 Pro: pokladna, platební terminál a tiskárna účtenek v jednom, s 5,5″ displejem a 4G. Obal má šest barev. Vyber tu, která ladí s podnikem. Nebo s náladou obsluhy.</p>
         <p class="tc-note">Jeden obal je v ceně terminálu. Skladem je Rudý impuls, další barvy naskladňujeme.</p>
+        <p class="tc-more"><a class="faq-link" href="/hardware/">Parametry terminálu a příslušenství</a></p>
       </div>
       <div class="tc-stage">
         <div class="tc-imgs" id="tcImgs"></div>
@@ -2421,7 +2425,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </details>
       <details class="faq-item">
         <summary><span class="q">Musím kupovat hardware?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">Nemusíš, ale doporučujeme terminál Hugo 3&nbsp;v&nbsp;1 (PAX A920 Pro): pokladna, platební terminál a tiskárna účtenek v jednom zařízení za 4 900 Kč bez DPH jednorázově. Na pokladní zařízení se navíc připravuje daňový bonus 5 000 Kč. Hugo poběží i na iPhonu, Androidu nebo tabletu, který už máš, a připojit můžeš i vlastní tiskárnu účtenek a pokladní zásuvku.</div>
+        <div class="a">Nemusíš, ale doporučujeme terminál Hugo 3&nbsp;v&nbsp;1 (PAX A920 Pro): pokladna, platební terminál a tiskárna účtenek v jednom zařízení za 4 900 Kč bez DPH jednorázově. Na pokladní zařízení se navíc připravuje daňový bonus 5 000 Kč. Hugo poběží i na iPhonu, Androidu nebo tabletu, který už máš, a připojit můžeš i vlastní tiskárnu účtenek a pokladní zásuvku. <a class="faq-link" href="/hardware/">Terminál a příslušenství</a></div>
       </details>
       <details class="faq-item">
         <summary><span class="q">Kdy dostanu peníze z karet?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
@@ -2506,6 +2510,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#product">Zařízení</a>
         <a href="#brain">AI &amp; Brain</a>
         <a href="/jak-zacit/">Jak začít</a>
+        <a href="/hardware/">Hardware</a>
         <a href="#pricing">Ceník</a>
       </div>
       <div class="foot-col">

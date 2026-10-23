@@ -1762,6 +1762,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tc-grid{ display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 56px; align-items: center; }
   .tc-copy{ margin-bottom: 0; }
   .tc-note{ margin: 18px 0 26px; color: var(--muted); font-size: 15px; font-weight: 600; }
+  .tc-more{ margin: -12px 0 26px; font-size: 15px; }
   .tc-stage{ display: grid; justify-items: center; gap: 22px; overflow: hidden; padding: 24px 12px; width: 100%; }
   .tc-imgs{ position: relative; width: min(460px, 82vw); aspect-ratio: 1110 / 518; }
   .tc-imgs img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;
@@ -1782,6 +1783,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .tc-copy .lead{ font-size: 16px; }
     .tc-note{ margin: 10px 0 0; }
     .tc-cta{ display: none; }
+    /* The pinned phone layout has no height to spare; the FAQ and footer link there instead. */
+    .tc-more{ display: none; }
     /* Narrow screens: start at the top (never push the heading above the clipped pin)
        and size the photo from the height left, so the swatches stay above the fixed
        mobile CTA bar (~76 px) even on a 553 px tall phone. */
@@ -2019,6 +2022,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>Fits your bar.<br/><em>And your taste.</em></h2>
         <p class="lead">The Hugo 3-in-1 terminal is a PAX A920 Pro: till, card terminal and receipt printer in one, with a 5.5″ screen and 4G. The case comes in six colours &mdash; pick the one that matches your place, or your staff&rsquo;s mood.</p>
         <p class="tc-note">One case is included with the terminal. Red Impulse is in stock, the other colours are on their way.</p>
+        <p class="tc-more"><a class="faq-link" href="/en/hardware/">Terminal specs and accessories</a></p>
       </div>
       <div class="tc-stage">
         <div class="tc-imgs" id="tcImgs"></div>
@@ -2452,7 +2456,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </details>
       <details class="faq-item">
         <summary><span class="q">Do I need to buy hardware?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">You don&rsquo;t have to, but we recommend the Hugo 3-in-1 terminal (PAX A920 Pro): till, card terminal and receipt printer in one device for 4 900 Kč excl. VAT, one-off. A 5 000 Kč tax bonus for POS devices is also being prepared. Hugo also runs on the iPhone, Android or tablet you already own, and you can plug in your own receipt printer and cash drawer.</div>
+        <div class="a">You don&rsquo;t have to, but we recommend the Hugo 3-in-1 terminal (PAX A920 Pro): till, card terminal and receipt printer in one device for 4 900 Kč excl. VAT, one-off. A 5 000 Kč tax bonus for POS devices is also being prepared. Hugo also runs on the iPhone, Android or tablet you already own, and you can plug in your own receipt printer and cash drawer. <a class="faq-link" href="/en/hardware/">Terminal and accessories</a></div>
       </details>
       <details class="faq-item">
         <summary><span class="q">When do I get my card money?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
@@ -2543,6 +2547,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#product">Devices</a>
         <a href="#brain">AI &amp; Brain</a>
         <a href="/en/getting-started/">How to start</a>
+        <a href="/en/hardware/">Hardware</a>
         <a href="#pricing">Pricing</a>
       </div>
       <div class="foot-col">

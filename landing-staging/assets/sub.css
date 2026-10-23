@@ -124,6 +124,7 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .tbl td{ min-width:120px; }
 .tbl td small, .tbl tbody th small{ display:block; color:var(--muted); font-weight:400; font-size:12.5px; margin-top:3px; }
 .tbl tbody th small{ white-space:normal; max-width:220px; }
+.tbl td .tbl-link{ display:block; margin-top:6px; font-size:12.5px; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
 .tbl .yes{ color:var(--green); font-weight:700; }
 .tbl .no{ color:var(--red); font-weight:700; }
 .tbl-hint{ display:none; font-size:13px; color:var(--muted); margin:10px 2px 0; }
