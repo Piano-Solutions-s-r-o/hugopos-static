@@ -112,7 +112,7 @@
     return (lines || []).reduce(function (sum, line) { return sum + (isHourly(line.id) ? 1 : (line.qty || 1)); }, 0);
   }
 
-  // "3 210 Kč / hod" — the amount of a product sold per hour. `t` is the page translator.
+  // "3 900 Kč / hod" — the amount of a product sold per hour. `t` is the page translator.
   function perHour(t, amount) {
     return t('perHour').replace('{amount}', amount);
   }
