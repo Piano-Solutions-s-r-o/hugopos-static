@@ -100,7 +100,7 @@
     });
   }
 
-  // HUGO-2182 — installation is sold in whole hours: the line's quantity IS the hours.
+  // HUGO-2182/2274 — installation is sold as 2-hour packages: the line's quantity is the number of packages.
   function isHourly(id) {
     return productConfig(id).unit === 'hour';
   }
@@ -112,7 +112,7 @@
     return (lines || []).reduce(function (sum, line) { return sum + (isHourly(line.id) ? 1 : (line.qty || 1)); }, 0);
   }
 
-  // "3 900 Kč / hod" — the amount of a product sold per hour. `t` is the page translator.
+  // "3 900 Kč / 2 hod" — the amount of a product sold per package of hours. `t` is the page translator.
   function perHour(t, amount) {
     return t('perHour').replace('{amount}', amount);
   }
@@ -154,7 +154,7 @@
     if (product.includedWith) return times + money(product.price);
     if (isZeroPriced(product)) return t('free');
     if (isHourly(line.id)) {
-      // Hours × the hourly rate, never a total the client computes (Stripe owns the charge;
+      // Packages × the package price, never a total the client computes (Stripe owns the charge;
       // the Admin shop shows the same).
       return t('hoursLine')
         .replace('{hours}', String(line.qty))

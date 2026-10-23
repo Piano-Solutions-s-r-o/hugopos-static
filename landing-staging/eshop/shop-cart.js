@@ -115,14 +115,15 @@
     scrim.hidden = true;
   }
 
-  // HUGO-2182 — whole hours, 1–99: the same integer rule the server applies to every line.
+  // HUGO-2182/2274 — whole 2-hour packages, 1–99 (the same integer rule the server applies to
+  // every line); the stepper reads the hours of work, packages × 2.
   function hoursStepper(line) {
     var step = function (delta, label, disabled) {
       return '<button type="button" data-qty-step="' + delta + '" data-qty-key="' + line.key + '" aria-label="' + t(label) + '"' + (disabled ? ' disabled' : '') + '>' + (delta < 0 ? '−' : '+') + '</button>';
     };
     return '<div class="qty-stepper" role="group" aria-label="' + t('hoursLabel') + '">'
       + step(-1, 'removeHour', line.qty <= 1)
-      + '<output aria-live="polite">' + t('hoursValue').replace('{hours}', String(line.qty)) + '</output>'
+      + '<output aria-live="polite">' + t('hoursValue').replace('{hours}', String(line.qty * data.HOURS_PER_PACKAGE)) + '</output>'
       + step(1, 'addHour', line.qty >= data.MAX_QUANTITY) + '</div>';
   }
 

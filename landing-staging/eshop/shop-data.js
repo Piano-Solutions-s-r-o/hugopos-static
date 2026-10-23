@@ -64,7 +64,8 @@
     tablet_idea_tab_pro_stand: product('tablet_idea_tab_pro_stand', 'tablet-stand-swivel.webp', { includedWith: 'tablet_idea_tab_pro', label: 'standSwivelIncluded', gallery: SWIVEL_STAND_PHOTOS }),
     tablet_ipad_11_stand: product('tablet_ipad_11_stand', 'tablet-stand-swivel.webp', { includedWith: 'tablet_ipad_11', label: 'standSwivelIncluded', gallery: SWIVEL_STAND_PHOTOS }),
     tablet_galaxy_tab_a11_plus_stand: product('tablet_galaxy_tab_a11_plus_stand', 'tablet-stand-aluminium.webp', { includedWith: 'tablet_galaxy_tab_a11_plus', label: 'standUgreenIncluded', gallery: UGREEN_STAND_PHOTOS }),
-    // A service: quantity = whole hours (1–99), priced per hour by the server catalogue.
+    // A service sold as a 2-hour package (HUGO-2274): quantity = packages (1–99), the server
+    // catalogue prices one package; the stepper shows the hours of work (packages × 2).
     network_install_service: product('network_install_service', 'network-install-service.svg', { unit: 'hour' })
   };
   // HUGO-2182 — the grid is grouped like the Admin shop (Admin/src/pages/shop/catalogue.js
@@ -92,6 +93,7 @@
   var DEFAULT_CASE_VARIANT = 'red_impulse';
   var CART_STORAGE_KEY = 'hugo-eshop-cart-v1';
   var MAX_QUANTITY = 99;
+  var HOURS_PER_PACKAGE = 2;
 
   var api = {
     ASSET_ROOT: ASSET_ROOT,
@@ -99,6 +101,7 @@
     caseVariants: caseVariants,
     DEFAULT_CASE_VARIANT: DEFAULT_CASE_VARIANT,
     MAX_QUANTITY: MAX_QUANTITY,
+    HOURS_PER_PACKAGE: HOURS_PER_PACKAGE,
     MEAL_VOUCHER_PRODUCT_IDS: MEAL_VOUCHER_PRODUCT_IDS,
     NON_PHYSICAL_IDS: NON_PHYSICAL_IDS,
     PRODUCT_SECTIONS: PRODUCT_SECTIONS,
