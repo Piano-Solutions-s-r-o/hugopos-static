@@ -124,10 +124,26 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .tbl td{ min-width:120px; }
 .tbl td small, .tbl tbody th small{ display:block; color:var(--muted); font-weight:400; font-size:12.5px; margin-top:3px; }
 .tbl tbody th small{ white-space:normal; max-width:220px; }
+.tbl td .tbl-link{ display:block; margin-top:6px; font-size:12.5px; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
 .tbl .yes{ color:var(--green); font-weight:700; }
 .tbl .no{ color:var(--red); font-weight:700; }
 .tbl-hint{ display:none; font-size:13px; color:var(--muted); margin:10px 2px 0; }
 @media (max-width:900px){ .tbl-hint{ display:block; } }
+/* HUGO-2267 — below 900 px the comparison table (/srovnani/: a column per provider, Hugo
+   second) scrolls sideways under its sticky label column. Left nowrap, that column took 318
+   of 330 px on a 390 px phone and hid the Hugo column under it, so here it gets a fixed
+   narrow width and its labels wrap. The pricing table (/cenove-srovnani/) is left alone: its
+   labels are short provider names and Hugo is a row, so a wider label column only cost it room. */
+@media (max-width:900px){
+  .tbl-compare tbody th{ white-space:normal; overflow-wrap:anywhere; width:150px; min-width:150px; max-width:150px; }
+  .tbl-compare tbody th small{ max-width:none; }
+}
+@media (max-width:560px){
+  .tbl-compare{ font-size:14px; }
+  .tbl-compare th, .tbl-compare td{ padding:12px 10px; }
+  .tbl-compare tbody th{ width:112px; min-width:112px; max-width:112px; font-size:13.5px; }
+  .tbl-compare td{ min-width:108px; }
+}
 .note{ font-size:13px; color:var(--muted); margin-top:14px; max-width:90ch; }
 
 /* ---------- cards ---------- */
@@ -210,3 +226,10 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .comparison-methodology h3{ font-size:14px; margin-top:16px; }
 .comparison-methodology a,.note a{ text-decoration:underline; text-underline-offset:3px; }
 .comparison-sources{ display:flex; flex-wrap:wrap; gap:6px 22px; padding-left:18px; margin:8px 0 0; }
+
+/* HUGO-2279: prominent "we do more" band on the pricing page */
+.services-band{ display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; padding:34px 36px; border-radius:24px; background:var(--yellow); color:var(--ink); }
+.services-band h2{ font-weight:800; font-size:clamp(24px,3vw,36px); line-height:1.05; max-width:22ch; }
+.services-band h2 em{ font-style:normal; }
+.services-band p{ margin-top:10px; max-width:56ch; font-size:17px; }
+@media (max-width:640px){ .services-band{ padding:26px 22px; } }

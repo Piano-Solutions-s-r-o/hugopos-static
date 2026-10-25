@@ -11,9 +11,9 @@
      tab session and sends nothing to analytics.
    - Measurement: GA4 user property `ab_variant` (gtag `set` through the GTM
      dataLayer) plus a dataLayer event `ab_variant`; every link to the Admin
-     sign-in carries `lv=<value>`, which Admin keeps as `landing_variant` so a
+     sign-in or its /eet-check carries `lv=<value>`, which Admin keeps as `landing_variant` so a
      finished registration is attributed to the arm (Admin/src/lib/analytics.js).
-   - While a non-default variant is swapped in, `ab-pending` hides the four hero
+   - While a non-default variant is swapped in, `ab-pending` hides the three hero
      slots so the prerendered micro copy never flashes (hugo-variants.js clears it;
      the timeout below is the safety net).
    ============================================================ */
@@ -64,15 +64,41 @@
     dl.push({ event: 'ab_variant', ab_variant: measured });
   }
 
+  /* HUGO-2166 — the website's Admin links and the EET form go to the Admin of this
+     environment: staging.hugopos.eu → staging.admin, localhost → the local Admin dev
+     server (`pnpm --dir Admin dev`, port 4470); production keeps admin.hugopos.eu.
+     The same mapping as the e-shop's `adminBaseFor` (eshop/shop-rules.js), which
+     does not load this script — keep the two identical. */
+  var PROD_ADMIN = 'https://admin.hugopos.eu';
+  function adminOrigin() {
+    var host = location.hostname;
+    if (host === 'staging.hugopos.eu') return 'https://staging.admin.hugopos.eu';
+    if (host === 'localhost' || host === '127.0.0.1') return 'http://' + host + ':4470';
+    return PROD_ADMIN;
+  }
+
   function decorate() {
-    if (!measured) return;
-    var links = document.querySelectorAll('a[href^="https://admin.hugopos.eu/login"]');
+    var origin = adminOrigin();
+    /* Sign-in links and, since HUGO-2166, „Začít zdarma" (Admin's /eet-check). */
+    var links = document.querySelectorAll('a[href^="' + PROD_ADMIN + '/login"], a[href^="' + PROD_ADMIN + '/eet-check"]');
     for (var i = 0; i < links.length; i++) {
       try {
         var u = new URL(links[i].href);
-        u.searchParams.set('lv', measured);
-        links[i].href = u.toString();
+        if (measured) u.searchParams.set('lv', measured);
+        links[i].href = origin + u.pathname + u.search + u.hash;
       } catch (e) {}
+    }
+    /* The hero's „Týká se tě EET?" form: the same Admin, and the arm as a hidden
+       field (Admin reads `lv` on any page). */
+    var forms = document.querySelectorAll('form[data-carries-lv]');
+    for (var j = 0; j < forms.length; j++) {
+      forms[j].action = origin + '/eet-check';
+      if (!measured) continue;
+      var field = forms[j].querySelector('input[name="lv"]') || document.createElement('input');
+      field.type = 'hidden';
+      field.name = 'lv';
+      field.value = measured;
+      forms[j].appendChild(field);
     }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', decorate);

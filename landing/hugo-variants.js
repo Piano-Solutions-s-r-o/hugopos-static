@@ -19,8 +19,7 @@
   var SLOTS = {
     eyebrow: '.hero-eyebrow',
     h1: '.hero h1',
-    lead: '.hero p.lead',
-    cta: '.hero-ctas .btn-primary'
+    lead: '.hero p.lead'
   };
 
   function strings() { return window.HUGO_T || {}; }

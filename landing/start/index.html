@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- HUGO-1848: hugopos.eu/start — the short registration link sales sends with an offer.
-     It forwards to the same entry every landing CTA uses (Admin /login?start=1, HUGO-616),
-     which mints a fresh PKCE challenge per visit. Never link a copied sso.hugopos.eu/auth URL:
+     It forwards to Admin's sign-up entry (/login?start=1, HUGO-616; the website's „Začít zdarma"
+     reaches it only after /eet-check since HUGO-2166), which mints a fresh PKCE challenge per visit. Never link a copied sso.hugopos.eu/auth URL:
      its code_challenge belongs to the browser that started it, so the recipient's sign-in
      fails at /auth/callback. signup=1 (HUGO-1850) makes Admin ask UOA for prompt=create, so the
      page opens on account creation. The whole query is forwarded (start=1 always forced), so every

@@ -80,10 +80,10 @@
         imageLabel: 'Zobrazit detail tabletu Samsung Galaxy Tab A11+', imageAlt: 'Stříbrný tablet Samsung Galaxy Tab A11+ zepředu a zezadu'
       },
       network_install_service: {
-        kicker: 'Služba', title: 'Instalace od nás', description: 'Zapojíme a nastavíme pokladnu, tiskárny a síť. Platíš za každou celou hodinu.',
-        lead: 'Přijedeme, zapojíme a nastavíme pokladnu, tiskárny i síť, aby všechno fungovalo od prvního dne. Platíš předem za každou celou hodinu práce na místě; počet hodin zvolíš v košíku.',
-        specs: [['Co zapojíme', 'Pokladnu, síťové tiskárny a router'], ['Co nastavíme', 'Tiskárny a pokladnu v Hugu'], ['Cena', 'Za každou celou hodinu práce na místě, předem'], ['Doprava', 'Žádná, nic neposíláme']],
-        imageLabel: 'Zobrazit detail instalace od nás', imageAlt: 'Ilustrace instalace od nás — hodina práce na místě'
+        kicker: 'Služba', title: 'Instalace od nás', description: 'Zapojíme a nastavíme pokladnu, tiskárny a síť. Základní balíček jsou 2 hodiny práce na místě; cestovné v ceně do 50 km od centra Prahy nebo Brna.',
+        lead: 'Přijedeme, zapojíme a nastavíme pokladnu, tiskárny i síť, aby všechno fungovalo od prvního dne. Platíš předem základní balíček: 2 hodiny práce na místě; v košíku zvolíš počet balíčků.',
+        specs: [['Co zapojíme', 'Pokladnu, síťové tiskárny a router'], ['Co nastavíme', 'Tiskárny a pokladnu v Hugu'], ['Cena', 'Základní balíček: 2 hodiny práce na místě, předem'], ['Cestovné', 'V ceně do 50 km od centra Prahy nebo Brna, dál dle ceníku (15 Kč za km tam i zpět)'], ['Doprava', 'Žádná, nic neposíláme']],
+        imageLabel: 'Zobrazit detail instalace od nás', imageAlt: 'Ilustrace instalace od nás — práce technika na místě'
       }
     },
     en: {
@@ -160,10 +160,10 @@
         imageLabel: 'View Samsung Galaxy Tab A11+ tablet details', imageAlt: 'Silver Samsung Galaxy Tab A11+ tablet, front and back'
       },
       network_install_service: {
-        kicker: 'Service', title: 'Installation by us', description: 'We connect and set up your till, printers and network. You pay for each whole hour.',
-        lead: 'We come over, connect and set up your till, printers and network so everything works from day one. You pay up front for each whole hour of work on site; choose the number of hours in your bag.',
-        specs: [['What we connect', 'Till, network printers and router'], ['What we set up', 'Printers and till in Hugo'], ['Price', 'Per whole hour of work on site, paid up front'], ['Delivery', 'None, nothing is shipped']],
-        imageLabel: 'View installation details', imageAlt: 'Illustration of installation by us — an hour of work on site'
+        kicker: 'Service', title: 'Installation by us', description: 'We connect and set up your till, printers and network. The basic package is 2 hours of work on site; travel is included within 50 km of central Prague or Brno.',
+        lead: 'We come over, connect and set up your till, printers and network so everything works from day one. You pay up front for the basic package: 2 hours of work on site; choose the number of packages in your bag.',
+        specs: [['What we connect', 'Till, network printers and router'], ['What we set up', 'Printers and till in Hugo'], ['Price', 'Basic package: 2 hours of work on site, paid up front'], ['Travel', 'Included within 50 km of central Prague or Brno, beyond that per the price list (CZK 15 per km, both ways)'], ['Delivery', 'None, nothing is shipped']],
+        imageLabel: 'View installation details', imageAlt: 'Illustration of installation by us — a technician at work on site'
       }
     }
   };

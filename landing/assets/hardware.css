@@ -1,0 +1,150 @@
+/* /hardware (HUGO-2207). Builds on sub.css tokens. The one loud element is the hero receipt:
+   thermal paper "printed" by the terminal, listing what the 3-in-1 replaces. Everything else
+   stays quiet: big type, one shelf for the extras, hairlines instead of a card per product. */
+.hw-h2{ font-weight:800; font-size:clamp(30px,3.8vw,48px); line-height:1.02; letter-spacing:-.03em; max-width:20ch; }
+.hw-head{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:12px 48px; align-items:end; margin-bottom:34px; }
+.hw-head .lead{ max-width:44ch; }
+
+/* ---------- hero ---------- */
+.hw-hero{ padding:56px 0 24px; overflow:hidden; }
+.hw-hero-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px; align-items:center; }
+.hw-hero h1{ font-weight:800; font-size:clamp(46px,6.6vw,92px); line-height:.94; letter-spacing:-.04em; max-width:10ch; }
+.hw-nb{ white-space:nowrap; }
+.hw-hero h1 em{ display:block; font-style:normal; font-weight:500; font-size:.36em; letter-spacing:-.01em; line-height:1.2;
+  color:var(--muted); margin-top:.5em; }
+.hw-hero .lead{ margin-top:26px; max-width:40ch; }
+.hw-quip{ margin-top:18px; max-width:40ch; font-weight:600; color:var(--ink); padding-left:14px; border-left:4px solid var(--yellow-deep); }
+.hw-hero .ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+
+.hw-stage{ position:relative; height:clamp(460px,48vw,640px); }
+.hw-stage::after{ /* floor shadow under the terminal */
+  content:""; position:absolute; right:12%; bottom:2%; width:52%; height:7%;
+  background:radial-gradient(closest-side, rgba(20,17,13,.22), transparent); z-index:0; }
+.hw-hero-img{ position:absolute; margin:0; right:6%; top:0; height:96%; z-index:1; }
+.hw-hero-img img{ display:block; height:100%; width:auto; transform:rotate(7deg); transform-origin:50% 90%; }
+
+.hw-receipt{ position:absolute; left:2%; bottom:6%; width:min(300px,62%); z-index:2; transform:rotate(-4deg);
+  filter:drop-shadow(0 18px 22px rgba(20,17,13,.16)) drop-shadow(0 2px 3px rgba(20,17,13,.12)); }
+.hw-paper{ --z:7px; background:#fff; color:var(--ink); padding:calc(var(--z) + 20px) 22px calc(var(--z) + 18px);
+  font-size:14px; line-height:1.45; font-variant-numeric:tabular-nums;
+  -webkit-mask:
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(2*var(--z)) 51% repeat-x,
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / calc(2*var(--z)) 51% repeat-x;
+          mask:
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(2*var(--z)) 51% repeat-x,
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / calc(2*var(--z)) 51% repeat-x; }
+.hw-rc-brand{ display:flex; align-items:center; justify-content:center; gap:7px; font-family:var(--display); font-weight:800; font-size:19px; letter-spacing:-.02em; }
+.hw-rc-brand img{ border-radius:6px; }
+.hw-rc-title{ text-align:center; color:var(--muted); font-size:13px; margin-top:2px; padding-bottom:12px; border-bottom:1.5px dashed rgba(20,17,13,.35); }
+.hw-rc-lines{ list-style:none; margin:0; padding:10px 0; display:grid; gap:3px; border-bottom:1.5px dashed rgba(20,17,13,.35); }
+.hw-rc-lines li{ display:flex; align-items:baseline; gap:8px; }
+.hw-rc-lines .q{ color:var(--muted); min-width:2ch; }
+.hw-rc-lines .lead-dots .n{ flex:1; display:flex; align-items:baseline; gap:6px; }
+.hw-rc-lines .lead-dots .n::after{ content:""; flex:1; border-bottom:1.5px dotted rgba(20,17,13,.4); transform:translateY(-4px); }
+.hw-rc-lines .v{ font-weight:600; }
+.hw-rc-zero .v{ font-family:var(--display); font-weight:800; }
+.hw-price{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-top:12px; }
+.hw-rc-total{ font-weight:700; }
+.hw-price b{ font-family:var(--display); font-weight:800; font-size:30px; letter-spacing:-.02em; line-height:1.1;
+  background:linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 92%, transparent 92%); padding:0 .12em; }
+.hw-rc-terms{ text-align:right; color:var(--muted); font-size:13px; }
+.hw-rc-foot{ margin-top:14px; padding-top:10px; border-top:1.5px dashed rgba(20,17,13,.35); text-align:center; font-size:12.5px; color:var(--muted); }
+
+/* The receipt prints once, in jerky thermal-printer steps. */
+@media (prefers-reduced-motion: no-preference){
+  .hw-paper{ animation:hw-print 1.5s steps(16, end) .35s both; }
+  @keyframes hw-print{ from{ clip-path:inset(0 0 100% 0); } to{ clip-path:inset(0 0 0 0); } }
+}
+
+/* ---------- at the table ---------- */
+.hw-flow{ list-style:none; margin:40px 0 0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; position:relative; }
+.hw-flow::before{ content:""; position:absolute; left:22px; right:22px; top:22px; border-top:2px dashed rgba(20,17,13,.3); }
+.hw-flow li{ position:relative; display:grid; gap:10px; align-content:start; }
+.hw-n{ width:44px; height:44px; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 6px var(--cream-2);
+  display:inline-flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800; font-size:19px; margin-bottom:8px; }
+.hw-flow h3{ font-size:24px; font-weight:800; letter-spacing:-.02em; }
+.hw-flow p{ color:var(--ink-2); max-width:34ch; }
+
+/* ---------- specs ---------- */
+.hw-specs-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:start; }
+.hw-photo-main{ margin:0; position:sticky; top:96px; }
+.hw-photo-main img{ display:block; width:100%; height:auto; border-radius:var(--radius-lg); }
+.hw-specs-copy .lead{ margin-top:14px; }
+.hw-specs{ margin:28px 0 0; border-top:1.5px solid var(--ink); }
+.hw-specs div{ display:grid; grid-template-columns:120px 1fr; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); }
+.hw-specs dt{ color:var(--muted); font-size:15px; }
+.hw-specs dd{ margin:0; font-weight:500; }
+.hw-photo-printer{ margin:30px 0 0; }
+.hw-photo-printer img{ display:block; width:100%; height:auto; background:#fff; border-radius:var(--radius-md); padding:14px 18px; }
+.hw-photo-printer figcaption{ margin-top:6px; font-weight:600; font-size:15px; }
+
+/* ---------- the shelf (extras, tablets) ---------- */
+.hw-shelf{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr);
+  background:#fff; border-radius:var(--radius-lg); overflow:hidden; }
+.hw-item{ padding:22px 24px 28px; display:grid; gap:8px; align-content:start; border-left:1px solid var(--line); }
+.hw-item:first-child{ border-left:0; }
+.hw-item-img{ height:170px; display:flex; align-items:center; justify-content:center; margin:0 0 10px; }
+.hw-item-img img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; border-radius:12px; }
+.hw-item h3{ font-size:20px; font-weight:800; letter-spacing:-.02em; line-height:1.15; }
+.hw-item p{ font-size:15px; color:var(--ink-2); }
+.hw-item .hw-acc-price{ color:var(--muted); font-size:14px; }
+.hw-acc-price b{ font-family:var(--display); font-weight:800; font-size:24px; letter-spacing:-.02em; color:var(--ink); }
+.hw-item .hw-acc-spec{ font-size:13.5px; color:var(--muted); }
+.hw-item .hw-included{ font-weight:600; color:var(--ink); }
+.hw-roll{ display:grid; gap:2px; padding-top:10px; border-top:1px dashed var(--line); }
+.hw-rolls h3 + .hw-roll{ border-top:0; padding-top:0; }
+.hw-item .hw-roll-name{ font-weight:600; color:var(--ink); }
+.hw-shelf-tablets{ grid-template-columns:repeat(2,1fr); }
+.hw-shelf-tablets .hw-item{ padding:28px 32px 32px; }
+.hw-shelf-tablets .hw-item-img{ height:260px; }
+.hw-note{ margin-top:18px; }
+
+/* ---------- own device ---------- */
+.hw-own{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px 56px; align-items:center; }
+.hw-big{ font-weight:800; font-size:clamp(48px,7vw,104px); line-height:.92; letter-spacing:-.045em; }
+.hw-own .lead{ max-width:46ch; }
+.hw-own-cta{ margin-top:24px; }
+
+.hw-cta-btns{ display:flex; gap:12px; flex-wrap:wrap; }
+.hw-on-dark{ color:#fff; border-color:rgba(255,255,255,.3); }
+.cta-band p a{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+
+@media (max-width:980px){
+  .hw-shelf{ grid-template-columns:repeat(2,1fr); }
+  .hw-item:nth-child(odd){ border-left:0; }
+  .hw-item:nth-child(n+3){ border-top:1px solid var(--line); }
+  .hw-specs-grid{ grid-template-columns:1fr; gap:32px; }
+  .hw-photo-main{ position:static; }
+}
+@media (max-width:860px){
+  .hw-hero{ padding-top:36px; }
+  .hw-hero-grid{ grid-template-columns:1fr; gap:8px; }
+  .hw-stage{ height:clamp(420px,110vw,560px); }
+  .hw-head, .hw-own{ grid-template-columns:1fr; }
+  .hw-flow{ grid-template-columns:1fr; gap:26px; padding-left:64px; }
+  .hw-flow::before{ left:21px; right:auto; top:8px; bottom:8px; border-top:0; border-left:2px dashed rgba(20,17,13,.3); }
+  .hw-flow .hw-n{ position:absolute; left:-64px; top:-4px; }
+}
+@media (max-width:560px){
+  .hw-shelf, .hw-shelf-tablets{ grid-template-columns:1fr; }
+  .hw-item{ border-left:0; }
+  .hw-item + .hw-item{ border-top:1px solid var(--line); }
+  .hw-shelf-tablets .hw-item{ padding:24px; }
+  .hw-shelf-tablets .hw-item-img{ height:200px; }
+  /* Phones: the receipt sits in the flow and sets the stage height, so however tall it
+     prints it can never spill up over the hero buttons; the terminal fills that height. */
+  .hw-stage{ height:auto; margin-top:18px; padding-bottom:18px; }
+  .hw-receipt{ position:relative; left:0; bottom:auto; width:58%; }
+  .hw-hero-img{ height:100%; }
+  .hw-paper{ font-size:12px; padding-left:14px; padding-right:14px; }
+  .hw-rc-brand{ font-size:16px; }
+  .hw-price b{ font-size:22px; }
+  .hw-hero-img{ right:-2%; }
+  .hw-specs div{ grid-template-columns:96px 1fr; gap:12px; }
+}
+@media (max-width:400px){
+  /* 320 px phones: the total would otherwise overflow the narrow receipt. */
+  .hw-receipt{ width:68%; }
+  .hw-price{ flex-wrap:wrap; gap:0 8px; }
+  .hw-price b{ font-size:20px; }
+}
