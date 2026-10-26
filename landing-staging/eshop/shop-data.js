@@ -16,7 +16,8 @@
     { id: 'sage_calm', color: '#58ad63', image: 'case-sage-calm.jpg', names: { cs: 'Šalvějový klid', en: 'Sage Calm' } },
     { id: 'sun_spark', color: '#f2ca28', image: 'case-sun-spark.jpg', names: { cs: 'Luční med', en: 'Meadow Honey' } },
     { id: 'lagoon_breeze', color: '#22a9cf', image: 'case-lagoon-breeze.jpg', names: { cs: 'Laguna', en: 'Lagoon' } },
-    { id: 'electric_blue', color: '#315f91', image: 'case-electric-blue.jpg', names: { cs: 'Hluboký oceán', en: 'Deep Ocean' } }
+    { id: 'electric_blue', color: '#315f91', image: 'case-electric-blue.jpg', names: { cs: 'Hluboký oceán', en: 'Deep Ocean' } },
+    { id: 'midnight_black', color: '#1f1f1f', image: 'case-midnight-black.jpg', names: { cs: 'Půlnoční černá', en: 'Midnight Black' } }
   ];
   function product(id, image, extra) {
     var entry = { id: id, image: ASSET_ROOT + image, gallery: [ASSET_ROOT + image], available: false, price: null };
@@ -37,18 +38,18 @@
       gallery: [ASSET_ROOT + 'case-sun-spark.jpg', ASSET_ROOT + 'case-red-impulse.jpg', ASSET_ROOT + 'case-electric-blue.jpg']
     }),
     terminal_case_extra: product('terminal_case_extra', 'case-sun-spark.jpg'),
-    belt_holster: product('belt_holster', 'belt-holster-temp.jpg', {
-      gallery: [ASSET_ROOT + 'belt-holster-temp.jpg', ASSET_ROOT + 'terminal-cafe-temp.jpg']
+    belt_holster: product('belt_holster', 'belt-holster.webp', {
+      gallery: [ASSET_ROOT + 'belt-holster.webp', ASSET_ROOT + 'belt-holster-hip.webp']
     }),
     charging_base_a920: product('charging_base_a920', 'charging-base-a920.webp'),
     printer_zj5809: product('printer_zj5809', 'printer-zj5809.jpg'),
-    paper_roll_57: product('paper_roll_57', 'paper-roll-57.svg'),
+    paper_roll_57: product('paper_roll_57', 'paper-roll-57.webp'),
     printer_rp110: product('printer_rp110', 'printer-rp110.webp'),
-    paper_roll_80: product('paper_roll_80', 'paper-roll-80.svg'),
+    paper_roll_80: product('paper_roll_80', 'paper-roll-80.webp'),
     // A free (0 Kč) software feature sold through the normal cart → checkout → Stripe
     // pipeline like every other product: its own catalogue entry, its own Stripe price
     // (tagged non-physical server-side), just never fulfilled as hardware.
-    android_tap_to_pay: product('android_tap_to_pay', 'android-tap-to-pay.svg'),
+    android_tap_to_pay: product('android_tap_to_pay', 'android-tap-to-pay.webp'),
     // HUGO-2182 — a tablet is a bundle: the tablet line plus its own 0 Kč stand line at the
     // same quantity, mirroring `terminal_case` 1:1 (one stand SKU per tablet, server rule in
     // API/src/routes/eshop_public_cart.js). The Lenovo and the iPad come with the swivel
@@ -66,7 +67,7 @@
     tablet_galaxy_tab_a11_plus_stand: product('tablet_galaxy_tab_a11_plus_stand', 'tablet-stand-aluminium.webp', { includedWith: 'tablet_galaxy_tab_a11_plus', label: 'standUgreenIncluded', gallery: UGREEN_STAND_PHOTOS }),
     // A service sold as a 2-hour package (HUGO-2274): quantity = packages (1–99), the server
     // catalogue prices one package; the stepper shows the hours of work (packages × 2).
-    network_install_service: product('network_install_service', 'network-install-service.svg', { unit: 'hour' })
+    network_install_service: product('network_install_service', 'network-install-service.webp', { unit: 'hour' })
   };
   // HUGO-2182 — the grid is grouped like the Admin shop (Admin/src/pages/shop/catalogue.js
   // PRODUCT_SECTIONS). The cards in index.html follow this order exactly (test-pinned).
