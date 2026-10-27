@@ -42,26 +42,44 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// Vite emits content-hashed files under /assets/: new content means a new URL, so
+// those may be answered from the cache. Files from public/ (product photos, icons,
+// the manifest) keep their URL when they change, so they always ask the network
+// first and fall back to the cached copy only when offline (HUGO-2309).
+function isHashedBuildAsset(request) {
+  return new URL(request.url).pathname.startsWith('/assets/');
+}
+
+function fetchAndStore(event) {
+  return fetch(event.request).then((response) => {
+    if (!response || response.status !== 200 || response.type !== 'basic') {
+      return response;
+    }
+
+    const copy = response.clone();
+    event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy)));
+    return response;
+  });
+}
+
 self.addEventListener('fetch', (event) => {
   if (!isCacheableStaticRequest(event.request)) {
     return;
   }
 
+  if (isHashedBuildAsset(event.request)) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => cached || fetchAndStore(event)),
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cached) => {
+    fetchAndStore(event).catch((error) => caches.match(event.request).then((cached) => {
       if (cached) {
         return cached;
       }
-
-      return fetch(event.request).then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-
-        const copy = response.clone();
-        event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy)));
-        return response;
-      });
-    }),
+      throw error;
+    })),
   );
 });
