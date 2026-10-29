@@ -2,6 +2,13 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NC3PW2KC');</script>
+<!-- End Google Tag Manager -->
   <script>
     // HUGO-1820 — the public e-shop is hidden until an unclaimed purchase can reach the
     // warehouse on its own. Anyone arriving directly goes home; only Stripe's own return
@@ -26,6 +33,10 @@
   <link rel="stylesheet" href="shop.css">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC3PW2KC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="/" aria-label="Hugo — domů"><img src="../assets/hugo-icon.svg" alt="Hugo"><span>Hugo</span></a>
@@ -104,6 +115,7 @@
                 <button class="swatch" style="--swatch:#f2ca28" data-variant="sun_spark" data-image="case-sun-spark.jpg" data-name="Luční med" type="button" aria-label="Luční med" aria-checked="false" role="radio"></button>
                 <button class="swatch" style="--swatch:#22a9cf" data-variant="lagoon_breeze" data-image="case-lagoon-breeze.jpg" data-name="Laguna" type="button" aria-label="Laguna" aria-checked="false" role="radio"></button>
                 <button class="swatch" style="--swatch:#315f91" data-variant="electric_blue" data-image="case-electric-blue.jpg" data-name="Hluboký oceán" type="button" aria-label="Hluboký oceán" aria-checked="false" role="radio"></button>
+                <button class="swatch" style="--swatch:#1f1f1f" data-variant="midnight_black" data-image="case-midnight-black.jpg" data-name="Půlnoční černá" type="button" aria-label="Půlnoční černá" aria-checked="false" role="radio"></button>
                 <span class="swatch-name" aria-live="polite">Rudý impuls</span>
               </div>
               <p class="stock-note" aria-live="polite" hidden></p>
@@ -130,6 +142,7 @@
                 <button class="swatch" style="--swatch:#f2ca28" data-variant="sun_spark" data-image="case-sun-spark.jpg" data-name="Luční med" type="button" aria-label="Luční med" aria-checked="false" role="radio"></button>
                 <button class="swatch" style="--swatch:#22a9cf" data-variant="lagoon_breeze" data-image="case-lagoon-breeze.jpg" data-name="Laguna" type="button" aria-label="Laguna" aria-checked="false" role="radio"></button>
                 <button class="swatch" style="--swatch:#315f91" data-variant="electric_blue" data-image="case-electric-blue.jpg" data-name="Hluboký oceán" type="button" aria-label="Hluboký oceán" aria-checked="false" role="radio"></button>
+                <button class="swatch" style="--swatch:#1f1f1f" data-variant="midnight_black" data-image="case-midnight-black.jpg" data-name="Půlnoční černá" type="button" aria-label="Půlnoční černá" aria-checked="false" role="radio"></button>
                 <span class="swatch-name" aria-live="polite">Rudý impuls</span>
               </div>
               <p class="stock-note" aria-live="polite" hidden></p>
@@ -143,7 +156,7 @@
 
           <article class="product-card" data-product="belt_holster">
             <button class="product-open image-button" type="button" aria-label="Zobrazit detail koženého pouzdra">
-              <img src="../assets/eshop/belt-holster-temp.jpg" alt="Kožené pouzdro na pásek s platebním terminálem">
+              <img src="../assets/eshop/belt-holster.webp" alt="Kožené pouzdro na pásek s platebním terminálem">
             </button>
             <div class="product-copy">
               <p class="kicker">Accessories</p>
@@ -195,7 +208,7 @@
 
           <article class="product-card" data-product="paper_roll_57">
             <button class="product-open image-button" type="button" aria-label="Zobrazit detail kotoučků 57 mm">
-              <img src="../assets/eshop/paper-roll-57.svg" alt="Kotoučky termopapíru 57 mm do terminálu">
+              <img src="../assets/eshop/paper-roll-57.webp" alt="Kotoučky termopapíru 57 mm do terminálu">
             </button>
             <div class="product-copy">
               <p class="kicker">57 mm</p>
@@ -227,7 +240,7 @@
 
           <article class="product-card" data-product="paper_roll_80">
             <button class="product-open image-button" type="button" aria-label="Zobrazit detail kotoučků 80 mm">
-              <img src="../assets/eshop/paper-roll-80.svg" alt="Kotoučky termopapíru 80 mm do síťové tiskárny">
+              <img src="../assets/eshop/paper-roll-80.webp" alt="Kotoučky termopapíru 80 mm do síťové tiskárny">
             </button>
             <div class="product-copy">
               <p class="kicker">80 mm</p>
@@ -247,7 +260,7 @@
         <div class="product-grid">
           <article class="product-card" data-product="android_tap_to_pay">
             <button class="product-open image-button" type="button" aria-label="Zobrazit detail Android Tap-to-Pay">
-              <img src="../assets/eshop/android-tap-to-pay.svg" alt="Ilustrace bezkontaktní platby telefonem s NFC">
+              <img src="../assets/eshop/android-tap-to-pay.webp" alt="Ilustrace bezkontaktní platby telefonem s NFC">
             </button>
             <div class="product-copy">
               <p class="kicker">Android</p>
@@ -300,12 +313,12 @@
         <h3 class="shelf-title">Instalace</h3>
         <div class="product-grid">
           <article class="product-card is-wide" data-product="network_install_service">
-            <button class="product-open image-button" type="button" aria-label="Zobrazit detail instalace od nás">
-              <img src="../assets/eshop/network-install-service.svg" alt="Ilustrace instalace od nás — práce technika na místě">
+            <button class="product-open image-button" type="button" aria-label="Zobrazit detail základního instalačního balíčku">
+              <img src="../assets/eshop/network-install-service.webp" alt="Základní instalační balíček — technik zapojí a nastaví hardware na místě">
             </button>
             <div class="product-copy">
               <p class="kicker">Služba</p>
-              <h4>Instalace od nás</h4>
+              <h4>Základní instalační balíček (až 2 hod)</h4>
               <p class="product-desc">Zapojíme a nastavíme pokladnu, tiskárny a síť. Základní balíček jsou 2 hodiny práce na místě; cestovné v ceně do 50 km od centra Prahy nebo Brna.</p>
               <p class="price" data-price="network_install_service">Cena se načítá…</p>
               <div class="card-actions">
@@ -373,7 +386,7 @@
         <legend>Doprava</legend>
         <label><input name="delivery-method" type="radio" value="dpd" checked><span>Doprava DPD</span><strong data-delivery-price></strong></label>
         <label><input name="delivery-method" type="radio" value="pickup"><span>Osobní odběr</span><strong data-delivery-price></strong></label>
-        <p class="delivery-note" id="dpd-ships-within">Odesíláme do 2 pracovních dnů od zaplacení. Číslo zásilky DPD pak uvidíš v Hugo Adminu.</p>
+        <p class="delivery-note" id="dpd-ships-within">Odesíláme do 2 pracovních dnů od zaplacení. Spěcháš? Objednej v pracovní den do 10:30 a odešleme to ještě ten samý den. Číslo zásilky DPD pak uvidíš v Hugo Adminu.</p>
       </fieldset>
       <label class="terms"><input id="terms" type="checkbox"> <span>Souhlasím s <a href="/obchodni-podminky-eshop/" target="_blank" rel="noopener">obchodními podmínkami nákupu hardwaru</a>.</span></label>
       <p class="draft-note" id="checkout-note" hidden>E-shopové VOP jsou zatím pracovní návrh. Platbu zapneme až po jejich schválení.</p>

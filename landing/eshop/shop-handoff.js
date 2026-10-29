@@ -15,7 +15,7 @@
     'android_tap_to_pay', 'tablet_ipad_11', 'tablet_galaxy_tab_a11_plus',
     'network_install_service'
   ];
-  var CASE_VARIANTS = ['red_impulse', 'mint_current', 'sage_calm', 'sun_spark', 'lagoon_breeze', 'electric_blue'];
+  var CASE_VARIANTS = ['red_impulse', 'mint_current', 'sage_calm', 'sun_spark', 'lagoon_breeze', 'electric_blue', 'midnight_black'];
   var DELIVERY_METHODS = ['dpd', 'pickup'];
 
   function deliveryMethod(value) {
