@@ -25,3 +25,19 @@
   .start-check { display: none; }
   .start-action .btn { width: 100%; white-space: normal; }
 }
+
+/* Návody krok za krokem — čtení v HTML nebo PDF ke stažení (A5). */
+.start-guides { margin-top: 28px; padding: 28px; border-radius: 30px; background: #fff; }
+.start-guides h2 { margin: 14px 0 10px; font: 700 30px/1.15 var(--display); letter-spacing: -.025em; }
+.start-guides > p { margin: 0 0 22px; max-width: 640px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.guide-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 22px; background: var(--cream); }
+.guide-card img { display: block; width: 100%; height: 150px; object-fit: contain; mix-blend-mode: multiply; border-radius: 14px; }
+.guide-card h3 { margin: 0; font: 700 20px/1.2 var(--display); letter-spacing: -.02em; }
+.guide-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.guide-card details { margin-top: 4px; }
+.guide-card summary { cursor: pointer; font-weight: 600; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; }
+.guide-card ol { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 10px; font-size: 14.5px; line-height: 1.55; }
+.guide-pdf { margin-top: auto; align-self: flex-start; padding: 10px 16px; border-radius: 999px; background: var(--yellow); color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none; }
+.guide-pdf:hover { background: var(--yellow-deep); }
+@media (max-width: 900px) { .guide-grid { grid-template-columns: 1fr; } .start-guides { padding: 22px 18px; } }
