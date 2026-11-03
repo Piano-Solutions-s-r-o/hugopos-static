@@ -79,7 +79,7 @@
 
   function decorate() {
     var origin = adminOrigin();
-    /* Sign-in links and, since HUGO-2166, „Začít zdarma" (Admin's /eet-check). */
+    /* Sign-in links and, since HUGO-2166, „Registrovat zdarma" (Admin's /eet-check). */
     var links = document.querySelectorAll('a[href^="' + PROD_ADMIN + '/login"], a[href^="' + PROD_ADMIN + '/eet-check"]');
     for (var i = 0; i < links.length; i++) {
       try {
