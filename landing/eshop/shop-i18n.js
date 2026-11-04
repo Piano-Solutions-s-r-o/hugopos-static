@@ -3,7 +3,7 @@
 
   var copy = {
     cs: {
-      navLinks: ['Produkt', 'AI & Brain', 'Spuštění', 'Ceník', 'E-shop', 'Reference'], startFree: 'Začít zdarma', cart: 'Košík',
+      navLinks: ['Produkt', 'AI & Brain', 'Spuštění', 'Ceník', 'E-shop', 'Reference'], startFree: 'Registrovat zdarma', cart: 'Košík',
       heroEyebrow: 'Hugo hardware', heroTitle: 'Nejdřív si <span class="hl">vyber.</span><br><em>Účet doladíme potom.</em>',
       heroLead: 'Terminál objednáš jako v každém dobrém e-shopu. Po zaplacení už zbývá jen krůček — přihlásit se a doklikat pár údajů.',
       pickHardware: 'Vybrat hardware', needAdvice: 'Potřebuji poradit',
