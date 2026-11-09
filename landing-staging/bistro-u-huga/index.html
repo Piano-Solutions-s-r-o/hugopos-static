@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<!-- HUGO_STAGING_GATE (staging only) -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NC3PW2KC');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Bistro U Huga: a made-up restaurant on Vysočina for internal tests. Czech-only static
+     page (generator/routes.mjs STATIC_PAGES): no inbound link, kept out of the sitemap.
+     GTM stays as on every landing page (HUGO-2306). The reservation form sends nothing. -->
+<title>Bistro U Huga — česká kuchyně a plzeň z tanku na Vysočině</title>
+<meta name="description" content="Bistro U Huga v Horních Hugovicích na Vysočině: svíčková, borůvkové knedlíky, plzeň z tanku čepovaná na hladinku. Ukázkový web restaurace." />
+<link rel="canonical" href="https://hugopos.eu/bistro-u-huga/" />
+<meta name="theme-color" content="#1F3D2B" />
+<link rel="icon" href="/assets/hugo-icon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Bistro U Huga" />
+<meta property="og:title" content="Bistro U Huga — česká kuchyně a plzeň z tanku" />
+<meta property="og:description" content="Smyšlené bistro na Vysočině: ukázka webu restaurace s menu a chytrou rezervací." />
+<meta property="og:url" content="https://hugopos.eu/bistro-u-huga/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/bistro-u-huga/bistro.css" />
+<script defer src="/bistro-u-huga/bistro.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC3PW2KC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="demo-bar">
+  Ukázka: Bistro U Huga je smyšlený podnik. Takhle může vypadat web restaurace, která jede na
+  <a href="/">pokladně Hugo</a>.
+</div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span>Bistro <em>U Huga</em></span>
+    </a>
+    <nav class="nav" aria-label="Hlavní navigace">
+      <a href="#specialita">Specialita</a>
+      <a href="#menu">Menu</a>
+      <a href="#zakladame">Na čem si zakládáme</a>
+      <a href="#kde">Kde nás najdete</a>
+    </nav>
+    <a class="btn btn-amber" href="#rezervace">Rezervovat stůl</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="status" data-status><span class="dot"></span><span data-status-text>Otevírací doba níže</span></p>
+      <h1>Poctivá česká kuchyně a&nbsp;dobře načepovaná Plzeň.</h1>
+      <p class="lead">Malé bistro na návsi v Horních Hugovicích, uprostřed Vysočiny. Vaříme
+        jako babička, jen s lepší digestoří. Pivo točíme z tanku a sklenici myjeme v čisté vodě.</p>
+      <div class="hero-cta">
+        <a class="btn btn-amber btn-lg" href="#rezervace">Rezervovat stůl</a>
+        <a class="btn btn-ghost btn-lg" href="#menu">Prohlédnout menu</a>
+      </div>
+      <ul class="hero-facts">
+        <li><strong>8 hodin</strong> se u nás vaří vývar</li>
+        <li><strong>500 l</strong> tank nepasterované Plzně</li>
+        <li><strong>15 km</strong> nejdál od nás jezdí suroviny</li>
+      </ul>
+    </div>
+    <figure class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 560 500" role="img">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9E3B5"/><stop offset="1" stop-color="#F6F1E7"/></linearGradient>
+          <linearGradient id="beer" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4B63A"/><stop offset="1" stop-color="#C9781A"/></linearGradient>
+          <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5A34"/><stop offset="1" stop-color="#6B4226"/></linearGradient>
+          <clipPath id="frame"><rect x="0" y="0" width="560" height="500" rx="28"/></clipPath>
+        </defs>
+        <g clip-path="url(#frame)">
+          <rect width="560" height="500" fill="url(#sky)"/>
+          <circle cx="430" cy="110" r="52" fill="#F2C14E" opacity=".85"/>
+          <path d="M0 250 Q90 190 190 230 T380 215 T560 225 V500 H0Z" fill="#7FA36B"/>
+          <path d="M0 290 Q120 240 240 280 T470 260 T560 270 V500 H0Z" fill="#4F7A4A"/>
+          <g fill="#2E5136">
+            <path d="M40 300 l14 -46 l14 46z"/><path d="M62 302 l12 -38 l12 38z"/>
+            <path d="M470 290 l14 -50 l14 50z"/><path d="M494 294 l11 -36 l11 36z"/>
+          </g>
+          <g fill="#F6F1E7" stroke="#1F3D2B" stroke-width="3">
+            <rect x="214" y="246" width="70" height="40"/>
+            <path d="M206 250 L249 222 L292 250Z" fill="#9C3B2A"/>
+            <rect x="300" y="234" width="20" height="52"/>
+            <path d="M296 236 L310 206 L324 236Z" fill="#9C3B2A"/>
+          </g>
+          <path d="M0 320 Q160 290 300 318 T560 312 V500 H0Z" fill="#2E5136"/>
+          <rect x="0" y="380" width="560" height="120" fill="url(#wood)"/>
+          <path d="M0 380 H560" stroke="#4A2D18" stroke-width="5"/>
+          <path d="M0 420 H560 M0 462 H560" stroke="#5C3A21" stroke-width="2" opacity=".5"/>
+          <ellipse cx="380" cy="420" rx="128" ry="34" fill="#4A2D18" opacity=".35"/>
+          <ellipse cx="380" cy="410" rx="124" ry="36" fill="#FFFDF7" stroke="#D9CFBB" stroke-width="3"/>
+          <ellipse cx="380" cy="408" rx="92" ry="24" fill="#F3ECDD"/>
+          <path d="M318 410 q30 -30 70 -10 q40 -16 64 8 q-30 22 -70 14 q-40 8 -64 -12z" fill="#D9892F"/>
+          <g fill="#FFF8E8" stroke="#E2D4B6" stroke-width="2">
+            <rect x="330" y="386" width="30" height="20" rx="8"/><rect x="362" y="382" width="30" height="20" rx="8"/><rect x="394" y="386" width="30" height="20" rx="8"/>
+          </g>
+          <circle cx="430" cy="402" r="9" fill="#FFFFFF"/><circle cx="427" cy="398" r="6" fill="#FFFFFF"/>
+          <g fill="#B3202E"><circle cx="440" cy="408" r="4"/><circle cx="446" cy="402" r="3.5"/><circle cx="434" cy="412" r="3"/></g>
+          <ellipse cx="160" cy="452" rx="76" ry="14" fill="#4A2D18" opacity=".35"/>
+          <path d="M228 268 q52 0 52 54 q0 54 -52 54" fill="none" stroke="#E9F2F4" stroke-width="16" opacity=".9"/>
+          <path d="M102 230 H226 L218 438 q-2 14 -16 14 H122 q-14 0 -16 -14Z" fill="url(#beer)" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="5"/>
+          <g fill="#FFFFFF" opacity=".55"><circle cx="140" cy="330" r="3"/><circle cx="170" cy="360" r="2.5"/><circle cx="190" cy="300" r="2"/><circle cx="150" cy="400" r="2.5"/><circle cx="196" cy="390" r="2"/></g>
+          <path d="M120 250 V420" stroke="#FFFFFF" stroke-width="8" opacity=".35" stroke-linecap="round"/>
+          <path d="M94 236 q-6 -34 26 -40 q8 -28 40 -20 q22 -22 48 0 q34 -6 32 30 q8 14 -6 30 H100 q-14 -2 -6 0z" fill="#FFF8E8" stroke="#EADCC0" stroke-width="3"/>
+          <path d="M100 236 H232" stroke="#EADCC0" stroke-width="3"/>
+        </g>
+      </svg>
+      <figcaption class="sticker">Hladinka<br><span>62 Kč</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="values" id="zakladame">
+  <div class="wrap">
+    <p class="kicker">Na čem si zakládáme</p>
+    <h2>Žádné zkratky. Ani v&nbsp;kuchyni, ani u&nbsp;výčepu.</h2>
+    <div class="value-grid">
+      <article class="value">
+        <span class="value-ico" aria-hidden="true">🍲</span>
+        <h3>Česká kuchyně od základu</h3>
+        <p>Omáčky děláme z kořenové zeleniny a pečeného masa, ne z pytlíku. Knedlíky válíme každé ráno.</p>
+      </article>
+      <article class="value">
+        <span class="value-ico" aria-hidden="true">🍺</span>
+        <h3>Plzeň čepovaná správně</h3>
+        <p>Nepasterovaná z tanku, sklenice vymáchaná ve studené vodě, trubky sanitujeme každý týden.</p>
+      </article>
+      <article class="value">
+        <span class="value-ico" aria-hidden="true">🌲</span>
+        <h3>Suroviny z Vysočiny</h3>
+        <p>Brambory od souseda, maso od řezníka z vedlejší vsi, borůvky z lesa nad bistrem.</p>
+      </article>
+      <article class="value">
+        <span class="value-ico" aria-hidden="true">💳</span>
+        <h3>Zaplatíte u stolu</h3>
+        <p>Kartou, QR kódem, hotově nebo přes Qerko z vlastního mobilu. Účet rozdělíme podle toho, kdo co měl.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="beer">
+  <div class="wrap beer-in">
+    <div>
+      <p class="kicker kicker-light">Plzeň u nás</p>
+      <h2>Tři způsoby, jak načepovat jedno pivo.</h2>
+      <p>Výčepní Honza čepuje na jeden zátah. Řekněte si, jak ho chcete.</p>
+    </div>
+    <ol class="pours">
+      <li><span class="glass g-hladinka" aria-hidden="true"></span><strong>Hladinka</strong><span>Klasika: tři prsty husté pěny, která chrání pivo před vzduchem.</span></li>
+      <li><span class="glass g-snyt" aria-hidden="true"></span><strong>Šnyt</strong><span>Na ochutnání. Půl piva, půl pěny, víc chuti než objemu.</span></li>
+      <li><span class="glass g-mliko" aria-hidden="true"></span><strong>Mlíko</strong><span>Skoro celá sklenice pěny. Sladší, krémové, pije se na ex.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="special" id="specialita">
+  <div class="wrap special-in">
+    <div class="special-copy">
+      <p class="kicker">Specialita z Vysočiny</p>
+      <h2>Jelení guláš z Javořických lesů</h2>
+      <p>Maso nám nosí místní myslivci. Dusíme ho tři hodiny na pivu a kmínu. Podáváme s bramborovými plackami a brusinkami.</p>
+      <p class="special-price">329 Kč</p>
+      <p class="special-note">Vaříme 30 porcí denně. Kdo přijde dřív, ten má.</p>
+      <a class="btn btn-amber" href="#rezervace">Rezervovat a ochutnat</a>
+    </div>
+    <aside class="origin" aria-label="Odkud jsou suroviny">
+      <h3>Odkud co máme</h3>
+      <ul>
+        <li><span class="o-what">Jelení maso</span><span class="o-from">myslivci z Javořice</span><span class="pill">9 km</span></li>
+        <li><span class="o-what">Brambory</span><span class="o-from">pole pana Doležala</span><span class="pill">2 km</span></li>
+        <li><span class="o-what">Brusinky a hřib</span><span class="o-from">les nad bistrem</span><span class="pill">1 km</span></li>
+        <li><span class="o-what">Smetana a máslo</span><span class="o-from">farma v Dolních Hugovicích</span><span class="pill">6 km</span></li>
+        <li><span class="o-what">Pivo do omáčky</span><span class="o-from">Plzeň z našeho tanku</span><span class="pill">0 m</span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div>
+        <p class="kicker">Jídelní a nápojový lístek</p>
+        <h2>Menu</h2>
+      </div>
+      <aside class="daily" data-daily>
+        <p class="daily-label">Polední menu <span>Út–Pá 11–14</span></p>
+        <p class="daily-dish" data-daily-dish>Polévka + hlavní jídlo</p>
+        <p class="daily-price">169 Kč</p>
+      </aside>
+    </div>
+
+
+    <div class="menu-grid">
+      <section class="menu-col">
+        <h3>Polévky</h3>
+        <ul class="dishes">
+          <li data-allergens="1,7,9" data-veg><span class="d-name">Bramboračka s lesními houbami</span><span class="d-price">79 Kč</span><span class="d-note">0,33 l · majoránka, kmín · A 1, 7, 9</span></li>
+          <li data-allergens="1,3,9"><span class="d-name">Hovězí vývar s játrovými knedlíčky</span><span class="d-price">69 Kč</span><span class="d-note">0,33 l · domácí nudle · A 1, 3, 9</span></li>
+          <li data-allergens="1,3,7" data-veg><span class="d-name">Kulajda se ztraceným vejcem</span><span class="d-price">85 Kč</span><span class="d-note">0,33 l · kopr, hříbky · A 1, 3, 7</span></li>
+        </ul>
+        <h3>Sladké</h3>
+        <ul class="dishes">
+          <li data-allergens="1,3,7" data-veg><span class="d-name">Borůvkové knedlíky s tvarohem a máslem</span><span class="d-price">159 Kč</span><span class="d-note">4 ks · borůvky z Vysočiny · A 1, 3, 7</span></li>
+          <li data-allergens="1,3,7,8" data-veg><span class="d-name">Jablečný štrúdl, šlehačka</span><span class="d-price">95 Kč</span><span class="d-note">vlašské ořechy, rozinky · A 1, 3, 7, 8</span></li>
+          <li data-allergens="1,3,7" data-veg><span class="d-name">Lívance se švestkovými povidly</span><span class="d-price">109 Kč</span><span class="d-note">3 ks · zakysaná smetana · A 1, 3, 7</span></li>
+        </ul>
+      </section>
+
+      <section class="menu-col">
+        <h3>Hlavní jídla</h3>
+        <ul class="dishes">
+          <li data-allergens="1,3,7" class="house"><span class="d-name">Jelení guláš, bramborové placky</span><span class="d-price">329 Kč</span><span class="d-note">specialita · brusinky · A 1, 3, 7</span></li>
+          <li data-allergens="1,3,7,9,10" class="house"><span class="d-name">Svíčková na smetaně</span><span class="d-price">249 Kč</span><span class="d-note">150 g · houskový knedlík, brusinky, šlehačka · A 1, 3, 7, 9, 10</span></li>
+          <li data-allergens="1,3,7"><span class="d-name">Vepřo knedlo zelo</span><span class="d-price">229 Kč</span><span class="d-note">200 g krkovice · bramborový i houskový knedlík · A 1, 3, 7</span></li>
+          <li data-allergens="1,3"><span class="d-name">Hovězí guláš s cibulkou</span><span class="d-price">219 Kč</span><span class="d-note">150 g · 4 houskové knedlíky · A 1, 3</span></li>
+          <li data-allergens="1,3,7" data-veg><span class="d-name">Smažený hermelín, vařené brambory</span><span class="d-price">199 Kč</span><span class="d-note">brusinky, domácí tatarka · A 1, 3, 7</span></li>
+          <li data-allergens="1,3"><span class="d-name">Bramboráky s uzeným a kysaným zelím</span><span class="d-price">189 Kč</span><span class="d-note">3 ks · podle receptu z Horních Hugovic · A 1, 3</span></li>
+          <li data-allergens="4,7"><span class="d-name">Pstruh na másle s bylinkami</span><span class="d-price">279 Kč</span><span class="d-note">z rybníka pod Javořicí · opékané brambory · A 4, 7</span></li>
+          <li data-allergens="1,3,7"><span class="d-name">Pečená kachna, červené zelí</span><span class="d-price">339 Kč</span><span class="d-note">jen So–Ne · čtvrtka, bramborový knedlík · A 1, 3, 7</span></li>
+        </ul>
+      </section>
+
+      <section class="menu-col">
+        <h3>Pivo a pití</h3>
+        <ul class="dishes drinks">
+          <li data-allergens="1" data-veg class="house"><span class="d-name">Pilsner Urquell z tanku 0,5 l</span><span class="d-price">62 Kč</span><span class="d-note">0,3 l za 45 Kč · A 1</span></li>
+          <li data-allergens="1" data-veg><span class="d-name">Šnyt nebo mlíko</span><span class="d-price">39 Kč</span><span class="d-note">jak se vám zlíbí · A 1</span></li>
+          <li data-allergens="1" data-veg><span class="d-name">Nealkoholické pivo 0,5 l</span><span class="d-price">52 Kč</span><span class="d-note">A 1</span></li>
+          <li data-allergens="" data-veg><span class="d-name">Kofola čepovaná 0,5 l</span><span class="d-price">49 Kč</span><span class="d-note">0,3 l za 35 Kč</span></li>
+          <li data-allergens="" data-veg><span class="d-name">Domácí bezinková limonáda 0,4 l</span><span class="d-price">69 Kč</span><span class="d-note">květ trháme v červnu</span></li>
+          <li data-allergens="12" data-veg><span class="d-name">Moravské víno 0,2 l</span><span class="d-price">69 Kč</span><span class="d-note">Ryzlink rynský nebo Frankovka · A 12</span></li>
+          <li data-allergens="" data-veg><span class="d-name">Slivovice od souseda 4 cl</span><span class="d-price">69 Kč</span><span class="d-note">52 %, tři roky v sudu</span></li>
+        </ul>
+        <p class="menu-foot">A = alergeny podle nařízení EU 1169/2011. Celý seznam vám rádi ukážeme u stolu.</p>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="photo">
+  <div class="wrap photo-in">
+    <figure>
+      <img src="/assets/hardware/terminal-in-use-800.webp" width="800" height="600" loading="lazy"
+           alt="Servírka v bistru drží platební terminál, v pozadí hosté u stolů" />
+    </figure>
+    <div class="photo-copy">
+      <p class="kicker">Placení bez čekání</p>
+      <h2>Zaplaťte, jak je vám milé.</h2>
+      <p>Každý může platit zvlášť a jen za své. Účtenku vytiskneme, nebo pošleme e-mailem.</p>
+      <ul class="pay">
+        <li><span aria-hidden="true">💳</span><p><strong>Kartou</strong> Terminál přineseme ke stolu, i Apple Pay a Google Pay.</p></li>
+        <li><span aria-hidden="true">📱</span><p><strong>QR kódem</strong> Naskenujete z účtenky a zaplatíte z bankovní aplikace.</p></li>
+        <li><span aria-hidden="true">🍽️</span><p><strong>Qerko</strong> Naskenujete QR kód na stole a zaplatíte, kdy chcete, bez čekání na obsluhu.</p></li>
+        <li><span aria-hidden="true">💵</span><p><strong>Hotově</strong> Samozřejmě, i drobné na spropitné.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="salon">
+  <div class="wrap salon-in">
+    <div>
+      <p class="kicker kicker-light">Salonek</p>
+      <h2>Oslava, firemní večer nebo kar? Máme salonek pro 24 lidí.</h2>
+    </div>
+    <div>
+      <ul class="salon-list">
+        <li>Vlastní vchod ze dvora</li>
+        <li>Kachlová kamna a dlouhý dubový stůl</li>
+        <li>Menu vám sestavíme předem na míru</li>
+        <li>Obsluha jen pro vás</li>
+      </ul>
+      <a class="btn btn-amber" href="#rezervace" data-salon-cta>Rezervovat salonek</a>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="rezervace">
+  <div class="wrap booking-in">
+    <div class="booking-intro">
+      <p class="kicker">Rezervace</p>
+      <h2>Zamluvte si stůl.</h2>
+      <p>Formulář ví, kdy máme otevřeno, kdy bývá plno a kam si můžete sednout se psem.
+        Stačí vybrat den, čas a počet lidí.</p>
+      <p class="warm">Těšíme se na vás!</p>
+      <p class="demo-note">Ukázka: rezervace se nikam neodešle.</p>
+    </div>
+
+    <form class="book" data-book novalidate>
+      <fieldset>
+        <legend>Kdy</legend>
+        <div class="day-chips" data-day-chips></div>
+        <label class="field">
+          <span>Datum</span>
+          <input type="date" name="date" required data-date />
+        </label>
+        <p class="hint" data-date-hint aria-live="polite"></p>
+        <div class="slots" data-slots role="radiogroup" aria-label="Čas příchodu"></div>
+        <p class="hint" data-slot-hint aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Kolik vás bude</legend>
+        <div class="stepper">
+          <button type="button" data-step="-1" aria-label="Ubrat osobu">−</button>
+          <input type="number" name="people" value="2" min="1" max="24" inputmode="numeric" data-people aria-label="Počet osob" />
+          <button type="button" data-step="1" aria-label="Přidat osobu">+</button>
+          <span class="stepper-unit" data-people-unit>osoby</span>
+        </div>
+        <p class="hint" data-people-hint aria-live="polite"></p>
+        <label class="check" data-group-only hidden><input type="checkbox" name="preorder" /> Chceme menu pro skupinu vybrat předem</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Kam si sednete</legend>
+        <div class="seats" data-seats>
+          <label class="seat"><input type="radio" name="seat" value="uvnitr" checked /><span><strong>Uvnitř</strong><small>u kachlových kamen</small></span></label>
+          <label class="seat"><input type="radio" name="seat" value="zahradka" /><span><strong>Zahrádka</strong><small data-garden-note>pod lípou</small></span></label>
+          <label class="seat"><input type="radio" name="seat" value="vycep" /><span><strong>U výčepu</strong><small>max. 4 osoby</small></span></label>
+          <label class="seat" data-group-only hidden><input type="radio" name="seat" value="salonek" /><span><strong>Salonek</strong><small>až 24 míst</small></span></label>
+        </div>
+        <label class="check"><input type="checkbox" name="dog" data-dog /> Bereme psa</label>
+        <p class="hint" data-seat-hint aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Něco, co bychom měli vědět</legend>
+        <label class="field">
+          <span>Příležitost</span>
+          <select name="occasion" data-occasion>
+            <option value="">Jen tak</option>
+            <option value="narozeniny">Narozeniny</option>
+            <option value="vyroci">Výročí</option>
+            <option value="firma">Firemní posezení</option>
+          </select>
+        </label>
+        <label class="check" data-when="narozeniny" hidden><input type="checkbox" name="cake" /> Přineseme dort. Uložíte ho do lednice a přinesete se svíčkami?</label>
+        <label class="field" data-when="firma" hidden><span>IČO pro fakturu</span><input name="ico" inputmode="numeric" maxlength="8" placeholder="12345678" data-ico /></label>
+        <label class="field">
+          <span>Dětské židličky</span>
+          <select name="kids"><option>0</option><option>1</option><option>2</option><option>3</option></select>
+        </label>
+        <div class="allergy" role="group" aria-label="Alergie u stolu">
+          <span>Alergie u stolu</span>
+          <label><input type="checkbox" value="1" data-allergy /> lepek</label>
+          <label><input type="checkbox" value="7" data-allergy /> mléko</label>
+          <label><input type="checkbox" value="3" data-allergy /> vejce</label>
+          <label><input type="checkbox" value="8" data-allergy /> ořechy</label>
+        </div>
+        <p class="hint hint-good" data-allergy-hint aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Na koho stůl napíšeme</legend>
+        <label class="field"><span>Jméno</span><input name="name" autocomplete="name" required data-name /></label>
+        <label class="field"><span>Telefon</span><input name="phone" type="tel" autocomplete="tel" placeholder="777 123 456" required data-phone /></label>
+        <label class="check"><input type="checkbox" name="reminder" checked /> Den předem vám pošleme SMS s připomínkou</label>
+        <label class="field"><span>Poznámka <small>(nepovinné)</small></span><textarea name="note" rows="2" placeholder="Třeba: přijedeme na kolech"></textarea></label>
+      </fieldset>
+
+      <div class="summary" data-summary aria-live="polite"></div>
+      <p class="form-error" data-error role="alert"></p>
+      <button class="btn btn-amber btn-lg btn-block" type="submit">Rezervovat stůl</button>
+    </form>
+
+    <div class="done" data-done hidden>
+      <p class="done-ico" aria-hidden="true">🍺</p>
+      <h3>Stůl je váš. Těšíme se!</h3>
+      <p class="done-sum" data-done-sum></p>
+      <ul class="done-next" data-done-next></ul>
+      <p class="demo-note">Ukázka: nic jsme neodeslali, žádná rezervace nevznikla.</p>
+      <div class="done-actions">
+        <a class="btn btn-amber" href="#" data-ics download="bistro-u-huga.ics">Přidat do kalendáře</a>
+        <button class="btn btn-ghost" type="button" data-again>Nová rezervace</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="where" id="kde">
+  <div class="wrap where-in">
+    <div>
+      <p class="kicker">Kde nás najdete</p>
+      <h2>Náves 12, Horní Hugovice</h2>
+      <p class="addr">588 31 Horní Hugovice · Vysočina<br>Telefon <a href="tel:+420123456789">+420 123 456 789</a></p>
+      <ul class="how">
+        <li><strong>Autem:</strong> 12 minut od exitu 112 na D1, parkoviště pro 14 aut za bistrem.</li>
+        <li><strong>Na kole:</strong> stojíme na cyklotrase 5090, kola zamknete pod okny.</li>
+        <li><strong>Pěšky:</strong> od zastávky Horní Hugovice, náves jsou to tři minuty.</li>
+      </ul>
+      <table class="hours" data-hours>
+        <caption>Otevírací doba</caption>
+        <tbody>
+          <tr data-dow="1"><th>Pondělí</th><td>zavřeno</td></tr>
+          <tr data-dow="2"><th>Úterý</th><td>11:00–22:00</td></tr>
+          <tr data-dow="3"><th>Středa</th><td>11:00–22:00</td></tr>
+          <tr data-dow="4"><th>Čtvrtek</th><td>11:00–22:00</td></tr>
+          <tr data-dow="5"><th>Pátek</th><td>11:00–23:00</td></tr>
+          <tr data-dow="6"><th>Sobota</th><td>11:00–23:00</td></tr>
+          <tr data-dow="0"><th>Neděle</th><td>11:00–20:00</td></tr>
+        </tbody>
+      </table>
+      <p class="hint">Kuchyně vaří do hodiny před zavírací dobou.</p>
+    </div>
+    <figure class="map" aria-label="Plánek okolí bistra">
+      <svg viewBox="0 0 440 380" role="img">
+        <rect width="440" height="380" rx="24" fill="#E7EEDC"/>
+        <path d="M0 300 Q120 250 220 280 T440 240" fill="none" stroke="#C9D6B5" stroke-width="40"/>
+        <g fill="#B8CCA0"><circle cx="70" cy="80" r="40"/><circle cx="110" cy="60" r="30"/><circle cx="360" cy="320" r="46"/><circle cx="390" cy="70" r="28"/></g>
+        <path d="M-10 60 L440 150" stroke="#F2C14E" stroke-width="14"/>
+        <text x="300" y="118" font-size="13" font-weight="700" fill="#6B4E12" transform="rotate(11 300 118)">D1</text>
+        <path d="M150 380 Q170 260 230 200 T260 0" fill="none" stroke="#FFFFFF" stroke-width="10"/>
+        <path d="M0 220 Q120 210 230 200 T440 210" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+        <path d="M60 380 Q120 300 230 200" fill="none" stroke="#9C3B2A" stroke-width="3" stroke-dasharray="6 6"/>
+        <text x="40" y="360" font-size="12" fill="#9C3B2A">cyklotrasa 5090</text>
+        <rect x="200" y="186" width="60" height="30" rx="4" fill="#F6F1E7" stroke="#1F3D2B" stroke-width="2"/>
+        <text x="230" y="240" font-size="12" text-anchor="middle" fill="#1F3D2B">náves</text>
+        <g transform="translate(230 176)">
+          <path d="M0 0 C-22 -26 -22 -56 0 -60 C22 -56 22 -26 0 0Z" fill="#9C3B2A"/>
+          <circle cy="-38" r="9" fill="#FFF8E8"/>
+        </g>
+        <text x="262" y="140" font-size="15" font-weight="700" fill="#1F3D2B" font-family="Fraunces, serif">Bistro U Huga</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+</main>
+
+<div class="welcome">
+  <div class="wrap">
+    <p class="welcome-big">Těšíme se na vás!</p>
+    <p>Úterý až neděle od 11:00 · Náves 12, Horní Hugovice</p>
+    <a class="btn btn-amber" href="#rezervace">Rezervovat stůl</a>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© Bistro U Huga · smyšlený podnik pro ukázku</p>
+    <p>Objednávky, účty a platby u stolu: <a href="/">pokladna Hugo</a></p>
+  </div>
+</footer>
+</body>
+</html>
