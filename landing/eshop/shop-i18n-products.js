@@ -8,14 +8,14 @@
   var productCopy = {
     cs: {
       pax_a920: {
-        kicker: 'All-in-one', title: 'Terminál Hugo', description: 'Platby, účtenka a pokladna v jedné lehké krabičce.', included: 'Jeden obal v ceně terminálu',
+        kicker: 'All-in-one', title: 'Terminál Hugo', description: 'Platby, účtenka a pokladna v jedné lehké krabičce.', included: 'Obal v ceně',
         lead: 'Lehký terminál, na kterém běží pokladna, platby i účtenka. Bez druhé krabičky a bez kabelového zátiší.',
         specs: [['Model', 'PAX A920 Pro Core'], ['Systém', 'Android 10 · čtyřjádrový ARM Cortex A53'], ['Displej', '5,5″ kapacitní dotykový'], ['Platby', 'Čip a PIN · bezkontaktní NFC · magnetický proužek'], ['Připojení', '4G · Wi-Fi · Bluetooth'], ['Výdrž a tisk', 'Baterie 5 150 mAh · vestavěná termální tiskárna']],
         imageLabel: 'Zobrazit detail terminálu Hugo', imageAlt: 'Terminál Hugo s obalem Rudý impuls'
       },
       terminal_case: {
-        kicker: 'Accessories', title: 'Další obal na terminál', description: 'Měkčí dopad, jistější úchop a barva, která patří k tobě.',
-        lead: 'Pružný ochranný obal dává terminálu jistější úchop a tvé obsluze vlastní barvu.',
+        kicker: 'Accessories', title: 'Obal navíc', description: 'Terminál už jeden obal má. Tohle je další kus nebo jiná barva.',
+        lead: 'Terminál už jeden ochranný obal obsahuje. Tenhle je navíc: pro další kus nebo jinou barvu.',
         specs: [['Povrch', 'Měkký protiskluzový'], ['Ochrana', 'Hrany a zadní část'], ['Barvy', 'Šest odstínů']],
         imageLabel: 'Zobrazit detail dalšího ochranného obalu', imageAlt: 'Další obal na terminál v barvě Rudý impuls'
       },
@@ -88,14 +88,14 @@
     },
     en: {
       pax_a920: {
-        kicker: 'All-in-one', title: 'Hugo terminal', description: 'Payments, receipts and POS in one light device.', included: 'One case included with the terminal',
+        kicker: 'All-in-one', title: 'Hugo terminal', description: 'Payments, receipts and POS in one light device.', included: 'Case included',
         lead: 'A light terminal running your POS, payments and receipts. No second box and no cable clutter.',
         specs: [['Model', 'PAX A920 Pro Core'], ['System', 'Android 10 · quad-core ARM Cortex A53'], ['Display', '5.5″ capacitive touchscreen'], ['Payments', 'Chip & PIN · contactless NFC · magnetic stripe'], ['Connectivity', '4G · Wi-Fi · Bluetooth'], ['Battery and printing', '5,150 mAh battery · built-in thermal printer']],
         imageLabel: 'View Hugo terminal details', imageAlt: 'Hugo terminal with a Red Impulse case'
       },
       terminal_case: {
-        kicker: 'Accessories', title: 'Additional terminal case', description: 'A softer landing, safer grip and a colour that feels like yours.',
-        lead: 'A flexible protective case gives the terminal a safer grip and your team a colour of their own.',
+        kicker: 'Accessories', title: 'Extra case', description: 'The terminal already includes one case. This is an additional one or another colour.',
+        lead: 'The terminal already comes with one protective case. This one is an extra, for a spare or another colour.',
         specs: [['Surface', 'Soft non-slip finish'], ['Protection', 'Edges and back'], ['Colours', 'Six shades']],
         imageLabel: 'View additional protective case details', imageAlt: 'Additional terminal case in Red Impulse'
       },

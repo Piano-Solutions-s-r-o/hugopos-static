@@ -69,6 +69,8 @@ footer .foot-bottom a{color:#2a2620}
 @media(max-width:650px){.container{padding:0 18px}.nav .account-button{display:none}.nav .lang button{padding:6px 8px;font-size:11px}footer .foot-grid{grid-template-columns:1fr;gap:18px}}
 
 .included-note{margin:2px 0 0;color:var(--muted);font-size:12px;font-weight:600}
+[data-product="pax_a920"] .included-note{display:inline-block;align-self:flex-start;margin-top:6px;padding:3px 10px;border-radius:999px;background:rgba(49,95,84,.12);color:#315f54;font-weight:700}
+[data-product="pax_a920"] .included-note::before{content:"✓ " / ""}
 
 /* Lightweight hero benefits keep the original inline rhythm. */
 .trust{display:flex;grid-column:auto;grid-template-columns:none;flex-wrap:wrap;gap:12px 24px;margin:34px 0 0;padding:0;color:var(--muted);font-size:15px}
