@@ -38,6 +38,11 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .nav-links a{ font-weight:500; color:var(--ink-2); font-size:15px; padding:8px 0; white-space:nowrap; }
 .nav-links a:hover, .nav-links a.is-on{ color:var(--ink); }
 .nav-links a.is-on{ box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+/* HUGO-2448 — the menu's Admin sign-in: lock + label; on narrower desktops only the lock, so
+   the CTA still fits. Below that the nav no longer fits at all, so the burger takes over at 940px
+   (was 860px) and its open menu shows the full link. */
+.nav-links a.nav-admin{ display:inline-flex; align-items:center; gap:6px; }
+@media (max-width:1100px){ .nav:not(.menu-open) .nav-links a.nav-admin .nav-admin-label{ display:none; } }
 .nav-cta{ margin-left:auto; display:flex; gap:10px; align-items:center; }
 .lang{ display:inline-flex; background:#fff; border:1px solid var(--line); border-radius:var(--radius-pill); padding:3px; gap:2px; }
 .lang button, .lang a{ appearance:none; border:0; background:transparent; cursor:pointer; font-family:var(--body); font-weight:600;
@@ -49,7 +54,7 @@ h1,h2,h3{ margin:0; font-family:var(--display); letter-spacing:-.025em; text-wra
 .menu-open .nav-burger span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
 .menu-open .nav-burger span:nth-child(2){ opacity:0; }
 .menu-open .nav-burger span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
-@media (max-width:860px){
+@media (max-width:940px){
   .nav-links{ display:none; } .nav-cta .btn{ display:none; }
   .nav-burger{ display:inline-flex; }
   .nav.menu-open .nav-links{ display:flex; flex-direction:column; gap:0; position:absolute; top:100%; left:0; right:0; margin:0; padding:4px 20px 14px; background:var(--cream); border-bottom:1px solid var(--line); box-shadow:0 18px 30px -18px rgba(20,17,13,.35); max-height:calc(100vh - 68px); overflow-y:auto; }
