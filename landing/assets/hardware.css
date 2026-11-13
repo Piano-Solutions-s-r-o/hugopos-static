@@ -103,7 +103,8 @@
 .hw-own{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px 56px; align-items:center; }
 .hw-big{ font-weight:800; font-size:clamp(48px,7vw,104px); line-height:.92; letter-spacing:-.045em; }
 .hw-own .lead{ max-width:46ch; }
-.hw-own-cta{ margin-top:24px; }
+.hw-own-cta{ margin-top:24px; display:flex; flex-wrap:wrap; gap:12px; }
+.hw-own-cta .btn{ white-space:normal; text-align:center; }
 
 .hw-cta-btns{ display:flex; gap:12px; flex-wrap:wrap; }
 .hw-on-dark{ color:#fff; border-color:rgba(255,255,255,.3); }

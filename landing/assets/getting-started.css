@@ -41,3 +41,13 @@
 .guide-pdf { margin-top: auto; align-self: flex-start; padding: 10px 16px; border-radius: 999px; background: var(--yellow); color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none; }
 .guide-pdf:hover { background: var(--yellow-deep); }
 @media (max-width: 900px) { .guide-grid { grid-template-columns: 1fr; } .start-guides { padding: 22px 18px; } }
+
+/* HUGO-2467 — link to the Tap to Pay on Android guide (/jak-zacit/tap-to-pay/). */
+.guide-more { display: flex; align-items: center; gap: 18px; margin-top: 18px; padding: 14px 22px 14px 14px; border-radius: 22px; background: var(--yellow); color: var(--ink); transition: background .2s; }
+.guide-more:hover { background: var(--yellow-deep); }
+.guide-more img { flex: 0 0 96px; width: 96px; height: 64px; object-fit: contain; }
+.guide-more > span:not(.guide-more-go) { display: grid; gap: 2px; }
+.guide-more b { font: 700 19px/1.2 var(--display); letter-spacing: -.02em; }
+.guide-more > span > span { font-size: 14px; color: var(--ink-2); }
+.guide-more-go { margin-left: auto; flex-shrink: 0; font-weight: 700; font-size: 15px; white-space: nowrap; }
+@media (max-width: 640px) { .guide-more { flex-wrap: wrap; } .guide-more-go { margin-left: 0; } }

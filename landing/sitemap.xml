@@ -37,6 +37,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/jak-zacit/"/>
   </url>
   <url>
+    <loc>https://hugopos.eu/jak-zacit/tap-to-pay/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/jak-zacit/tap-to-pay/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/getting-started/tap-to-pay/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/jak-zacit/tap-to-pay/"/>
+  </url>
+  <url>
+    <loc>https://hugopos.eu/en/getting-started/tap-to-pay/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/jak-zacit/tap-to-pay/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/getting-started/tap-to-pay/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hugopos.eu/jak-zacit/tap-to-pay/"/>
+  </url>
+  <url>
     <loc>https://hugopos.eu/cenove-srovnani/</loc>
     <xhtml:link rel="alternate" hreflang="cs" href="https://hugopos.eu/cenove-srovnani/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://hugopos.eu/en/pricing/"/>
