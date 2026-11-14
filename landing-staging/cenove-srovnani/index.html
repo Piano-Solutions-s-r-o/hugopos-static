@@ -39,6 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/assets/sub.css" />
+<link rel="stylesheet" href="/assets/footer.css" />
 <script src="/hugo-i18n.js" defer></script>
 <script src="/hugo-nav.js" defer></script>
 </head>
@@ -214,19 +215,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 </main>
 
-<footer class="foot">
-  <div class="container foot-in">
-    <div>&copy; 2026 Hugo &middot; <span>český produkt od Piano</span> &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
-    <div class="links">
-      <a href="/">Domů</a>
-      <a href="/srovnani/">Srovnání</a>
-      <a href="/hardware/">Hardware</a>
-      <a href="/vseobecne-obchodni-podminky/#cenik-sluzeb">Ceník služeb</a>
-      <a href="/vseobecne-obchodni-podminky/">Obchodní podmínky</a>
-      <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
+<!-- Shared footer (HUGO-2473): one source for every templated page, labels in i18n/_shared.mjs. -->
+<footer class="site-foot">
+  <div class="container">
+    <div class="site-foot-grid">
+      <div class="site-foot-brand">
+        <a href="/" class="site-foot-logo">
+          <img src="/assets/hugo-icon.svg" alt="" width="28" height="28" loading="lazy" />
+          <span>Hugo</span>
+        </a>
+        <p>Pokladna postavená kolem tvého menu a tvých hostů, na terminálu 3&nbsp;v&nbsp;1, telefonu i tabletu. Ne naopak.</p>
+        <a href="mailto:hugo@piano.cz" class="site-foot-mail">hugo@piano.cz</a>
+      </div>
+      <nav class="site-foot-col" aria-label="Produkt">
+        <h2>Produkt</h2>
+        <a href="/">Domů</a>
+        <a href="/jak-zacit/">Jak začít</a>
+        <a href="/srovnani/">Srovnání</a>
+        <a href="/cenove-srovnani/">Ceník</a>
+        <a href="/hardware/">Hardware</a>
+        <a href="/eet/">EET 2.0</a>
+      </nav>
+      <nav class="site-foot-col" aria-label="Podpora">
+        <h2>Podpora</h2>
+        <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>
+        <a href="https://status.hugopos.eu" target="_blank" rel="noopener">Stav služeb</a>
+        <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener">Přihlásit se</a>
+      </nav>
+    </div>
+    <div class="site-foot-bottom">
+      <div>&copy; 2026 Hugo &middot; český produkt od Piana</div>
+      <div class="site-foot-legal">
+        <a href="/vseobecne-obchodni-podminky/">Obchodní podmínky</a>
+        <a href="/vseobecne-obchodni-podminky/#cenik-sluzeb">Ceník služeb</a>
+        <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
+        <a href="/en/pricing/" data-lang-link>English</a>
+      </div>
     </div>
   </div>
 </footer>
+
 
 <script>
   /* Fixed scenario (owner decision, HUGO-1828): 100 000 Kč card turnover / month, 250 Kč average bill

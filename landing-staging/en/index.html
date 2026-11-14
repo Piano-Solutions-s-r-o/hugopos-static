@@ -1485,39 +1485,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .instagram-note{ display:none; }
   }
 
-  /* ============ FOOTER ============ */
-  footer{
-    padding: 50px 0 40px;
-    border-top: 1px solid var(--line);
-  }
-  .foot-grid{
-    display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 32px;
-    margin-bottom: 50px;
-  }
-  .foot-col h2{
-    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted); margin: 0 0 14px;
-  }
-  .foot-col a{
-    display: block; padding: 4px 0; color: var(--ink-2); font-size: 14px;
-  }
-  .foot-col a:hover{ color: var(--ink); }
-  .foot-brand p{
-    color: var(--muted); font-size: 14px; max-width: 280px; margin: 14px 0 0;
-  }
+  /* ============ FOOTER ============ (shared: /assets/footer.css, HUGO-2473) */
   .mif-link{ color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; white-space: nowrap; }
   .faq-link{ color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
-  .foot-bottom{
-    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
-    font-size: 13px; color: var(--muted);
-    /* The divider used to sit on the MIF++ paragraph that moved into the FAQ. */
-    padding-top: 18px; border-top: 1px solid var(--line);
-  }
-  .foot-bottom .legal{ display: flex; gap: 18px; flex-wrap: wrap; }
-  .foot-bottom a{ color: var(--ink-2); }
-  .foot-bottom a:hover{ color: var(--ink); }
-  .foot-mail{ display: block; margin-top: 18px; font-weight: 700; color: var(--ink); font-size: 15px; }
-  .foot-mail:hover{ color: var(--ink-2); }
 
   /* HUGO-1872 — mobile menu (hugo-nav.js) */
   .nav-burger{ order:1; display:none; appearance:none; border:1px solid var(--line); background:#fff; width:40px; height:40px; flex:0 0 40px; border-radius:999px; padding:0; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
@@ -1553,7 +1523,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .power h2{ font-size: clamp(48px, 11vw, 80px); }
     .power-sub{ font-size: clamp(20px, 4vw, 28px); }
     .final-card{ padding: 60px 32px; }
-    .foot-grid{ grid-template-columns: 1fr 1fr; }
     section{ padding: 80px 0; }
   }
   @media (max-width: 560px){
@@ -1565,7 +1534,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .final-card::before, .final-card::after{ display: none; }
     .devices{ border-radius: 30px; padding: 60px 0; }
     .pricing-wrap{ border-radius: 30px; padding: 60px 0 70px; }
-    .foot-grid{ grid-template-columns: 1fr; gap: 18px; }
   }
 
   /* ============ CUSTOMER REFERENCE (HUGO-1826) ============ */
@@ -1648,8 +1616,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .faq-item .a{ padding:0 24px 22px; color:var(--muted); font-size:15px; line-height:1.6; max-width:72ch; }
   .faq-item .a .a-list{ margin:10px 0 12px; padding-left:20px; display:grid; gap:6px; }
   .faq-item .a .a-list b{ color:var(--ink-2); }
-  .foot-phone{ display:block; margin-top:6px; font-weight:700; color:var(--ink); font-size:15px; }
-  .foot-phone:hover{ color:var(--ink-2); }
   .form-call{ text-align:center; margin:10px 0 0; font-size:13px; color:rgba(255,255,255,0.6); }
   .form-call a{ color:#fff; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35); }
   .form-alt{ margin-top:18px; }
@@ -1854,6 +1820,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 650px){ .video-band{ padding-bottom: 60px; } .video-frame{ border-radius: var(--radius-md); } .video-play{ width: 64px; height: 64px; margin: -32px 0 0 -32px; } .video-play svg{ width: 28px; height: 28px; } }
   .vat{ font-size: .62em; font-weight: 500; color: var(--muted); letter-spacing: 0; white-space: nowrap; font-variation-settings: normal; }
 </style>
+<link rel="stylesheet" href="/assets/footer.css" />
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -2555,45 +2522,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- =============== FOOTER =============== --><footer>
+<!-- =============== FOOTER =============== -->
+<!-- Shared footer (HUGO-2473): one source for every templated page, labels in i18n/_shared.mjs. -->
+<footer class="site-foot">
   <div class="container">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a href="#" class="brand">
-          <img src="/assets/hugo-icon.svg" alt="" width="64" height="64" loading="lazy" />
+    <div class="site-foot-grid">
+      <div class="site-foot-brand">
+        <a href="/en/" class="site-foot-logo">
+          <img src="/assets/hugo-icon.svg" alt="" width="28" height="28" loading="lazy" />
           <span>Hugo</span>
         </a>
         <p>The point-of-sale built around your menu and your customers &mdash; on a 3-in-1 terminal, a phone or a tablet. Not the other way around.</p>
-        <a href="mailto:hugo@piano.cz" class="foot-mail">hugo@piano.cz</a>
+        <a href="mailto:hugo@piano.cz" class="site-foot-mail">hugo@piano.cz</a>
       </div>
-      <div class="foot-col">
+      <nav class="site-foot-col" aria-label="Product">
         <h2>Product</h2>
-        <a href="#product">Devices</a>
-        <a href="#brain">AI &amp; Brain</a>
+        <a href="/en/">Home</a>
         <a href="/en/getting-started/">How to start</a>
+        <a href="/en/compare/">Compare</a>
+        <a href="/en/pricing/">Pricing</a>
         <a href="/en/hardware/">Hardware</a>
-        <a href="#pricing">Pricing</a>
-      </div>
-      <div class="foot-col">
+        <a href="/en/eet/">EET 2.0</a>
+      </nav>
+      <nav class="site-foot-col" aria-label="Support">
         <h2>Support</h2>
         <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>
         <a href="https://status.hugopos.eu" target="_blank" rel="noopener">Service status</a>
         <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener">Sign in</a>
-      </div>
+      </nav>
     </div>
-
-    <div class="foot-bottom">
-      <div>&copy; 2026 Hugo &middot; a Czech product by Piano &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
-      <div class="legal">
+    <div class="site-foot-bottom">
+      <div>&copy; 2026 Hugo &middot; a Czech product by Piano</div>
+      <div class="site-foot-legal">
         <a href="/vseobecne-obchodni-podminky/">Terms &amp; conditions</a>
         <a href="/vseobecne-obchodni-podminky/#cenik-sluzeb">Service rates</a>
-        <a href="mailto:hugo@piano.cz">Contact</a>
         <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
         <a href="/" data-lang-link>Česky</a>
       </div>
     </div>
   </div>
 </footer>
+
 
 <!-- =============== STICKY MOBILE CTA =============== -->
 <div class="mobilebar" id="mobilebar">
