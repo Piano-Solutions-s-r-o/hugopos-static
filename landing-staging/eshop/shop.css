@@ -131,3 +131,6 @@ footer .foot-bottom a{color:#2a2620}
 .qty-stepper output{min-width:56px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)}
 @media(max-width:1180px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-card.is-wide{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 @media(max-width:650px){.product-grid{grid-template-columns:1fr}.product-card.is-wide{display:flex}.product-card.is-wide .image-button{height:210px;min-height:0;border-right:0;border-bottom:1px solid rgba(20,17,13,.07)}.product-card.is-wide .image-button img{height:100%}.product-card.is-wide .product-copy{min-height:310px}.shelf+.shelf{margin-top:48px}.shelf-title{font-size:22px}}
+
+/* HUGO-2485 — keep cart actions and sign-in above the bottom-right chat launcher. */
+.cart-footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
