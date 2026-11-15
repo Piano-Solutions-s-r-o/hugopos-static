@@ -892,8 +892,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .mobilebar{
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
     display: none; align-items: center; gap: 14px;
-    /* Leave the bottom-right Nessie launcher its own row (HUGO-2485). */
-    padding: 12px 16px calc(84px + env(safe-area-inset-bottom, 0px));
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
     background: color-mix(in srgb, var(--ink) 95%, transparent);
     backdrop-filter: saturate(140%) blur(10px);
     -webkit-backdrop-filter: saturate(140%) blur(10px);
@@ -910,7 +909,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .mb-call svg{ width:21px; height:21px; }
   @media (max-width: 720px){
     .mobilebar{ display: flex; }
-    body{ padding-bottom: calc(146px + env(safe-area-inset-bottom, 0px)); }
+    body{ padding-bottom: 74px; }
+    body:has(> nessie-chat#nessie-chat) .mobilebar{
+      padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    }
+    body:has(> nessie-chat#nessie-chat){
+      padding-bottom: calc(146px + env(safe-area-inset-bottom, 0px));
+    }
   }
 
   /* ============ PRICING ============ */
@@ -2687,7 +2692,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.addEventListener('resize', relayout);
   window.addEventListener('load', relayout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
-  if (window.ResizeObserver) new ResizeObserver(relayout).observe(grid);
+  if (window.ResizeObserver) {
+    var carouselResizeObserver = new ResizeObserver(relayout);
+    carouselResizeObserver.observe(grid);
+    if (bar) carouselResizeObserver.observe(bar, { box: 'border-box' });
+  }
   layout();
   update();
 })();
