@@ -1642,6 +1642,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .annbar-cta{ font-weight:700; color:var(--ink); background:var(--yellow); padding:6px 13px; border-radius:999px; font-size:12.5px; white-space:nowrap; }
   .annbar-cta:hover{ background:var(--yellow-deep); }
+  /* HUGO-2488 — the offer bar: a light companion under .annbar, deliberately not the dark bar with yellow pill. */
+  .promobar{ background:var(--cream-2); color:var(--ink); font-size:13.5px; border-bottom:1px solid var(--line); }
+  .promobar[hidden]{ display:none; }
+  .promobar-in{ display:flex; align-items:center; justify-content:center; gap:14px; padding:9px 24px; text-align:center; flex-wrap:wrap; }
+  .promobar-txt b{ font-weight:700; margin-right:6px; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px; }
+  .promobar-cta{ font-weight:700; color:#fff; background:var(--ink); padding:6px 14px; border-radius:var(--radius-sm); font-size:12.5px; white-space:nowrap; }
+  .promobar-cta:hover{ background:var(--ink-2); }
+  @media(max-width:560px){ .promobar-in{ padding:9px 16px; font-size:12.5px; } }
   .annbar-close{ position:absolute; right:14px; top:50%; transform:translateY(-50%); background:transparent; border:0; color:rgba(255,255,255,0.55); font-size:20px; line-height:1; cursor:pointer; padding:4px 8px; }
   .annbar-close:hover{ color:#fff; }
   @media(max-width:560px){ .annbar-in{ padding:9px 38px; font-size:12.5px; } }
@@ -1855,6 +1863,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/en/eet/" class="annbar-cta">See how &rarr;</a>
   </div>
   <button class="annbar-close" type="button" aria-label="Close">&times;</button>
+</div>
+<div class="promobar" id="promobar" hidden>
+  <div class="container promobar-in">
+    <span class="promobar-txt" id="promobar-txt"></span>
+    <a href="#" class="promobar-cta" id="promobar-cta"></a>
+  </div>
 </div>
 
 <!-- =============== NAV =============== -->
@@ -2593,6 +2607,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   onScroll();
 
   // Announcement bar dismiss (persisted)
+  /* HUGO-2488 — the Czech page's strips are edited in the superadmin and read from the public API.
+     Text only (textContent, never innerHTML) and only /path or https:// links. A failed request leaves the
+     static EET bar as built; the offer bar then stays hidden. */
+  (function(){
+    if (document.documentElement.lang !== 'cs') return;
+    var h = location.hostname;
+    var api = (h === 'hugopos.eu' || h === 'www.hugopos.eu') ? 'https://api.hugopos.eu/api'
+      : (h === 'staging.hugopos.eu') ? 'https://staging.api.hugopos.eu/api' : 'http://localhost:4471/api';
+    function safeUrl(u){ return typeof u === 'string' && (/^\/(?![\/\\])/.test(u) || /^https:\/\//i.test(u)); }
+    function fill(txtEl, ctaEl, strip){
+      txtEl.textContent = '';
+      if (strip.highlight){ var b = document.createElement('b'); b.textContent = strip.highlight; txtEl.appendChild(b); txtEl.appendChild(document.createTextNode(' ')); }
+      txtEl.appendChild(document.createTextNode(strip.text));
+      ctaEl.textContent = strip.buttonLabel;
+      ctaEl.setAttribute('href', strip.buttonUrl);
+    }
+    function valid(s){ return s && typeof s.text === 'string' && s.text && typeof s.buttonLabel === 'string' && s.buttonLabel && safeUrl(s.buttonUrl); }
+    fetch(api + '/v1/public/web-strips').then(function(r){ if (!r.ok) throw new Error('strips'); return r.json(); }).then(function(strips){
+      var ann = document.getElementById('annbar');
+      if (ann){
+        if (valid(strips.webEet)) fill(ann.querySelector('.annbar-txt'), ann.querySelector('.annbar-cta'), strips.webEet);
+        else if ('webEet' in strips) ann.style.display = 'none'; /* absent = nothing saved yet: keep the static EET bar */
+      }
+      var promo = document.getElementById('promobar');
+      if (promo && valid(strips.webPromo)){
+        fill(document.getElementById('promobar-txt'), document.getElementById('promobar-cta'), strips.webPromo);
+        promo.hidden = false;
+      }
+    }).catch(function(){});
+  })();
+
   const annbar = document.getElementById('annbar');
   if (annbar){
     try { if (localStorage.getItem('hugo-ann-closed') === '1') annbar.style.display = 'none'; } catch(e){}
