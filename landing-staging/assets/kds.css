@@ -1,0 +1,232 @@
+/* /kuchynsky-displej (HUGO-2422). Builds on sub.css tokens and mirrors /hardware's quiet rhythm:
+   big type, hairlines, one loud element. Here that element is the hero: a KDS screen drawn in
+   HTML/CSS (to be swapped for real screenshots, HUGO-2418) with a sad paper ticket beside it. */
+main section[id]{ scroll-margin-top:84px; }
+.kd-h2{ font-weight:800; font-size:clamp(30px,3.8vw,48px); line-height:1.02; letter-spacing:-.03em; max-width:20ch; }
+.kd-h2 em{ font-style:normal; background:linear-gradient(transparent .22em, var(--yellow) .22em); padding:0 .1em; border-radius:.1em;
+  box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+.kd-head{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:12px 48px; align-items:end; margin-bottom:34px; }
+.kd-head .lead{ max-width:46ch; }
+.kd-quip{ margin-top:18px; max-width:40ch; font-weight:600; color:var(--ink); padding-left:14px; border-left:4px solid var(--yellow-deep); }
+
+/* ---------- hero ---------- */
+.kd-hero{ padding:56px 0 40px; overflow:hidden; }
+.kd-hero-grid{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:40px; align-items:center; }
+.kd-badge{ display:inline-block; font-weight:700; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--ink); color:var(--yellow); border-radius:var(--radius-pill); padding:7px 14px; margin-bottom:20px; }
+.kd-hero h1{ font-weight:800; font-size:clamp(44px,6vw,84px); line-height:.94; letter-spacing:-.04em; max-width:11ch; }
+.kd-hero h1 em{ display:block; font-style:normal; font-weight:500; font-size:.36em; letter-spacing:-.01em; line-height:1.2;
+  color:var(--muted); margin-top:.55em; }
+.kd-hero .lead{ margin-top:24px; max-width:42ch; }
+.kd-hero .ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+
+.kd-stage{ position:relative; padding:10px 0 40px 40px; }
+/* The KDS in light mode: a white tablet, a light screen, white ticket cards. */
+.kd-tablet{ background:#fff; border-radius:28px; padding:14px; transform:rotate(-2deg);
+  box-shadow:0 30px 60px -24px rgba(20,17,13,.4), 0 0 0 1px rgba(20,17,13,.08), inset 0 0 0 1px rgba(20,17,13,.04); }
+.kd-screen{ background:#EFEBE2; border-radius:16px; overflow:hidden; color:var(--ink); font-size:13px; line-height:1.35;
+  box-shadow:inset 0 0 0 1px rgba(20,17,13,.08); }
+.kd-bar{ display:flex; align-items:center; gap:12px; padding:10px 14px; background:#fff; border-bottom:1px solid var(--line); font-weight:600; }
+.kd-bar-brand{ display:inline-flex; align-items:center; gap:7px; font-family:var(--display); font-weight:800; font-size:15px; }
+.kd-bar-brand img{ border-radius:5px; }
+.kd-bar-count{ color:var(--muted); }
+.kd-bar-sound{ margin-left:auto; display:inline-flex; align-items:center; gap:6px; color:var(--ink); font-size:12px;
+  background:var(--yellow); border-radius:var(--radius-pill); padding:3px 9px 3px 7px; }
+.kd-tickets{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding:12px; align-items:start; }
+.kd-t{ background:#fff; border-radius:12px; overflow:hidden; display:grid; border-top:6px solid var(--k, var(--green));
+  box-shadow:0 1px 0 rgba(20,17,13,.06), 0 6px 14px -8px rgba(20,17,13,.25); }
+.kd-t header{ display:flex; justify-content:space-between; align-items:baseline; gap:6px; padding:9px 10px 4px; }
+.kd-t header b{ font-family:var(--display); font-size:15px; letter-spacing:-.01em; }
+.kd-time{ font-variant-numeric:tabular-nums; font-weight:700; color:var(--kt, var(--k, var(--green))); }
+.kd-t ul{ list-style:none; margin:0; padding:4px 10px 8px; display:grid; gap:5px; }
+.kd-t li{ display:grid; grid-template-columns:auto 1fr; column-gap:6px; }
+.kd-t li span{ color:var(--muted); font-variant-numeric:tabular-nums; }
+.kd-t li small{ grid-column:2; color:#8A6A00; font-weight:600; font-size:11.5px; }
+.kd-flag{ margin:2px 10px 0; justify-self:start; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  background:var(--red); color:#fff; border-radius:var(--radius-pill); padding:2px 8px; }
+.kd-flag-new{ background:var(--yellow); color:var(--ink); }
+.kd-note{ margin:0 10px 8px; background:var(--yellow); color:var(--ink); font-weight:700; font-size:12px; border-radius:6px; padding:4px 7px; }
+.kd-done{ margin:2px 10px 10px; text-align:center; background:var(--ink); color:#fff; border-radius:8px; padding:6px; font-weight:700; font-size:12px; }
+.kd-t-ok{ --k:var(--green); }
+.kd-t-warn{ --k:var(--yellow-deep); --kt:#A88300; }
+.kd-t-late{ --k:var(--red); }
+.kd-t-prio{ box-shadow:0 0 0 2px var(--red); }
+
+/* The poor paper ticket next to the screen: crumpled, greasy, half unreadable. */
+.kd-bon{ position:absolute; left:0; bottom:0; width:150px; background:#fffdf6; color:var(--ink); padding:14px 14px 22px;
+  font-family:ui-monospace, "SFMono-Regular", Menlo, monospace; font-size:12px; line-height:1.5; transform:rotate(9deg);
+  box-shadow:0 14px 24px -8px rgba(20,17,13,.35);
+  background-image:radial-gradient(circle at 70% 65%, rgba(196,160,90,.32) 0 18px, transparent 26px),
+    linear-gradient(170deg, transparent 48%, rgba(20,17,13,.06) 50%, transparent 52%);
+  -webkit-mask:conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 12px 51% repeat-x, linear-gradient(#000 0 0) top / 100% 51% no-repeat;
+          mask:conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 12px 51% repeat-x, linear-gradient(#000 0 0) top / 100% 51% no-repeat; }
+.kd-bon p{ margin:0; white-space:nowrap; overflow:hidden; text-overflow:clip; }
+.kd-bon-h{ font-weight:700; border-bottom:1px dashed rgba(20,17,13,.4); padding-bottom:4px; margin-bottom:4px !important; }
+
+@media (prefers-reduced-motion: no-preference){
+  .kd-t-new{ animation:kd-in .6s cubic-bezier(.2,.9,.3,1.3) .5s both; }
+  .kd-t-new .kd-flag-new{ animation:kd-ping 1.6s ease-out 1.1s 3; }
+  .kd-bar-sound svg{ animation:kd-ring .5s ease-in-out 1.1s 3; transform-origin:30% 50%; }
+  @keyframes kd-in{ from{ transform:translateY(-14px) scale(.96); } to{ transform:none; } }
+  @keyframes kd-ping{ 0%{ box-shadow:0 0 0 0 rgba(255,223,44,.7); } 100%{ box-shadow:0 0 0 10px rgba(255,223,44,0); } }
+  @keyframes kd-ring{ 0%,100%{ transform:rotate(0); } 25%{ transform:rotate(-14deg); } 75%{ transform:rotate(14deg); } }
+}
+
+/* ---------- printer vs display ---------- */
+.kd-vs{ border:2px solid var(--ink); border-radius:var(--radius-md); background:#fff; overflow:hidden; }
+.kd-vs-row{ display:grid; grid-template-columns:180px minmax(0,1fr) minmax(0,1fr); border-top:1px solid var(--line); }
+.kd-vs-row > *{ margin:0; padding:15px 18px; font-size:15.5px; }
+.kd-vs-row b{ font-weight:700; }
+.kd-vs-p{ color:var(--muted); }
+.kd-vs-h{ background:var(--hl); color:var(--ink); font-weight:600; }
+.kd-vs-headrow{ border-top:0; background:var(--ink); color:var(--cream); }
+.kd-vs-headrow > *{ font-weight:600; font-size:14px; padding-top:13px; padding-bottom:13px; }
+.kd-vs-headrow .kd-vs-p{ color:var(--cream); }
+.kd-vs-headrow .kd-vs-h{ background:var(--yellow); color:var(--ink); font-weight:700; }
+
+/* ---------- paper counter ---------- */
+.kd-paper{ display:grid; grid-template-columns:380px minmax(0,1fr); gap:24px 56px; align-items:center; }
+
+/* A thermal roll seen from the front: the reel at the top, the paper hanging straight down
+   from it, pseudo-3D by shading only. `--p` (0..1) is how far it has unrolled:
+   assets/kds.js drives it from scroll; without JavaScript or with reduced motion it stays 1.
+   A wind-blown ticket-pile variant is kept on branch claude/HUGO-2422-kds-paper-pile-idea. */
+.kd-unroll{ --p:1; --len:560px; --w:250px; --reel:120px; position:relative; height:520px;
+  overflow:hidden; -webkit-mask:linear-gradient(#000 80%, transparent); mask:linear-gradient(#000 80%, transparent); }
+.kd-scene{ position:absolute; inset:0; }
+.kd-strip{ position:absolute; left:50%; top:calc(var(--reel) / 2 + 6px); width:var(--w); height:var(--len); margin-left:calc(var(--w) / -2); }
+/* The paper itself: revealed downward from the reel; its print rides along with the paper end. */
+.kd-strip-in{ position:absolute; inset:0; background:#fffdf6; overflow:hidden;
+  clip-path:inset(0 0 calc((1 - var(--p)) * 100%) 0);
+  box-shadow:0 0 0 1px rgba(20,17,13,.06), 0 40px 60px -30px rgba(20,17,13,.45);
+  padding:0 20px; display:flex; flex-direction:column; justify-content:flex-end;
+  font-family:ui-monospace, "SFMono-Regular", Menlo, monospace; font-size:15px; line-height:1.45; color:#2A2620; }
+.kd-strip-in > *{ transform:translateY(calc((var(--p) - 1) * var(--len))); }
+.kd-strip-in::after{ /* the reel's shadow on the paper just below it */
+  content:""; position:absolute; inset:0; pointer-events:none; transform:none;
+  background:linear-gradient(rgba(120,108,84,.4), transparent 90px); }
+.kd-tk{ padding:18px 0 20px; border-top:2px dashed rgba(20,17,13,.35); }
+.kd-tk b{ display:block; font-weight:700; letter-spacing:.04em; margin-bottom:4px; }
+.kd-tk p{ margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.kd-tk:last-child{ border-bottom:0; }
+/* The reel: a horizontal cylinder at the top, thinning as it unrolls. */
+.kd-reel{ position:absolute; left:-14px; right:-14px; top:0; height:calc(var(--reel) - var(--p) * 24px);
+  transform:translateY(-55%); }
+.kd-reel i{ position:absolute; inset:0; border-radius:14px / 50%;
+  /* faint winding lines slide as the reel turns */
+  background:repeating-linear-gradient(transparent 0 17px, rgba(20,17,13,.05) 17px 18px) 0 calc(var(--p) * 540px) / 100% 100%,
+    linear-gradient(#cfc6b0, #fffdf6 30%, #f4efe2 55%, #d8cfb8 85%, #b9ae95);
+  box-shadow:0 18px 22px -14px rgba(20,17,13,.55); }
+.kd-reel::before, .kd-reel::after{ content:""; position:absolute; top:0; bottom:0; width:22px; border-radius:50%; z-index:1;
+  background:radial-gradient(closest-side, #8f8570 0 22%, var(--cream-3) 23% 34%, transparent 35%),
+    repeating-radial-gradient(closest-side, #fffdf6 0 2px, #e6dfcd 2px 3px); box-shadow:inset 0 0 0 1px rgba(20,17,13,.12); }
+.kd-reel::before{ left:-6px; }
+.kd-reel::after{ right:-6px; }
+.kd-km{ display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 14px; margin-bottom:14px; }
+.kd-km b{ font-family:var(--display); font-weight:800; font-size:clamp(64px,10vw,128px); line-height:.9; letter-spacing:-.05em;
+  background:linear-gradient(transparent 58%, var(--yellow) 58%, var(--yellow) 90%, transparent 90%); padding:0 .06em; }
+.kd-km span{ font-weight:600; color:var(--muted); font-size:18px; }
+.kd-paper-text{ margin-top:16px; max-width:58ch; }
+
+/* ---------- features ---------- */
+.kd-feats{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr);
+  background:#fff; border-radius:var(--radius-lg); overflow:hidden; }
+.kd-feats li{ padding:28px 28px 32px; display:grid; gap:8px; align-content:start; border-left:1px solid var(--line); border-top:1px solid var(--line); }
+.kd-feats li:nth-child(3n+1){ border-left:0; }
+.kd-feats li:nth-child(-n+3){ border-top:0; }
+.kd-feats h3{ font-size:22px; font-weight:800; letter-spacing:-.02em; }
+.kd-feats p{ font-size:15.5px; color:var(--ink-2); }
+.kd-ico{ width:46px; height:46px; border-radius:14px; background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; margin-bottom:6px; }
+.kd-ico svg{ width:24px; height:24px; fill:var(--ink); }
+
+/* ---------- sync flow (same shape as /hardware's steps) ---------- */
+.kd-flow{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; position:relative; }
+.kd-flow::before{ content:""; position:absolute; left:22px; right:22px; top:22px; border-top:2px dashed rgba(20,17,13,.3); }
+.kd-flow li{ position:relative; display:grid; gap:10px; align-content:start; }
+.kd-n{ width:44px; height:44px; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 6px var(--cream);
+  display:inline-flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800; font-size:19px; margin-bottom:8px; }
+.kd-flow h3{ font-size:24px; font-weight:800; letter-spacing:-.02em; }
+.kd-flow p{ color:var(--ink-2); max-width:34ch; }
+.kd-checks{ margin-top:44px; padding-top:30px; border-top:1px solid var(--line); grid-template-columns:repeat(3,1fr); }
+.kd-checks li span:last-child{ color:var(--ink-2); font-size:15.5px; }
+.kd-checks b{ display:inline; color:var(--ink); }
+
+/* ---------- devices ---------- */
+.kd-dev{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px 56px; align-items:center; }
+.kd-big{ font-weight:800; font-size:clamp(46px,6.6vw,96px); line-height:.92; letter-spacing:-.045em; }
+.kd-dev .lead{ max-width:46ch; }
+.kd-req{ margin-top:10px; padding-left:18px; max-width:52ch; font-size:14.5px; color:var(--muted); }
+.kd-chips{ list-style:none; margin:22px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+.kd-chips li{ background:#fff; border:1px solid var(--line); border-radius:var(--radius-pill); padding:8px 15px; font-weight:600; font-size:14.5px; }
+
+/* ---------- still want a printer ---------- */
+.kd-printer{ display:grid; grid-template-columns:200px minmax(0,1fr) auto; gap:20px 36px; align-items:center;
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px 34px; }
+.kd-printer img{ width:100%; height:auto; display:block; }
+.kd-printer h2{ font-weight:800; font-size:clamp(24px,2.8vw,34px); line-height:1.05; letter-spacing:-.025em; }
+.kd-printer p{ margin-top:10px; color:var(--ink-2); max-width:56ch; }
+
+/* ---------- FAQ ---------- */
+.kd-faq-wrap{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:24px 56px; align-items:start; }
+.kd-faq{ border-top:1.5px solid var(--ink); }
+.kd-faq details{ border-bottom:1px solid var(--line); }
+.kd-faq summary{ cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px; padding:18px 0;
+  font-family:var(--display); font-weight:700; font-size:19px; letter-spacing:-.01em; }
+.kd-faq summary::-webkit-details-marker{ display:none; }
+.kd-faq summary::after{ content:"+"; flex:0 0 30px; height:30px; border-radius:50%; background:var(--yellow); display:inline-flex;
+  align-items:center; justify-content:center; font-weight:800; transition:transform .2s ease; }
+.kd-faq details[open] summary::after{ transform:rotate(45deg); }
+.kd-faq details p{ padding:0 44px 20px 0; color:var(--ink-2); }
+
+.kd-cta-btns{ display:flex; gap:12px; flex-wrap:wrap; }
+.kd-on-dark{ color:#fff; border-color:rgba(255,255,255,.3); }
+.cta-band p a{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+
+@media (max-width:980px){
+  .kd-hero-grid{ grid-template-columns:1fr; gap:28px; }
+  .kd-stage{ max-width:640px; }
+  .kd-feats{ grid-template-columns:repeat(2,1fr); }
+  .kd-feats li{ border-left:1px solid var(--line); border-top:1px solid var(--line); }
+  .kd-feats li:nth-child(odd){ border-left:0; }
+  .kd-feats li:nth-child(-n+2){ border-top:0; }
+  .kd-feats li:nth-child(3){ border-top:1px solid var(--line); }
+  .kd-printer{ grid-template-columns:140px minmax(0,1fr); }
+  .kd-printer .btn{ grid-column:1 / -1; justify-self:start; }
+}
+@media (max-width:860px){
+  .kd-hero{ padding-top:36px; }
+  .kd-head, .kd-dev, .kd-faq-wrap{ grid-template-columns:1fr; }
+  .kd-vs-row{ grid-template-columns:1fr 1fr; }
+  .kd-vs-row > b{ grid-column:1 / -1; padding-bottom:0; }
+  .kd-vs-headrow > span:first-child{ position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  .kd-paper{ grid-template-columns:1fr; }
+  .kd-unroll{ --w:220px; height:400px; max-width:420px; width:100%; }
+  .kd-flow{ grid-template-columns:1fr; gap:26px; padding-left:64px; }
+  .kd-flow::before{ left:21px; right:auto; top:8px; bottom:8px; border-top:0; border-left:2px dashed rgba(20,17,13,.3); }
+  .kd-flow .kd-n{ position:absolute; left:-64px; top:-4px; }
+  .kd-checks{ grid-template-columns:1fr; }
+}
+@media (max-width:560px){
+  .kd-stage{ padding:6px 0 70px 0; }
+  .kd-tablet{ padding:9px; border-radius:20px; }
+  .kd-tickets{ gap:8px; padding:9px; }
+  .kd-screen{ font-size:12px; }
+  .kd-bar-count{ display:none; }
+  .kd-t header{ flex-wrap:wrap; }
+  .kd-bon{ width:118px; font-size:10.5px; padding:10px 10px 18px; left:auto; right:6px; }
+  .kd-vs-row{ grid-template-columns:1fr; }
+  .kd-vs-headrow{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
+  .kd-vs-row > *{ padding:10px 16px; }
+  .kd-vs-row > b{ padding-top:16px; }
+  /* No column headers on phones: a red cross marks the printer, a green tick marks Hugo. */
+  .kd-vs-p, .kd-vs-h{ display:grid; grid-template-columns:20px 1fr; gap:8px; }
+  .kd-vs-p::before, .kd-vs-h::before{ font-weight:800; line-height:1.5; }
+  .kd-vs-p::before{ content:"\2715"; color:var(--red); }
+  .kd-vs-h::before{ content:"\2713"; color:var(--green); }
+  .kd-feats{ grid-template-columns:1fr; }
+  .kd-feats li{ border-left:0 !important; border-top:1px solid var(--line) !important; padding:24px; }
+  .kd-feats li:first-child{ border-top:0 !important; }
+  .kd-printer{ grid-template-columns:1fr; padding:22px; }
+  .kd-printer img{ max-width:180px; }
+  .kd-faq details p{ padding-right:0; }
+}
