@@ -219,6 +219,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .close p{color:var(--muted); margin-top:14px; max-width:46ch; margin-inline:auto}
   .close .btn{margin-top:26px}
 
+  /* ---------- PRAZDNINY2026 code block (HUGO-2486) ---------- */
+  .promo{max-width:520px; margin:30px auto 0; padding:18px 20px; border:2px dashed rgba(0,75,42,.45);
+    border-radius:20px; background:#fff; text-align:left}
+  .promo[hidden]{display:none}
+  .promo-head{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px 12px}
+  .promo-title{font-weight:600; font-size:15.5px; color:var(--ink)}
+  .promo-row{display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-top:12px}
+  .promo-code{font-family:var(--display); font-weight:700; font-size:clamp(24px,3.4vw,30px); letter-spacing:.04em;
+    color:var(--mat); user-select:all; -webkit-user-select:all; overflow-wrap:anywhere}
+  .promo-copy{display:inline-flex; align-items:center; gap:8px; font:600 15px var(--body); cursor:pointer;
+    padding:10px 16px; border-radius:var(--pill); border:1px solid var(--mat); background:var(--mat); color:#fff;
+    transition:background .18s ease}
+  .promo-copy:hover{background:var(--mat-deep)}
+  .promo-copy svg{width:16px; height:16px; flex:none}
+  .promo-copy[data-state="copied"]{background:var(--yellow); border-color:var(--yellow); color:var(--ink)}
+  .promo-note{margin-top:10px; font-size:14.5px; color:var(--muted)}
+  .promo.on-dark{margin:0; max-width:none; flex-basis:100%; background:rgba(255,255,255,.04);
+    border-color:rgba(255,223,44,.5)}
+  .promo.on-dark .promo-title{color:#fff}
+  .promo.on-dark .promo-code{color:var(--yellow)}
+  .promo.on-dark .promo-copy{background:var(--yellow); border-color:var(--yellow); color:var(--ink)}
+  .promo.on-dark .promo-copy:hover{background:var(--yellow-deep)}
+  .promo.on-dark .promo-note{color:#DAD3C7}
+
   footer{border-top:1px solid var(--line); padding:26px 0 40px}
   .foot{display:flex; flex-wrap:wrap; gap:10px 22px; align-items:center;
     justify-content:space-between; font-size:14px; color:var(--muted)}
@@ -244,6 +268,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .lockup .partner-mark,.lockup .hugo{justify-self:center}
     .hw-card{grid-template-columns:auto 1fr}
     .hw-price{grid-column:2; text-align:left}
+    .promo-copy{width:100%; justify-content:center}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 </style>
@@ -271,6 +296,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p class="sub">EET 2.0 v suchu - speciální nabídka pro zákazníky Plzeňského Prazdroje.</p>
 
+    <div class="promo">
+      <div class="promo-head"><span class="promo-title">Váš kód na Huga zdarma do konce roku</span></div>
+      <div class="promo-row"><code class="promo-code">PRAZDNINY2026</code><button type="button" class="promo-copy" data-state="idle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span class="promo-copy-label" aria-live="polite">Kopírovat</span></button></div>
+      <p class="promo-note">Zadejte ho při aktivaci předplatného. Platí do 31.&nbsp;12.&nbsp;2026, pak 190&nbsp;Kč měsíčně bez DPH.</p>
+    </div>
     <div class="ctas">
       <a class="btn btn-primary" href="https://hugopos.eu/start/?partner=prazdroj" target="_blank" rel="noopener">
         Registrovat
@@ -320,26 +350,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="steps">
   <div class="container">
-    <h2>Spuštění za pět minut</h2>
-    <p class="kicker">Bez technika, bez instalace, bez školení.</p>
+    <h2>Jak získat Huga zdarma</h2>
+    <p class="kicker">Tři kroky, bez technika a bez školení.</p>
     <div class="rail">
       <div class="step">
         <div class="no">1</div>
-        <h3>Stáhnete aplikaci</h3>
-        <p>App Store nebo Google Play, na telefon či tablet, který už máte.</p>
-        <div class="t">1 minuta</div>
+        <h3>Zaregistrujete se</h3>
+        <p>Účet založíte tlačítkem Registrovat, stačí vám e-mail.</p>
+        <div class="t">2 minuty</div>
       </div>
       <div class="step">
         <div class="no">2</div>
-        <h3>Nahrajete menu</h3>
-        <p>Položky a ceny si naklikáte. Kdykoli je můžete změnit.</p>
-        <div class="t">3 minuty</div>
+        <h3>Zadáte kód PRAZDNINY2026</h3>
+        <p>V administraci otevřete Aktivovat předplatné a kód vložte do pole pro slevový kód. Kartu zadáte, ale do konce roku 2026 neplatíte nic.</p>
+        <div class="t">1 minuta</div>
       </div>
       <div class="step">
         <div class="no">3</div>
-        <h3>Účtujete</h3>
-        <p>První objednávka, platba kartou a účtenka pro hosta.</p>
-        <div class="t">1 minuta</div>
+        <h3>Terminál, pokud ho chcete</h3>
+        <p>Platební terminál je volitelný. Objednáte ho zvlášť až po aktivaci předplatného, kód a terminál nejdou v jednom košíku.</p>
+        <div class="t">Volitelné</div>
       </div>
     </div>
   </div>
@@ -417,6 +447,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
       <p class="mif-note" id="mif-note" tabindex="-1">*Transparentní model zpoplatnění karetních transakcí, kdy se cena skládá ze tří oddělených složek: mezibankovního poplatku (MIF), poplatku karetní asociace a marže poskytovatele.</p>
       <div class="price-cta">
+        <div class="promo on-dark">
+          <div class="promo-head"><span class="promo-title">Váš kód na Huga zdarma do konce roku</span></div>
+          <div class="promo-row"><code class="promo-code">PRAZDNINY2026</code><button type="button" class="promo-copy" data-state="idle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span class="promo-copy-label" aria-live="polite">Kopírovat</span></button></div>
+          <p class="promo-note">Zadejte ho při aktivaci předplatného. Platí do 31.&nbsp;12.&nbsp;2026, pak 190&nbsp;Kč měsíčně bez DPH.</p>
+        </div>
         <a class="btn btn-primary" href="https://hugopos.eu/start/?partner=prazdroj" target="_blank" rel="noopener">
           Registrovat
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -449,7 +484,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="close">
   <div class="container">
     <h2>Začněte ještě dnes</h2>
-    <p>Účet si založíte za pár minut a pokladnu si nastavíte vlastním tempem.</p>
+    <p>Registrujte se hned a vše si v klidu nastavte, ať to nemusíte stíhat na poslední chvíli.</p>
+    <div class="promo">
+      <div class="promo-head"><span class="promo-title">Váš kód na Huga zdarma do konce roku</span></div>
+      <div class="promo-row"><code class="promo-code">PRAZDNINY2026</code><button type="button" class="promo-copy" data-state="idle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span class="promo-copy-label" aria-live="polite">Kopírovat</span></button></div>
+      <p class="promo-note">Zadejte ho při aktivaci předplatného. Platí do 31.&nbsp;12.&nbsp;2026, pak 190&nbsp;Kč měsíčně bez DPH.</p>
+    </div>
     <a class="btn btn-primary" href="https://hugopos.eu/start/?partner=prazdroj" target="_blank" rel="noopener">
       Registrovat
       <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -467,6 +507,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </footer>
+
+<script src="promo-code.js" defer></script>
 
 <script src="https://api.nessie.works/api/widget/v1/chat.js" data-key="wc_Bsd9tIMLvdnRmzD233RHrxbn" async></script>
 </body>
