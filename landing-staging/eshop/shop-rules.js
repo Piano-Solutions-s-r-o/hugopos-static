@@ -50,6 +50,8 @@
       catalogue[item.id].available = item.available === true;
       catalogue[item.id].price = item.amountMinor;
       catalogue[item.id].currency = item.currency;
+      // HUGO-2492 — present only while the checkout really charges the promo price.
+      catalogue[item.id].promotion = item.promotion || null;
     });
     return catalogue;
   }
@@ -117,6 +119,15 @@
     return t('perHour').replace('{amount}', amount);
   }
 
+  // HUGO-2492 — Black Friday: the struck-through original price and the label, from the server's
+  // `promotion` only (listAmountMinor, percentOff); '' when the product has none.
+  function promoHtml(product, t, lang) {
+    var promo = product.promotion;
+    if (!promo || !Number.isInteger(promo.listAmountMinor)) return '';
+    return '<s>' + formatMoney(promo.listAmountMinor, product.currency, lang) + '</s> '
+      + '<em class="promo">' + t('blackFriday').replace('{percent}', String(Number(promo.percentOff))) + '</em> ';
+  }
+
   // A catalogue card's price, as HTML. Every amount is the server catalogue's; a product
   // that cannot be bought shows no amount at all (HUGO-2182: never a client literal).
   function cardPriceHtml(id, catalogue, t, lang) {
@@ -134,7 +145,7 @@
     // prices at 0 gets the localized "free" label instead of `money(0)`.
     if (isZeroPriced(product)) return t('free') + '<small>' + t('freeFeatureNote') + '</small>';
     var amount = formatMoney(product.price, product.currency, lang);
-    return (isHourly(id) ? perHour(t, amount) : amount) + '<small>' + t('priceNote') + '</small>';
+    return promoHtml(product, t, lang) + (isHourly(id) ? perHour(t, amount) : amount) + '<small>' + t('priceNote') + '</small>';
   }
 
   function cartLineName(line, product, t) {
@@ -160,7 +171,7 @@
         .replace('{hours}', String(line.qty))
         .replace('{rate}', perHour(t, money(product.price))) + ' ' + t('exclVat');
     }
-    return times + money(product.price) + ' ' + t('exclVat');
+    return promoHtml(product, t, lang) + times + money(product.price) + ' ' + t('exclVat');
   }
 
   // One cart line's text: its name and its price column.

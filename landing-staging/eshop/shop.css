@@ -134,3 +134,4 @@ footer .foot-bottom a{color:#2a2620}
 
 /* HUGO-2489 — reserve the launcher's row only while its widget host is mounted. */
 body:has(> nessie-chat#nessie-chat) .cart-footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.price s,.cart-line s{color:var(--muted);font-weight:500}.price .promo,.cart-line .promo{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--ink);color:#fff;font-size:12px;font-style:normal;font-weight:800}
