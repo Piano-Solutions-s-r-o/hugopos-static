@@ -132,6 +132,7 @@
         $('order-flow').hidden = true;
         var done = $('done');
         done.hidden = false;
+        window.scrollTo(0, 0);
         if (params.get('termin') === '1') {
           $('done-call').hidden = true;
           $('done-booked').hidden = false;
@@ -141,7 +142,8 @@
           back.className = 'btn btn-primary';
           back.href = adminBase + '/';
           back.textContent = 'Zpátky do Huga';
-          done.insertBefore(back, done.querySelector('.btn-ghost'));
+          var ghost = done.querySelector('.btn-ghost');
+          ghost.parentNode.insertBefore(back, ghost);
         }
       }).catch(function () {});
   }

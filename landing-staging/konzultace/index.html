@@ -22,6 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="/hugo-ab.js"></script>
+  <script src="/hugo-nav.js" defer></script>
   <link rel="stylesheet" href="konzultace.css">
 </head>
 <body>
@@ -34,16 +35,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="/" aria-label="Hugo — domů"><img src="../assets/hugo-icon.svg" alt=""><span>Hugo</span></a>
-      <nav class="nav-links" aria-label="Hlavní navigace">
+      <button class="nav-burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Hlavní navigace">
         <a href="/#product">Produkt</a>
         <a href="/#brain">AI &amp; Brain</a>
         <a href="/jak-zacit/">Jak začít</a>
         <a href="/cenove-srovnani/">Ceník</a>
         <a href="/konzultace/" aria-current="page">Konzultace</a>
+        <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener" class="nav-admin" aria-label="Admin"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="nav-admin-label">Admin</span></a>
       </nav>
       <a class="btn btn-primary nav-cta" href="#objednavka">Objednat konzultaci</a>
     </div>
   </header>
+
+  <div class="done" id="done" role="status" hidden>
+    <div class="wrap done-inner">
+      <svg width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#12733f"></rect><path d="M19 33l9 9 17-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div class="done-text">
+        <h2>Hotovo, objednávku máme.</h2>
+        <p id="done-call">Platba proběhla a zavoláme ti do jednoho pracovního dne. Domluvíme se, kdy a jak konzultace proběhne. Daňový doklad najdeš v e-mailu od platební brány. Zbytek už je na nás.</p>
+        <p id="done-booked" hidden>Platba proběhla. Potvrzení termínu ti přijde e-mailem. Daňový doklad najdeš v e-mailu od platební brány.</p>
+      </div>
+      <a class="btn btn-ghost" href="/">Zpět na web</a>
+    </div>
+  </div>
 
   <main>
     <section class="wrap hero">
@@ -66,14 +81,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <section class="wrap order" id="objednavka">
-      <div class="done" id="done" role="status" hidden>
-        <svg width="56" height="56" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#FFDF2C"></rect><path d="M19 33l9 9 17-19" fill="none" stroke="#14110D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        <h2>Hotovo, objednávku máme.</h2>
-        <p id="done-call">Platba proběhla a zavoláme ti do jednoho pracovního dne. Domluvíme se, kdy a jak konzultace proběhne. Daňový doklad najdeš v e-mailu od platební brány. Zbytek už je na nás.</p>
-        <p id="done-booked" hidden>Platba proběhla. Potvrzení termínu ti přijde e-mailem. Daňový doklad najdeš v e-mailu od platební brány.</p>
-        <a class="btn btn-ghost" href="/">Zpět na web</a>
-      </div>
-
       <div id="order-flow">
         <p class="notice" id="cancelled" role="status" hidden>Platba nedoběhla a nic se ti neúčtovalo. Můžeš to zkusit znovu.</p>
         <div class="step-head">
