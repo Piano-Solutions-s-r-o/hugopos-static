@@ -60,7 +60,7 @@
     try {
       var params = new URLSearchParams(location.search);
       var incomingHandoff = handoff.parseCartHandoff(params.get('cart'));
-      var stored = incomingHandoff || JSON.parse(localStorage.getItem(data.CART_STORAGE_KEY) || 'null');
+      var stored = incomingHandoff || JSON.parse(localStorage.getItem(E.cartStorageKey()) || 'null');
       if (!stored || !Array.isArray(stored.cart)) return;
       if (incomingHandoff) {
         params.delete('cart');
@@ -74,15 +74,17 @@
       S.selectedDeliveryMethod = handoff.deliveryMethod(stored.deliveryMethod);
       // CART_IDS never lists an included line, so a stored stand or case cannot come back
       // on its own; `syncIncludedLines` re-derives them from the restored terminal / tablet.
-      S.cart = stored.cart.filter(function (line) { return line && handoff.CART_IDS.includes(line.id); })
-        .map(function (line) { return { id: line.id, key: line.id, qty: rules.clampQuantity(line.qty || 1), variant: null, variantName: null }; });
+      var restored = stored.cart.filter(function (line) { return line && handoff.CART_IDS.includes(line.id); });
+      // HUGO-2459 — the services storefront keeps only service ids, whatever was stored.
+      if (E.servicesMode) restored = rules.servicesOnly(restored);
+      S.cart = restored.map(function (line) { return { id: line.id, key: line.id, qty: rules.clampLineQuantity(line.id, line.qty || 1), variant: null, variantName: null }; });
       syncIncludedLines();
     } catch (_error) {}
   }
 
   function persistCart() {
     try {
-      localStorage.setItem(data.CART_STORAGE_KEY, JSON.stringify({
+      localStorage.setItem(E.cartStorageKey(), JSON.stringify({
         caseVariant: S.selectedTerminalCaseVariant,
         extraCaseVariant: S.selectedExtraCaseVariant,
         deliveryMethod: S.selectedDeliveryMethod,
@@ -204,7 +206,8 @@
     if (id === 'pax_a920' && !E.caseInStock(previewVariant || S.selectedTerminalCaseVariant)) return false;
     if (id === 'terminal_case_extra' && !E.caseInStock(previewVariant || S.selectedExtraCaseVariant)) return false;
     // HUGO-2182 — a tablet needs its stand priced as well (`productIsOrderable`).
-    return !isIncludedLine(id) && rules.productIsOrderable(products, id);
+    // HUGO-2459 — the consultation is ordered on /konzultace/, never from the cart.
+    return !isIncludedLine(id) && !rules.isPageProduct(id) && rules.productIsOrderable(products, id);
   }
 
   function addProduct(id) {
@@ -228,6 +231,20 @@
     S.cart = rules.withIncludedStands(S.cart);
     renderCart();
     openCart();
+  }
+
+  // HUGO-2459 — `pridat=<id>` (services storefront only, a service id only) puts that service
+  // in the cart once the catalogue has priced it. Never raises the quantity of a line that
+  // is already there; the parameter is consumed so a reload does not add it again.
+  function addRequestedService() {
+    if (!E.servicesMode) return;
+    var params = new URLSearchParams(location.search);
+    var id = params.get('pridat');
+    if (!id) return;
+    if (!data.SERVICE_IDS.includes(id) || !canAddProduct(id)) return;
+    params.delete('pridat');
+    history.replaceState({}, '', location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash);
+    if (!S.cart.some(function (line) { return line.id === id; })) addProduct(id);
   }
 
   function syncCaseLine() {
@@ -278,6 +295,7 @@
   E.isPriced = isPriced;
   E.canAddProduct = canAddProduct;
   E.addProduct = addProduct;
+  E.addRequestedService = addRequestedService;
   E.syncIncludedLines = syncIncludedLines;
   E.removeLine = removeLine;
   E.stepQuantity = stepQuantity;

@@ -34,6 +34,7 @@
         // authoritative Stripe availability/prices so its totals and checkout
         // state move together.
         E.renderCart();
+        E.addRequestedService();
       })
       .catch(function () {
         renderCataloguePrices();
@@ -78,7 +79,10 @@
     // `renderStockNote` then enables/labels it for the SELECTED colour, so switching from
     // a restocking colour to an in-stock one inside the dialog makes it buyable again.
     var orderId = p.id === 'terminal_case' ? 'terminal_case_extra' : p.id;
-    var button = !E.isPriced(orderId)
+    // HUGO-2459 — the consultation is ordered on its own page, so its detail links there.
+    var button = E.rules.isPageProduct(p.id)
+      ? '<a class="add-button" href="' + E.data.products[p.id].page + '" data-consultation-link>' + t('pickTopics') + '</a>'
+      : !E.isPriced(orderId)
       ? '<button class="add-button" type="button" disabled>' + t('preparing') + '</button>'
       : (p.id === 'terminal_case'
         ? '<button class="add-button" data-add-case type="button">' + t('addExtraCase') + '</button>'

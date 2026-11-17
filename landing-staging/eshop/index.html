@@ -21,7 +21,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     // (Docs/deployment.md, HUGO-671 tripwire) — it failed the 2026-09-30 production release.
     (function () {
       var params = new URLSearchParams(location.search);
-      if (!params.has('session_id') && !params.has('checkout') && params.get('preview') !== '1') location.replace('/');
+      // HUGO-2459 — `nabidka=sluzby` is the public services storefront (linked from /jak-zacit/):
+      // installation only, so it is reachable without `preview=1`.
+      if (params.get('nabidka') === 'sluzby') document.documentElement.classList.add('services-mode');
+      if (!params.has('session_id') && !params.has('checkout') && params.get('preview') !== '1' && params.get('nabidka') !== 'sluzby') location.replace('/');
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -313,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="shelf" data-shelf="installation">
-        <h3 class="shelf-title">Instalace</h3>
+        <h3 class="shelf-title">Instalace a konzultace</h3>
         <div class="product-grid">
           <article class="product-card is-wide" data-product="network_install_service">
             <button class="product-open image-button" type="button" aria-label="Zobrazit detail základního instalačního balíčku">
@@ -327,6 +330,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="card-actions">
                 <button class="product-open text-link" type="button">Prohlédnout detail</button>
                 <button class="add-button" type="button" data-add="network_install_service" disabled>Přidat</button>
+              </div>
+            </div>
+          </article>
+          <article class="product-card is-wide" data-product="online_consultation">
+            <button class="product-open image-button" type="button" aria-label="Zobrazit detail online konzultace">
+              <img src="../assets/eshop/network-install-service.webp" alt="Online konzultace s Hugo odborníkem">
+            </button>
+            <div class="product-copy">
+              <p class="kicker">Služba</p>
+              <h4>Online konzultace s Hugo odborníkem</h4>
+              <p class="product-desc">Videohovor s naším specialistou na 60 minut. Vybereš si témata a nastavíme spolu pokladnu tak, aby seděla na tvůj provoz.</p>
+              <p class="price" data-price="online_consultation">Cena se načítá…</p>
+              <div class="card-actions">
+                <button class="product-open text-link" type="button">Prohlédnout detail</button>
+                <a class="add-button" href="/konzultace/" data-consultation-link>Vybrat témata</a>
               </div>
             </div>
           </article>

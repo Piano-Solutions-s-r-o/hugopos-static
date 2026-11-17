@@ -67,7 +67,12 @@
     tablet_galaxy_tab_a11_plus_stand: product('tablet_galaxy_tab_a11_plus_stand', 'tablet-stand-aluminium.webp', { includedWith: 'tablet_galaxy_tab_a11_plus', label: 'standUgreenIncluded', gallery: UGREEN_STAND_PHOTOS }),
     // A service sold as a 2-hour package (HUGO-2274): quantity = packages (1–99), the server
     // catalogue prices one package; the stepper shows the hours of work (packages × 2).
-    network_install_service: product('network_install_service', 'network-install-service.webp', { unit: 'hour' })
+    network_install_service: product('network_install_service', 'network-install-service.webp', { unit: 'hour' }),
+    // HUGO-2459 — one online consultation of 60 minutes, priced per hour by the server
+    // catalogue (the Stripe price can change, never hardcode it here). It is NEVER put in
+    // the cart: the order needs topics, so it is made on its own page (`page`), and the card
+    // only links there. The temporary photo is the installation one until a real one comes.
+    online_consultation: product('online_consultation', 'network-install-service.webp', { unit: 'session', page: '/konzultace/' })
   };
   // HUGO-2182 — the grid is grouped like the Admin shop (Admin/src/pages/shop/catalogue.js
   // PRODUCT_SECTIONS). The cards in index.html follow this order exactly (test-pinned).
@@ -78,7 +83,7 @@
     { id: 'terminal', productIds: ['pax_a920', 'terminal_case', 'belt_holster', 'charging_base_a920'] },
     { id: 'printers', productIds: ['printer_zj5809', 'paper_roll_57', 'printer_rp110', 'paper_roll_80'] },
     { id: 'mobile', productIds: ['android_tap_to_pay', 'tablet_ipad_11', 'tablet_galaxy_tab_a11_plus'] },
-    { id: 'installation', productIds: ['network_install_service'] }
+    { id: 'installation', productIds: ['network_install_service', 'online_consultation'] }
   ];
   var productOrder = PRODUCT_SECTIONS.reduce(function (ids, section) { return ids.concat(section.productIds); }, []);
   // Products that ship nothing (HUGO-1694) — mirrors the server's `physical: false` flag
@@ -86,13 +91,18 @@
   // method choice and is never charged the DPD fee; the server enforces the same rule
   // independently, this only keeps the storefront from asking a question it doesn't need to.
   // Admin/src/pages/shop/nonPhysicalIds.crossCheck.test.js keeps all three lists identical.
-  var NON_PHYSICAL_IDS = ['android_tap_to_pay', 'network_install_service'];
+  var NON_PHYSICAL_IDS = ['android_tap_to_pay', 'network_install_service', 'online_consultation'];
+  // HUGO-2459 — the only product the services storefront (/eshop/?nabidka=sluzby) puts in
+  // a cart. The consultation is ordered on /konzultace/ instead (`storefront: "consultation"`).
+  var SERVICE_IDS = ['network_install_service'];
   var MEAL_VOUCHER_PRODUCT_IDS = ['pax_a920', 'android_tap_to_pay'];
   // HUGO-1662 — mirrors the API default, which must be an in-stock colour. Which colours
   // are in stock is never hardcoded here: it arrives with the catalogue
   // (`caseVariants[].inStock`), and the API refuses a restocking colour at checkout.
   var DEFAULT_CASE_VARIANT = 'red_impulse';
   var CART_STORAGE_KEY = 'hugo-eshop-cart-v1';
+  // The services storefront keeps its own cart so it never overwrites a hardware cart.
+  var SERVICES_CART_STORAGE_KEY = 'hugo-eshop-cart-services-v1';
   var MAX_QUANTITY = 99;
   var HOURS_PER_PACKAGE = 2;
 
@@ -106,6 +116,8 @@
     MEAL_VOUCHER_PRODUCT_IDS: MEAL_VOUCHER_PRODUCT_IDS,
     NON_PHYSICAL_IDS: NON_PHYSICAL_IDS,
     PRODUCT_SECTIONS: PRODUCT_SECTIONS,
+    SERVICE_IDS: SERVICE_IDS,
+    SERVICES_CART_STORAGE_KEY: SERVICES_CART_STORAGE_KEY,
     productOrder: productOrder,
     products: products,
     TERMINAL_IMAGE: TERMINAL_IMAGE

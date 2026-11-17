@@ -25,6 +25,14 @@
     }
   };
 
+  // HUGO-2459 — the services storefront (/eshop/?nabidka=sluzby): installation only (the
+  // consultation has its own page, /konzultace/). The mode is the URL's; it survives the Stripe round-trip because the
+  // server returns success/cancel URLs carrying the same `nabidka=sluzby`.
+  E.servicesMode = new URLSearchParams(location.search).get('nabidka') === 'sluzby';
+  if (E.servicesMode) document.documentElement.classList.add('services-mode');
+  // The services cart lives under its own key, so it never overwrites a hardware cart.
+  E.cartStorageKey = function () { return E.servicesMode ? data.SERVICES_CART_STORAGE_KEY : data.CART_STORAGE_KEY; };
+
   E.caseInStock = function (id) { return E.state.caseStock[id] !== false; };
   E.isCaseVariant = function (id) { return data.caseVariants.some(function (item) { return item.id === id; }); };
   E.t = function (key) { return typeof window.shopT === 'function' ? window.shopT(key) : key; };

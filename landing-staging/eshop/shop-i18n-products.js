@@ -84,6 +84,12 @@
         lead: 'Přijedeme, zapojíme a nastavíme pokladnu, tiskárny i síť, aby všechno fungovalo od prvního dne. Platíš předem základní balíček: 2 hodiny práce na místě; v košíku zvolíš počet balíčků.',
         specs: [['Co zapojíme', 'Pokladnu, síťové tiskárny a router'], ['Co nastavíme', 'Tiskárny a pokladnu v Hugu'], ['Cena', 'Základní balíček: 2 hodiny práce na místě, předem'], ['Cestovné', 'V ceně do 50 km od centra Prahy nebo Brna, dál dle ceníku (15 Kč za km tam i zpět)'], ['Doprava', 'Žádná, nic neposíláme']],
         imageLabel: 'Zobrazit detail základního instalačního balíčku', imageAlt: 'Základní instalační balíček — technik zapojí a nastaví hardware na místě'
+      },
+      online_consultation: {
+        kicker: 'Služba', title: 'Online konzultace s Hugo odborníkem', description: 'Videohovor s naším specialistou na 60 minut. Vybereš si témata a nastavíme spolu pokladnu tak, aby seděla na tvůj provoz.',
+        lead: 'Spojíme se s tebou online, projdeme témata, která sis vybral, a společně nastavíme tvoji pokladnu v Hugovi. Konzultace trvá 60 minut; objednáváš ji na samostatné stránce, kde zvolíš témata a preferovaný termín.',
+        specs: [['Jak to probíhá', 'Videohovor se specialistou, sdílíme obrazovku'], ['Délka', '60 minut, až 3 účastníci'], ['Témata', 'Vybereš si je při objednávce'], ['Cena', 'Za hodinu, platí se předem kartou'], ['Doprava', 'Žádná, nic neposíláme']],
+        imageLabel: 'Zobrazit detail online konzultace', imageAlt: 'Online konzultace s Hugo odborníkem'
       }
     },
     en: {
@@ -164,6 +170,12 @@
         lead: 'We come over, connect and set up your till, printers and network so everything works from day one. You pay up front for the basic package: 2 hours of work on site; choose the number of packages in your bag.',
         specs: [['What we connect', 'Till, network printers and router'], ['What we set up', 'Printers and till in Hugo'], ['Price', 'Basic package: 2 hours of work on site, paid up front'], ['Travel', 'Included within 50 km of central Prague or Brno, beyond that per the price list (CZK 15 per km, both ways)'], ['Delivery', 'None, nothing is shipped']],
         imageLabel: 'View basic installation package details', imageAlt: 'Basic installation package — a technician sets up the hardware on site'
+      },
+      online_consultation: {
+        kicker: 'Service', title: 'Online consultation with a Hugo expert', description: 'A 60-minute video call with our specialist. You choose the topics and we set up your till together to fit your venue.',
+        lead: 'We connect with you online, go through the topics you picked and set up your Hugo till together. The consultation lasts 60 minutes; you order it on its own page, where you choose the topics and a preferred date.',
+        specs: [['How it works', 'Video call with a specialist, screen sharing'], ['Length', '60 minutes, up to 3 participants'], ['Topics', 'You choose them when you order'], ['Price', 'Per hour, paid up front by card'], ['Delivery', 'None, nothing is shipped']],
+        imageLabel: 'View online consultation details', imageAlt: 'Online consultation with a Hugo expert'
       }
     }
   };

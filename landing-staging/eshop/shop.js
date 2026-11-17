@@ -53,6 +53,8 @@
     // delivery method (mirrors the Admin shop and the server's own rule).
     // HUGO-2182 — `checkoutItems` sends each tablet's stand line at the tablet's quantity.
     var checkoutPayload = { items: E.rules.checkoutItems(S.cart), termsAccepted: true, termsVersion: S.legal.version, locale: window.HUGO_LANG };
+    // HUGO-2459 — the server refuses anything but the two services for this storefront.
+    if (E.servicesMode) checkoutPayload.storefront = 'services';
     if (cartHasPhysicalItem(S.cart)) checkoutPayload.deliveryMethod = S.selectedDeliveryMethod;
     if (cartNeedsMealVoucherChoice(S.cart)) checkoutPayload.mealVouchers = E.selectedMealVoucherPreference();
     var idempotencyKey = crypto.randomUUID();
@@ -69,6 +71,28 @@
       .catch(function (error) { checkoutNote.hidden = false; checkoutNote.textContent = error.message; checkoutButton.textContent = t('checkout'); E.updateCheckoutState(); });
   }
 
+  // HUGO-2459 — services storefront: no account-creation step, just a thank-you.
+  function renderServicesSuccess() {
+    var success = document.getElementById('success');
+    success.querySelector('.eyebrow').textContent = t('servicesSuccessEyebrow');
+    success.querySelector('h2').textContent = t('servicesSuccessTitle');
+    document.getElementById('success-text').textContent = t('servicesSuccessText');
+    document.getElementById('success-shipping').hidden = true;
+    document.getElementById('continue-account').hidden = true;
+  }
+
+  // The services storefront's own heading (the hardware hero is hidden by CSS).
+  function applyServicesCopy() {
+    if (!E.servicesMode) return;
+    var eyebrow = document.querySelector('.products .section-head .eyebrow');
+    var title = document.querySelector('.products .section-head h2');
+    if (eyebrow) eyebrow.textContent = t('servicesEyebrow');
+    if (title) title.textContent = t('servicesTitle');
+    document.title = t('servicesTitle') + ' — Hugo';
+    var success = document.getElementById('success');
+    if (success && !success.hidden) renderServicesSuccess();
+  }
+
   function showSuccessIfNeeded() {
     var params = new URLSearchParams(location.search);
     var session = params.get('session_id');
@@ -83,8 +107,9 @@
         if (body.settled !== true) return;
         S.cart = [];
         E.renderCart();
-        try { localStorage.removeItem(E.data.CART_STORAGE_KEY); } catch (_error) {}
+        try { localStorage.removeItem(E.cartStorageKey()); } catch (_error) {}
         var success = document.getElementById('success');
+        if (E.servicesMode) { renderServicesSuccess(); success.hidden = false; return; }
         var linked = params.get('account') === 'linked';
         var continueLink = document.getElementById('continue-account');
         if (linked) {
@@ -181,7 +206,9 @@
     E.showCartStep(S.cartStep);
     if (dialog.open) dialog.close();
     E.refreshActiveSwatches();
+    applyServicesCopy();
   });
+  applyServicesCopy();
   E.restoreCart();
   E.markRestockingSwatches();
   E.refreshActiveSwatches();
