@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 
     <!-- Illustration of the KDS screen, drawn in HTML/CSS. Swap for real screenshots (HUGO-2418).
-         data-nosnippet keeps its mock ticket text (and the paper roll below) out of search snippets. -->
+         data-nosnippet keeps its mock ticket text (and the printed strip below) out of search snippets. -->
     <div class="kd-stage" role="img" aria-label="Ukázka obrazovky kuchyňského displeje Hugo" data-nosnippet>
       <div class="kd-tablet">
         <div class="kd-screen">
@@ -154,20 +154,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <section class="sec" id="papir">
   <div class="container kd-paper">
-    <!-- A thermal roll unrolling downward; assets/kds.js ties the unroll to scroll. -->
+    <!-- A kitchen printer feeding tickets up out of its slot; assets/kds.js ties the feed to scroll.
+         Oldest ticket at the paper's free end, the newest just printed at the slot. -->
     <div class="kd-unroll" aria-hidden="true" data-nosnippet>
       <div class="kd-scene">
+        <div class="kd-prn"><i class="kd-prn-top"></i><i class="kd-prn-front"></i></div>
         <div class="kd-strip">
           <div class="kd-strip-in">
-            <div class="kd-tk"><b>BON #0412</b><p>Stůl 2</p><p>1&times; Řízek, bramborový salát</p><p>Dětská porce</p></div>
-            <div class="kd-tk"><b>BON #0415</b><p>S sebou #23</p><p>1&times; Caesar salát</p><p>1&times; Polévka dne</p></div>
-            <div class="kd-tk"><b>BON #0414</b><p>Stůl 7</p><p>2&times; Burger Hugo</p><p>bez cibule, medium</p><p>2&times; Hranolky</p></div>
-            <div class="kd-tk"><b>BON #0413</b><p>Stůl 4</p><p>1&times; Svíčková, knedlík</p><p>2&times; Smažený sýr</p><p>Alergie: ořechy!</p></div>
-            <div class="kd-tk"><b>BON #0412</b><p>Stůl 2</p><p>1&times; Řízek, bramborový salát</p></div>
             <div class="kd-tk"><b>BON #0411</b><p>S sebou #23</p><p>1&times; Polévka dne</p></div>
+            <div class="kd-tk"><b>BON #0412</b><p>Stůl 2</p><p>1&times; Řízek, bramborový salát</p></div>
+            <div class="kd-tk"><b>BON #0413</b><p>Stůl 4</p><p>1&times; Svíčková, knedlík</p><p>2&times; Smažený sýr</p><p>Alergie: ořechy!</p></div>
+            <div class="kd-tk"><b>BON #0414</b><p>Stůl 7</p><p>2&times; Burger Hugo</p><p>bez cibule, medium</p><p>2&times; Hranolky</p></div>
+            <div class="kd-tk"><b>BON #0415</b><p>S sebou #23</p><p>1&times; Caesar salát</p><p>1&times; Polévka dne</p></div>
+            <div class="kd-tk"><b>BON #0416</b><p>Stůl 2</p><p>1&times; Řízek, bramborový salát</p><p>Dětská porce</p></div>
           </div>
-          <div class="kd-reel"><i></i></div>
         </div>
+        <i class="kd-prn-slot"></i>
       </div>
     </div>
     <div>

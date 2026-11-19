@@ -87,41 +87,66 @@ main section[id]{ scroll-margin-top:84px; }
 /* ---------- paper counter ---------- */
 .kd-paper{ display:grid; grid-template-columns:380px minmax(0,1fr); gap:24px 56px; align-items:center; }
 
-/* A thermal roll seen from the front: the reel at the top, the paper hanging straight down
-   from it, pseudo-3D by shading only. `--p` (0..1) is how far it has unrolled:
-   assets/kds.js drives it from scroll; without JavaScript or with reduced motion it stays 1.
+/* A kitchen ticket printer seen from slightly above. As the section scrolls, the paper feeds UP
+   out of the slot faster than the page moves and runs off past the top of the section, which
+   clips it: the joke is how much paper one printer pushes out. `--p` (0..1) is how far it has
+   fed and `--len` the strip's length; assets/kds.js lengthens the strip with older tickets and
+   drives both from scroll. Without JavaScript or with reduced motion the strip stands fully fed.
+   The print rides up with the paper, oldest ticket at the free end, the newest just printed at
+   the slot. Geometry: --slot is the slot's distance from the frame's bottom, --w the paper width.
    A wind-blown ticket-pile variant is kept on branch claude/HUGO-2422-kds-paper-pile-idea. */
-.kd-unroll{ --p:1; --len:560px; --w:250px; --reel:120px; position:relative; height:520px;
-  overflow:hidden; -webkit-mask:linear-gradient(#000 80%, transparent); mask:linear-gradient(#000 80%, transparent); }
+#papir{ overflow:hidden; overflow:clip; }
+.kd-unroll{ --p:1; --len:800px; --w:236px; --slot:122px; --pw:calc(var(--w) + 76px);
+  position:relative; height:520px; }
 .kd-scene{ position:absolute; inset:0; }
-.kd-strip{ position:absolute; left:50%; top:calc(var(--reel) / 2 + 6px); width:var(--w); height:var(--len); margin-left:calc(var(--w) / -2); }
-/* The paper itself: revealed downward from the reel; its print rides along with the paper end. */
+/* The printer: a dark lid (top face, foreshortened) over a front face, a soft shadow beneath. */
+.kd-prn{ position:absolute; isolation:isolate; left:calc(50% - var(--pw) / 2); bottom:18px; width:var(--pw); height:calc(var(--slot) + 6px); }
+.kd-prn::after{ content:""; position:absolute; left:4%; right:4%; bottom:-14px; height:26px; z-index:-1; border-radius:50%;
+  background:rgba(20,17,13,.32); filter:blur(10px); }
+.kd-prn-top{ position:absolute; left:0; right:0; top:0; height:56px; border-radius:16px 16px 4px 4px;
+  clip-path:polygon(5% 0, 95% 0, 100% 100%, 0 100%);
+  background:linear-gradient(#625b50, #463f36 55%, #3a342c); }
+.kd-prn-front{ position:absolute; left:0; right:0; top:54px; bottom:0; border-radius:4px 4px 16px 16px;
+  background:linear-gradient(#2a2620, #1c1915 70%, #14110d);
+  box-shadow:inset 0 1px rgba(255,255,255,.12); }
+.kd-prn-front::before{ /* the feed button */
+  content:""; position:absolute; right:22px; top:22px; width:34px; height:12px; border-radius:6px;
+  background:linear-gradient(#4b453c, #2c2822); box-shadow:inset 0 1px rgba(255,255,255,.14), 0 1px 1px rgba(0,0,0,.4); }
+.kd-prn-front::after{ /* the status light */
+  content:""; position:absolute; left:24px; top:25px; width:7px; height:7px; border-radius:50%;
+  background:#5fd16b; box-shadow:0 0 8px #5fd16b; }
+/* The slot in the lid, drawn over the paper's foot so the paper comes out of it; its front lip
+   is the serrated tear bar. */
+.kd-prn-slot{ position:absolute; left:calc(50% - var(--w) / 2 - 8px); width:calc(var(--w) + 16px); bottom:calc(var(--slot) - 6px);
+  height:12px; border-radius:3px; background:#0d0b08;
+  box-shadow:inset 0 3px 3px rgba(0,0,0,.6), 0 1px rgba(255,255,255,.1); }
+.kd-prn-slot::after{ content:""; position:absolute; left:6px; right:6px; top:-3px; height:6px;
+  background:linear-gradient(135deg, transparent 50%, #9a948a 50%) 0 0 / 6px 6px repeat-x,
+    linear-gradient(225deg, transparent 50%, #9a948a 50%) 0 0 / 6px 6px repeat-x; }
+/* The paper: its foot in the slot, revealed upward as it feeds; it leans back a little, so the
+   far, upper part narrows. */
+.kd-strip{ position:absolute; left:calc(50% - var(--w) / 2); bottom:var(--slot); width:var(--w); height:var(--len);
+  transform:perspective(900px) rotateX(7deg); transform-origin:50% 100%; }
 .kd-strip-in{ position:absolute; inset:0; background:#fffdf6; overflow:hidden;
-  clip-path:inset(0 0 calc((1 - var(--p)) * 100%) 0);
-  box-shadow:0 0 0 1px rgba(20,17,13,.06), 0 40px 60px -30px rgba(20,17,13,.45);
-  padding:0 20px; display:flex; flex-direction:column; justify-content:flex-end;
-  font-family:ui-monospace, "SFMono-Regular", Menlo, monospace; font-size:15px; line-height:1.45; color:#2A2620; }
-.kd-strip-in > *{ transform:translateY(calc((var(--p) - 1) * var(--len))); }
-.kd-strip-in::after{ /* the reel's shadow on the paper just below it */
-  content:""; position:absolute; inset:0; pointer-events:none; transform:none;
-  background:linear-gradient(rgba(120,108,84,.4), transparent 90px); }
+  clip-path:inset(calc((1 - var(--p)) * 100%) 0 0 0);
+  padding:4px 18px 0; font-family:ui-monospace, "SFMono-Regular", Menlo, monospace; font-size:15px; line-height:1.45; color:#2A2620; }
+/* The print rides with the paper's free end, so it always starts at the oldest ticket's header;
+   --len is just longer than the print, so the newest ticket ends right at the slot. */
+.kd-strip-in > *{ transform:translateY(calc((1 - var(--p)) * var(--len))); }
+.kd-strip-in::before{ /* the paper's edges */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  box-shadow:inset 1px 0 rgba(20,17,13,.08), inset -1px 0 rgba(20,17,13,.08); }
+.kd-strip-in::after{ /* shade where the paper leaves the dark slot */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(to top, rgba(20,17,13,.22), transparent 46px); }
+.kd-strip::after{ /* the paper's soft shadow on the wall behind it, ending with the paper */
+  content:""; position:absolute; left:8px; right:-12px; bottom:0; height:calc(var(--p) * 100%); z-index:-1;
+  background:rgba(20,17,13,.12); filter:blur(14px); }
 .kd-tk{ padding:18px 0 20px; border-top:2px dashed rgba(20,17,13,.35); }
+.kd-tk:first-child{ border-top:0; }
 .kd-tk b{ display:block; font-weight:700; letter-spacing:.04em; margin-bottom:4px; }
 .kd-tk p{ margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .kd-tk:last-child{ border-bottom:0; }
-/* The reel: a horizontal cylinder at the top, thinning as it unrolls. */
-.kd-reel{ position:absolute; left:-14px; right:-14px; top:0; height:calc(var(--reel) - var(--p) * 24px);
-  transform:translateY(-55%); }
-.kd-reel i{ position:absolute; inset:0; border-radius:14px / 50%;
-  /* faint winding lines slide as the reel turns */
-  background:repeating-linear-gradient(transparent 0 17px, rgba(20,17,13,.05) 17px 18px) 0 calc(var(--p) * 540px) / 100% 100%,
-    linear-gradient(#cfc6b0, #fffdf6 30%, #f4efe2 55%, #d8cfb8 85%, #b9ae95);
-  box-shadow:0 18px 22px -14px rgba(20,17,13,.55); }
-.kd-reel::before, .kd-reel::after{ content:""; position:absolute; top:0; bottom:0; width:22px; border-radius:50%; z-index:1;
-  background:radial-gradient(closest-side, #8f8570 0 22%, var(--cream-3) 23% 34%, transparent 35%),
-    repeating-radial-gradient(closest-side, #fffdf6 0 2px, #e6dfcd 2px 3px); box-shadow:inset 0 0 0 1px rgba(20,17,13,.12); }
-.kd-reel::before{ left:-6px; }
-.kd-reel::after{ right:-6px; }
 .kd-km{ display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 14px; margin-bottom:14px; }
 .kd-km b{ font-family:var(--display); font-weight:800; font-size:clamp(64px,10vw,128px); line-height:.9; letter-spacing:-.05em;
   background:linear-gradient(transparent 58%, var(--yellow) 58%, var(--yellow) 90%, transparent 90%); padding:0 .06em; }
@@ -200,7 +225,7 @@ main section[id]{ scroll-margin-top:84px; }
   .kd-vs-row > b{ grid-column:1 / -1; padding-bottom:0; }
   .kd-vs-headrow > span:first-child{ position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
   .kd-paper{ grid-template-columns:1fr; }
-  .kd-unroll{ --w:220px; height:400px; max-width:420px; width:100%; }
+  .kd-unroll{ --w:210px; height:420px; max-width:420px; width:100%; }
   .kd-flow{ grid-template-columns:1fr; gap:26px; padding-left:64px; }
   .kd-flow::before{ left:21px; right:auto; top:8px; bottom:8px; border-top:0; border-left:2px dashed rgba(20,17,13,.3); }
   .kd-flow .kd-n{ position:absolute; left:-64px; top:-4px; }
