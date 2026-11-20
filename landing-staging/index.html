@@ -983,7 +983,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .scale-amount .u{ color: rgba(255,255,255,0.7); font-size: 14px; }
 
-  /* ---- Pricing (one plan) ---- */
+  /* ---- Pricing (price cart) ---- */
   .config{
     display: grid; gap: 26px;
     margin-top: 8px;
@@ -1080,26 +1080,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     line-height: 1; white-space: nowrap;
   }
 
-  .sum-price{
-    display: flex; align-items: baseline; gap: 10px;
-    padding-top: 6px;
-    border-top: 1px solid var(--line);
-    padding-top: 14px;
-  }
-  .sum-strike{
-    font-family: var(--display); font-weight: 700;
-    font-size: 22px; color: var(--muted);
-    text-decoration: line-through;
-    text-decoration-thickness: 2px;
-  }
-  @media (min-width: 360px){ .sum-strike{ white-space: nowrap; } }
-  .sum-v{
-    font-family: var(--display); font-weight: 800;
-    font-variation-settings: "wdth" 86;
-    font-size: 60px; letter-spacing: -0.035em; line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-  .sum-u{ color: var(--muted); font-size: 14px; font-weight: 500; }
   .sum-plus{ color: var(--ink-2); font-size: 13.5px; font-weight: 500; margin-top: -4px; }
 
   .sum-feat{
@@ -1835,6 +1815,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .vat{ font-size: .62em; font-weight: 500; color: var(--muted); letter-spacing: 0; white-space: nowrap; font-variation-settings: normal; }
 </style>
 <link rel="stylesheet" href="/assets/footer.css" />
+<link rel="stylesheet" href="/assets/price-cart.css" />
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -2272,9 +2253,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="pricing-wrap">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Ceník. Jeden tarif a hotovo</span>
-        <h2>190 Kč měsíčně <small class="vat">bez&nbsp;DPH</small>. <em>Jeden tarif, když platby přijímáš s námi.</em></h2>
-        <p class="lead">Žádná tabulka tarifů, žádná pásma podle obratu, žádný obchodník, co „zavolá zpátky“. Stejná cena i stejný náš poplatek za karty pro food truck i pro zavedenou restauraci.</p>
+        <span class="eyebrow">Ceník. Jasně a hotovo</span>
+        <h2>190 Kč měsíčně <small class="vat">bez&nbsp;DPH</small>. <em>Tarif s platbami kartou přes Huga.</em></h2>
+        <p class="lead">Žádné balíčky ani moduly navíc. S platbami kartou přes Huga 190 Kč měsíčně bez DPH &mdash; pro food truck i pro zavedenou restauraci.</p>
         <div class="guar-stack">
           <div class="guarantee on-dark">
             <span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/><polyline points="9 12 11 14 15 10"/></svg></span>
@@ -2324,16 +2305,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="sum-head">
               <div>
                 <div class="sum-tier-label">Hugo</div>
-                <div class="sum-tier-meta">jeden tarif · všechno v ceně</div>
+                <div class="sum-tier-meta">s platbami kartou přes Huga · vše v ceně</div>
               </div>
               <div class="sum-badge">14 DNÍ ZDARMA</div>
             </div>
 
-            <div class="sum-price">
-              <span class="sum-strike">1&nbsp;190 Kč</span>
-              <span class="sum-v">190</span>
-              <span class="sum-u">Kč / měsíc bez DPH</span>
-            </div>
+            <!-- Price cart (HUGO-2507): 1 190 - 1 000 bonus = 190, as an e-shop basket. Numbers (list, bonus, total, cart.alt) must equal Admin catalogue.js hugo_monthly; landing-price-anchor.test.js checks them on every built page with a cart. -->
+<div class="pcart">
+  <div class="pcart-row">
+    <span class="pcart-n">Hugo POS &amp; AI asistent</span>
+    <span class="pcart-p"><span class="pcart-list">1&nbsp;190 Kč</span> <span class="pcart-u">/ měsíc bez DPH</span></span>
+  </div>
+  <div class="pcart-row pcart-bonus">
+    <span class="pcart-n"><span class="pcart-tag">Bonus</span>Bonus za platby kartou přes Huga</span>
+    <span class="pcart-p">&minus;1&nbsp;000 Kč <span class="pcart-u">/ měsíc bez DPH</span></span>
+  </div>
+  <div class="pcart-row pcart-total">
+    <span class="pcart-n">Celkem</span>
+    <span class="pcart-p"><span class="pcart-sum">190 Kč</span> <span class="pcart-u">/ měsíc bez DPH</span></span>
+  </div>
+  <p class="pcart-alt">Bez plateb kartou přes Huga: 1&nbsp;190 Kč / měsíc bez DPH.</p>
+  <a class="pcart-link" href="/vseobecne-obchodni-podminky/#priloha-7">Podmínky bonusu a ceník</a>
+</div>
+
             <div class="sum-plus">+ 1,1 % z platby kartou. Náš poplatek je stejný při jakémkoli obratu.</div>
 
             <ul class="sum-feat">
@@ -2422,7 +2416,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq-list">
       <details class="faq-item" open>
         <summary><span class="q">Kolik Hugo stojí? Kde je háček?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
-        <div class="a">Jeden tarif: 190 Kč měsíčně místo 1&nbsp;190 Kč bez DPH, když platby kartou přijímáš přes nás, a k tomu 1,1 % z platby kartou. To je náš poplatek, vždycky stejný při jakémkoli obratu; k němu se přičítají poplatky třetích stran, které <a class="mif-link" href="#mif">rozepisujeme níž</a>. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Bez karet přes nás stojí Hugo 1&nbsp;190 Kč měsíčně bez&nbsp;DPH. Háček jsme hledali, nenašli.</div>
+        <div class="a">Tarif s platbami kartou přes Huga: 190 Kč měsíčně místo 1&nbsp;190 Kč bez DPH, když platby kartou přijímáš přes nás, a k tomu 1,1 % z platby kartou. To je náš poplatek, vždycky stejný při jakémkoli obratu; k němu se přičítají poplatky třetích stran, které <a class="mif-link" href="#mif">rozepisujeme níž</a>. Prvních 14 dní je zdarma, a když ti Hugo nesedne, vrátíme ti peníze. Bez karet přes nás stojí Hugo 1&nbsp;190 Kč měsíčně bez&nbsp;DPH. Háček jsme hledali, nenašli.</div>
       </details>
       <details class="faq-item" id="mif">
         <summary><span class="q">Co znamená MIF++? Je to něco navíc?</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span></summary>
