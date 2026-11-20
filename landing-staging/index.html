@@ -1630,6 +1630,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .promobar-cta{ font-weight:700; color:#fff; background:var(--ink); padding:6px 14px; border-radius:var(--radius-sm); font-size:12.5px; white-space:nowrap; }
   .promobar-cta:hover{ background:var(--ink-2); }
   @media(max-width:560px){ .promobar-in{ padding:9px 16px; font-size:12.5px; } }
+  /* HUGO-2536 — the Black Friday sticker: shown while the public catalogue reports the Black Friday terminal promotion (the
+     superadmin's switch and window, independent of the offer bar above), it puts the discount code on the page where nobody can
+     miss it. Fixed to the corner, a little crooked on purpose; z-index above the phone's bottom bar (.mobilebar, 60). */
+  .bfsticker{ position:fixed; left:20px; bottom:20px; z-index:70; width:min(360px, calc(100vw - 32px)); box-sizing:border-box;
+    background:var(--yellow); color:var(--ink); border:2px solid var(--ink); border-radius:16px; padding:14px 16px 14px;
+    box-shadow:6px 6px 0 var(--ink); transform:rotate(-1.5deg); display:flex; flex-direction:column; gap:6px;
+    cursor:grab; user-select:none; -webkit-user-select:none; touch-action:none; }
+  .bfsticker.is-dragging{ cursor:grabbing; box-shadow:10px 10px 0 var(--ink); }
+  .bfsticker-head{ display:flex; align-items:center; gap:8px; background:var(--ink); color:var(--yellow); border-radius:10px; padding:7px 12px; margin:-2px -4px 2px -4px; }
+  .bfsticker-head .bfsticker-label{ font-size:17px; letter-spacing:.14em; }
+  /* Six dots = the usual "you can move this" grip; the whole sticker is the handle. */
+  .bfsticker-grip{ width:12px; height:18px; flex:none; opacity:.8;
+    background:radial-gradient(circle, var(--yellow) 1.6px, transparent 2px) 0 0/6px 6px; }
+  .bfsticker:hover .bfsticker-grip{ opacity:1; }
+  /* The little celebration when it shows up: confetti bursts out of the sticker for ~1.8 s (not at all with reduced motion). */
+  .bfconfetti{ position:absolute; left:0; top:0; width:100%; height:0; pointer-events:none; }
+  .bfconfetti span{ position:absolute; left:50%; top:0; width:9px; height:14px; border-radius:2px; opacity:0; animation:bfconf 1.8s cubic-bezier(.15,.7,.3,1) forwards; }
+  @keyframes bfconf{ 0%{ opacity:1; transform:translate(0,0) rotate(0); } 85%{ opacity:1; } 100%{ opacity:0; transform:translate(var(--dx), var(--dy)) rotate(var(--rot)); } }
+  @media(prefers-reduced-motion:reduce){ .bfconfetti{ display:none; } }
+  @media print{ .bfsticker, .bfpill{ display:none !important; } }
+  @keyframes bfwiggle{ 0%,100%{ transform:rotate(-1.5deg); } 20%{ transform:rotate(2deg) translateY(-4px); } 40%{ transform:rotate(-3deg); } 60%{ transform:rotate(1.5deg) translateY(-2px); } 80%{ transform:rotate(-2deg); } }
+  .bfsticker.is-new{ animation:bfwiggle 1.1s ease-in-out .6s 2; }
+  @media(max-width:560px){ @keyframes bfwiggle{ 0%,100%{ transform:none; } 25%{ transform:translateY(-4px); } 50%{ transform:translateY(0); } 75%{ transform:translateY(-2px); } } }
+  @media(prefers-reduced-motion:reduce){ .bfsticker.is-new{ animation:none; } }
+  .bfsticker-offer{ font-size:21px; font-weight:800; line-height:1.12; }
+  .bfsticker[hidden]{ display:none; }
+  .bfsticker-label{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+  .bfsticker-code{ display:block; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:26px; font-weight:800;
+    letter-spacing:.04em; background:#fff; border:2px dashed var(--ink); border-radius:10px; padding:8px 10px; text-align:center;
+    user-select:text; -webkit-user-select:text; }
+  .bfsticker-hint{ font-size:13.5px; line-height:1.35; }
+  .bfsticker-copy{ align-self:flex-start; touch-action:manipulation; font:inherit; font-weight:700; font-size:13px; color:#fff; background:var(--ink); border:0;
+    border-radius:999px; padding:8px 16px; cursor:pointer; }
+  .bfsticker-copy:hover{ background:var(--ink-2); }
+  /* Closing the sticker folds it into this small tab instead of losing it; one tap brings it back. */
+  .bfpill{ position:fixed; left:16px; bottom:16px; z-index:70; font:inherit; font-weight:800; font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--yellow); background:var(--ink); border:2px solid var(--ink); border-radius:999px; padding:10px 16px; cursor:pointer;
+    box-shadow:3px 3px 0 var(--yellow-deep, #e6b800); touch-action:manipulation; }
+  .bfpill[hidden]{ display:none; }
+  .bfpill:hover{ background:var(--ink-2); }
+  /* On phones the sticky bottom bar (.mobilebar) shows its CTA there: keep the folded tab above it instead of over the label. */
+  @media(max-width:720px){ .bfpill{ bottom:88px; } }
+  .bfsticker-close{ position:absolute; right:8px; top:4px; background:transparent; border:0; font-size:22px; line-height:1; cursor:pointer; color:var(--ink); padding:4px 8px; }
+  @media(max-width:560px){ .bfsticker{ left:16px; right:16px; bottom:12px; width:auto; transform:none; box-shadow:4px 4px 0 var(--ink); } .bfsticker-code{ font-size:20px; } }
   .annbar-close{ position:absolute; right:14px; top:50%; transform:translateY(-50%); background:transparent; border:0; color:rgba(255,255,255,0.55); font-size:20px; line-height:1; cursor:pointer; padding:4px 8px; }
   .annbar-close:hover{ color:#fff; }
   @media(max-width:560px){ .annbar-in{ padding:9px 38px; font-size:12.5px; } }
@@ -1851,6 +1895,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#" class="promobar-cta" id="promobar-cta"></a>
   </div>
 </div>
+<aside class="bfsticker" id="bfsticker" hidden aria-label="Black Friday" title="Přetáhni kamkoliv">
+  <button class="bfsticker-close" id="bfsticker-close" type="button" aria-label="Zavřít">&times;</button>
+  <span class="bfsticker-head"><span class="bfsticker-grip" aria-hidden="true"></span><span class="bfsticker-label">Black Friday</span></span>
+  <span class="bfsticker-offer" id="bfsticker-terminal">Terminál Hugo &minus;20&nbsp;%</span>
+  <span class="bfsticker-offer">Tarif první 3&nbsp;měsíce zdarma</span>
+  <span class="bfsticker-hint">Kód zadej při aktivaci tarifu:</span>
+  <code class="bfsticker-code" id="bfsticker-code">BLACKFRIDAY2026</code>
+  <button class="bfsticker-copy" id="bfsticker-copy" type="button" data-copy="Zkopírovat kód" data-copied="Zkopírováno ✓">Zkopírovat kód</button>
+</aside>
+<button class="bfpill" id="bfpill" type="button" hidden aria-label="Zobrazit Black Friday">Black Friday</button>
 
 <!-- =============== NAV =============== -->
 <header class="nav" id="nav">
@@ -2594,6 +2648,131 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         promo.hidden = false;
       }
     }).catch(function(){});
+    /* HUGO-2536 — the Black Friday sticker follows the WHOLE action as the superadmin set it (Superadmin → System → Black Friday:
+       switch and window), not the offer bar: it appears only while the public catalogue itself reports the terminal promotion
+       `black_friday` (that is the one decision the checkout charges by), shows the percentage the catalogue reports, and stays
+       hidden when the request fails. A visitor who closed it does not see it again during the visit. */
+    function celebrate(st){
+      try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch (e) {}
+      var box = document.createElement('div');
+      box.className = 'bfconfetti'; box.setAttribute('aria-hidden', 'true');
+      var colors = ['#ffd84a', '#14110f', '#ff5a3c', '#2fb67c', '#3b82f6', '#ffffff'];
+      for (var i = 0; i < 28; i++) {
+        var c = document.createElement('span'), angle = Math.random() * Math.PI * 2, dist = 90 + Math.random() * 150;
+        c.style.background = colors[i % colors.length];
+        c.style.setProperty('--dx', Math.round(Math.cos(angle) * dist) + 'px');
+        c.style.setProperty('--dy', Math.round(Math.sin(angle) * dist + 40) + 'px');
+        c.style.setProperty('--rot', Math.round(Math.random() * 720 - 360) + 'deg');
+        c.style.animationDelay = Math.round(Math.random() * 250) + 'ms';
+        box.appendChild(c);
+      }
+      st.appendChild(box);
+      setTimeout(function(){ if (box.parentNode) box.parentNode.removeChild(box); }, 2400);
+    }
+    /* Closing folds the sticker into the small tab (#bfpill) for the rest of the visit; one tap on the tab opens it again. */
+    function setMinimized(min){
+      var st = document.getElementById('bfsticker'), pill = document.getElementById('bfpill');
+      if (!st || !pill) return;
+      st.hidden = min; pill.hidden = !min;
+      try { if (min) sessionStorage.setItem('bfsticker-min', '1'); else sessionStorage.removeItem('bfsticker-min'); } catch (e) {}
+    }
+    function showBfSticker(percentOff){
+      var st = document.getElementById('bfsticker');
+      if (!st) return;
+      var line = document.getElementById('bfsticker-terminal');
+      if (line && isFinite(percentOff)) line.textContent = line.textContent.replace(/\d+/, String(percentOff));
+      var min = false;
+      try { min = sessionStorage.getItem('bfsticker-min') === '1'; } catch (e) {}
+      if (min) { setMinimized(true); return; }
+      st.hidden = false;
+      celebrate(st);
+      st.classList.add('is-new');
+    }
+    fetch(api + '/v1/public/eshop/catalogue').then(function(r){ if (!r.ok) throw new Error('catalogue'); return r.json(); }).then(function(cat){
+      var items = cat && Array.isArray(cat.products) ? cat.products : [];
+      var pax = items.filter(function(p){ return p && p.id === 'pax_a920'; })[0];
+      var promo = pax && pax.available === true ? pax.promotion : null;
+      if (promo && promo.id === 'black_friday' && typeof promo.percentOff === 'number' && isFinite(promo.percentOff) && promo.percentOff > 0 && promo.percentOff < 100) showBfSticker(promo.percentOff);
+    }).catch(function(){});
+    var stClose = document.getElementById('bfsticker-close');
+    if (stClose) stClose.addEventListener('click', function(){ setMinimized(true); var tab = document.getElementById('bfpill'); if (tab) tab.focus(); });
+    var stPill = document.getElementById('bfpill');
+    if (stPill) stPill.addEventListener('click', function(){
+      setMinimized(false);
+      var st = document.getElementById('bfsticker');
+      if (stClose) stClose.focus();
+      st.classList.add('is-new');
+    });
+    /* Drag the sticker anywhere on the screen (mouse, finger, pen); the position is kept for the visit. */
+    var stEl = document.getElementById('bfsticker');
+    function placeSticker(left, top){
+      var pad = 6; /* the sticker is a little crooked, so keep its tilted corners on the screen too */
+      var maxL = Math.max(pad, window.innerWidth - stEl.offsetWidth - pad), maxT = Math.max(pad, window.innerHeight - stEl.offsetHeight - pad);
+      stEl.style.left = Math.min(Math.max(pad, left), maxL) + 'px';
+      stEl.style.top = Math.min(Math.max(pad, top), maxT) + 'px';
+    }
+    function pinSticker(){
+      if (stEl.style.right === 'auto') return;
+      var l = stEl.offsetLeft, t = stEl.offsetTop, w = stEl.offsetWidth;
+      stEl.style.left = l + 'px'; stEl.style.top = t + 'px'; stEl.style.width = w + 'px';
+      stEl.style.right = 'auto'; stEl.style.bottom = 'auto';
+    }
+    if (stEl) {
+      var drag = null;
+      /* the confetti pieces' animationend bubbles up: only the sticker's own wiggle may end `is-new` */
+      stEl.addEventListener('animationend', function(e){ if (e.target === stEl) stEl.classList.remove('is-new'); });
+      try {
+        var saved = JSON.parse(sessionStorage.getItem('bfsticker-pos') || 'null');
+        if (saved && typeof saved.l === 'number' && typeof saved.t === 'number') { stEl.hidden = false; pinSticker(); placeSticker(saved.l, saved.t); stEl.hidden = true; }
+      } catch (e) {}
+      stEl.addEventListener('pointerdown', function(e){
+        if (e.button !== undefined && e.button !== 0) return;
+        if (e.target.closest('button') || drag) return;
+        pinSticker();
+        drag = { id: e.pointerId, dx: e.clientX - stEl.offsetLeft, dy: e.clientY - stEl.offsetTop };
+        stEl.classList.add('is-dragging');
+        try { stEl.setPointerCapture(e.pointerId); } catch (err) {}
+        e.preventDefault();
+      });
+      stEl.addEventListener('pointermove', function(e){
+        if (!drag || e.pointerId !== drag.id) return;
+        placeSticker(e.clientX - drag.dx, e.clientY - drag.dy);
+      });
+      function endDrag(e){
+        if (!drag || e.pointerId !== drag.id) return;
+        drag = null;
+        stEl.classList.remove('is-dragging');
+        try { sessionStorage.setItem('bfsticker-pos', JSON.stringify({ l: stEl.offsetLeft, t: stEl.offsetTop })); } catch (e) {}
+      }
+      stEl.addEventListener('pointerup', endDrag);
+      stEl.addEventListener('pointercancel', endDrag);
+      window.addEventListener('resize', function(){
+        if (stEl.hidden || stEl.style.right !== 'auto') return; /* a folded sticker has no layout: keep its spot for the reopen */
+        var maxW = window.innerWidth - 12; /* a width pinned in portrait must not overflow after turning the phone */
+        if (stEl.offsetWidth > maxW) stEl.style.width = maxW + 'px';
+        placeSticker(stEl.offsetLeft, stEl.offsetTop);
+      });
+    }
+    var stCopy = document.getElementById('bfsticker-copy');
+    if (stCopy) stCopy.addEventListener('click', function(){
+      var code = document.getElementById('bfsticker-code').textContent;
+      function done(){
+        stCopy.textContent = stCopy.getAttribute('data-copied');
+        setTimeout(function(){ stCopy.textContent = stCopy.getAttribute('data-copy'); }, 2000);
+      }
+      function fallback(){
+        var ta = document.createElement('textarea'); ta.value = code; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        if (ok) { done(); return; }
+        /* nothing could copy (old webview, http): select the code so the visitor can copy it by hand */
+        try { var range = document.createRange(), sel = window.getSelection(); range.selectNodeContents(document.getElementById('bfsticker-code')); sel.removeAllRanges(); sel.addRange(range); } catch (e) {}
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(code).then(done, fallback); return; }
+      fallback();
+    });
   })();
 
   const annbar = document.getElementById('annbar');
