@@ -36,6 +36,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/assets/sub.css" />
+<link rel="stylesheet" href="/assets/footer.css" />
 <link rel="stylesheet" href="/assets/getting-started.css" />
 <script src="/hugo-i18n.js" defer></script>
 <script src="/hugo-nav.js" defer></script>
@@ -43,6 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/assets/getting-started-screens.css">
 <link rel="stylesheet" href="/assets/getting-started-motion.css">
 <script src="/assets/getting-started-journey.js" defer></script>
+<script src="/assets/getting-started-services.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC3PW2KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -56,6 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="/jak-zacit/" class="is-on" aria-current="page">Jak začít</a>
       <a href="/srovnani/">Srovnání</a>
       <a href="/cenove-srovnani/">Ceník</a>
+      <a href="/konzultace/">Konzultace</a>
       <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener" class="nav-admin" aria-label="Admin"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="nav-admin-label">Admin</span></a>
     </nav>
     <div class="nav-cta">
@@ -489,6 +492,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <a class="guide-more" href="/jak-zacit/tap-to-pay/"><img src="/assets/tap-to-pay-hero-192.webp" width="192" height="128" alt="" loading="lazy" decoding="async"><span><b>Ber karty telefonem: Tap to Pay na Androidu</b><span>Bez terminálu. Od objednávky aktivace po první platbu, sedm kroků.</span></span><span class="guide-more-go">Otevřít návod →</span></a>
     </section>
+    <section class="start-services" aria-labelledby="services-title">
+      <h2 id="services-title">Pomůžeme ti se startem</h2>
+      <div class="service-grid">
+      <article class="service-card">
+        <h3>Základní instalační balíček (až 2 hod)</h3>
+        <p>Přijedeme, zapojíme a nastavíme pokladnu, tiskárny i síť, aby všechno fungovalo od prvního dne.</p>
+        <p class="service-price" data-service-price="network_install_service" data-unit="/ 2 hod" data-note="bez DPH">Cena se načítá…</p>
+        <a class="service-order" href="/eshop/?nabidka=sluzby&amp;pridat=network_install_service">Objednat</a>
+      </article>
+      <article class="service-card">
+        <h3>Online konzultace s Hugo odborníkem</h3>
+        <p>60 minut videohovoru s naším specialistou. Vybereš si témata a společně nastavíme pokladnu tak, aby seděla na tvůj provoz.</p>
+        <p class="service-price" data-service-price="online_consultation" data-unit="/ hod" data-note="bez DPH">Cena se načítá…</p>
+        <a class="service-order" href="/konzultace/">Vybrat témata</a>
+      </article>
+      </div>
+    </section>
     <div class="start-bottom">
       <div class="start-ready">
         <span class="start-check" aria-hidden="true">✓</span>
@@ -504,9 +524,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 </main>
-<footer class="foot"><div class="container foot-in">
-  <div>&copy; 2026 Hugo · <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
-  <div class="links"><a href="/">Zpět na web</a><a href="/cenove-srovnani/">Ceník</a><a href="/srovnani/">Srovnání</a><a href="/hardware/">Hardware</a><a href="/vseobecne-obchodni-podminky/#cenik-sluzeb">Ceník služeb</a><a href="/vseobecne-obchodni-podminky/">Obchodní podmínky</a></div>
-</div></footer>
+<!-- Shared footer (HUGO-2473): one source for every templated page, labels in i18n/_shared.mjs. -->
+<footer class="site-foot">
+  <div class="container">
+    <div class="site-foot-grid">
+      <div class="site-foot-brand">
+        <a href="/" class="site-foot-logo">
+          <img src="/assets/hugo-icon.svg" alt="" width="28" height="28" loading="lazy" />
+          <span>Hugo</span>
+        </a>
+        <p>Pokladna postavená kolem tvého menu a tvých hostů, na terminálu 3&nbsp;v&nbsp;1, telefonu i tabletu. Ne naopak.</p>
+        <a href="mailto:hugo@piano.cz" class="site-foot-mail">hugo@piano.cz</a>
+      </div>
+      <nav class="site-foot-col" aria-label="Produkt">
+        <h2>Produkt</h2>
+        <a href="/">Domů</a>
+        <a href="/jak-zacit/">Jak začít</a>
+        <a href="/srovnani/">Srovnání</a>
+        <a href="/cenove-srovnani/">Ceník</a>
+        <a href="/hardware/">Hardware</a>
+        <a href="/kuchynsky-displej/">Kuchyňský displej</a>
+        <a href="/eet/">EET 2.0</a>
+      </nav>
+      <nav class="site-foot-col" aria-label="Podpora">
+        <h2>Podpora</h2>
+        <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>
+        <a href="https://status.hugopos.eu" target="_blank" rel="noopener">Stav služeb</a>
+        <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener">Přihlásit se</a>
+      </nav>
+    </div>
+    <div class="site-foot-bottom">
+      <div>&copy; 2026 Hugo &middot; český produkt od Piana</div>
+      <div class="site-foot-legal">
+        <a href="/vseobecne-obchodni-podminky/">Obchodní podmínky</a>
+        <a href="/vseobecne-obchodni-podminky/#cenik-sluzeb">Ceník služeb</a>
+        <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
+        <a href="/en/getting-started/" data-lang-link>English</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://api.nessie.works/api/widget/v1/chat.js" data-key="wc_Bsd9tIMLvdnRmzD233RHrxbn" async></script>
 </body>
 </html>

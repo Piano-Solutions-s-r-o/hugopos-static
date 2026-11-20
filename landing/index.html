@@ -856,6 +856,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 720px){
     .mobilebar{ display: flex; }
     body{ padding-bottom: 74px; }
+    body:has(> nessie-chat#nessie-chat) .mobilebar{
+      padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    }
+    body:has(> nessie-chat#nessie-chat){
+      padding-bottom: calc(146px + env(safe-area-inset-bottom, 0px));
+    }
   }
 
   /* ============ PRICING ============ */
@@ -1431,39 +1437,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .instagram-note{ display:none; }
   }
 
-  /* ============ FOOTER ============ */
-  footer{
-    padding: 50px 0 40px;
-    border-top: 1px solid var(--line);
-  }
-  .foot-grid{
-    display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 32px;
-    margin-bottom: 50px;
-  }
-  .foot-col h2{
-    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted); margin: 0 0 14px;
-  }
-  .foot-col a{
-    display: block; padding: 4px 0; color: var(--ink-2); font-size: 14px;
-  }
-  .foot-col a:hover{ color: var(--ink); }
-  .foot-brand p{
-    color: var(--muted); font-size: 14px; max-width: 280px; margin: 14px 0 0;
-  }
+  /* ============ FOOTER ============ (shared: /assets/footer.css, HUGO-2473) */
   .mif-link{ color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; white-space: nowrap; }
   .faq-link{ color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
-  .foot-bottom{
-    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
-    font-size: 13px; color: var(--muted);
-    /* The divider used to sit on the MIF++ paragraph that moved into the FAQ. */
-    padding-top: 18px; border-top: 1px solid var(--line);
-  }
-  .foot-bottom .legal{ display: flex; gap: 18px; flex-wrap: wrap; }
-  .foot-bottom a{ color: var(--ink-2); }
-  .foot-bottom a:hover{ color: var(--ink); }
-  .foot-mail{ display: block; margin-top: 18px; font-weight: 700; color: var(--ink); font-size: 15px; }
-  .foot-mail:hover{ color: var(--ink-2); }
 
   /* HUGO-1872 — mobile menu (hugo-nav.js) */
   .nav-burger{ order:1; display:none; appearance:none; border:1px solid var(--line); background:#fff; width:40px; height:40px; flex:0 0 40px; border-radius:999px; padding:0; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
@@ -1499,7 +1475,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .power h2{ font-size: clamp(48px, 11vw, 80px); }
     .power-sub{ font-size: clamp(20px, 4vw, 28px); }
     .final-card{ padding: 60px 32px; }
-    .foot-grid{ grid-template-columns: 1fr 1fr; }
     section{ padding: 80px 0; }
   }
   @media (max-width: 560px){
@@ -1511,7 +1486,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .final-card::before, .final-card::after{ display: none; }
     .devices{ border-radius: 30px; padding: 60px 0; }
     .pricing-wrap{ border-radius: 30px; padding: 60px 0 70px; }
-    .foot-grid{ grid-template-columns: 1fr; gap: 18px; }
   }
 
   /* ============ CUSTOMER REFERENCE (HUGO-1826) ============ */
@@ -1594,8 +1568,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .faq-item .a{ padding:0 24px 22px; color:var(--muted); font-size:15px; line-height:1.6; max-width:72ch; }
   .faq-item .a .a-list{ margin:10px 0 12px; padding-left:20px; display:grid; gap:6px; }
   .faq-item .a .a-list b{ color:var(--ink-2); }
-  .foot-phone{ display:block; margin-top:6px; font-weight:700; color:var(--ink); font-size:15px; }
-  .foot-phone:hover{ color:var(--ink-2); }
   .form-call{ text-align:center; margin:10px 0 0; font-size:13px; color:rgba(255,255,255,0.6); }
   .form-call a{ color:#fff; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35); }
   .form-alt{ margin-top:18px; }
@@ -1616,6 +1588,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .annbar-cta{ font-weight:700; color:var(--ink); background:var(--yellow); padding:6px 13px; border-radius:999px; font-size:12.5px; white-space:nowrap; }
   .annbar-cta:hover{ background:var(--yellow-deep); }
+  /* HUGO-2488 — the offer bar: a light companion under .annbar, deliberately not the dark bar with yellow pill. */
+  .promobar{ background:var(--cream-2); color:var(--ink); font-size:13.5px; border-bottom:1px solid var(--line); }
+  .promobar[hidden]{ display:none; }
+  .promobar-in{ display:flex; align-items:center; justify-content:center; gap:14px; padding:9px 24px; text-align:center; flex-wrap:wrap; }
+  .promobar-txt b{ font-weight:700; margin-right:6px; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px; }
+  .promobar-cta{ font-weight:700; color:#fff; background:var(--ink); padding:6px 14px; border-radius:var(--radius-sm); font-size:12.5px; white-space:nowrap; }
+  .promobar-cta:hover{ background:var(--ink-2); }
+  @media(max-width:560px){ .promobar-in{ padding:9px 16px; font-size:12.5px; } }
   .annbar-close{ position:absolute; right:14px; top:50%; transform:translateY(-50%); background:transparent; border:0; color:rgba(255,255,255,0.55); font-size:20px; line-height:1; cursor:pointer; padding:4px 8px; }
   .annbar-close:hover{ color:#fff; }
   @media(max-width:560px){ .annbar-in{ padding:9px 38px; font-size:12.5px; } }
@@ -1800,6 +1780,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 650px){ .video-band{ padding-bottom: 60px; } .video-frame{ border-radius: var(--radius-md); } .video-play{ width: 64px; height: 64px; margin: -32px 0 0 -32px; } .video-play svg{ width: 28px; height: 28px; } }
   .vat{ font-size: .62em; font-weight: 500; color: var(--muted); letter-spacing: 0; white-space: nowrap; font-variation-settings: normal; }
 </style>
+<link rel="stylesheet" href="/assets/footer.css" />
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1828,6 +1809,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/eet/" class="annbar-cta">Zjistit víc &rarr;</a>
   </div>
   <button class="annbar-close" type="button" aria-label="Zavřít">&times;</button>
+</div>
+<div class="promobar" id="promobar" hidden>
+  <div class="container promobar-in">
+    <span class="promobar-txt" id="promobar-txt"></span>
+    <a href="#" class="promobar-cta" id="promobar-cta"></a>
+  </div>
 </div>
 
 <!-- =============== NAV =============== -->
@@ -2466,45 +2453,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- =============== FOOTER =============== --><footer>
+<!-- =============== FOOTER =============== -->
+<!-- Shared footer (HUGO-2473): one source for every templated page, labels in i18n/_shared.mjs. -->
+<footer class="site-foot">
   <div class="container">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a href="#" class="brand">
-          <img src="/assets/hugo-icon.svg" alt="" width="64" height="64" loading="lazy" />
+    <div class="site-foot-grid">
+      <div class="site-foot-brand">
+        <a href="/" class="site-foot-logo">
+          <img src="/assets/hugo-icon.svg" alt="" width="28" height="28" loading="lazy" />
           <span>Hugo</span>
         </a>
         <p>Pokladna postavená kolem tvého menu a tvých hostů, na terminálu 3&nbsp;v&nbsp;1, telefonu i tabletu. Ne naopak.</p>
-        <a href="mailto:hugo@piano.cz" class="foot-mail">hugo@piano.cz</a>
+        <a href="mailto:hugo@piano.cz" class="site-foot-mail">hugo@piano.cz</a>
       </div>
-      <div class="foot-col">
+      <nav class="site-foot-col" aria-label="Produkt">
         <h2>Produkt</h2>
-        <a href="#product">Zařízení</a>
-        <a href="#brain">AI &amp; Brain</a>
+        <a href="/">Domů</a>
         <a href="/jak-zacit/">Jak začít</a>
+        <a href="/srovnani/">Srovnání</a>
+        <a href="/cenove-srovnani/">Ceník</a>
         <a href="/hardware/">Hardware</a>
-        <a href="#pricing">Ceník</a>
-      </div>
-      <div class="foot-col">
+        <a href="/kuchynsky-displej/">Kuchyňský displej</a>
+        <a href="/eet/">EET 2.0</a>
+      </nav>
+      <nav class="site-foot-col" aria-label="Podpora">
         <h2>Podpora</h2>
         <a href="mailto:hugo@piano.cz">hugo@piano.cz</a>
         <a href="https://status.hugopos.eu" target="_blank" rel="noopener">Stav služeb</a>
         <a href="https://admin.hugopos.eu/login" target="_blank" rel="noopener">Přihlásit se</a>
-      </div>
+      </nav>
     </div>
-
-    <div class="foot-bottom">
-      <div>© 2026 Hugo &middot; český produkt od Piana &middot; <a href="mailto:hugo@piano.cz">hugo@piano.cz</a></div>
-      <div class="legal">
-        <a href="/vseobecne-obchodni-podminky/">Všeobecné obchodní podmínky</a>
+    <div class="site-foot-bottom">
+      <div>&copy; 2026 Hugo &middot; český produkt od Piana</div>
+      <div class="site-foot-legal">
+        <a href="/vseobecne-obchodni-podminky/">Obchodní podmínky</a>
         <a href="/vseobecne-obchodni-podminky/#cenik-sluzeb">Ceník služeb</a>
-        <a href="mailto:hugo@piano.cz">Kontakt</a>
         <a href="https://piano.cz/gdpr/" target="_blank" rel="noopener">GDPR</a>
         <a href="/en/" data-lang-link>English</a>
       </div>
     </div>
   </div>
 </footer>
+
 
 <!-- =============== STICKY MOBILE CTA =============== -->
 <div class="mobilebar" id="mobilebar">
@@ -2527,6 +2517,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   onScroll();
 
   // Announcement bar dismiss (persisted)
+  /* HUGO-2488 — the Czech page's strips are edited in the superadmin and read from the public API.
+     Text only (textContent, never innerHTML) and only /path or https:// links. A failed request leaves the
+     static EET bar as built; the offer bar then stays hidden. */
+  (function(){
+    if (document.documentElement.lang !== 'cs') return;
+    var h = location.hostname;
+    var api = (h === 'hugopos.eu' || h === 'www.hugopos.eu') ? 'https://api.hugopos.eu/api'
+      : (h === 'staging.hugopos.eu') ? 'https://staging.api.hugopos.eu/api' : 'http://localhost:4471/api';
+    function safeUrl(u){ return typeof u === 'string' && (/^\/(?![\/\\])/.test(u) || /^https:\/\//i.test(u)); }
+    function fill(txtEl, ctaEl, strip){
+      txtEl.textContent = '';
+      if (strip.highlight){ var b = document.createElement('b'); b.textContent = strip.highlight; txtEl.appendChild(b); txtEl.appendChild(document.createTextNode(' ')); }
+      txtEl.appendChild(document.createTextNode(strip.text));
+      ctaEl.textContent = strip.buttonLabel;
+      ctaEl.setAttribute('href', strip.buttonUrl);
+    }
+    function valid(s){ return s && typeof s.text === 'string' && s.text && typeof s.buttonLabel === 'string' && s.buttonLabel && safeUrl(s.buttonUrl); }
+    fetch(api + '/v1/public/web-strips').then(function(r){ if (!r.ok) throw new Error('strips'); return r.json(); }).then(function(strips){
+      var ann = document.getElementById('annbar');
+      if (ann){
+        if (valid(strips.webEet)) fill(ann.querySelector('.annbar-txt'), ann.querySelector('.annbar-cta'), strips.webEet);
+        else if ('webEet' in strips) ann.style.display = 'none'; /* absent = nothing saved yet: keep the static EET bar */
+      }
+      var promo = document.getElementById('promobar');
+      if (promo && valid(strips.webPromo)){
+        fill(document.getElementById('promobar-txt'), document.getElementById('promobar-cta'), strips.webPromo);
+        promo.hidden = false;
+      }
+    }).catch(function(){});
+  })();
+
   const annbar = document.getElementById('annbar');
   if (annbar){
     try { if (localStorage.getItem('hugo-ann-closed') === '1') annbar.style.display = 'none'; } catch(e){}
@@ -2663,7 +2684,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.addEventListener('resize', relayout);
   window.addEventListener('load', relayout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
-  if (window.ResizeObserver) new ResizeObserver(relayout).observe(grid);
+  if (window.ResizeObserver) {
+    var carouselResizeObserver = new ResizeObserver(relayout);
+    carouselResizeObserver.observe(grid);
+    if (bar) carouselResizeObserver.observe(bar, { box: 'border-box' });
+  }
   layout();
   update();
 })();
@@ -2748,5 +2773,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
+<script src="https://api.nessie.works/api/widget/v1/chat.js" data-key="wc_Bsd9tIMLvdnRmzD233RHrxbn" async></script>
 </body>
 </html>

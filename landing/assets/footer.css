@@ -1,0 +1,22 @@
+/* Shared footer (HUGO-2473) — templates/_partials/footer.html, linked by every
+   templated page. Uses the page's own --ink/--ink-2/--muted/--line/--body/--display tokens.
+   Text metrics are pinned here, not inherited: the homepage body (line-height 1.45,
+   antialiased) and sub.css (1.5, h1-h3 in --display) differ, and the footer must not.
+   Its width follows the page's own .container, so it lines up with the content above. */
+.site-foot{ padding:50px 0 40px; border-top:1px solid var(--line); font-family:var(--body); font-size:17px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+.site-foot a{ text-decoration:none; }
+.site-foot-grid{ display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:32px; margin-bottom:50px; }
+.site-foot-logo{ display:inline-flex; align-items:center; gap:10px; color:var(--ink); font-family:var(--display); font-weight:800; font-size:22px; letter-spacing:-.02em; }
+.site-foot-logo img{ width:28px; height:28px; border-radius:7px; display:block; }
+.site-foot-brand p{ color:var(--muted); font-size:14px; line-height:1.5; max-width:280px; margin:14px 0 0; }
+.site-foot-mail{ display:block; margin-top:18px; font-weight:700; color:var(--ink); font-size:15px; }
+.site-foot-mail:hover{ color:var(--ink-2); }
+.site-foot-col h2{ font-family:var(--body); font-size:12px; line-height:1.45; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
+.site-foot-col a{ display:block; padding:4px 0; color:var(--ink-2); font-size:14px; }
+.site-foot-col a:hover{ color:var(--ink); }
+.site-foot-bottom{ display:flex; justify-content:space-between; gap:12px 24px; flex-wrap:wrap; font-size:13px; color:var(--muted); padding-top:18px; border-top:1px solid var(--line); }
+.site-foot-legal{ display:flex; gap:8px 18px; flex-wrap:wrap; }
+.site-foot-bottom a{ color:var(--ink-2); }
+.site-foot-bottom a:hover{ color:var(--ink); }
+@media (max-width: 900px){ .site-foot-grid{ grid-template-columns:1fr 1fr; } .site-foot-brand{ grid-column:1 / -1; } }
+@media (max-width: 560px){ .site-foot-grid{ gap:24px 18px; margin-bottom:32px; } }

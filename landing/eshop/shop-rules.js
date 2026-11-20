@@ -50,6 +50,8 @@
       catalogue[item.id].available = item.available === true;
       catalogue[item.id].price = item.amountMinor;
       catalogue[item.id].currency = item.currency;
+      // HUGO-2492 — present only while the checkout really charges the promo price.
+      catalogue[item.id].promotion = item.promotion || null;
     });
     return catalogue;
   }
@@ -104,6 +106,22 @@
   function isHourly(id) {
     return productConfig(id).unit === 'hour';
   }
+  // HUGO-2459 — a service sold as exactly one session (the server refuses a quantity above 1).
+  function isSingleSession(id) {
+    return productConfig(id).unit === 'session';
+  }
+  // HUGO-2459 — a product ordered on its own page (the consultation), never as a cart line.
+  function isPageProduct(id) {
+    return Boolean(productConfig(id).page);
+  }
+  // The quantity a stored/restored line of this product may carry.
+  function clampLineQuantity(id, qty) {
+    return isSingleSession(id) ? 1 : clampQuantity(qty);
+  }
+  // The services storefront: only these ids, whatever a stored cart or a link says.
+  function servicesOnly(lines) {
+    return (lines || []).filter(function (line) { return line && data.SERVICE_IDS.includes(line.id); });
+  }
   function clampQuantity(qty) {
     return Number.isInteger(qty) ? Math.min(data.MAX_QUANTITY, Math.max(1, qty)) : 1;
   }
@@ -115,6 +133,20 @@
   // "3 900 Kč / 2 hod" — the amount of a product sold per package of hours. `t` is the page translator.
   function perHour(t, amount) {
     return t('perHour').replace('{amount}', amount);
+  }
+
+  // "1 500 Kč / hod" — the hourly rate of the single online session.
+  function perSession(t, amount) {
+    return t('perHourSession').replace('{amount}', amount);
+  }
+
+  // HUGO-2492 — Black Friday: the struck-through original price and the label, from the server's
+  // `promotion` only (listAmountMinor, percentOff); '' when the product has none.
+  function promoHtml(product, t, lang) {
+    var promo = product.promotion;
+    if (!promo || !Number.isInteger(promo.listAmountMinor)) return '';
+    return '<s>' + formatMoney(promo.listAmountMinor, product.currency, lang) + '</s> '
+      + '<em class="promo">' + t('blackFriday').replace('{percent}', String(Number(promo.percentOff))) + '</em> ';
   }
 
   // A catalogue card's price, as HTML. Every amount is the server catalogue's; a product
@@ -134,7 +166,7 @@
     // prices at 0 gets the localized "free" label instead of `money(0)`.
     if (isZeroPriced(product)) return t('free') + '<small>' + t('freeFeatureNote') + '</small>';
     var amount = formatMoney(product.price, product.currency, lang);
-    return (isHourly(id) ? perHour(t, amount) : amount) + '<small>' + t('priceNote') + '</small>';
+    return promoHtml(product, t, lang) + (isHourly(id) ? perHour(t, amount) : isSingleSession(id) ? perSession(t, amount) : amount) + '<small>' + t('priceNote') + '</small>';
   }
 
   function cartLineName(line, product, t) {
@@ -160,7 +192,8 @@
         .replace('{hours}', String(line.qty))
         .replace('{rate}', perHour(t, money(product.price))) + ' ' + t('exclVat');
     }
-    return times + money(product.price) + ' ' + t('exclVat');
+    if (isSingleSession(line.id)) return perSession(t, money(product.price)) + ' ' + t('exclVat');
+    return promoHtml(product, t, lang) + times + money(product.price) + ' ' + t('exclVat');
   }
 
   // One cart line's text: its name and its price column.
@@ -201,15 +234,19 @@
     cartLineText: cartLineText,
     cartNeedsMealVoucherChoice: cartNeedsMealVoucherChoice,
     checkoutItems: checkoutItems,
+    clampLineQuantity: clampLineQuantity,
     clampQuantity: clampQuantity,
     formatMoney: formatMoney,
     gallerySourcesFor: gallerySourcesFor,
     isHourly: isHourly,
+    isPageProduct: isPageProduct,
+    isSingleSession: isSingleSession,
     isStandId: isStandId,
     isZeroPriced: isZeroPriced,
     mealVoucherChoiceComplete: mealVoucherChoiceComplete,
     perHour: perHour,
     productIsOrderable: productIsOrderable,
+    servicesOnly: servicesOnly,
     standFor: standFor,
     successShippingKey: successShippingKey,
     withIncludedStands: withIncludedStands

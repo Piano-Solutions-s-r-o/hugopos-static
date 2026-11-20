@@ -90,6 +90,7 @@
 .hw-item .hw-acc-price{ color:var(--muted); font-size:14px; }
 .hw-acc-price b{ font-family:var(--display); font-weight:800; font-size:24px; letter-spacing:-.02em; color:var(--ink); }
 .hw-item .hw-acc-spec{ font-size:13.5px; color:var(--muted); }
+.hw-item p a{ color:var(--ink); font-weight:600; text-decoration:underline; text-underline-offset:3px; }
 .hw-item .hw-included{ font-weight:600; color:var(--ink); }
 .hw-roll{ display:grid; gap:2px; padding-top:10px; border-top:1px dashed var(--line); }
 .hw-rolls h3 + .hw-roll{ border-top:0; padding-top:0; }
